@@ -36,9 +36,11 @@ export function SiteHeader() {
 
         <div className="flex items-center gap-2">
           <ThemeToggle />
-          <LinkButton className="hidden px-4 py-2.5 lg:inline-flex" href="/login">
-            Login
-          </LinkButton>
+          <div className="hidden lg:block">
+            <LinkButton className="px-4 py-2.5" href="/login">
+              Login
+            </LinkButton>
+          </div>
           <MobileMenu />
         </div>
       </div>
