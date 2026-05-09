@@ -23,7 +23,8 @@ export function MobileMenu() {
     setMounted(true);
   }, []);
 
-  const isDark = mounted ? resolvedTheme === "dark" : false;
+  const isDark =
+    mounted && (resolvedTheme === "dark" || document.documentElement.classList.contains("dark"));
 
   return (
     <div className="lg:hidden">
@@ -43,6 +44,10 @@ export function MobileMenu() {
             "absolute left-4 right-4 top-[4.5rem] rounded-3xl border p-4 shadow-2xl shadow-slate-900/10",
             isDark ? "border-white/10 bg-slate-900 text-white" : "border-slate-200 bg-white text-slate-900"
           )}
+          style={{
+            backgroundColor: isDark ? "#0f172a" : "#ffffff",
+            color: isDark ? "#ffffff" : "#0f172a"
+          }}
         >
           <nav className="grid gap-2">
             {siteConfig.nav.map((item) => (
