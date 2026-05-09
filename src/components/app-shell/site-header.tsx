@@ -22,7 +22,7 @@ export function SiteHeader() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-8 lg:flex">
           {siteConfig.nav.map((item) => (
             <Link
               className="text-sm font-medium text-slate-600 transition hover:text-emerald-600 dark:text-slate-300 dark:hover:text-emerald-300"
@@ -35,10 +35,8 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <div className="hidden md:block">
-            <ThemeToggle />
-          </div>
-          <LinkButton className="hidden px-4 py-2.5 md:inline-flex" href="/login">
+          <ThemeToggle />
+          <LinkButton className="hidden px-4 py-2.5 lg:inline-flex" href="/login">
             Login
           </LinkButton>
           <MobileMenu />

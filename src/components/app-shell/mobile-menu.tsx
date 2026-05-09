@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { siteConfig } from "@/config/site";
 import { LinkButton } from "@/components/ui/button";
-import { ThemeToggle } from "@/components/theme-toggle";
 
 export function MobileMenu() {
   const pathname = usePathname();
@@ -17,7 +16,7 @@ export function MobileMenu() {
   }, [pathname]);
 
   return (
-    <div className="md:hidden">
+    <div className="lg:hidden">
       <button
         aria-expanded={isOpen}
         aria-label={isOpen ? "Tutup menu" : "Buka menu"}
@@ -41,10 +40,6 @@ export function MobileMenu() {
               </Link>
             ))}
           </nav>
-          <div className="mt-3 flex items-center justify-between rounded-2xl bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-700 dark:bg-white/10 dark:text-slate-200">
-            <span>Dark mode</span>
-            <ThemeToggle />
-          </div>
           <LinkButton className="mt-3 w-full" href="/login">
             Login Jamaah
           </LinkButton>
