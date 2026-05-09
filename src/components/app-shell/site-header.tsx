@@ -35,8 +35,10 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <ThemeToggle />
-          <LinkButton className="hidden px-4 py-2.5 sm:inline-flex" href="/login">
+          <div className="hidden md:block">
+            <ThemeToggle />
+          </div>
+          <LinkButton className="hidden px-4 py-2.5 md:inline-flex" href="/login">
             Login
           </LinkButton>
           <MobileMenu />
