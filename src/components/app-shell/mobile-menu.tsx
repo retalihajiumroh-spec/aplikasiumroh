@@ -1,20 +1,28 @@
 "use client";
 
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { Menu, Moon, Sun, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
 import { siteConfig } from "@/config/site";
 import { LinkButton } from "@/components/ui/button";
-import { ThemeToggle } from "@/components/theme-toggle";
 
 export function MobileMenu() {
   const pathname = usePathname();
+  const { resolvedTheme, setTheme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setIsOpen(false);
   }, [pathname]);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const isDark = mounted ? resolvedTheme === "dark" : false;
 
   return (
     <div className="lg:hidden">
@@ -42,8 +50,15 @@ export function MobileMenu() {
             ))}
           </nav>
           <div className="mt-3 flex items-center justify-between rounded-2xl bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-700 dark:bg-white/10 dark:text-slate-200">
-            <span>Dark mode</span>
-            <ThemeToggle />
+            <span>Tema saat ini</span>
+            <button
+              className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-2 text-xs font-bold text-emerald-700 shadow-sm dark:bg-slate-950 dark:text-emerald-300"
+              onClick={() => setTheme(isDark ? "light" : "dark")}
+              type="button"
+            >
+              {isDark ? <Moon className="h-3.5 w-3.5" /> : <Sun className="h-3.5 w-3.5" />}
+              {isDark ? "Gelap" : "Terang"}
+            </button>
           </div>
           <LinkButton className="mt-3 w-full" href="/login">
             Login Jamaah
