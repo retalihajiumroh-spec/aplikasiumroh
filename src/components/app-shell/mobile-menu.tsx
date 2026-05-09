@@ -21,7 +21,7 @@ export function MobileMenu() {
       <button
         aria-expanded={isOpen}
         aria-label={isOpen ? "Tutup menu" : "Buka menu"}
-        className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 dark:border-white/10 dark:bg-white/10 dark:text-slate-100"
+        className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-emerald-700 dark:border-white/10 dark:bg-white/10 dark:text-emerald-300"
         onClick={() => setIsOpen((current) => !current)}
         type="button"
       >
