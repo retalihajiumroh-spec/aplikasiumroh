@@ -13,7 +13,7 @@ export function SiteHeader() {
             R
           </span>
           <span>
-            <span className="block text-sm font-bold text-slate-950 dark:text-white">
+            <span className="block text-sm font-bold text-emerald-700 dark:text-emerald-300">
               {siteConfig.name}
             </span>
             <span className="hidden text-xs text-slate-500 dark:text-slate-400 sm:block">
