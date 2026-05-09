@@ -1,8 +1,8 @@
 import Link from "next/link";
-import { Menu } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { LinkButton } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { MobileMenu } from "@/components/app-shell/mobile-menu";
 
 export function SiteHeader() {
   return (
@@ -39,13 +39,7 @@ export function SiteHeader() {
           <LinkButton className="hidden px-4 py-2.5 sm:inline-flex" href="/login">
             Login
           </LinkButton>
-          <button
-            aria-label="Buka menu"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 md:hidden dark:border-white/10 dark:bg-white/10 dark:text-slate-100"
-            type="button"
-          >
-            <Menu className="h-4 w-4" />
-          </button>
+          <MobileMenu />
         </div>
       </div>
     </header>
