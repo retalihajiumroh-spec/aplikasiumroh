@@ -14,6 +14,7 @@ export function MobileMenu() {
   const { resolvedTheme, setTheme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [themeMode, setThemeMode] = useState<"dark" | "light">("light");
 
   useEffect(() => {
     setIsOpen(false);
@@ -23,8 +24,26 @@ export function MobileMenu() {
     setMounted(true);
   }, []);
 
-  const isDark =
-    mounted && (resolvedTheme === "dark" || document.documentElement.classList.contains("dark"));
+  useEffect(() => {
+    if (!mounted) {
+      return;
+    }
+
+    const nextMode =
+      resolvedTheme === "dark" || document.documentElement.classList.contains("dark")
+        ? "dark"
+        : "light";
+
+    setThemeMode(nextMode);
+  }, [mounted, resolvedTheme]);
+
+  const isDark = themeMode === "dark";
+
+  function handleThemeToggle() {
+    const nextMode = isDark ? "light" : "dark";
+    setThemeMode(nextMode);
+    setTheme(nextMode);
+  }
 
   return (
     <div className="lg:hidden">
@@ -75,7 +94,7 @@ export function MobileMenu() {
                 "inline-flex items-center gap-2 rounded-full px-3 py-2 text-xs font-bold shadow-sm",
                 isDark ? "bg-slate-950 text-emerald-300" : "bg-white text-emerald-700"
               )}
-              onClick={() => setTheme(isDark ? "light" : "dark")}
+              onClick={handleThemeToggle}
               type="button"
             >
               {isDark ? <Moon className="h-3.5 w-3.5" /> : <Sun className="h-3.5 w-3.5" />}
