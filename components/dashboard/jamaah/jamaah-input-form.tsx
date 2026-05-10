@@ -1,110 +1,310 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useState, type FormEvent } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useSearchParams } from "next/navigation";
+import { useCallback, useEffect, useState, type FormEvent, type ReactNode } from "react";
+import { motion } from "framer-motion";
+import { loadUserPackages } from "@/lib/paket/package-storage";
 import {
-  jamaahInputBranchOptions,
+  JENIS_KELAMIN,
+  KEWARGANEGARAAN,
+  mergePackageOptions,
+  MITRA_QUERY_KEYS,
+  PENDIDIKAN,
+  PEKERJAAN,
+  STATUS_PERNIKAHAN,
   jamaahInputPackageOptions,
-  paymentStatusOptions,
 } from "@/lib/jamaah/input-form-data";
-import type { PaymentStatus } from "@/lib/jamaah/dummy-data";
+
+const inputClass =
+  "mt-2 w-full rounded-xl border border-emerald-500/15 bg-emerald-950/45 px-3 py-2.5 text-sm text-emerald-50 outline-none transition placeholder:text-slate-500/60 focus:border-amber-400/45 focus:ring-2 focus:ring-amber-500/15";
+const inputErr = " border-rose-400/45 ring-1 ring-rose-500/25";
+const labelClass = "text-xs font-semibold uppercase tracking-wider text-emerald-300/65";
+
+function FormSection({ title, subtitle, children }: { title: string; subtitle?: string; children: ReactNode }) {
+  return (
+    <section className="glass-panel rounded-2xl border border-emerald-500/10 p-5 sm:p-6">
+      <h2 className="text-lg font-semibold text-emerald-50">{title}</h2>
+      {subtitle ? <p className="mt-1 text-sm text-slate-400/90">{subtitle}</p> : null}
+      <div className="mt-6 space-y-4">{children}</div>
+    </section>
+  );
+}
+
+export interface JamaahInputValues {
+  namaSesuaiKtp: string;
+  noKtp: string;
+  noWa: string;
+  jenisKelamin: string;
+  kewarganegaraan: string;
+  packageId: string;
+  mitra: string;
+  tempatLahir: string;
+  tanggalLahir: string;
+  statusPernikahan: string;
+  pendidikan: string;
+  pekerjaan: string;
+  namaAyah: string;
+  namaSaudaraDarurat: string;
+  noWaSaudaraDarurat: string;
+  alamatJalan: string;
+  rtRw: string;
+  kelurahanDesa: string;
+  kabupatenKota: string;
+  provinsi: string;
+  kodePos: string;
+  noPaspor: string;
+  namaSesuaiPaspor: string;
+  namaTambahanHal5: string;
+  tanggalPaspor: string;
+  tanggalKadaluarsaPaspor: string;
+  kotaPaspor: string;
+  permintaanKhusus: string;
+}
+
+function emptyForm(packageIdDefault: string): JamaahInputValues {
+  return {
+    namaSesuaiKtp: "",
+    noKtp: "",
+    noWa: "",
+    jenisKelamin: JENIS_KELAMIN[0],
+    kewarganegaraan: KEWARGANEGARAAN[0],
+    packageId: packageIdDefault,
+    mitra: "",
+    tempatLahir: "",
+    tanggalLahir: "",
+    statusPernikahan: STATUS_PERNIKAHAN[0],
+    pendidikan: PENDIDIKAN[2],
+    pekerjaan: PEKERJAAN[0],
+    namaAyah: "",
+    namaSaudaraDarurat: "",
+    noWaSaudaraDarurat: "",
+    alamatJalan: "",
+    rtRw: "",
+    kelurahanDesa: "",
+    kabupatenKota: "",
+    provinsi: "",
+    kodePos: "",
+    noPaspor: "",
+    namaSesuaiPaspor: "",
+    namaTambahanHal5: "",
+    tanggalPaspor: "",
+    tanggalKadaluarsaPaspor: "",
+    kotaPaspor: "",
+    permintaanKhusus: "",
+  };
+}
 
 function nextJamaahId() {
   return `J-${Math.floor(20_000 + Math.random() * 9_000)}`;
 }
 
-function maskPhone(raw: string) {
-  const d = raw.replace(/\D/g, "");
-  if (d.length < 4) return raw.trim() || "—";
-  const tail = d.slice(-4);
-  return `+62 •••• ${tail}`;
+function isJpegFile(f: File | null): boolean {
+  if (!f) return false;
+  return f.type === "image/jpeg" || /\.jpe?g$/i.test(f.name);
 }
 
+function todayIso(): string {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+}
+
+type FieldKey = keyof JamaahInputValues | "fileKtp" | "fileKk" | "filePaspor" | "filePasFoto" | "fileVaksin";
+
+type Errors = Partial<Record<FieldKey, string>>;
+
 export function JamaahInputForm() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [packageId, setPackageId] = useState(jamaahInputPackageOptions[0]?.id ?? "");
-  const [branch, setBranch] = useState<(typeof jamaahInputBranchOptions)[number]>("Jakarta Pusat");
-  const [payment, setPayment] = useState<PaymentStatus>("unpaid");
+  const searchParams = useSearchParams();
+  const [pkgOpts, setPkgOpts] = useState(jamaahInputPackageOptions);
+  const defaultPid = jamaahInputPackageOptions[0]?.id ?? "";
 
-  const [visaFile, setVisaFile] = useState<File | null>(null);
-  const [passportFile, setPassportFile] = useState<File | null>(null);
-  const [vaccineFile, setVaccineFile] = useState<File | null>(null);
+  const [v, setV] = useState(() => emptyForm(defaultPid));
+  const [fileKtp, setFileKtp] = useState<File | null>(null);
+  const [fileKk, setFileKk] = useState<File | null>(null);
+  const [filePaspor, setFilePaspor] = useState<File | null>(null);
+  const [filePasFoto, setFilePasFoto] = useState<File | null>(null);
+  const [fileVaksin, setFileVaksin] = useState<File | null>(null);
 
-  const [error, setError] = useState<string | null>(null);
-  const [created, setCreated] = useState<{
-    id: string;
-    name: string;
-    email: string;
-    phoneDisplay: string;
-    packageName: string;
-    branch: string;
-    payment: PaymentStatus;
-    files: { visa?: string; passport?: string; vaccination?: string };
-  } | null>(null);
+  const [errors, setErrors] = useState<Errors>({});
+  const [createdId, setCreatedId] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
+  const [referralNote, setReferralNote] = useState<string | null>(null);
 
-  const packageLabel = jamaahInputPackageOptions.find((p) => p.id === packageId)?.label ?? "";
+  useEffect(() => {
+    const merged = mergePackageOptions(loadUserPackages());
+    setPkgOpts(merged);
+  }, []);
+
+  useEffect(() => {
+    if (pkgOpts.length === 0) return;
+    setV((prev) => (pkgOpts.some((p) => p.id === prev.packageId) ? prev : { ...prev, packageId: pkgOpts[0].id }));
+  }, [pkgOpts]);
+
+  useEffect(() => {
+    if (!searchParams) return;
+    for (const key of MITRA_QUERY_KEYS) {
+      const raw = searchParams.get(key)?.trim();
+      if (raw) {
+        const decoded = decodeURIComponent(raw);
+        setV((prev) => ({ ...prev, mitra: decoded }));
+        setReferralNote(`Mitra diisi otomatis dari parameter URL (${key}).`);
+        return;
+      }
+    }
+    setReferralNote(null);
+  }, [searchParams]);
+
+  const setField = useCallback(<K extends keyof JamaahInputValues>(key: K, val: JamaahInputValues[K]) => {
+    setV((prev) => ({ ...prev, [key]: val }));
+    setErrors((e) => {
+      const n = { ...e };
+      delete n[key];
+      return n;
+    });
+  }, []);
+
+  const validate = useCallback((): Errors => {
+    const e: Errors = {};
+    const req = (key: keyof JamaahInputValues, msg: string) => {
+      if (!String(v[key] ?? "").trim()) e[key] = msg;
+    };
+
+    req("namaSesuaiKtp", "Wajib diisi.");
+    req("noKtp", "Wajib diisi.");
+    req("noWa", "Wajib diisi.");
+    req("tempatLahir", "Wajib diisi.");
+    req("tanggalLahir", "Wajib diisi.");
+    req("namaAyah", "Wajib diisi.");
+    req("namaSaudaraDarurat", "Wajib diisi.");
+    req("noWaSaudaraDarurat", "Wajib diisi.");
+    req("alamatJalan", "Wajib diisi.");
+    req("rtRw", "Wajib diisi.");
+    req("kelurahanDesa", "Wajib diisi.");
+    req("kabupatenKota", "Wajib diisi.");
+    req("provinsi", "Wajib diisi.");
+    req("kodePos", "Wajib diisi.");
+    req("noPaspor", "Wajib diisi.");
+    req("namaSesuaiPaspor", "Wajib diisi.");
+    req("tanggalPaspor", "Wajib diisi.");
+    req("tanggalKadaluarsaPaspor", "Wajib diisi.");
+    req("kotaPaspor", "Wajib diisi.");
+
+    if (!v.packageId) e.packageId = "Pilih paket umroh.";
+
+    const tgl = v.tanggalLahir;
+    if (tgl && tgl >= todayIso()) e.tanggalLahir = "Tanggal lahir harus di masa lalu.";
+
+    const tp = v.tanggalPaspor;
+    const te = v.tanggalKadaluarsaPaspor;
+    if (tp && te && te <= tp) e.tanggalKadaluarsaPaspor = "Kadaluarsa harus setelah tanggal paspor diterbitkan.";
+
+    if (v.kewarganegaraan === "Indonesia") {
+      const digits = v.noKtp.replace(/\D/g, "");
+      if (digits.length !== 16) e.noKtp = "NIK Indonesia harus 16 digit angka.";
+    }
+
+    const files: { f: File | null; key: FieldKey; label: string }[] = [
+      { f: fileKtp, key: "fileKtp", label: "Foto KTP" },
+      { f: fileKk, key: "fileKk", label: "Foto Kartu Keluarga" },
+      { f: filePaspor, key: "filePaspor", label: "Foto Paspor" },
+      { f: filePasFoto, key: "filePasFoto", label: "Pas foto" },
+      { f: fileVaksin, key: "fileVaksin", label: "Foto vaksin" },
+    ];
+    for (const { f, key, label } of files) {
+      if (!f) e[key] = `${label} wajib diunggah (JPG).`;
+      else if (!isJpegFile(f)) e[key] = "Hanya format JPG / JPEG.";
+    }
+
+    return e;
+  }, [v, fileKtp, fileKk, filePaspor, filePasFoto, fileVaksin]);
 
   const resetForm = useCallback(() => {
-    setName("");
-    setEmail("");
-    setPhone("");
-    setPackageId(jamaahInputPackageOptions[0]?.id ?? "");
-    setBranch("Jakarta Pusat");
-    setPayment("unpaid");
-    setVisaFile(null);
-    setPassportFile(null);
-    setVaccineFile(null);
-    setError(null);
-  }, []);
+    const pid = pkgOpts[0]?.id ?? defaultPid;
+    setV(emptyForm(pid));
+    setFileKtp(null);
+    setFileKk(null);
+    setFilePaspor(null);
+    setFilePasFoto(null);
+    setFileVaksin(null);
+    setErrors({});
+    setCreatedId(null);
+    if (searchParams) {
+      for (const key of MITRA_QUERY_KEYS) {
+        const raw = searchParams.get(key)?.trim();
+        if (raw) {
+          setV((prev) => ({ ...prev, mitra: decodeURIComponent(raw) }));
+          break;
+        }
+      }
+    }
+  }, [pkgOpts, defaultPid, searchParams]);
 
   const handleSubmit = useCallback(
     (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-      setError(null);
-      const n = name.trim();
-      const em = email.trim().toLowerCase();
-      const ph = phone.trim();
-      if (!n || !em || !ph) {
-        setError("Nama, email, dan nomor telepon wajib diisi.");
-        return;
-      }
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) {
-        setError("Format email tidak valid.");
-        return;
-      }
-      if (!packageId) {
-        setError("Pilih paket umroh.");
-        return;
-      }
+      const eMap = validate();
+      setErrors(eMap);
+      if (Object.keys(eMap).length > 0) return;
 
       setSubmitting(true);
       window.setTimeout(() => {
         setSubmitting(false);
-        setCreated({
-          id: nextJamaahId(),
-          name: n,
-          email: em,
-          phoneDisplay: maskPhone(ph),
-          packageName: packageLabel,
-          branch,
-          payment,
-          files: {
-            visa: visaFile?.name,
-            passport: passportFile?.name,
-            vaccination: vaccineFile?.name,
-          },
-        });
-      }, 550);
+        setCreatedId(nextJamaahId());
+      }, 500);
     },
-    [name, email, phone, packageId, packageLabel, branch, payment, visaFile, passportFile, vaccineFile],
+    [validate],
   );
 
+  const errCls = useCallback((key: FieldKey) => (errors[key] ? inputErr : ""), [errors]);
+
+  if (createdId) {
+    return (
+      <div className="relative min-h-dvh overflow-x-hidden pb-24 pt-6 sm:pt-10">
+        <div
+          className="pointer-events-none fixed inset-0 -z-10 opacity-40"
+          aria-hidden
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 18% 0%, rgba(52, 211, 153, 0.12), transparent 42%), radial-gradient(circle at 88% 40%, rgba(56, 189, 248, 0.07), transparent 40%)",
+          }}
+        />
+        <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="glass-panel rounded-2xl border border-emerald-400/25 bg-emerald-500/[0.08] p-6"
+          >
+            <p className="text-xs font-semibold uppercase tracking-wider text-emerald-300/80">Berhasil (demo)</p>
+            <h2 className="mt-2 text-xl font-semibold text-emerald-50">Jamaah {createdId}</h2>
+            <p className="mt-2 text-sm text-emerald-200/70">
+              Data tersimpan secara lokal untuk demo. Unggahan: {fileKtp?.name}, {fileKk?.name}, …
+            </p>
+            <div className="mt-6 flex flex-col gap-2 sm:flex-row">
+              <button
+                type="button"
+                onClick={() => {
+                  setCreatedId(null);
+                  resetForm();
+                }}
+                className="rounded-xl border border-emerald-400/35 bg-emerald-500/15 px-4 py-2.5 text-sm font-semibold text-emerald-50 transition hover:bg-emerald-500/25"
+              >
+                Input jamaah lain
+              </button>
+              <Link
+                href="/dashboard/jamaah"
+                className="inline-flex items-center justify-center rounded-xl border border-white/10 px-4 py-2.5 text-center text-sm font-medium text-emerald-200/85 transition hover:bg-white/5"
+              >
+                Kembali ke daftar Jamaah
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="relative min-h-dvh overflow-x-hidden pb-24 pt-6 sm:pt-10">
+    <div className="relative min-h-dvh overflow-x-hidden pb-28 pt-6 sm:pt-10">
       <div
         className="pointer-events-none fixed inset-0 -z-10 opacity-40"
         aria-hidden
@@ -114,7 +314,7 @@ export function JamaahInputForm() {
         }}
       />
 
-      <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         <motion.header
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
@@ -122,10 +322,13 @@ export function JamaahInputForm() {
         >
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400/70">SA&apos;YA Umroh OS</p>
-            <h1 className="mt-2 text-3xl font-semibold tracking-tight text-emerald-50 sm:text-4xl">Input Jamaah</h1>
-            <p className="mt-2 text-sm text-emerald-200/55 sm:text-base">
-              Tambah data jamaah baru, unggah dokumen pendukung, dan simpan sebagai rekaman lokal (demo tanpa server).
+            <h1 className="mt-2 text-3xl font-bold tracking-tight text-emerald-50 sm:text-4xl">Input Jamaah</h1>
+            <p className="mt-2 text-sm text-slate-400/90 sm:text-base">
+              Lengkapi data sesuai KTP & paspor. Mitra dapat terisi otomatis dari link referral (`?mitra=` / `?ref=`).
             </p>
+            {referralNote ? (
+              <p className="mt-2 rounded-lg border border-amber-400/25 bg-amber-500/10 px-3 py-2 text-xs text-amber-100/90">{referralNote}</p>
+            ) : null}
           </div>
           <div className="flex flex-wrap gap-2">
             <Link
@@ -134,224 +337,385 @@ export function JamaahInputForm() {
             >
               ← Daftar Jamaah
             </Link>
-            <Link
-              href="/"
-              className="inline-flex rounded-xl border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-emerald-200/80 transition hover:border-emerald-400/25 hover:bg-emerald-500/10"
-            >
-              Hub
-            </Link>
           </div>
         </motion.header>
 
-        <AnimatePresence mode="wait">
-          {created ? (
-            <motion.div
-              key="success"
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              className="mt-10 glass-panel rounded-2xl border border-emerald-400/25 bg-emerald-500/[0.08] p-6"
-            >
-              <p className="text-xs font-semibold uppercase tracking-wider text-emerald-300/80">Berhasil dibuat (demo)</p>
-              <h2 className="mt-2 text-xl font-semibold text-emerald-50">Jamaah {created.id}</h2>
-              <dl className="mt-4 space-y-2 text-sm">
-                <div className="flex justify-between gap-4 border-b border-emerald-500/10 py-2">
-                  <dt className="text-emerald-200/55">Nama</dt>
-                  <dd className="font-medium text-emerald-50">{created.name}</dd>
-                </div>
-                <div className="flex justify-between gap-4 border-b border-emerald-500/10 py-2">
-                  <dt className="text-emerald-200/55">Email</dt>
-                  <dd className="break-all font-mono text-xs text-emerald-100/90">{created.email}</dd>
-                </div>
-                <div className="flex justify-between gap-4 border-b border-emerald-500/10 py-2">
-                  <dt className="text-emerald-200/55">Telepon</dt>
-                  <dd className="font-mono text-emerald-100/90">{created.phoneDisplay}</dd>
-                </div>
-                <div className="flex justify-between gap-4 border-b border-emerald-500/10 py-2">
-                  <dt className="text-emerald-200/55">Paket</dt>
-                  <dd className="text-right text-emerald-100/90">{created.packageName}</dd>
-                </div>
-                <div className="flex justify-between gap-4 border-b border-emerald-500/10 py-2">
-                  <dt className="text-emerald-200/55">Cabang</dt>
-                  <dd className="text-emerald-100/90">{created.branch}</dd>
-                </div>
-                <div className="flex justify-between gap-4 border-b border-emerald-500/10 py-2">
-                  <dt className="text-emerald-200/55">Pembayaran</dt>
-                  <dd className="text-emerald-100/90">{paymentStatusOptions.find((o) => o.value === created.payment)?.label}</dd>
-                </div>
-                <div className="pt-2">
-                  <dt className="text-emerald-200/55">Dokumen</dt>
-                  <dd className="mt-1 space-y-1 text-xs text-emerald-200/70">
-                    <p>Visa: {created.files.visa ?? "— belum unggah"}</p>
-                    <p>Paspor: {created.files.passport ?? "— belum unggah"}</p>
-                    <p>Vaksin: {created.files.vaccination ?? "— belum unggah"}</p>
-                  </dd>
-                </div>
-              </dl>
-              <div className="mt-6 flex flex-col gap-2 sm:flex-row">
-                <button
-                  type="button"
-                  onClick={() => {
-                    setCreated(null);
-                    resetForm();
-                  }}
-                  className="rounded-xl border border-emerald-400/35 bg-emerald-500/15 px-4 py-2.5 text-sm font-semibold text-emerald-50 transition hover:bg-emerald-500/25"
+        <motion.form
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          onSubmit={handleSubmit}
+          className="mt-10 space-y-8"
+          noValidate
+        >
+          <FormSection title="Identitas (KTP)" subtitle="Nama dan nomor sesuai dokumen resmi.">
+            <div className="grid gap-4 sm:grid-cols-2">
+              <label className="sm:col-span-2">
+                <span className={labelClass}>Nama sesuai KTP</span>
+                <input
+                  value={v.namaSesuaiKtp}
+                  onChange={(e) => setField("namaSesuaiKtp", e.target.value)}
+                  className={inputClass + errCls("namaSesuaiKtp")}
+                  placeholder="Sesuai KTP"
+                  autoComplete="name"
+                />
+                {errors.namaSesuaiKtp ? <p className="mt-1 text-xs text-rose-300">{errors.namaSesuaiKtp}</p> : null}
+              </label>
+              <label>
+                <span className={labelClass}>No. KTP / NIK</span>
+                <input
+                  value={v.noKtp}
+                  onChange={(e) => setField("noKtp", e.target.value)}
+                  className={inputClass + errCls("noKtp")}
+                  placeholder="16 digit"
+                  inputMode="numeric"
+                />
+                {errors.noKtp ? <p className="mt-1 text-xs text-rose-300">{errors.noKtp}</p> : null}
+              </label>
+              <label>
+                <span className={labelClass}>No. WhatsApp</span>
+                <input
+                  value={v.noWa}
+                  onChange={(e) => setField("noWa", e.target.value)}
+                  className={inputClass + errCls("noWa")}
+                  placeholder="08xxxxxxxxxx"
+                  inputMode="tel"
+                />
+                {errors.noWa ? <p className="mt-1 text-xs text-rose-300">{errors.noWa}</p> : null}
+              </label>
+              <label>
+                <span className={labelClass}>Jenis kelamin</span>
+                <select
+                  value={v.jenisKelamin}
+                  onChange={(e) => setField("jenisKelamin", e.target.value)}
+                  className={inputClass}
                 >
-                  Input jamaah lain
-                </button>
-                <Link
-                  href="/dashboard/jamaah"
-                  className="inline-flex items-center justify-center rounded-xl border border-white/10 px-4 py-2.5 text-center text-sm font-medium text-emerald-200/85 transition hover:bg-white/5"
-                >
-                  Lihat daftar Jamaah
-                </Link>
-              </div>
-            </motion.div>
-          ) : (
-            <motion.form
-              key="form"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0 }}
-              onSubmit={handleSubmit}
-              className="mt-10 space-y-8"
-            >
-              <section className="glass-panel rounded-2xl border border-emerald-500/10 p-5 sm:p-6">
-                <h2 className="text-lg font-semibold text-emerald-50">Data jamaah</h2>
-                <p className="mt-1 text-sm text-emerald-200/50">Identitas dan paket yang dipilih.</p>
-
-                <div className="mt-6 space-y-4">
-                  <label className="block">
-                    <span className="text-xs font-semibold uppercase tracking-wider text-emerald-300/60">Nama lengkap</span>
-                    <input
-                      required
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                      className="mt-2 w-full rounded-xl border border-emerald-500/15 bg-emerald-950/40 px-3 py-2.5 text-sm text-emerald-50 placeholder:text-emerald-600/45"
-                      placeholder="Sesuai KTP / paspor"
-                    />
-                  </label>
-                  <label className="block">
-                    <span className="text-xs font-semibold uppercase tracking-wider text-emerald-300/60">Email</span>
-                    <input
-                      type="email"
-                      required
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      className="mt-2 w-full rounded-xl border border-emerald-500/15 bg-emerald-950/40 px-3 py-2.5 text-sm text-emerald-50 placeholder:text-emerald-600/45"
-                      placeholder="nama@email.com"
-                    />
-                  </label>
-                  <label className="block">
-                    <span className="text-xs font-semibold uppercase tracking-wider text-emerald-300/60">Nomor telepon (WhatsApp)</span>
-                    <input
-                      required
-                      value={phone}
-                      onChange={(e) => setPhone(e.target.value)}
-                      className="mt-2 w-full rounded-xl border border-emerald-500/15 bg-emerald-950/40 px-3 py-2.5 font-mono text-sm text-emerald-50 placeholder:text-emerald-600/45"
-                      placeholder="0812xxxxxxxx"
-                    />
-                  </label>
-                  <div className="grid gap-4 sm:grid-cols-2">
-                    <label className="block">
-                      <span className="text-xs font-semibold uppercase tracking-wider text-emerald-300/60">Paket umroh</span>
-                      <select
-                        value={packageId}
-                        onChange={(e) => setPackageId(e.target.value)}
-                        className="mt-2 w-full rounded-xl border border-emerald-500/15 bg-emerald-950/40 px-3 py-2.5 text-sm text-emerald-50"
-                      >
-                        {jamaahInputPackageOptions.map((p) => (
-                          <option key={p.id} value={p.id}>
-                            {p.label}
-                          </option>
-                        ))}
-                      </select>
-                    </label>
-                    <label className="block">
-                      <span className="text-xs font-semibold uppercase tracking-wider text-emerald-300/60">Cabang pendaftaran</span>
-                      <select
-                        value={branch}
-                        onChange={(e) => setBranch(e.target.value as (typeof jamaahInputBranchOptions)[number])}
-                        className="mt-2 w-full rounded-xl border border-emerald-500/15 bg-emerald-950/40 px-3 py-2.5 text-sm text-emerald-50"
-                      >
-                        {jamaahInputBranchOptions.map((b) => (
-                          <option key={b} value={b}>
-                            {b}
-                          </option>
-                        ))}
-                      </select>
-                    </label>
-                  </div>
-                  <label className="block">
-                    <span className="text-xs font-semibold uppercase tracking-wider text-emerald-300/60">Status pembayaran</span>
-                    <select
-                      value={payment}
-                      onChange={(e) => setPayment(e.target.value as PaymentStatus)}
-                      className="mt-2 w-full rounded-xl border border-emerald-500/15 bg-emerald-950/40 px-3 py-2.5 text-sm text-emerald-50"
-                    >
-                      {paymentStatusOptions.map((o) => (
-                        <option key={o.value} value={o.value}>
-                          {o.label}
-                        </option>
-                      ))}
-                    </select>
-                  </label>
-                </div>
-              </section>
-
-              <section className="glass-panel rounded-2xl border border-emerald-500/10 p-5 sm:p-6">
-                <h2 className="text-lg font-semibold text-emerald-50">Unggah dokumen</h2>
-                <p className="mt-1 text-sm text-emerald-200/50">Visa, paspor, dan sertifikat vaksin (PDF atau JPG, demo — file tidak diunggah ke server).</p>
-
-                <div className="mt-6 space-y-4">
-                  {(
-                    [
-                      { key: "visa" as const, label: "Visa / dokumen visa", file: visaFile, set: setVisaFile },
-                      { key: "passport" as const, label: "Paspor (bio page)", file: passportFile, set: setPassportFile },
-                      { key: "vaccination" as const, label: "Vaksinasi / MCU", file: vaccineFile, set: setVaccineFile },
-                    ] as const
-                  ).map((row) => (
-                    <label key={row.key} className="block rounded-xl border border-emerald-500/12 bg-emerald-950/25 px-4 py-3">
-                      <span className="text-xs font-semibold uppercase tracking-wider text-emerald-300/60">{row.label}</span>
-                      <input
-                        type="file"
-                        accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/*"
-                        onChange={(e) => row.set(e.target.files?.[0] ?? null)}
-                        className="mt-2 block w-full text-xs text-emerald-200/80 file:mr-3 file:rounded-lg file:border-0 file:bg-emerald-500/20 file:px-3 file:py-1.5 file:text-xs file:font-medium file:text-emerald-100"
-                      />
-                      {row.file ? <p className="mt-2 truncate font-mono text-[11px] text-emerald-300/80">{row.file.name}</p> : null}
-                    </label>
+                  {JENIS_KELAMIN.map((x) => (
+                    <option key={x} value={x} className="bg-emerald-950">
+                      {x}
+                    </option>
                   ))}
-                </div>
-              </section>
-
-              {error ? (
-                <p className="rounded-xl border border-rose-400/30 bg-rose-500/10 px-4 py-2 text-sm text-rose-100/95" role="alert">
-                  {error}
-                </p>
-              ) : null}
-
-              <div className="flex flex-col gap-2 sm:flex-row sm:justify-end">
-                <button
-                  type="button"
-                  onClick={resetForm}
-                  className="rounded-xl border border-white/10 px-5 py-2.5 text-sm font-medium text-emerald-200/80 transition hover:bg-white/5"
+                </select>
+              </label>
+              <label>
+                <span className={labelClass}>Kewarganegaraan</span>
+                <select
+                  value={v.kewarganegaraan}
+                  onChange={(e) => setField("kewarganegaraan", e.target.value)}
+                  className={inputClass}
                 >
-                  Reset form
-                </button>
-                <motion.button
-                  type="submit"
-                  disabled={submitting}
-                  animate={submitting ? { scale: [1, 1.02, 1] } : undefined}
-                  transition={{ repeat: submitting ? Infinity : 0, duration: 0.8 }}
-                  className="rounded-xl border border-emerald-400/40 bg-gradient-to-r from-emerald-500/25 to-teal-600/15 px-6 py-2.5 text-sm font-semibold text-emerald-50 shadow-lg shadow-emerald-950/25 disabled:cursor-not-allowed disabled:opacity-50"
+                  {KEWARGANEGARAAN.map((x) => (
+                    <option key={x} value={x} className="bg-emerald-950">
+                      {x}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            </div>
+          </FormSection>
+
+          <FormSection title="Paket & mitra" subtitle="Pilih paket. Mitra dari link referral dapat diganti jika perlu.">
+            <label>
+              <span className={labelClass}>Pilihan paket umroh</span>
+              <select
+                value={v.packageId}
+                onChange={(e) => setField("packageId", e.target.value)}
+                className={inputClass + errCls("packageId")}
+              >
+                {pkgOpts.map((p) => (
+                  <option key={p.id} value={p.id} className="bg-emerald-950">
+                    {p.label}
+                  </option>
+                ))}
+              </select>
+              {errors.packageId ? <p className="mt-1 text-xs text-rose-300">{errors.packageId}</p> : null}
+            </label>
+            <label>
+              <span className={labelClass}>Mitra (referral)</span>
+              <input
+                value={v.mitra}
+                onChange={(e) => setField("mitra", e.target.value)}
+                className={inputClass}
+                placeholder="Kode / nama mitra — otomatis dari URL bila ada"
+              />
+              <p className="mt-1 text-[11px] text-slate-500/90">Contoh link: `/dashboard/jamaah/input?mitra=MITRA-001`</p>
+            </label>
+          </FormSection>
+
+          <FormSection title="Data kelahiran & demografi">
+            <div className="grid gap-4 sm:grid-cols-2">
+              <label>
+                <span className={labelClass}>Tempat lahir</span>
+                <input
+                  value={v.tempatLahir}
+                  onChange={(e) => setField("tempatLahir", e.target.value)}
+                  className={inputClass + errCls("tempatLahir")}
+                />
+                {errors.tempatLahir ? <p className="mt-1 text-xs text-rose-300">{errors.tempatLahir}</p> : null}
+              </label>
+              <label>
+                <span className={labelClass}>Tanggal lahir</span>
+                <input
+                  type="date"
+                  max={todayIso()}
+                  value={v.tanggalLahir}
+                  onChange={(e) => setField("tanggalLahir", e.target.value)}
+                  className={inputClass + errCls("tanggalLahir")}
+                />
+                {errors.tanggalLahir ? <p className="mt-1 text-xs text-rose-300">{errors.tanggalLahir}</p> : null}
+              </label>
+              <label>
+                <span className={labelClass}>Status pernikahan</span>
+                <select
+                  value={v.statusPernikahan}
+                  onChange={(e) => setField("statusPernikahan", e.target.value)}
+                  className={inputClass}
                 >
-                  {submitting ? "Menyimpan…" : "Simpan & buat Jamaah"}
-                </motion.button>
-              </div>
-            </motion.form>
-          )}
-        </AnimatePresence>
+                  {STATUS_PERNIKAHAN.map((x) => (
+                    <option key={x} value={x} className="bg-emerald-950">
+                      {x}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <label>
+                <span className={labelClass}>Pendidikan</span>
+                <select
+                  value={v.pendidikan}
+                  onChange={(e) => setField("pendidikan", e.target.value)}
+                  className={inputClass}
+                >
+                  {PENDIDIKAN.map((x) => (
+                    <option key={x} value={x} className="bg-emerald-950">
+                      {x}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <label className="sm:col-span-2">
+                <span className={labelClass}>Pekerjaan</span>
+                <select
+                  value={v.pekerjaan}
+                  onChange={(e) => setField("pekerjaan", e.target.value)}
+                  className={inputClass}
+                >
+                  {PEKERJAAN.map((x) => (
+                    <option key={x} value={x} className="bg-emerald-950">
+                      {x}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            </div>
+          </FormSection>
+
+          <FormSection title="Keluarga & kontak darurat">
+            <label>
+              <span className={labelClass}>Nama ayah</span>
+              <input value={v.namaAyah} onChange={(e) => setField("namaAyah", e.target.value)} className={inputClass + errCls("namaAyah")} />
+              {errors.namaAyah ? <p className="mt-1 text-xs text-rose-300">{errors.namaAyah}</p> : null}
+            </label>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <label>
+                <span className={labelClass}>Nama saudara kandung (keadaan darurat)</span>
+                <input
+                  value={v.namaSaudaraDarurat}
+                  onChange={(e) => setField("namaSaudaraDarurat", e.target.value)}
+                  className={inputClass + errCls("namaSaudaraDarurat")}
+                />
+                {errors.namaSaudaraDarurat ? <p className="mt-1 text-xs text-rose-300">{errors.namaSaudaraDarurat}</p> : null}
+              </label>
+              <label>
+                <span className={labelClass}>No. WA saudara kandung</span>
+                <input
+                  value={v.noWaSaudaraDarurat}
+                  onChange={(e) => setField("noWaSaudaraDarurat", e.target.value)}
+                  className={inputClass + errCls("noWaSaudaraDarurat")}
+                  inputMode="tel"
+                />
+                {errors.noWaSaudaraDarurat ? <p className="mt-1 text-xs text-rose-300">{errors.noWaSaudaraDarurat}</p> : null}
+              </label>
+            </div>
+          </FormSection>
+
+          <FormSection title="Alamat rumah">
+            <label>
+              <span className={labelClass}>Alamat (nama jalan)</span>
+              <input
+                value={v.alamatJalan}
+                onChange={(e) => setField("alamatJalan", e.target.value)}
+                className={inputClass + errCls("alamatJalan")}
+              />
+              {errors.alamatJalan ? <p className="mt-1 text-xs text-rose-300">{errors.alamatJalan}</p> : null}
+            </label>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <label>
+                <span className={labelClass}>RT / RW</span>
+                <input value={v.rtRw} onChange={(e) => setField("rtRw", e.target.value)} className={inputClass + errCls("rtRw")} placeholder="001/002" />
+                {errors.rtRw ? <p className="mt-1 text-xs text-rose-300">{errors.rtRw}</p> : null}
+              </label>
+              <label>
+                <span className={labelClass}>Kelurahan / Desa</span>
+                <input
+                  value={v.kelurahanDesa}
+                  onChange={(e) => setField("kelurahanDesa", e.target.value)}
+                  className={inputClass + errCls("kelurahanDesa")}
+                />
+                {errors.kelurahanDesa ? <p className="mt-1 text-xs text-rose-300">{errors.kelurahanDesa}</p> : null}
+              </label>
+              <label>
+                <span className={labelClass}>Kabupaten / Kota</span>
+                <input
+                  value={v.kabupatenKota}
+                  onChange={(e) => setField("kabupatenKota", e.target.value)}
+                  className={inputClass + errCls("kabupatenKota")}
+                />
+                {errors.kabupatenKota ? <p className="mt-1 text-xs text-rose-300">{errors.kabupatenKota}</p> : null}
+              </label>
+              <label>
+                <span className={labelClass}>Provinsi</span>
+                <input value={v.provinsi} onChange={(e) => setField("provinsi", e.target.value)} className={inputClass + errCls("provinsi")} />
+                {errors.provinsi ? <p className="mt-1 text-xs text-rose-300">{errors.provinsi}</p> : null}
+              </label>
+              <label className="sm:col-span-2">
+                <span className={labelClass}>Kode pos</span>
+                <input
+                  value={v.kodePos}
+                  onChange={(e) => setField("kodePos", e.target.value)}
+                  className={inputClass + errCls("kodePos")}
+                  inputMode="numeric"
+                />
+                {errors.kodePos ? <p className="mt-1 text-xs text-rose-300">{errors.kodePos}</p> : null}
+              </label>
+            </div>
+          </FormSection>
+
+          <FormSection title="Paspor">
+            <div className="grid gap-4 sm:grid-cols-2">
+              <label>
+                <span className={labelClass}>No. paspor</span>
+                <input value={v.noPaspor} onChange={(e) => setField("noPaspor", e.target.value)} className={inputClass + errCls("noPaspor")} />
+                {errors.noPaspor ? <p className="mt-1 text-xs text-rose-300">{errors.noPaspor}</p> : null}
+              </label>
+              <label>
+                <span className={labelClass}>Nama sesuai paspor</span>
+                <input
+                  value={v.namaSesuaiPaspor}
+                  onChange={(e) => setField("namaSesuaiPaspor", e.target.value)}
+                  className={inputClass + errCls("namaSesuaiPaspor")}
+                />
+                {errors.namaSesuaiPaspor ? <p className="mt-1 text-xs text-rose-300">{errors.namaSesuaiPaspor}</p> : null}
+              </label>
+              <label className="sm:col-span-2">
+                <span className={labelClass}>Nama tambahan halaman 5 paspor (jika nama satu kata)</span>
+                <input
+                  value={v.namaTambahanHal5}
+                  onChange={(e) => setField("namaTambahanHal5", e.target.value)}
+                  className={inputClass}
+                  placeholder="Opsional"
+                />
+              </label>
+              <label>
+                <span className={labelClass}>Tanggal paspor diterbitkan</span>
+                <input
+                  type="date"
+                  value={v.tanggalPaspor}
+                  onChange={(e) => setField("tanggalPaspor", e.target.value)}
+                  className={inputClass + errCls("tanggalPaspor")}
+                />
+                {errors.tanggalPaspor ? <p className="mt-1 text-xs text-rose-300">{errors.tanggalPaspor}</p> : null}
+              </label>
+              <label>
+                <span className={labelClass}>Tanggal kadaluarsa paspor</span>
+                <input
+                  type="date"
+                  value={v.tanggalKadaluarsaPaspor}
+                  onChange={(e) => setField("tanggalKadaluarsaPaspor", e.target.value)}
+                  className={inputClass + errCls("tanggalKadaluarsaPaspor")}
+                />
+                {errors.tanggalKadaluarsaPaspor ? <p className="mt-1 text-xs text-rose-300">{errors.tanggalKadaluarsaPaspor}</p> : null}
+              </label>
+              <label className="sm:col-span-2">
+                <span className={labelClass}>Kota paspor diterbitkan</span>
+                <input value={v.kotaPaspor} onChange={(e) => setField("kotaPaspor", e.target.value)} className={inputClass + errCls("kotaPaspor")} />
+                {errors.kotaPaspor ? <p className="mt-1 text-xs text-rose-300">{errors.kotaPaspor}</p> : null}
+              </label>
+            </div>
+          </FormSection>
+
+          <FormSection title="Unggah dokumen" subtitle="Format JPG saja (demo — file tidak diunggah ke server).">
+            {(
+              [
+                { file: fileKtp, set: setFileKtp, label: "Foto KTP", errKey: "fileKtp" as const },
+                { file: fileKk, set: setFileKk, label: "Foto Kartu Keluarga", errKey: "fileKk" as const },
+                { file: filePaspor, set: setFilePaspor, label: "Foto Paspor", errKey: "filePaspor" as const },
+                {
+                  file: filePasFoto,
+                  set: setFilePasFoto,
+                  label: "Pas foto 80% wajah, background putih",
+                  errKey: "filePasFoto" as const,
+                },
+                {
+                  file: fileVaksin,
+                  set: setFileVaksin,
+                  label: "Foto vaksin Meningitis & Polio",
+                  errKey: "fileVaksin" as const,
+                },
+              ] as const
+            ).map((row) => (
+              <label key={row.errKey} className="block rounded-xl border border-emerald-500/12 bg-emerald-950/25 px-4 py-3">
+                <span className={labelClass}>{row.label}</span>
+                <input
+                  type="file"
+                  accept="image/jpeg,.jpg,.jpeg"
+                  onChange={(e) => {
+                    row.set(e.target.files?.[0] ?? null);
+                    setErrors((er) => {
+                      const n = { ...er };
+                      delete n[row.errKey];
+                      return n;
+                    });
+                  }}
+                  className={
+                    "mt-2 block w-full text-xs text-emerald-200/80 file:mr-3 file:rounded-lg file:border-0 file:bg-emerald-500/20 file:px-3 file:py-1.5 file:text-xs file:font-medium file:text-emerald-100 " +
+                    (errors[row.errKey] ? "rounded-lg ring-1 ring-rose-400/40" : "")
+                  }
+                />
+                {row.file ? <p className="mt-2 truncate font-mono text-[11px] text-emerald-300/80">{row.file.name}</p> : null}
+                {errors[row.errKey] ? <p className="mt-1 text-xs text-rose-300">{errors[row.errKey]}</p> : null}
+              </label>
+            ))}
+          </FormSection>
+
+          <FormSection title="Permintaan khusus" subtitle="Contoh: upgrade kamar, upgrade pesawat, upgrade hotel.">
+            <label>
+              <span className={labelClass}>Catatan</span>
+              <textarea
+                value={v.permintaanKhusus}
+                onChange={(e) => setField("permintaanKhusus", e.target.value)}
+                rows={4}
+                className={inputClass + " min-h-[100px] resize-y"}
+                placeholder="Tulis permintaan atau kosongkan jika tidak ada."
+              />
+            </label>
+          </FormSection>
+
+          <div className="flex flex-col gap-2 sm:flex-row sm:justify-end">
+            <button
+              type="button"
+              onClick={resetForm}
+              className="rounded-xl border border-white/10 px-5 py-2.5 text-sm font-medium text-emerald-200/80 transition hover:bg-white/5"
+            >
+              Reset form
+            </button>
+            <motion.button
+              type="submit"
+              disabled={submitting}
+              className="rounded-xl border border-emerald-400/40 bg-gradient-to-r from-emerald-500 to-teal-600 px-6 py-2.5 text-sm font-bold text-white shadow-lg shadow-emerald-950/30 disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              {submitting ? "Menyimpan…" : "Simpan data jamaah"}
+            </motion.button>
+          </div>
+        </motion.form>
       </div>
     </div>
   );
