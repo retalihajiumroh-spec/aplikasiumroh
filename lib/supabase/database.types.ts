@@ -98,6 +98,43 @@ export interface Database {
         };
         Update: Partial<Database["public"]["Tables"]["cabang"]["Insert"]>;
       };
+      payment_entries: {
+        Row: {
+          id: string;
+          created_by: string;
+          package_id: string;
+          package_label: string;
+          jamaah_id: string;
+          jamaah_name: string;
+          amount_idr: number;
+          payment_type: string;
+          status: string;
+          proof_filenames: string[];
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          created_by: string;
+          package_id: string;
+          package_label: string;
+          jamaah_id: string;
+          jamaah_name: string;
+          amount_idr: number;
+          payment_type: string;
+          status: string;
+          proof_filenames?: string[];
+        };
+        Update: {
+          package_id?: string;
+          package_label?: string;
+          jamaah_id?: string;
+          jamaah_name?: string;
+          amount_idr?: number;
+          payment_type?: string;
+          status?: string;
+          proof_filenames?: string[];
+        };
+      };
     };
   };
 }
