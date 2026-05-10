@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { CreatePaketModal } from "./create-paket-modal";
 import {
@@ -11,6 +11,7 @@ import {
   type PaketStatus,
   type UmrohPackage,
 } from "@/lib/paket/dummy-data";
+import { loadUserPackages, type StoredUserPackage } from "@/lib/paket/package-storage";
 import { formatIdrCompact } from "@/lib/dashboard/owner-dummy-data";
 
 function statusMeta(s: PaketStatus) {
@@ -56,6 +57,33 @@ function SeatBar({ pkg }: { pkg: UmrohPackage }) {
 
 export function PaketDashboard() {
   const [createOpen, setCreateOpen] = useState(false);
+  const [userPackages, setUserPackages] = useState<StoredUserPackage[]>([]);
+
+  const refreshUserPackages = useCallback(() => {
+    setUserPackages(loadUserPackages());
+  }, []);
+
+  useEffect(() => {
+    refreshUserPackages();
+  }, [refreshUserPackages]);
+
+  const displayPackages = useMemo(() => {
+    const seen = new Set<string>();
+    const merged: UmrohPackage[] = [];
+    for (const p of userPackages) {
+      if (!seen.has(p.id)) {
+        seen.add(p.id);
+        merged.push(p);
+      }
+    }
+    for (const p of umrohPackages) {
+      if (!seen.has(p.id)) {
+        seen.add(p.id);
+        merged.push(p);
+      }
+    }
+    return merged;
+  }, [userPackages]);
 
   return (
     <div className="relative min-h-dvh overflow-x-hidden pb-20 pt-6 sm:pt-10">
@@ -104,7 +132,7 @@ export function PaketDashboard() {
         </motion.header>
 
         <ul className="mt-10 space-y-5">
-          {umrohPackages.map((pkg, i) => {
+          {displayPackages.map((pkg, i) => {
             const st = statusMeta(pkg.status);
             return (
               <motion.li
@@ -121,6 +149,11 @@ export function PaketDashboard() {
                       <span className={`rounded-md border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide ${st.className}`}>
                         {st.label}
                       </span>
+                      {"formSnapshot" in pkg && pkg.formSnapshot ? (
+                        <span className="rounded-md border border-amber-400/35 bg-amber-500/15 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-amber-100">
+                          Buat Anda
+                        </span>
+                      ) : null}
                     </div>
                     <h2 className="mt-2 text-xl font-semibold text-emerald-50">{pkg.name}</h2>
                     <p className="mt-1 text-sm leading-relaxed text-emerald-200/55">{pkg.subtitle}</p>
@@ -136,6 +169,11 @@ export function PaketDashboard() {
                       <div>
                         <dt className="text-xs font-medium uppercase tracking-wider text-emerald-500/50">Mulai dari</dt>
                         <dd className="font-mono font-semibold text-emerald-200">{formatIdrCompact(pkg.priceFromIdr)}</dd>
+                        {"totalModalIdr" in pkg && typeof pkg.totalModalIdr === "number" ? (
+                          <p className="mt-1 text-[11px] text-slate-500/85">
+                            Est. modal total: <span className="font-mono text-emerald-400/80">{formatIdrCompact(pkg.totalModalIdr)}</span>
+                          </p>
+                        ) : null}
                       </div>
                     </dl>
                   </div>
@@ -147,7 +185,11 @@ export function PaketDashboard() {
         </ul>
       </div>
 
-      <CreatePaketModal open={createOpen} onClose={() => setCreateOpen(false)} />
+      <CreatePaketModal
+        open={createOpen}
+        onClose={() => setCreateOpen(false)}
+        onCreated={() => refreshUserPackages()}
+      />
     </div>
   );
 }
