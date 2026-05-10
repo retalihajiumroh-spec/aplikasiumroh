@@ -3,6 +3,7 @@ import Link from "next/link";
 const links = [
   { href: "/dashboard", label: "Dashboard" },
   { href: "/dashboard/jamaah", label: "Jamaah" },
+  { href: "/dashboard/paket", label: "Paket Umroh" },
   { href: "/dashboard/owner", label: "Owner Dashboard" },
   { href: "/dashboard/crm", label: "CRM Pipeline" },
   { href: "/dashboard/ai-sales", label: "AI Sales Bot" },
