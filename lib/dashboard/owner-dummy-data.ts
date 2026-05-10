@@ -1,4 +1,4 @@
-export type KpiKey = "jamaah" | "revenue" | "closing" | "leads";
+export type KpiKey = "jamaah" | "revenue" | "activeLeads" | "closing";
 
 export interface KpiDatum {
   key: KpiKey;
@@ -15,31 +15,38 @@ export interface MonthlyRevenuePoint {
   conversionPct: number;
 }
 
-export interface BranchRevenueCompare {
+/** Per-cabang: konversi, pipeline, penutupan. */
+export interface BranchPerformanceMetrics {
   branch: string;
   city: string;
+  conversionPct: number;
+  activeLeads: number;
+  closedSales: number;
   revenueIdr: number;
-  jamaahClosed: number;
 }
 
-export interface BranchLeaderboardRow {
-  rank: number;
-  branch: string;
-  city: string;
-  score: number;
-  engagementScore: number;
-  activeThreads: number;
-  avgResponseMin: number;
-  satisfactionPct: number;
-}
+export type AiInsightKind = "high_intent" | "community" | "branch_alert";
 
-export interface ActivityLogItem {
+export interface AiInsight {
   id: string;
-  actor: string;
-  action: string;
-  target: string;
+  kind: AiInsightKind;
+  title: string;
+  summary: string;
+  detail: string;
+  metricLabel?: string;
+  metricValue?: string;
+}
+
+export type ActivityFeedKind = "transaction" | "lead_capture" | "update";
+
+export interface ActivityFeedItem {
+  id: string;
+  kind: ActivityFeedKind;
+  title: string;
+  description: string;
   at: string;
-  channel: "whatsapp" | "portal" | "branch" | "system";
+  amountIdr?: number;
+  meta?: string;
 }
 
 export const kpiData: KpiDatum[] = [
@@ -60,20 +67,20 @@ export const kpiData: KpiDatum[] = [
     trend: "up",
   },
   {
+    key: "activeLeads",
+    label: "Active Leads",
+    value: "1.284",
+    sublabel: "aktivitas 14 hari terakhir",
+    delta: "+5,8%",
+    trend: "up",
+  },
+  {
     key: "closing",
     label: "Closing Rate",
     value: "34,6%",
     sublabel: "lead → kontrak",
     delta: "+2,1 pts",
     trend: "up",
-  },
-  {
-    key: "leads",
-    label: "High Intent Leads",
-    value: "186",
-    sublabel: "skor ≥ 72 (7 hari)",
-    delta: "−4,2%",
-    trend: "down",
   },
 ];
 
@@ -92,131 +99,148 @@ export const monthlyRevenueTrend: MonthlyRevenuePoint[] = [
   { month: "Des", revenueIdr: 7.1e9, conversionPct: 37.2 },
 ];
 
-export const branchRevenueCompare: BranchRevenueCompare[] = [
-  { branch: "SA'YA Pusat", city: "Jakarta", revenueIdr: 14.2e9, jamaahClosed: 612 },
-  { branch: "SA'YA Jawa Barat", city: "Bandung", revenueIdr: 9.8e9, jamaahClosed: 418 },
-  { branch: "SA'YA Jatim", city: "Surabaya", revenueIdr: 8.4e9, jamaahClosed: 355 },
-  { branch: "SA'YA Sumatera", city: "Medan", revenueIdr: 6.1e9, jamaahClosed: 251 },
-  { branch: "SA'YA Sulawesi", city: "Makassar", revenueIdr: 4.9e9, jamaahClosed: 198 },
-];
-
-export const branchLeaderboard: BranchLeaderboardRow[] = [
+export const branchPerformance: BranchPerformanceMetrics[] = [
   {
-    rank: 1,
     branch: "SA'YA Pusat",
     city: "Jakarta",
-    score: 94,
-    engagementScore: 91,
-    activeThreads: 428,
-    avgResponseMin: 12,
-    satisfactionPct: 96,
+    conversionPct: 38.2,
+    activeLeads: 412,
+    closedSales: 612,
+    revenueIdr: 14.2e9,
   },
   {
-    rank: 2,
     branch: "SA'YA Jawa Barat",
     city: "Bandung",
-    score: 88,
-    engagementScore: 86,
-    activeThreads: 301,
-    avgResponseMin: 18,
-    satisfactionPct: 93,
+    conversionPct: 34.6,
+    activeLeads: 268,
+    closedSales: 418,
+    revenueIdr: 9.8e9,
   },
   {
-    rank: 3,
     branch: "SA'YA Jatim",
     city: "Surabaya",
-    score: 84,
-    engagementScore: 82,
-    activeThreads: 267,
-    avgResponseMin: 21,
-    satisfactionPct: 91,
+    conversionPct: 32.9,
+    activeLeads: 241,
+    closedSales: 355,
+    revenueIdr: 8.4e9,
   },
   {
-    rank: 4,
     branch: "SA'YA Sumatera",
     city: "Medan",
-    score: 79,
-    engagementScore: 74,
-    activeThreads: 184,
-    avgResponseMin: 27,
-    satisfactionPct: 88,
+    conversionPct: 29.4,
+    activeLeads: 198,
+    closedSales: 251,
+    revenueIdr: 6.1e9,
   },
   {
-    rank: 5,
     branch: "SA'YA Sulawesi",
     city: "Makassar",
-    score: 76,
-    engagementScore: 71,
-    activeThreads: 142,
-    avgResponseMin: 31,
-    satisfactionPct: 86,
+    conversionPct: 27.1,
+    activeLeads: 165,
+    closedSales: 198,
+    revenueIdr: 4.9e9,
   },
 ];
 
-export const communityStats = {
-  activeMembers: 3840,
-  highIntentInCommunity: 94,
-  weeklyGrowthPct: 6.2,
-};
+export const aiInsights: AiInsight[] = [
+  {
+    id: "ai-1",
+    kind: "high_intent",
+    title: "High-intent lead cluster",
+    summary: "38 lead memasuki skor ≥ 85 dalam 48 jam — mayoritas dari konten Reels Ramadan.",
+    detail:
+      "Polanya: klik kalkulator DP + balasan WA < 6 menit. Routing otomatis ke CS Jakarta meningkatkan booking +14% vs rata-rata.",
+    metricLabel: "Top skor",
+    metricValue: "94",
+  },
+  {
+    id: "ai-2",
+    kind: "community",
+    title: "Community engagement",
+    summary: "Komunitas jamaah aktif naik 6,2% mingguan; thread manasik paling banyak disimpan.",
+    detail:
+      "Sesi live Q&A pekan ini menghasilkan 214 pertanyaan unik. Saran: pin FAQ ke portal untuk mengurangi beban CS cabang.",
+    metricLabel: "Anggota aktif",
+    metricValue: "3.840",
+  },
+  {
+    id: "ai-3",
+    kind: "branch_alert",
+    title: "Alert performa cabang",
+    summary: "Medan: konversi turun 1,8 pts vs bulan lalu saat lead naik.",
+    detail:
+      "Waktu respons rata-rata naik ke 27 menit. Prioritaskan template WA otomatis +1 agen shift sore untuk menutup gap.",
+    metricLabel: "Δ konversi",
+    metricValue: "−1,8 pts",
+  },
+];
 
-export const activityLogs: ActivityLogItem[] = [
+export const activityFeed: ActivityFeedItem[] = [
   {
-    id: "1",
-    actor: "Tim CS Jakarta",
-    action: "Mengirim paket proposal",
-    target: "Keluarga Rahman — Ramadan Premium",
+    id: "a1",
+    kind: "transaction",
+    title: "Pelunasan paket",
+    description: "Keluarga Pratama · Ramadan Premium 1447H",
     at: "2 menit lalu",
-    channel: "whatsapp",
+    amountIdr: 186_500_000,
+    meta: "Virtual account · terverifikasi",
   },
   {
-    id: "2",
-    actor: "Portal Jamaah",
-    action: "Upload dokumen visa",
-    target: "12 jamaah batch Maret",
-    at: "18 menit lalu",
-    channel: "portal",
+    id: "a2",
+    kind: "lead_capture",
+    title: "Auto-capture dari IG Reels",
+    description: "12 lead baru dari kampanye #UmrohRamadan — 6 high intent",
+    at: "14 menit lalu",
+    meta: "Webhook Meta + skor AI",
   },
   {
-    id: "3",
-    actor: "Branch Bandung",
-    action: "Follow-up high intent",
-    target: "Lead H-72 — skor 81",
-    at: "42 menit lalu",
-    channel: "branch",
+    id: "a3",
+    kind: "transaction",
+    title: "DP masuk",
+    description: "Yayasan Al-Ikhlas · cicilan tahap 2",
+    at: "32 menit lalu",
+    amountIdr: 420_000_000,
+    meta: "Transfer bank",
   },
   {
-    id: "4",
-    actor: "Sistem",
-    action: "Sinkronisasi saldo DP",
-    target: "Rekonsiliasi harian selesai",
+    id: "a4",
+    kind: "lead_capture",
+    title: "Form portal · umroh reguler",
+    description: "8 lead dari landing page Bandung — sumber: Google Ads",
     at: "1 jam lalu",
-    channel: "system",
+    meta: "UTM: spring-promo-jabar",
   },
   {
-    id: "5",
-    actor: "Komunitas Umroh ID",
-    action: "Moderator menyetujui posting",
-    target: "Tips manasik pra-keberangkatan",
+    id: "a5",
+    kind: "update",
+    title: "Sinkronisasi CRM",
+    description: "Pipeline diselaraskan dengan WhatsApp Business — 42 kontak",
     at: "2 jam lalu",
-    channel: "portal",
+    meta: "Sistem",
   },
   {
-    id: "6",
-    actor: "Tim CS Surabaya",
-    action: "Jadwalkan konsultasi video",
-    target: "4 keluarga calon jamaah",
+    id: "a6",
+    kind: "transaction",
+    title: "Refund parsial",
+    description: "Pembatalan 1 pax · batch Maret (sesuai kebijakan)",
     at: "3 jam lalu",
-    channel: "whatsapp",
+    amountIdr: -12_750_000,
+    meta: "Finance disetujui",
   },
 ];
 
 export function formatIdrCompact(value: number): string {
-  if (value >= 1e12) return `Rp ${(value / 1e12).toFixed(1)} T`;
-  if (value >= 1e9) return `Rp ${(value / 1e9).toFixed(1)} M`;
-  if (value >= 1e6) return `Rp ${(value / 1e6).toFixed(1)} jt`;
-  return new Intl.NumberFormat("id-ID", {
-    style: "currency",
-    currency: "IDR",
-    maximumFractionDigits: 0,
-  }).format(value);
+  const abs = Math.abs(value);
+  const sign = value < 0 ? "−" : "";
+  if (abs >= 1e12) return `${sign}Rp ${(abs / 1e12).toFixed(1)} T`;
+  if (abs >= 1e9) return `${sign}Rp ${(abs / 1e9).toFixed(1)} M`;
+  if (abs >= 1e6) return `${sign}Rp ${(abs / 1e6).toFixed(1)} jt`;
+  return (
+    sign +
+    new Intl.NumberFormat("id-ID", {
+      style: "currency",
+      currency: "IDR",
+      maximumFractionDigits: 0,
+    }).format(abs)
+  );
 }

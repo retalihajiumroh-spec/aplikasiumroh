@@ -3,7 +3,8 @@ import { OwnerDashboard } from "@/components/dashboard/owner/owner-dashboard";
 
 export const metadata: Metadata = {
   title: "Owner Dashboard | SA'YA Umroh OS",
-  description: "Executive dashboard for travel owners — KPIs, revenue, branches, and community.",
+  description:
+    "Executive owner dashboard — KPIs, revenue & conversion trends, branch performance, AI insights, and activity feed.",
 };
 
 export default function OwnerDashboardPage() {
