@@ -8,6 +8,7 @@ const links = [
   { href: "/dashboard/approval", label: "Approval Center" },
   { href: "/dashboard/settings", label: "Settings" },
   { href: "/dashboard/jamaah", label: "Jamaah" },
+  { href: "/dashboard/jamaah/input", label: "Input Jamaah" },
   { href: "/dashboard/jamaah-experience", label: "Jamaah Experience" },
   { href: "/dashboard/paket", label: "Paket Umroh" },
   { href: "/dashboard/booking", label: "Booking & Payment" },
