@@ -47,6 +47,12 @@ export default function Home() {
         >
           Login Mitra (portal)
         </Link>
+        <Link
+          href="/register/mitra"
+          className="font-medium text-sky-300/85 underline-offset-2 transition hover:text-sky-200 hover:underline"
+        >
+          Registrasi Mitra
+        </Link>
       </div>
       <nav className="flex max-w-md flex-col gap-3 sm:flex-row sm:flex-wrap sm:justify-center">
         {links.map((l) => (

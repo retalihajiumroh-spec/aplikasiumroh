@@ -99,7 +99,7 @@ export default function MitraLoginPage() {
             <p className="text-emerald-200/55">
               Belum punya akun mitra?{" "}
               <Link
-                href="/login/mitra/register"
+                href="/register/mitra"
                 className="font-semibold text-sky-300 underline-offset-2 hover:text-sky-200 hover:underline"
               >
                 Daftar mitra
