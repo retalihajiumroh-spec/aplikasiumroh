@@ -1,12 +1,9 @@
+import type { KpiCardItem } from "./kpi-card-item";
+
 export type KpiKey = "jamaah" | "revenue" | "closing" | "activeLeads";
 
-export interface KpiDatum {
+export interface KpiDatum extends KpiCardItem {
   key: KpiKey;
-  label: string;
-  value: string;
-  sublabel: string;
-  delta: string;
-  trend: "up" | "down" | "flat";
 }
 
 export interface MonthlyRevenuePoint {

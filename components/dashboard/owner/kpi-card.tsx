@@ -1,9 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import type { KpiDatum } from "@/lib/dashboard/owner-dummy-data";
+import type { KpiCardItem, KpiTrend } from "@/lib/dashboard/kpi-card-item";
 
-function TrendIcon({ trend }: { trend: KpiDatum["trend"] }) {
+function TrendIcon({ trend }: { trend: KpiTrend }) {
   if (trend === "flat") {
     return (
       <span className="text-emerald-400/70" aria-hidden>
@@ -30,7 +30,7 @@ export function KpiCard({
   item,
   index,
 }: {
-  item: KpiDatum;
+  item: KpiCardItem;
   index: number;
 }) {
   const positive = item.trend === "up";
@@ -68,7 +68,7 @@ export function KpiCard({
         >
           {item.delta}
         </span>
-        <span className="text-xs text-emerald-200/40">vs bulan lalu</span>
+        <span className="text-xs text-emerald-200/40">{item.deltaContext ?? "vs bulan lalu"}</span>
       </div>
     </motion.article>
   );
