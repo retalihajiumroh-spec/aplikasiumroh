@@ -71,6 +71,8 @@ export default function CabangRegisterPage() {
               <span className="text-xs font-semibold uppercase tracking-wider text-emerald-300/60">Nama lengkap</span>
               <input
                 type="text"
+                name="name"
+                required
                 autoComplete="name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -82,6 +84,8 @@ export default function CabangRegisterPage() {
               <span className="text-xs font-semibold uppercase tracking-wider text-emerald-300/60">Email</span>
               <input
                 type="email"
+                name="email"
+                required
                 autoComplete="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -93,6 +97,8 @@ export default function CabangRegisterPage() {
               <span className="text-xs font-semibold uppercase tracking-wider text-emerald-300/60">Nomor telepon (WhatsApp)</span>
               <input
                 type="tel"
+                name="phone"
+                required
                 autoComplete="tel"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
@@ -104,6 +110,9 @@ export default function CabangRegisterPage() {
               <span className="text-xs font-semibold uppercase tracking-wider text-emerald-300/60">Kata sandi</span>
               <input
                 type="password"
+                name="password"
+                required
+                minLength={8}
                 autoComplete="new-password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -123,14 +132,14 @@ export default function CabangRegisterPage() {
               disabled={loading}
               className="w-full rounded-xl border border-amber-400/45 bg-gradient-to-r from-amber-500/20 to-emerald-600/15 py-2.5 text-sm font-semibold text-emerald-50 shadow-lg shadow-emerald-950/30 transition hover:border-amber-400/65 disabled:cursor-not-allowed disabled:opacity-50"
             >
-              {loading ? "Mendaftar…" : "Daftar"}
+              {loading ? "Mendaftar…" : "Registrasi"}
             </button>
           </form>
 
           <p className="mt-6 text-center text-sm text-emerald-200/55">
             Sudah punya akun?{" "}
             <Link href="/login/cabang" className="font-semibold text-amber-200/95 underline-offset-2 hover:text-amber-100 hover:underline">
-              Masuk ke halaman login cabang
+              Login cabang
             </Link>
           </p>
 
