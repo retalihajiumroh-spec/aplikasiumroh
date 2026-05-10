@@ -8,7 +8,7 @@ function kindBadge(kind: FollowUpKind) {
     return { label: "Urgensi", className: "border-rose-400/30 bg-rose-500/10 text-rose-100" };
   }
   if (kind === "reminder") {
-    return { label: "Reminder", className: "border-amber-400/30 bg-amber-500/10 text-amber-100" };
+    return { label: "Reminder", className: "border-violet-400/30 bg-violet-500/10 text-violet-100" };
   }
   return { label: "Status lead", className: "border-sky-400/30 bg-sky-500/10 text-sky-100" };
 }
@@ -21,8 +21,8 @@ export function WaFollowupQueue({ items }: { items: AutomatedFollowUp[] }) {
       transition={{ duration: 0.45, delay: 0.06 }}
       className="glass-panel rounded-2xl p-5 sm:p-6"
     >
-      <h2 className="text-lg font-semibold text-emerald-50">Automated WA follow-ups</h2>
-      <p className="mt-1 text-sm text-emerald-200/55">
+      <h2 className="text-lg font-semibold text-purple-50">Automated WA follow-ups</h2>
+      <p className="mt-1 text-sm text-purple-200/55">
         Antrian pesan berdasarkan status pipeline, urgensi kuota, dan pengingat jadwal — siap kirim via WhatsApp
         Business (simulasi).
       </p>
@@ -41,11 +41,11 @@ export function WaFollowupQueue({ items }: { items: AutomatedFollowUp[] }) {
                 <span className={`rounded-md border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide ${b.className}`}>
                   {b.label}
                 </span>
-                <span className="font-mono text-[11px] text-emerald-400/55">{row.scheduledFor}</span>
+                <span className="font-mono text-[11px] text-purple-400/55">{row.scheduledFor}</span>
               </div>
-              <p className="mt-2 font-medium text-emerald-50">{row.title}</p>
-              <p className="mt-1 text-[11px] text-emerald-300/50">{row.triggerSummary}</p>
-              <p className="mt-2 line-clamp-3 text-xs leading-relaxed text-emerald-100/75">{row.bodyPreview}</p>
+              <p className="mt-2 font-medium text-purple-50">{row.title}</p>
+              <p className="mt-1 text-[11px] text-purple-300/50">{row.triggerSummary}</p>
+              <p className="mt-2 line-clamp-3 text-xs leading-relaxed text-purple-100/75">{row.bodyPreview}</p>
             </motion.li>
           );
         })}

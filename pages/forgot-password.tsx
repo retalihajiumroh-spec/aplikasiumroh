@@ -34,30 +34,30 @@ export default function ForgotPasswordPage() {
           aria-hidden
           style={{
             backgroundImage:
-              "radial-gradient(circle at 22% 0%, rgba(52, 211, 153, 0.12), transparent 42%), radial-gradient(circle at 80% 45%, rgba(56, 189, 248, 0.07), transparent 40%)",
+              "radial-gradient(circle at 22% 0%, rgba(156, 77, 204, 0.12), transparent 42%), radial-gradient(circle at 80% 45%, rgba(156, 77, 204, 0.07), transparent 40%)",
           }}
         />
 
-        <div className="glass-panel w-full max-w-md rounded-2xl border border-emerald-500/15 p-6 shadow-2xl sm:p-8">
-          <h1 className="text-center text-2xl font-semibold tracking-tight text-emerald-50">Lupa kata sandi</h1>
-          <p className="mt-2 text-center text-sm text-emerald-200/55">
+        <div className="glass-panel w-full max-w-md rounded-2xl border border-purple-500/15 p-6 shadow-2xl sm:p-8">
+          <h1 className="text-center text-2xl font-semibold tracking-tight text-purple-50">Lupa kata sandi</h1>
+          <p className="mt-2 text-center text-sm text-purple-200/55">
             Kami akan mengirim tautan reset ke email Anda (fitur nyata memerlukan backend).
           </p>
 
           {sent ? (
-            <p className="mt-8 rounded-xl border border-emerald-400/25 bg-emerald-500/10 px-4 py-3 text-center text-sm text-emerald-100/90" role="status">
+            <p className="mt-8 rounded-xl border border-purple-400/25 bg-purple-500/10 px-4 py-3 text-center text-sm text-purple-100/90" role="status">
               Jika email terdaftar, instruksi reset telah dikirim (simulasi).
             </p>
           ) : (
             <form className="mt-8 space-y-4" onSubmit={handleSubmit} noValidate>
               <label className="block">
-                <span className="text-xs font-semibold uppercase tracking-wider text-emerald-300/60">Email</span>
+                <span className="text-xs font-semibold uppercase tracking-wider text-purple-300/60">Email</span>
                 <input
                   type="email"
                   autoComplete="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="mt-2 w-full rounded-xl border border-emerald-500/15 bg-emerald-950/40 px-3 py-2.5 text-sm text-emerald-50 placeholder:text-emerald-600/45 focus:border-emerald-400/40 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+                  className="mt-2 w-full rounded-xl border border-purple-500/15 bg-purple-950/40 px-3 py-2.5 text-sm text-purple-50 placeholder:text-purple-600/45 focus:border-purple-400/40 focus:outline-none focus:ring-2 focus:ring-purple-500/20"
                   placeholder="nama@email.com"
                 />
               </label>
@@ -68,7 +68,7 @@ export default function ForgotPasswordPage() {
               ) : null}
               <button
                 type="submit"
-                className="w-full rounded-xl border border-emerald-400/40 bg-gradient-to-r from-emerald-500/25 to-teal-600/15 py-2.5 text-sm font-semibold text-emerald-50 shadow-lg shadow-emerald-950/30 transition hover:border-emerald-400/55"
+                className="w-full rounded-xl border border-purple-400/40 bg-gradient-to-r from-purple-500/25 to-violet-900/15 py-2.5 text-sm font-semibold text-purple-50 shadow-lg shadow-purple-950/30 transition hover:border-purple-400/55"
               >
                 Kirim tautan reset
               </button>
@@ -76,13 +76,13 @@ export default function ForgotPasswordPage() {
           )}
 
           <p className="mt-8 text-center text-sm">
-            <Link href="/login" className="text-emerald-300/90 underline-offset-2 hover:text-emerald-200 hover:underline">
+            <Link href="/login" className="text-purple-300/90 underline-offset-2 hover:text-purple-200 hover:underline">
               ← Kembali ke login
             </Link>
           </p>
         </div>
 
-        <Link href="/" className="mt-8 text-sm text-emerald-300/75 transition hover:text-emerald-200">
+        <Link href="/" className="mt-8 text-sm text-purple-300/75 transition hover:text-purple-200">
           ← Kembali ke hub
         </Link>
       </main>

@@ -14,9 +14,9 @@ import {
 import type { BranchPerformanceMetrics } from "@/lib/dashboard/owner-dummy-data";
 import { formatIdrCompact } from "@/lib/dashboard/owner-dummy-data";
 
-const grid = "rgba(167, 243, 208, 0.08)";
-const axis = "rgba(209, 250, 229, 0.35)";
-const barColors = ["#34d399", "#2dd4bf", "#14b8a6", "#0d9488", "#0f766e"];
+const grid = "rgba(230, 230, 250, 0.08)";
+const axis = "rgba(255, 255, 255, 0.35)";
+const barColors = ["#9C4DCC", "#6A1B9A", "#800000", "#4A148C", "#2C3E50"];
 
 function ConversionTooltip({
   active,
@@ -28,12 +28,12 @@ function ConversionTooltip({
   if (!active || !payload?.length) return null;
   const row = payload[0].payload;
   return (
-    <div className="rounded-lg border border-emerald-400/20 bg-emerald-950/95 px-3 py-2 text-xs shadow-xl backdrop-blur-md">
-      <p className="font-medium text-emerald-100">
+    <div className="rounded-lg border border-purple-400/20 bg-purple-950/95 px-3 py-2 text-xs shadow-xl backdrop-blur-md">
+      <p className="font-medium text-purple-100">
         {row.branch} · {row.city}
       </p>
-      <p className="mt-1 text-emerald-300/90">Konversi: {row.conversionPct.toFixed(1)}%</p>
-      <p className="text-emerald-200/70">
+      <p className="mt-1 text-purple-300/90">Konversi: {row.conversionPct.toFixed(1)}%</p>
+      <p className="text-purple-200/70">
         Skor performa: {row.performanceScore} · Revenue: {formatIdrCompact(row.revenueIdr)}
       </p>
     </div>
@@ -50,10 +50,10 @@ function PerformanceTooltip({
   if (!active || !payload?.length) return null;
   const row = payload[0].payload;
   return (
-    <div className="rounded-lg border border-emerald-400/20 bg-emerald-950/95 px-3 py-2 text-xs shadow-xl backdrop-blur-md">
-      <p className="font-medium text-emerald-100">{row.branch}</p>
-      <p className="mt-1 text-emerald-300/90">Skor komposit: {row.performanceScore}/100</p>
-      <p className="text-emerald-200/70">
+    <div className="rounded-lg border border-purple-400/20 bg-purple-950/95 px-3 py-2 text-xs shadow-xl backdrop-blur-md">
+      <p className="font-medium text-purple-100">{row.branch}</p>
+      <p className="mt-1 text-purple-300/90">Skor komposit: {row.performanceScore}/100</p>
+      <p className="text-purple-200/70">
         Jamaah closed: {row.closedSales} · Lead aktif: {row.activeLeads}
       </p>
     </div>
@@ -70,12 +70,12 @@ function EngagementTooltip({
   if (!active || !payload?.length) return null;
   const row = payload[0].payload;
   return (
-    <div className="rounded-lg border border-emerald-400/20 bg-emerald-950/95 px-3 py-2 text-xs shadow-xl backdrop-blur-md">
-      <p className="font-medium text-emerald-100">{row.branch}</p>
-      <p className="mt-1 text-emerald-300/90">
+    <div className="rounded-lg border border-purple-400/20 bg-purple-950/95 px-3 py-2 text-xs shadow-xl backdrop-blur-md">
+      <p className="font-medium text-purple-100">{row.branch}</p>
+      <p className="mt-1 text-purple-300/90">
         Engagement: {row.engagementScore} · Kepuasan: {row.satisfactionPct}%
       </p>
-      <p className="text-emerald-200/70">
+      <p className="text-purple-200/70">
         Avg respons: {row.avgResponseMin} m · Threads aktif: {row.activeThreads}
       </p>
     </div>
@@ -104,7 +104,7 @@ export function BranchConversionChart({ data }: { data: BranchPerformanceMetrics
             axisLine={false}
             tickLine={false}
           />
-          <Tooltip content={<ConversionTooltip />} cursor={{ fill: "rgba(52, 211, 153, 0.06)" }} />
+          <Tooltip content={<ConversionTooltip />} cursor={{ fill: "rgba(156, 77, 204, 0.06)" }} />
           <Bar dataKey="conversionPct" name="Konversi %" radius={[0, 6, 6, 0]} maxBarSize={22}>
             {data.map((_, i) => (
               <Cell key={i} fill={barColors[i % barColors.length]} />
@@ -138,7 +138,7 @@ export function BranchPerformanceScoreChart({ data }: { data: BranchPerformanceM
             axisLine={false}
             tickLine={false}
           />
-          <Tooltip content={<PerformanceTooltip />} cursor={{ fill: "rgba(52, 211, 153, 0.06)" }} />
+          <Tooltip content={<PerformanceTooltip />} cursor={{ fill: "rgba(156, 77, 204, 0.06)" }} />
           <Bar dataKey="performanceScore" name="Skor performa" radius={[0, 6, 6, 0]} maxBarSize={22}>
             {data.map((_, i) => (
               <Cell key={i} fill={barColors[i % barColors.length]} />
@@ -170,13 +170,13 @@ export function BranchEngagementChart({ data }: { data: BranchPerformanceMetrics
             tickLine={false}
             width={32}
           />
-          <Tooltip content={<EngagementTooltip />} cursor={{ fill: "rgba(52, 211, 153, 0.06)" }} />
+          <Tooltip content={<EngagementTooltip />} cursor={{ fill: "rgba(156, 77, 204, 0.06)" }} />
           <Legend
             wrapperStyle={{ paddingTop: 12 }}
-            formatter={(value) => <span className="text-xs text-emerald-200/70">{value}</span>}
+            formatter={(value) => <span className="text-xs text-purple-200/70">{value}</span>}
           />
-          <Bar dataKey="engagementScore" name="Skor engagement" fill="rgba(52, 211, 153, 0.55)" radius={[4, 4, 0, 0]} maxBarSize={26} />
-          <Bar dataKey="satisfactionPct" name="Kepuasan %" fill="rgba(167, 243, 208, 0.4)" radius={[4, 4, 0, 0]} maxBarSize={26} />
+          <Bar dataKey="engagementScore" name="Skor engagement" fill="rgba(156, 77, 204, 0.55)" radius={[4, 4, 0, 0]} maxBarSize={26} />
+          <Bar dataKey="satisfactionPct" name="Kepuasan %" fill="rgba(230, 230, 250, 0.4)" radius={[4, 4, 0, 0]} maxBarSize={26} />
         </BarChart>
       </ResponsiveContainer>
     </div>

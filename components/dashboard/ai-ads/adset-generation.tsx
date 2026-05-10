@@ -7,7 +7,7 @@ function MediaPreview({ ad }: { ad: AdCreative }) {
   const aspect =
     ad.mediaAspect === "9:16" ? "aspect-[9/16] max-h-[200px]" : ad.mediaAspect === "4:5" ? "aspect-[4/5] max-h-[200px]" : "aspect-square max-h-[180px]";
   return (
-    <div className={`relative w-full overflow-hidden rounded-xl border border-emerald-500/15 ${aspect}`}>
+    <div className={`relative w-full overflow-hidden rounded-xl border border-purple-500/15 ${aspect}`}>
       <div className={`absolute inset-0 bg-gradient-to-br ${ad.gradient}`} />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_40%_30%,rgba(255,255,255,0.15),transparent_50%)]" />
       <div className="absolute inset-0 flex items-center justify-center">
@@ -20,7 +20,7 @@ function MediaPreview({ ad }: { ad: AdCreative }) {
       <span className="absolute bottom-2 left-2 rounded-md bg-black/45 px-2 py-0.5 text-[10px] font-medium text-white/90 backdrop-blur-sm">
         {ad.mediaAspect} · pratinjau
       </span>
-      <span className="absolute right-2 top-2 rounded-md bg-emerald-950/60 px-2 py-0.5 text-[9px] font-semibold text-emerald-200/90 backdrop-blur-sm">
+      <span className="absolute right-2 top-2 rounded-md bg-purple-950/60 px-2 py-0.5 text-[9px] font-semibold text-purple-200/90 backdrop-blur-sm">
         SA&apos;YA
       </span>
     </div>
@@ -42,21 +42,21 @@ function AdSetColumn({
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.45, delay: 0.08 * index }}
-      className={`glass-panel rounded-2xl p-5 sm:p-6 ${targeted ? "ring-1 ring-teal-400/20" : "ring-1 ring-emerald-400/15"}`}
+      className={`glass-panel rounded-2xl p-5 sm:p-6 ${targeted ? "ring-1 ring-violet-400/20" : "ring-1 ring-purple-400/15"}`}
     >
       <div className="flex flex-wrap items-start justify-between gap-2">
         <div>
           <span
             className={`inline-flex rounded-full border px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide ${
-              targeted ? "border-teal-400/30 bg-teal-500/15 text-teal-100" : "border-emerald-400/30 bg-emerald-500/12 text-emerald-200"
+              targeted ? "border-violet-400/30 bg-violet-700/15 text-teal-100" : "border-purple-400/30 bg-purple-500/12 text-purple-200"
             }`}
           >
             {targeted ? "Targeted" : "Broad"}
           </span>
-          <h3 className="mt-3 text-base font-semibold text-emerald-50">{pack.title}</h3>
-          <p className="mt-1 text-xs leading-relaxed text-emerald-200/50">{audienceDisplay}</p>
+          <h3 className="mt-3 text-base font-semibold text-purple-50">{pack.title}</h3>
+          <p className="mt-1 text-xs leading-relaxed text-purple-200/50">{audienceDisplay}</p>
         </div>
-        <span className="rounded-full border border-white/10 bg-white/[0.04] px-2 py-1 font-mono text-[11px] text-emerald-300/70">
+        <span className="rounded-full border border-white/10 bg-white/[0.04] px-2 py-1 font-mono text-[11px] text-purple-300/70">
           3 ads
         </span>
       </div>
@@ -72,13 +72,13 @@ function AdSetColumn({
           >
             <MediaPreview ad={ad} />
             <div className="p-3.5">
-              <p className="text-xs font-medium text-emerald-400/70">{ad.name}</p>
-              <p className="mt-2 text-sm leading-relaxed text-emerald-100/90">{ad.primaryText}</p>
+              <p className="text-xs font-medium text-purple-400/70">{ad.name}</p>
+              <p className="mt-2 text-sm leading-relaxed text-purple-100/90">{ad.primaryText}</p>
               <div className="mt-3 flex flex-wrap items-center justify-between gap-2">
-                <span className="rounded-lg border border-emerald-500/20 bg-emerald-500/10 px-2.5 py-1 text-[11px] font-semibold text-emerald-200">
+                <span className="rounded-lg border border-purple-500/20 bg-purple-500/10 px-2.5 py-1 text-[11px] font-semibold text-purple-200">
                   CTA: {ad.cta}
                 </span>
-                <span className="font-mono text-[10px] text-emerald-500/45">{ad.id}</span>
+                <span className="font-mono text-[10px] text-purple-500/45">{ad.id}</span>
               </div>
             </div>
           </motion.li>
@@ -106,8 +106,8 @@ export function AdsetGeneration({
     >
       <div className="flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <h2 className="text-lg font-semibold text-emerald-50">Pratinjau struktur adset</h2>
-          <p className="mt-1 max-w-2xl text-sm text-emerald-200/55">
+          <h2 className="text-lg font-semibold text-purple-50">Pratinjau struktur adset</h2>
+          <p className="mt-1 max-w-2xl text-sm text-purple-200/55">
             Broad &amp; Targeted — masing-masing tiga variasi kreatif (copy + CTA + pratinjau media). Ringkasan audiensi
             mengikuti input di atas.
           </p>

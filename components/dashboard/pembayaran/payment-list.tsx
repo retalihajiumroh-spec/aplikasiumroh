@@ -49,7 +49,7 @@ export function PaymentList({
 
   if (entries.length === 0) {
     return (
-      <p className="rounded-xl border border-emerald-500/10 bg-emerald-950/30 px-4 py-6 text-center text-sm text-slate-500/90">
+      <p className="rounded-xl border border-purple-500/10 bg-purple-950/30 px-4 py-6 text-center text-sm text-slate-500/90">
         Belum ada pembayaran yang dicatat dari form di atas.
       </p>
     );
@@ -64,14 +64,14 @@ export function PaymentList({
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: i * 0.03 }}
-          className="rounded-2xl border border-emerald-500/12 bg-emerald-950/30 p-4 sm:flex sm:flex-wrap sm:items-end sm:justify-between sm:gap-4"
+          className="rounded-2xl border border-purple-500/12 bg-purple-950/30 p-4 sm:flex sm:flex-wrap sm:items-end sm:justify-between sm:gap-4"
         >
           <div className="min-w-0 flex-1 space-y-1">
-            <p className="font-mono text-[11px] text-emerald-400/70">{e.id}</p>
-            <p className="font-semibold text-emerald-50">{e.jamaahName}</p>
-            <p className="text-sm text-emerald-200/70">{e.packageLabel}</p>
+            <p className="font-mono text-[11px] text-purple-400/70">{e.id}</p>
+            <p className="font-semibold text-purple-50">{e.jamaahName}</p>
+            <p className="text-sm text-purple-200/70">{e.packageLabel}</p>
             <p className="text-xs text-slate-500/85">{e.paymentType}</p>
-            <p className="font-mono text-lg font-bold text-amber-200/95">{formatIdrCompact(e.amountIdr)}</p>
+            <p className="font-mono text-lg font-bold text-violet-200/95">{formatIdrCompact(e.amountIdr)}</p>
             <p className="text-[11px] text-slate-500/80">
               Bukti: {e.proofFileNames.length ? e.proofFileNames.join(", ") : "—"} · {formatWhen(e.createdAt)}
             </p>

@@ -80,18 +80,18 @@ export default function CabangRegisterPage() {
           aria-hidden
           style={{
             backgroundImage:
-              "radial-gradient(circle at 18% 0%, rgba(251, 191, 36, 0.1), transparent 42%), radial-gradient(circle at 88% 48%, rgba(52, 211, 153, 0.09), transparent 40%)",
+              "radial-gradient(circle at 18% 0%, rgba(230, 230, 250, 0.1), transparent 42%), radial-gradient(circle at 88% 48%, rgba(156, 77, 204, 0.09), transparent 40%)",
           }}
         />
 
-        <div className="glass-panel w-full max-w-md rounded-2xl border border-amber-400/25 p-6 shadow-2xl sm:p-8">
-          <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-amber-300/85">SA&apos;YA Umroh OS</p>
-          <h1 className="mt-3 text-center text-2xl font-semibold tracking-tight text-emerald-50">Registrasi Cabang</h1>
-          <p className="mt-2 text-center text-sm text-emerald-200/55">Ajukan akun staf — persetujuan pusat (simulasi).</p>
+        <div className="glass-panel w-full max-w-md rounded-2xl border border-violet-400/25 p-6 shadow-2xl sm:p-8">
+          <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-violet-300/85">SA&apos;YA Umroh OS</p>
+          <h1 className="mt-3 text-center text-2xl font-semibold tracking-tight text-purple-50">Registrasi Cabang</h1>
+          <p className="mt-2 text-center text-sm text-purple-200/55">Ajukan akun staf — persetujuan pusat (simulasi).</p>
 
           <form className="mt-8 space-y-4" onSubmit={handleSubmit} noValidate>
             <label className="block">
-              <span className="text-xs font-semibold uppercase tracking-wider text-emerald-300/60">Nama lengkap</span>
+              <span className="text-xs font-semibold uppercase tracking-wider text-purple-300/60">Nama lengkap</span>
               <input
                 type="text"
                 name="name"
@@ -99,12 +99,12 @@ export default function CabangRegisterPage() {
                 autoComplete="name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="mt-2 w-full rounded-xl border border-emerald-500/15 bg-emerald-950/40 px-3 py-2.5 text-sm text-emerald-50 placeholder:text-emerald-600/45 focus:border-amber-400/45 focus:outline-none focus:ring-2 focus:ring-amber-500/20"
+                className="mt-2 w-full rounded-xl border border-purple-500/15 bg-purple-950/40 px-3 py-2.5 text-sm text-purple-50 placeholder:text-purple-600/45 focus:border-violet-400/45 focus:outline-none focus:ring-2 focus:ring-violet-500/20"
                 placeholder="Nama staf cabang"
               />
             </label>
             <label className="block">
-              <span className="text-xs font-semibold uppercase tracking-wider text-emerald-300/60">Email</span>
+              <span className="text-xs font-semibold uppercase tracking-wider text-purple-300/60">Email</span>
               <input
                 type="email"
                 name="email"
@@ -112,12 +112,12 @@ export default function CabangRegisterPage() {
                 autoComplete="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="mt-2 w-full rounded-xl border border-emerald-500/15 bg-emerald-950/40 px-3 py-2.5 text-sm text-emerald-50 placeholder:text-emerald-600/45 focus:border-amber-400/45 focus:outline-none focus:ring-2 focus:ring-amber-500/20"
+                className="mt-2 w-full rounded-xl border border-purple-500/15 bg-purple-950/40 px-3 py-2.5 text-sm text-purple-50 placeholder:text-purple-600/45 focus:border-violet-400/45 focus:outline-none focus:ring-2 focus:ring-violet-500/20"
                 placeholder="staf.cabang@sayaumroh.id"
               />
             </label>
             <label className="block">
-              <span className="text-xs font-semibold uppercase tracking-wider text-emerald-300/60">Nomor telepon (WhatsApp)</span>
+              <span className="text-xs font-semibold uppercase tracking-wider text-purple-300/60">Nomor telepon (WhatsApp)</span>
               <input
                 type="tel"
                 name="phone"
@@ -125,12 +125,12 @@ export default function CabangRegisterPage() {
                 autoComplete="tel"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
-                className="mt-2 w-full rounded-xl border border-emerald-500/15 bg-emerald-950/40 px-3 py-2.5 font-mono text-sm text-emerald-50 placeholder:text-emerald-600/45 focus:border-amber-400/45 focus:outline-none focus:ring-2 focus:ring-amber-500/20"
+                className="mt-2 w-full rounded-xl border border-purple-500/15 bg-purple-950/40 px-3 py-2.5 font-mono text-sm text-purple-50 placeholder:text-purple-600/45 focus:border-violet-400/45 focus:outline-none focus:ring-2 focus:ring-violet-500/20"
                 placeholder="0812xxxxxxxx"
               />
             </label>
             <label className="block">
-              <span className="text-xs font-semibold uppercase tracking-wider text-emerald-300/60">Kata sandi</span>
+              <span className="text-xs font-semibold uppercase tracking-wider text-purple-300/60">Kata sandi</span>
               <input
                 type="password"
                 name="password"
@@ -139,7 +139,7 @@ export default function CabangRegisterPage() {
                 autoComplete="new-password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="mt-2 w-full rounded-xl border border-emerald-500/15 bg-emerald-950/40 px-3 py-2.5 text-sm text-emerald-50 placeholder:text-emerald-600/45 focus:border-amber-400/45 focus:outline-none focus:ring-2 focus:ring-amber-500/20"
+                className="mt-2 w-full rounded-xl border border-purple-500/15 bg-purple-950/40 px-3 py-2.5 text-sm text-purple-50 placeholder:text-purple-600/45 focus:border-violet-400/45 focus:outline-none focus:ring-2 focus:ring-violet-500/20"
                 placeholder="Minimal 8 karakter"
               />
             </label>
@@ -158,32 +158,32 @@ export default function CabangRegisterPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full rounded-xl border border-amber-400/45 bg-gradient-to-r from-amber-500/20 to-emerald-600/15 py-2.5 text-sm font-semibold text-emerald-50 shadow-lg shadow-emerald-950/30 transition hover:border-amber-400/65 disabled:cursor-not-allowed disabled:opacity-50"
+              className="w-full rounded-xl border border-violet-400/45 bg-gradient-to-r from-violet-500/20 to-purple-600/15 py-2.5 text-sm font-semibold text-purple-50 shadow-lg shadow-purple-950/30 transition hover:border-violet-400/65 disabled:cursor-not-allowed disabled:opacity-50"
             >
               {loading ? "Mendaftar…" : "Registrasi"}
             </button>
           </form>
 
-          <p className="mt-6 text-center text-sm text-emerald-200/55">
+          <p className="mt-6 text-center text-sm text-purple-200/55">
             Sudah punya akun?{" "}
-            <Link href="/login/cabang" className="font-semibold text-amber-200/95 underline-offset-2 hover:text-amber-100 hover:underline">
+            <Link href="/login/cabang" className="font-semibold text-violet-200/95 underline-offset-2 hover:text-violet-100 hover:underline">
               Login cabang
             </Link>
           </p>
 
-          <p className="mt-6 border-t border-emerald-500/10 pt-5 text-center text-[11px] text-emerald-500/50">
+          <p className="mt-6 border-t border-purple-500/10 pt-5 text-center text-[11px] text-purple-500/50">
             Simulasi — tidak ada penyimpanan di server. Setelah daftar Anda diarahkan ke login cabang.
           </p>
         </div>
 
         <div className="mt-8 flex flex-wrap justify-center gap-4 text-sm">
-          <Link href="/register" className="text-emerald-300/75 transition hover:text-emerald-200">
+          <Link href="/register" className="text-purple-300/75 transition hover:text-purple-200">
             Registrasi Jamaah
           </Link>
           <Link href="/register/mitra" className="text-sky-300/80 transition hover:text-sky-200">
             Registrasi Mitra
           </Link>
-          <Link href="/" className="text-emerald-300/75 transition hover:text-emerald-200">
+          <Link href="/" className="text-purple-300/75 transition hover:text-purple-200">
             ← Hub
           </Link>
         </div>

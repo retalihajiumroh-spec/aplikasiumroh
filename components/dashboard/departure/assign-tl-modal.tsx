@@ -50,19 +50,19 @@ export function AssignTlModal({
             transition={{ type: "spring", stiffness: 380, damping: 32 }}
             className="glass-panel relative z-[1] w-full max-w-md overflow-hidden rounded-2xl shadow-2xl"
           >
-            <div className="border-b border-emerald-500/10 px-5 py-4">
+            <div className="border-b border-purple-500/10 px-5 py-4">
               <div className="flex items-start justify-between gap-2">
                 <div>
-                  <h2 id="assign-tl-title" className="text-lg font-semibold text-emerald-50">
+                  <h2 id="assign-tl-title" className="text-lg font-semibold text-purple-50">
                     Assign tour leader
                   </h2>
-                  <p className="mt-1 font-mono text-xs text-emerald-400/60">{departureCode}</p>
-                  <p className="mt-1 text-sm text-emerald-200/55">{packageName}</p>
+                  <p className="mt-1 font-mono text-xs text-purple-400/60">{departureCode}</p>
+                  <p className="mt-1 text-sm text-purple-200/55">{packageName}</p>
                 </div>
                 <button
                   type="button"
                   onClick={onClose}
-                  className="rounded-lg border border-white/10 p-2 text-emerald-200/70 hover:bg-white/10"
+                  className="rounded-lg border border-white/10 p-2 text-purple-200/70 hover:bg-white/10"
                   aria-label="Tutup"
                 >
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -73,11 +73,11 @@ export function AssignTlModal({
             </div>
             <div className="px-5 py-4">
               <label className="block">
-                <span className="text-xs font-semibold uppercase tracking-wider text-emerald-300/60">Pilih TL</span>
+                <span className="text-xs font-semibold uppercase tracking-wider text-purple-300/60">Pilih TL</span>
                 <select
                   value={choice}
                   onChange={(e) => setChoice(e.target.value)}
-                  className="mt-2 w-full cursor-pointer rounded-xl border border-emerald-500/15 bg-emerald-950/40 px-3 py-2.5 text-sm text-emerald-50 focus:border-emerald-400/40 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+                  className="mt-2 w-full cursor-pointer rounded-xl border border-purple-500/15 bg-purple-950/40 px-3 py-2.5 text-sm text-purple-50 focus:border-purple-400/40 focus:outline-none focus:ring-2 focus:ring-purple-500/20"
                 >
                   {tlCandidates.map((n) => (
                     <option key={n} value={n}>
@@ -86,20 +86,20 @@ export function AssignTlModal({
                   ))}
                 </select>
               </label>
-              <p className="mt-3 text-[11px] text-emerald-500/50">Penugasan disimpan lokal (demo tanpa backend).</p>
+              <p className="mt-3 text-[11px] text-purple-500/50">Penugasan disimpan lokal (demo tanpa backend).</p>
             </div>
-            <div className="flex gap-2 border-t border-emerald-500/10 bg-emerald-950/30 px-5 py-4">
+            <div className="flex gap-2 border-t border-purple-500/10 bg-purple-950/30 px-5 py-4">
               <button
                 type="button"
                 onClick={onClose}
-                className="flex-1 rounded-xl border border-white/10 py-2.5 text-sm font-medium text-emerald-200/80 hover:bg-white/5"
+                className="flex-1 rounded-xl border border-white/10 py-2.5 text-sm font-medium text-purple-200/80 hover:bg-white/5"
               >
                 Batal
               </button>
               <button
                 type="button"
                 onClick={handleSave}
-                className="flex-1 rounded-xl border border-emerald-400/35 bg-gradient-to-r from-emerald-500/25 to-teal-600/20 py-2.5 text-sm font-semibold text-emerald-50"
+                className="flex-1 rounded-xl border border-purple-400/35 bg-gradient-to-r from-purple-500/25 to-violet-900/20 py-2.5 text-sm font-semibold text-purple-50"
               >
                 Simpan TL
               </button>

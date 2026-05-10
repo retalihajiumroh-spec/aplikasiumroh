@@ -26,9 +26,9 @@ import type { FieldErrors } from "@/lib/paket/map-form-to-package";
 import { formatIdrCompact } from "@/lib/dashboard/owner-dummy-data";
 
 const inputClass =
-  "mt-1.5 w-full rounded-xl border border-emerald-500/15 bg-emerald-950/45 px-3 py-2.5 text-sm text-emerald-50 shadow-inner shadow-black/20 outline-none transition placeholder:text-slate-500/60 focus:border-amber-400/45 focus:ring-2 focus:ring-amber-500/15";
+  "mt-1.5 w-full rounded-xl border border-purple-500/15 bg-purple-950/45 px-3 py-2.5 text-sm text-purple-50 shadow-inner shadow-black/20 outline-none transition placeholder:text-slate-500/60 focus:border-violet-400/45 focus:ring-2 focus:ring-violet-500/15";
 const selectClass = `${inputClass} appearance-none bg-[length:1rem] bg-[right_0.75rem_center] bg-no-repeat pr-10`;
-const labelClass = "text-xs font-semibold uppercase tracking-[0.12em] text-emerald-300/70";
+const labelClass = "text-xs font-semibold uppercase tracking-[0.12em] text-purple-300/70";
 const errClass = "mt-1 text-xs font-medium text-rose-300/95";
 
 function todayIsoDate(): string {
@@ -41,7 +41,7 @@ function todayIsoDate(): string {
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
-    <h3 className="border-b border-emerald-500/15 pb-2 text-sm font-bold uppercase tracking-wide text-amber-200/90">{children}</h3>
+    <h3 className="border-b border-purple-500/15 pb-2 text-sm font-bold uppercase tracking-wide text-violet-200/90">{children}</h3>
   );
 }
 
@@ -152,7 +152,7 @@ function SelectField<T extends string>({
         aria-invalid={Boolean(error)}
       >
         {options.map((o) => (
-          <option key={o} value={o} className="bg-emerald-950 text-emerald-50">
+          <option key={o} value={o} className="bg-purple-950 text-purple-50">
             {o}
           </option>
         ))}
@@ -178,15 +178,15 @@ function CheckRow({
   onChange: (v: boolean) => void;
 }) {
   return (
-    <label htmlFor={id} className="flex cursor-pointer items-center gap-3 rounded-xl border border-emerald-500/10 bg-emerald-950/30 px-3 py-2.5 transition hover:border-emerald-400/25">
+    <label htmlFor={id} className="flex cursor-pointer items-center gap-3 rounded-xl border border-purple-500/10 bg-purple-950/30 px-3 py-2.5 transition hover:border-purple-400/25">
       <input
         id={id}
         type="checkbox"
         checked={checked}
         onChange={(e) => onChange(e.target.checked)}
-        className="h-4 w-4 rounded border-emerald-500/40 bg-emerald-950 text-amber-500 focus:ring-amber-500/40"
+        className="h-4 w-4 rounded border-purple-500/40 bg-purple-950 text-violet-500 focus:ring-violet-500/40"
       />
-      <span className="text-sm font-medium text-emerald-100/90">{label}</span>
+      <span className="text-sm font-medium text-purple-100/90">{label}</span>
     </label>
   );
 }
@@ -427,36 +427,36 @@ export function CreatePaketForm({
 
       <motion.div
         layout
-        className="sticky bottom-0 z-[2] rounded-2xl border border-amber-400/25 bg-gradient-to-br from-emerald-950/95 to-emerald-900/90 p-4 shadow-xl shadow-black/30 backdrop-blur-md sm:p-5"
+        className="sticky bottom-0 z-[2] rounded-2xl border border-violet-400/25 bg-gradient-to-br from-purple-950/95 to-purple-900/90 p-4 shadow-xl shadow-black/30 backdrop-blur-md sm:p-5"
       >
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className={labelClass}>Ringkasan harga modal total</p>
-            <p className="mt-1 font-mono text-2xl font-bold tracking-tight text-amber-100">{formatIdrCompact(pricing.totalModalIdr)}</p>
-            <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-emerald-500/60">Ringkasan harga per jamaah</p>
-            <p className="font-mono text-lg font-semibold text-emerald-50">{formatIdrCompact(pricing.perJamaahIdr)}</p>
+            <p className="mt-1 font-mono text-2xl font-bold tracking-tight text-violet-100">{formatIdrCompact(pricing.totalModalIdr)}</p>
+            <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-purple-500/60">Ringkasan harga per jamaah</p>
+            <p className="font-mono text-lg font-semibold text-purple-50">{formatIdrCompact(pricing.perJamaahIdr)}</p>
             <p className="mt-2 text-[11px] text-slate-500/90">Perhitungan demo mengikuti pilihan form; dapat disesuaikan dengan kebijakan keuangan.</p>
           </div>
           <div className="flex flex-col gap-2 sm:min-w-[220px]">
-            {draftMsg ? <p className="text-center text-xs font-medium text-emerald-300/90">{draftMsg}</p> : null}
+            {draftMsg ? <p className="text-center text-xs font-medium text-purple-300/90">{draftMsg}</p> : null}
             <div className="flex flex-wrap gap-2">
               <button
                 type="button"
                 onClick={onCancel}
-                className="flex-1 rounded-xl border border-white/15 py-2.5 text-sm font-medium text-emerald-200/85 transition hover:bg-white/5 min-[400px]:flex-none min-[400px]:px-5"
+                className="flex-1 rounded-xl border border-white/15 py-2.5 text-sm font-medium text-purple-200/85 transition hover:bg-white/5 min-[400px]:flex-none min-[400px]:px-5"
               >
                 Batal
               </button>
               <button
                 type="button"
                 onClick={handleDraft}
-                className="flex-1 rounded-xl border border-emerald-400/30 bg-emerald-500/10 py-2.5 text-sm font-semibold text-emerald-100 transition hover:bg-emerald-500/20 min-[400px]:flex-none min-[400px]:px-5"
+                className="flex-1 rounded-xl border border-purple-400/30 bg-purple-500/10 py-2.5 text-sm font-semibold text-purple-100 transition hover:bg-purple-500/20 min-[400px]:flex-none min-[400px]:px-5"
               >
                 Simpan draft
               </button>
               <button
                 type="submit"
-                className="flex-1 rounded-xl border border-emerald-400/40 bg-gradient-to-r from-emerald-500 to-teal-600 py-2.5 text-sm font-bold text-white shadow-lg shadow-emerald-950/40 transition hover:brightness-110 min-[400px]:flex-none min-[400px]:px-6"
+                className="flex-1 rounded-xl border border-purple-400/40 bg-gradient-to-r from-purple-500 to-violet-900 py-2.5 text-sm font-bold text-white shadow-lg shadow-purple-950/40 transition hover:brightness-110 min-[400px]:flex-none min-[400px]:px-6"
               >
                 Buat paket
               </button>

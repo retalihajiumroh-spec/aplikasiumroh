@@ -32,7 +32,7 @@ export function DashboardOverview() {
         aria-hidden
         style={{
           backgroundImage:
-            "radial-gradient(circle at 20% 0%, rgba(52, 211, 153, 0.12), transparent 40%), radial-gradient(circle at 90% 30%, rgba(251, 191, 36, 0.08), transparent 42%)",
+            "radial-gradient(circle at 20% 0%, rgba(156, 77, 204, 0.12), transparent 40%), radial-gradient(circle at 90% 30%, rgba(230, 230, 250, 0.08), transparent 42%)",
         }}
       />
 
@@ -41,10 +41,10 @@ export function DashboardOverview() {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45 }}
-          className="border-b border-emerald-500/10 pb-8"
+          className="border-b border-purple-500/10 pb-8"
         >
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-200/75">SA&apos;YA Umroh OS</p>
-          <h1 className="mt-2 text-3xl font-bold tracking-tight text-emerald-50 sm:text-4xl">Dashboard</h1>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-violet-200/75">SA&apos;YA Umroh OS</p>
+          <h1 className="mt-2 text-3xl font-bold tracking-tight text-purple-50 sm:text-4xl">Dashboard</h1>
           <p className="mt-2 max-w-3xl text-sm leading-relaxed text-slate-400/90 sm:text-base">
             KPI operasional, performa 6 bulan, funnel inbound dengan persentase, komunitas, aktivitas kasir, dan metrik
             interaksi lead — tampilan premium siap presentasi.

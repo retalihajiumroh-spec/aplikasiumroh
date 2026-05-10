@@ -23,8 +23,8 @@ import type { FunnelStage, LeadSourceRow } from "@/lib/dashboard/premium-dashboa
 import { funnelConversionPercents } from "@/lib/dashboard/premium-dashboard-data";
 import { formatIdrCompact } from "@/lib/dashboard/owner-dummy-data";
 
-const grid = "rgba(167, 243, 208, 0.08)";
-const axis = "rgba(209, 250, 229, 0.35)";
+const grid = "rgba(230, 230, 250, 0.08)";
+const axis = "rgba(255, 255, 255, 0.35)";
 
 function MonthlyTooltip({
   active,
@@ -36,12 +36,12 @@ function MonthlyTooltip({
   if (!active || !payload?.length) return null;
   const row = payload[0].payload;
   return (
-    <div className="rounded-lg border border-emerald-400/20 bg-emerald-950/95 px-3 py-2 text-xs shadow-xl backdrop-blur-md">
-      <p className="font-medium text-emerald-100">{row.month}</p>
-      <p className="mt-1 text-emerald-300/90">{formatIdrCompact(row.revenueIdr)}</p>
-      <p className="text-emerald-200/70">Jamaah baru: {row.jamaahNew}</p>
-      <p className="text-emerald-200/70">Lead: {row.leads}</p>
-      <p className="text-amber-200/85">Konversi lead: {row.conversionPct}%</p>
+    <div className="rounded-lg border border-purple-400/20 bg-purple-950/95 px-3 py-2 text-xs shadow-xl backdrop-blur-md">
+      <p className="font-medium text-purple-100">{row.month}</p>
+      <p className="mt-1 text-purple-300/90">{formatIdrCompact(row.revenueIdr)}</p>
+      <p className="text-purple-200/70">Jamaah baru: {row.jamaahNew}</p>
+      <p className="text-purple-200/70">Lead: {row.leads}</p>
+      <p className="text-violet-200/85">Konversi lead: {row.conversionPct}%</p>
     </div>
   );
 }
@@ -60,13 +60,13 @@ function FunnelTooltip({
   if (!row) return null;
   const c = conversion.find((x) => x.name === row.name);
   return (
-    <div className="rounded-lg border border-amber-400/25 bg-emerald-950/95 px-3 py-2 text-xs shadow-xl backdrop-blur-md">
-      <p className="font-medium text-emerald-100">{row.name}</p>
-      <p className="mt-1 font-mono text-amber-200/90">{row.value.toLocaleString("id-ID")}</p>
+    <div className="rounded-lg border border-violet-400/25 bg-purple-950/95 px-3 py-2 text-xs shadow-xl backdrop-blur-md">
+      <p className="font-medium text-purple-100">{row.name}</p>
+      <p className="mt-1 font-mono text-violet-200/90">{row.value.toLocaleString("id-ID")}</p>
       {c && c.pctOfPrevious < 100 ? (
-        <p className="mt-1 text-emerald-200/70">dari tahap sebelumnya: {c.pctOfPrevious}%</p>
+        <p className="mt-1 text-purple-200/70">dari tahap sebelumnya: {c.pctOfPrevious}%</p>
       ) : (
-        <p className="mt-1 text-emerald-200/70">basis funnel</p>
+        <p className="mt-1 text-purple-200/70">basis funnel</p>
       )}
     </div>
   );
@@ -82,10 +82,10 @@ function LeadTooltip({
   if (!active || !payload?.length) return null;
   const row = payload[0].payload;
   return (
-    <div className="rounded-lg border border-emerald-400/20 bg-emerald-950/95 px-3 py-2 text-xs shadow-xl backdrop-blur-md">
-      <p className="font-medium text-emerald-100">{row.source}</p>
-      <p className="mt-1 text-emerald-300/90">{row.leads.toLocaleString("id-ID")} lead</p>
-      <p className="text-amber-200/85">{row.pct}% dari total</p>
+    <div className="rounded-lg border border-purple-400/20 bg-purple-950/95 px-3 py-2 text-xs shadow-xl backdrop-blur-md">
+      <p className="font-medium text-purple-100">{row.source}</p>
+      <p className="mt-1 text-purple-300/90">{row.leads.toLocaleString("id-ID")} lead</p>
+      <p className="text-violet-200/85">{row.pct}% dari total</p>
     </div>
   );
 }
@@ -110,9 +110,9 @@ function ChartShell({
       initial={{ opacity: 0, y: 20 }}
       animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
       transition={{ duration: 0.5, delay, ease: [0.22, 1, 0.36, 1] }}
-      className="glass-panel rounded-2xl border border-emerald-500/10 p-5 sm:p-6"
+      className="glass-panel rounded-2xl border border-purple-500/10 p-5 sm:p-6"
     >
-      <h2 className="text-lg font-semibold text-emerald-50">{title}</h2>
+      <h2 className="text-lg font-semibold text-purple-50">{title}</h2>
       <p className="mt-1 text-sm text-slate-400/90">{subtitle}</p>
       {children}
     </motion.section>
@@ -133,8 +133,8 @@ export function MonthlyPerformanceChart({ data }: { data: OverviewMonthlyPoint[]
           <ComposedChart data={last6} margin={{ top: 8, right: 12, left: 0, bottom: 0 }}>
             <defs>
               <linearGradient id="premRevFill" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#34d399" stopOpacity={0.42} />
-                <stop offset="100%" stopColor="#34d399" stopOpacity={0} />
+                <stop offset="0%" stopColor="#9C4DCC" stopOpacity={0.42} />
+                <stop offset="100%" stopColor="#9C4DCC" stopOpacity={0} />
               </linearGradient>
             </defs>
             <CartesianGrid stroke={grid} strokeDasharray="3 6" vertical={false} />
@@ -160,7 +160,7 @@ export function MonthlyPerformanceChart({ data }: { data: OverviewMonthlyPoint[]
               yAxisId="rev"
               type="monotone"
               dataKey="revenueIdr"
-              stroke="#34d399"
+              stroke="#9C4DCC"
               strokeWidth={2}
               fill="url(#premRevFill)"
               name="Revenue"
@@ -169,9 +169,9 @@ export function MonthlyPerformanceChart({ data }: { data: OverviewMonthlyPoint[]
               yAxisId="jm"
               type="monotone"
               dataKey="jamaahNew"
-              stroke="#fbbf24"
+              stroke="#C4A3A5"
               strokeWidth={2}
-              dot={{ r: 3, fill: "#fbbf24", strokeWidth: 0 }}
+              dot={{ r: 3, fill: "#C4A3A5", strokeWidth: 0 }}
               name="Jamaah"
             />
           </ComposedChart>
@@ -185,7 +185,7 @@ export function MonthlyPerformanceChart({ data }: { data: OverviewMonthlyPoint[]
             <XAxis dataKey="month" tick={{ fill: axis, fontSize: 10 }} axisLine={false} tickLine={false} />
             <YAxis tick={{ fill: axis, fontSize: 9 }} axisLine={false} tickLine={false} width={28} tickFormatter={(v) => `${v}%`} />
             <Tooltip content={<MonthlyTooltip />} />
-            <Bar dataKey="conversionPct" fill="rgba(45, 212, 191, 0.45)" radius={[4, 4, 0, 0]} maxBarSize={28} name="Konversi" />
+            <Bar dataKey="conversionPct" fill="rgba(196, 163, 165, 0.45)" radius={[4, 4, 0, 0]} maxBarSize={28} name="Konversi" />
           </BarChart>
         </ResponsiveContainer>
       </div>
@@ -207,7 +207,7 @@ export function FunnelInboundChart({ data }: { data: FunnelStage[] }) {
           <FunnelChart margin={{ top: 12, right: 96, left: 12, bottom: 12 }}>
             <Tooltip content={(props) => <FunnelTooltip {...props} conversion={conversion} />} />
             <Funnel dataKey="value" data={data} isAnimationActive>
-              <LabelList position="right" fill="rgba(209, 250, 229, 0.9)" stroke="none" dataKey="name" offset={8} />
+              <LabelList position="right" fill="rgba(255, 255, 255, 0.9)" stroke="none" dataKey="name" offset={8} />
               {data.map((entry, index) => (
                 <Cell key={`cell-${index}`} fill={entry.fill} />
               ))}
@@ -219,13 +219,13 @@ export function FunnelInboundChart({ data }: { data: FunnelStage[] }) {
         {conversion.map((c, i) => (
           <span
             key={c.name}
-            className="rounded-lg border border-emerald-500/15 bg-emerald-950/50 px-2.5 py-1 text-[11px] text-emerald-200/85"
+            className="rounded-lg border border-purple-500/15 bg-purple-950/50 px-2.5 py-1 text-[11px] text-purple-200/85"
           >
-            <span className="font-semibold text-emerald-100/95">{c.name}</span>
+            <span className="font-semibold text-purple-100/95">{c.name}</span>
             {i > 0 ? (
-              <span className="text-amber-200/90"> · {c.pctOfPrevious}% dari sebelumnya</span>
+              <span className="text-violet-200/90"> · {c.pctOfPrevious}% dari sebelumnya</span>
             ) : (
-              <span className="text-emerald-500/60"> · {c.value.toLocaleString("id-ID")} lead</span>
+              <span className="text-purple-500/60"> · {c.value.toLocaleString("id-ID")} lead</span>
             )}
           </span>
         ))}
@@ -250,8 +250,8 @@ export function LeadSourceChart({ data }: { data: LeadSourceRow[] }) {
               axisLine={false}
               tickLine={false}
             />
-            <Tooltip content={<LeadTooltip />} cursor={{ fill: "rgba(251, 191, 36, 0.06)" }} />
-            <Bar dataKey="leads" name="Leads" radius={[0, 8, 8, 0]} maxBarSize={22} fill="rgba(45, 212, 191, 0.75)">
+            <Tooltip content={<LeadTooltip />} cursor={{ fill: "rgba(230, 230, 250, 0.06)" }} />
+            <Bar dataKey="leads" name="Leads" radius={[0, 8, 8, 0]} maxBarSize={22} fill="rgba(196, 163, 165, 0.75)">
               <LabelList
                 dataKey="pct"
                 position="right"

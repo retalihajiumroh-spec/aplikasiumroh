@@ -1,11 +1,11 @@
 /** CRM pipeline + AI sales + broadcast — dummy data (no backend). */
 
 export const PIPELINE_STAGES = [
-  { id: "new", label: "New", short: "Baru", accent: "from-sky-400/20 to-cyan-500/10" },
+  { id: "new", label: "New", short: "Baru", accent: "from-sky-400/20 to-violet-500/10" },
   { id: "contacted", label: "Contacted", short: "Kontak", accent: "from-violet-400/20 to-fuchsia-500/10" },
-  { id: "interested", label: "Interested", short: "Minat", accent: "from-amber-400/25 to-orange-500/10" },
-  { id: "booking", label: "Booking", short: "Booking", accent: "from-emerald-400/25 to-teal-600/10" },
-  { id: "paid", label: "Paid", short: "Lunas", accent: "from-teal-300/20 to-emerald-700/15" },
+  { id: "interested", label: "Interested", short: "Minat", accent: "from-rose-400/25 to-orange-500/10" },
+  { id: "booking", label: "Booking", short: "Booking", accent: "from-purple-400/25 to-violet-600/10" },
+  { id: "paid", label: "Paid", short: "Lunas", accent: "from-violet-300/20 to-purple-700/15" },
 ] as const;
 
 export type PipelineStageId = (typeof PIPELINE_STAGES)[number]["id"];

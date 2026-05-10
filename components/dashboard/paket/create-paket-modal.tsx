@@ -31,12 +31,12 @@ export function CreatePaketModal({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 16, scale: 0.98 }}
             transition={{ type: "spring", stiffness: 360, damping: 32 }}
-            className="glass-panel relative z-[1] flex max-h-[min(92dvh,920px)] w-full max-w-4xl flex-col overflow-hidden rounded-2xl border border-emerald-500/15 shadow-2xl shadow-black/50"
+            className="glass-panel relative z-[1] flex max-h-[min(92dvh,920px)] w-full max-w-4xl flex-col overflow-hidden rounded-2xl border border-purple-500/15 shadow-2xl shadow-black/50"
           >
-            <div className="shrink-0 border-b border-emerald-500/10 px-5 py-4 sm:px-6">
+            <div className="shrink-0 border-b border-purple-500/10 px-5 py-4 sm:px-6">
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <h2 id="create-paket-title" className="text-lg font-bold tracking-tight text-emerald-50 sm:text-xl">
+                  <h2 id="create-paket-title" className="text-lg font-bold tracking-tight text-purple-50 sm:text-xl">
                     Buat paket Umroh baru
                   </h2>
                   <p className="mt-1 text-sm text-slate-400/90">
@@ -46,7 +46,7 @@ export function CreatePaketModal({
                 <button
                   type="button"
                   onClick={onClose}
-                  className="shrink-0 rounded-xl border border-white/10 p-2 text-emerald-200/70 transition hover:bg-white/10"
+                  className="shrink-0 rounded-xl border border-white/10 p-2 text-purple-200/70 transition hover:bg-white/10"
                   aria-label="Tutup"
                 >
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>

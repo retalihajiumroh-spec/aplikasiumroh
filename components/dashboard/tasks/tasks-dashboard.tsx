@@ -15,8 +15,8 @@ const priorityOrder: Record<TaskPriority, number> = { high: 0, medium: 1, low: 2
 
 function priorityStyles(p: TaskPriority) {
   if (p === "high") return "border-rose-400/35 bg-rose-500/12 text-rose-100";
-  if (p === "medium") return "border-amber-400/30 bg-amber-500/10 text-amber-100";
-  return "border-emerald-500/25 bg-emerald-500/10 text-emerald-100/90";
+  if (p === "medium") return "border-violet-400/30 bg-violet-500/10 text-violet-100";
+  return "border-purple-500/25 bg-purple-500/10 text-purple-100/90";
 }
 
 function priorityLabel(p: TaskPriority) {
@@ -76,7 +76,7 @@ export function TasksDashboard() {
         aria-hidden
         style={{
           backgroundImage:
-            "radial-gradient(circle at 18% 0%, rgba(52, 211, 153, 0.12), transparent 42%), radial-gradient(circle at 88% 45%, rgba(56, 189, 248, 0.07), transparent 40%)",
+            "radial-gradient(circle at 18% 0%, rgba(156, 77, 204, 0.12), transparent 42%), radial-gradient(circle at 88% 45%, rgba(156, 77, 204, 0.07), transparent 40%)",
         }}
       />
 
@@ -84,18 +84,18 @@ export function TasksDashboard() {
         <motion.header
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
-          className="flex flex-col gap-4 border-b border-emerald-500/10 pb-8 sm:flex-row sm:items-end sm:justify-between"
+          className="flex flex-col gap-4 border-b border-purple-500/10 pb-8 sm:flex-row sm:items-end sm:justify-between"
         >
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400/70">SA&apos;YA Umroh OS</p>
-            <h1 className="mt-2 text-3xl font-semibold tracking-tight text-emerald-50 sm:text-4xl">Tasks &amp; Reminder</h1>
-            <p className="mt-2 max-w-2xl text-sm text-emerald-200/55 sm:text-base">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-purple-400/70">SA&apos;YA Umroh OS</p>
+            <h1 className="mt-2 text-3xl font-semibold tracking-tight text-purple-50 sm:text-4xl">Tasks &amp; Reminder</h1>
+            <p className="mt-2 max-w-2xl text-sm text-purple-200/55 sm:text-base">
               Daftar tugas dengan prioritas dan tenggat, plus jadwal pengingat saluran — semua penyimpanan lokal (demo).
             </p>
           </div>
           <Link
             href="/"
-            className="inline-flex w-fit rounded-xl border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-emerald-200/80 transition hover:border-emerald-400/25 hover:bg-emerald-500/10"
+            className="inline-flex w-fit rounded-xl border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-purple-200/80 transition hover:border-purple-400/25 hover:bg-purple-500/10"
           >
             ← Hub
           </Link>
@@ -108,18 +108,18 @@ export function TasksDashboard() {
             transition={{ delay: 0.05 }}
             className="lg:col-span-7"
           >
-            <div className="glass-panel rounded-2xl border border-emerald-500/10 p-5 sm:p-6">
-              <div className="flex flex-col gap-4 border-b border-emerald-500/10 pb-4 sm:flex-row sm:items-center sm:justify-between">
+            <div className="glass-panel rounded-2xl border border-purple-500/10 p-5 sm:p-6">
+              <div className="flex flex-col gap-4 border-b border-purple-500/10 pb-4 sm:flex-row sm:items-center sm:justify-between">
                 <div>
-                  <h2 className="text-lg font-semibold text-emerald-50">Task list</h2>
-                  <p className="mt-1 text-sm text-emerald-200/50">Prioritas, deadline, dan penanggung jawab.</p>
+                  <h2 className="text-lg font-semibold text-purple-50">Task list</h2>
+                  <p className="mt-1 text-sm text-purple-200/50">Prioritas, deadline, dan penanggung jawab.</p>
                 </div>
-                <label className="flex cursor-pointer items-center gap-2 text-xs text-emerald-200/70">
+                <label className="flex cursor-pointer items-center gap-2 text-xs text-purple-200/70">
                   <input
                     type="checkbox"
                     checked={hideCompleted}
                     onChange={(e) => setHideCompleted(e.target.checked)}
-                    className="h-4 w-4 rounded border-emerald-500/40 bg-emerald-950 text-emerald-500"
+                    className="h-4 w-4 rounded border-purple-500/40 bg-purple-950 text-purple-500"
                   />
                   Sembunyikan selesai
                 </label>
@@ -133,8 +133,8 @@ export function TasksDashboard() {
                     onClick={() => setPriorityFilter(f)}
                     className={`rounded-lg border px-3 py-1.5 text-xs font-medium transition ${
                       priorityFilter === f
-                        ? "border-emerald-400/40 bg-emerald-500/20 text-emerald-50"
-                        : "border-emerald-500/15 bg-emerald-950/30 text-emerald-200/65 hover:border-emerald-400/25"
+                        ? "border-purple-400/40 bg-purple-500/20 text-purple-50"
+                        : "border-purple-500/15 bg-purple-950/30 text-purple-200/65 hover:border-purple-400/25"
                     }`}
                   >
                     {f === "all" ? "Semua" : priorityLabel(f)}
@@ -154,8 +154,8 @@ export function TasksDashboard() {
                       transition={{ delay: i * 0.03 }}
                       className={`rounded-xl border px-4 py-3 transition ${
                         task.completed
-                          ? "border-emerald-500/10 bg-emerald-950/20 opacity-70"
-                          : "border-emerald-500/15 bg-emerald-950/30"
+                          ? "border-purple-500/10 bg-purple-950/20 opacity-70"
+                          : "border-purple-500/15 bg-purple-950/30"
                       }`}
                     >
                       <div className="flex gap-3">
@@ -164,8 +164,8 @@ export function TasksDashboard() {
                           onClick={() => toggleTask(task.id)}
                           className={`mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-md border transition ${
                             task.completed
-                              ? "border-emerald-400/50 bg-emerald-500/25 text-emerald-100"
-                              : "border-emerald-500/30 bg-emerald-950/50 text-transparent hover:border-emerald-400/40"
+                              ? "border-purple-400/50 bg-purple-500/25 text-purple-100"
+                              : "border-purple-500/30 bg-purple-950/50 text-transparent hover:border-purple-400/40"
                           }`}
                           aria-pressed={task.completed}
                           aria-label={task.completed ? "Tandai belum selesai" : "Tandai selesai"}
@@ -181,15 +181,15 @@ export function TasksDashboard() {
                             <span className={`rounded-md border px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide ${priorityStyles(task.priority)}`}>
                               {priorityLabel(task.priority)}
                             </span>
-                            <span className="font-mono text-[11px] text-emerald-300/75">{task.dueLabel}</span>
+                            <span className="font-mono text-[11px] text-purple-300/75">{task.dueLabel}</span>
                           </div>
                           <h3
-                            className={`mt-1.5 text-sm font-semibold sm:text-base ${task.completed ? "text-emerald-200/50 line-through" : "text-emerald-50"}`}
+                            className={`mt-1.5 text-sm font-semibold sm:text-base ${task.completed ? "text-purple-200/50 line-through" : "text-purple-50"}`}
                           >
                             {task.title}
                           </h3>
-                          <p className="mt-1 text-xs text-emerald-200/50">{task.detail}</p>
-                          <p className="mt-2 text-[11px] text-emerald-400/55">@{task.assignee}</p>
+                          <p className="mt-1 text-xs text-purple-200/50">{task.detail}</p>
+                          <p className="mt-2 text-[11px] text-purple-400/55">@{task.assignee}</p>
                         </div>
                       </div>
                     </motion.li>
@@ -198,7 +198,7 @@ export function TasksDashboard() {
               </ul>
 
               {filteredTasks.length === 0 ? (
-                <p className="mt-8 text-center text-sm text-emerald-200/45">Tidak ada tugas untuk filter ini.</p>
+                <p className="mt-8 text-center text-sm text-purple-200/45">Tidak ada tugas untuk filter ini.</p>
               ) : null}
             </div>
           </motion.section>
@@ -209,14 +209,14 @@ export function TasksDashboard() {
             transition={{ delay: 0.1 }}
             className="lg:col-span-5"
           >
-            <div className="glass-panel rounded-2xl border border-emerald-500/10 p-5 sm:p-6">
-              <h2 className="text-lg font-semibold text-emerald-50">Reminder system</h2>
-              <p className="mt-1 text-sm text-emerald-200/50">
+            <div className="glass-panel rounded-2xl border border-purple-500/10 p-5 sm:p-6">
+              <h2 className="text-lg font-semibold text-purple-50">Reminder system</h2>
+              <p className="mt-1 text-sm text-purple-200/50">
                 Pengingat otomatis terjadwal (simulasi). Abaikan atau tunda — tidak mengirim pesan nyata.
               </p>
 
               <ul className="relative mt-6 space-y-0 pl-1">
-                <span className="pointer-events-none absolute left-[11px] top-2 bottom-2 w-px bg-emerald-500/15" aria-hidden />
+                <span className="pointer-events-none absolute left-[11px] top-2 bottom-2 w-px bg-purple-500/15" aria-hidden />
                 <AnimatePresence initial={false}>
                   {activeReminders.map((r) => (
                     <motion.li
@@ -228,37 +228,37 @@ export function TasksDashboard() {
                       className="relative flex gap-3 pb-6 last:pb-0"
                     >
                       <div
-                        className="relative z-[1] mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-emerald-400/30 bg-emerald-500/15 text-[10px] font-bold text-emerald-200"
+                        className="relative z-[1] mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-purple-400/30 bg-purple-500/15 text-[10px] font-bold text-purple-200"
                         aria-hidden
                       >
                         {r.channel === "whatsapp" ? "WA" : r.channel === "app" ? "In" : "Cal"}
                       </div>
-                      <div className="min-w-0 flex-1 rounded-xl border border-emerald-500/10 bg-emerald-950/25 px-3 py-2.5">
+                      <div className="min-w-0 flex-1 rounded-xl border border-purple-500/10 bg-purple-950/25 px-3 py-2.5">
                         <div className="flex flex-wrap items-center gap-2">
-                          <span className="text-[10px] font-semibold uppercase tracking-wide text-emerald-400/65">
+                          <span className="text-[10px] font-semibold uppercase tracking-wide text-purple-400/65">
                             {channelLabel(r.channel)}
                           </span>
-                          <span className="font-mono text-[10px] text-emerald-300/75">{r.whenLabel}</span>
+                          <span className="font-mono text-[10px] text-purple-300/75">{r.whenLabel}</span>
                           {snoozeFlash === r.id ? (
                             <span className="rounded-md border border-sky-400/30 bg-sky-500/15 px-1.5 py-0.5 text-[10px] text-sky-100">
                               Ditunda 24 jam (demo)
                             </span>
                           ) : null}
                         </div>
-                        <p className="mt-1 text-sm font-medium text-emerald-50">{r.title}</p>
-                        {r.note ? <p className="mt-1 text-xs text-emerald-200/45">{r.note}</p> : null}
+                        <p className="mt-1 text-sm font-medium text-purple-50">{r.title}</p>
+                        {r.note ? <p className="mt-1 text-xs text-purple-200/45">{r.note}</p> : null}
                         <div className="mt-3 flex flex-wrap gap-2">
                           <button
                             type="button"
                             onClick={() => snoozeReminder(r.id)}
-                            className="rounded-lg border border-white/10 bg-white/[0.04] px-2.5 py-1 text-[11px] font-medium text-emerald-200/85 transition hover:bg-white/10"
+                            className="rounded-lg border border-white/10 bg-white/[0.04] px-2.5 py-1 text-[11px] font-medium text-purple-200/85 transition hover:bg-white/10"
                           >
                             Tunda 24 jam
                           </button>
                           <button
                             type="button"
                             onClick={() => dismissReminder(r.id)}
-                            className="rounded-lg border border-emerald-500/20 px-2.5 py-1 text-[11px] font-medium text-emerald-300/90 transition hover:bg-emerald-500/10"
+                            className="rounded-lg border border-purple-500/20 px-2.5 py-1 text-[11px] font-medium text-purple-300/90 transition hover:bg-purple-500/10"
                           >
                             Abaikan
                           </button>
@@ -270,14 +270,14 @@ export function TasksDashboard() {
               </ul>
 
               {activeReminders.length === 0 ? (
-                <p className="mt-6 text-center text-sm text-emerald-200/45">Tidak ada pengingat aktif.</p>
+                <p className="mt-6 text-center text-sm text-purple-200/45">Tidak ada pengingat aktif.</p>
               ) : null}
 
               {Object.keys(dismissedReminderIds).length > 0 ? (
                 <button
                   type="button"
                   onClick={() => setDismissedReminderIds({})}
-                  className="mt-5 w-full rounded-xl border border-white/10 py-2 text-xs font-medium text-emerald-200/70 transition hover:bg-white/5"
+                  className="mt-5 w-full rounded-xl border border-white/10 py-2 text-xs font-medium text-purple-200/70 transition hover:bg-white/5"
                 >
                   Pulihkan pengingat yang diabaikan
                 </button>

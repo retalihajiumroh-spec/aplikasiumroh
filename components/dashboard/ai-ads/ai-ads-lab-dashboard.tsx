@@ -40,7 +40,7 @@ export function AiAdsLabDashboard() {
         aria-hidden
         style={{
           backgroundImage:
-            "radial-gradient(circle at 10% 20%, rgba(52, 211, 153, 0.12), transparent 42%), radial-gradient(circle at 90% 0%, rgba(167, 243, 208, 0.1), transparent 38%)",
+            "radial-gradient(circle at 10% 20%, rgba(156, 77, 204, 0.12), transparent 42%), radial-gradient(circle at 90% 0%, rgba(230, 230, 250, 0.1), transparent 38%)",
         }}
       />
 
@@ -49,16 +49,16 @@ export function AiAdsLabDashboard() {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45 }}
-          className="border-b border-emerald-500/10 pb-8"
+          className="border-b border-purple-500/10 pb-8"
         >
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400/70">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-purple-400/70">
             SA&apos;YA Umroh OS · Growth
           </p>
-          <h1 className="mt-2 text-3xl font-semibold tracking-tight text-emerald-50 sm:text-4xl">AI Ads Lab</h1>
-          <p className="mt-2 max-w-2xl text-sm leading-relaxed text-emerald-200/55 sm:text-base">
-            Buat pasangan adset <strong className="text-emerald-200/85">Broad</strong> &amp;{" "}
-            <strong className="text-emerald-200/85">Targeted</strong>, pantau{" "}
-            <strong className="text-emerald-200/85">CTR, CPL, ROI</strong>, lalu generate materi kampanye dari referensi
+          <h1 className="mt-2 text-3xl font-semibold tracking-tight text-purple-50 sm:text-4xl">AI Ads Lab</h1>
+          <p className="mt-2 max-w-2xl text-sm leading-relaxed text-purple-200/55 sm:text-base">
+            Buat pasangan adset <strong className="text-purple-200/85">Broad</strong> &amp;{" "}
+            <strong className="text-purple-200/85">Targeted</strong>, pantau{" "}
+            <strong className="text-purple-200/85">CTR, CPL, ROI</strong>, lalu generate materi kampanye dari referensi
             sosial (opsional).
           </p>
         </motion.header>
@@ -77,10 +77,10 @@ export function AiAdsLabDashboard() {
           <AdsetGeneration packs={demoAdSets} audienceBroad={broadAudience} audienceTargeted={targetedAudience} />
         </div>
 
-        <div className="mt-12 border-t border-emerald-500/10 pt-10">
-          <p className="text-xs font-semibold uppercase tracking-wider text-emerald-400/60">Konten kampanye</p>
-          <h2 className="mt-1 text-lg font-semibold text-emerald-50">Referensi &amp; materi iklan</h2>
-          <p className="mt-1 text-sm text-emerald-200/55">
+        <div className="mt-12 border-t border-purple-500/10 pt-10">
+          <p className="text-xs font-semibold uppercase tracking-wider text-purple-400/60">Konten kampanye</p>
+          <h2 className="mt-1 text-lg font-semibold text-purple-50">Referensi &amp; materi iklan</h2>
+          <p className="mt-1 text-sm text-purple-200/55">
             Opsional: tautan Reels/TikTok + brief untuk caption, skrip, dan CTA setelah generate.
           </p>
 
@@ -102,11 +102,11 @@ export function AiAdsLabDashboard() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0, y: -6 }}
-                    className="glass-panel flex min-h-[360px] flex-col items-center justify-center rounded-2xl border border-dashed border-emerald-500/20 p-8 text-center"
+                    className="glass-panel flex min-h-[360px] flex-col items-center justify-center rounded-2xl border border-dashed border-purple-500/20 p-8 text-center"
                   >
-                    <p className="text-sm font-medium text-emerald-100/90">Pratinjau konten</p>
-                    <p className="mt-2 max-w-sm text-xs leading-relaxed text-emerald-200/45">
-                      Ketuk <span className="text-emerald-300/80">Generate ads lab</span> untuk caption, hashtag, skrip iklan, dan CTA (demo).
+                    <p className="text-sm font-medium text-purple-100/90">Pratinjau konten</p>
+                    <p className="mt-2 max-w-sm text-xs leading-relaxed text-purple-200/45">
+                      Ketuk <span className="text-purple-300/80">Generate ads lab</span> untuk caption, hashtag, skrip iklan, dan CTA (demo).
                     </p>
                   </motion.div>
                 ) : (

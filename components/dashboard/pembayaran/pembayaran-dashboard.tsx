@@ -34,17 +34,17 @@ export function PembayaranDashboard() {
         aria-hidden
         style={{
           backgroundImage:
-            "radial-gradient(circle at 15% 20%, rgba(251, 191, 36, 0.1), transparent 40%), radial-gradient(circle at 85% 30%, rgba(52, 211, 153, 0.1), transparent 42%)",
+            "radial-gradient(circle at 15% 20%, rgba(230, 230, 250, 0.1), transparent 40%), radial-gradient(circle at 85% 30%, rgba(156, 77, 204, 0.1), transparent 42%)",
         }}
       />
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <motion.header
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
-          className="border-b border-emerald-500/10 pb-8"
+          className="border-b border-purple-500/10 pb-8"
         >
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-200/75">Kasir digital</p>
-          <h1 className="mt-2 text-3xl font-bold tracking-tight text-emerald-50 sm:text-4xl">Pembayaran</h1>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-violet-200/75">Kasir digital</p>
+          <h1 className="mt-2 text-3xl font-bold tracking-tight text-purple-50 sm:text-4xl">Pembayaran</h1>
           <p className="mt-2 max-w-2xl text-sm text-slate-400/90 sm:text-base">
             Catat banyak pembayaran sekaligus, unggah bukti, dan set status (Approved / Pending / Rejected). Data tersimpan di
             Supabase bila dikonfigurasi, selalu dicerminkan lokal untuk daftar di bawah.
@@ -54,7 +54,7 @@ export function PembayaranDashboard() {
         <PaymentBatchForm onSaved={refreshSaved} />
 
         <div className="mt-14">
-          <h2 className="text-lg font-bold text-emerald-50">Pembayaran tercatat</h2>
+          <h2 className="text-lg font-bold text-purple-50">Pembayaran tercatat</h2>
           <p className="mt-1 text-sm text-slate-500/90">Edit status atau hapus entri. Jalankan SQL migrasi `002_payment_entries.sql` di Supabase agar sinkron server aktif.</p>
           <div className="mt-6">
             <PaymentList entries={savedPayments} onChange={refreshSaved} />
@@ -62,10 +62,10 @@ export function PembayaranDashboard() {
         </div>
 
         <div className="mt-14">
-          <h2 className="mb-4 text-lg font-bold text-emerald-50">Antrian settlement (demo)</h2>
-          <div className="overflow-hidden rounded-2xl border border-emerald-500/10 glass-panel">
+          <h2 className="mb-4 text-lg font-bold text-purple-50">Antrian settlement (demo)</h2>
+          <div className="overflow-hidden rounded-2xl border border-purple-500/10 glass-panel">
             <table className="w-full text-left text-sm">
-              <thead className="border-b border-emerald-500/10 bg-emerald-950/45 text-[11px] font-bold uppercase tracking-wide text-emerald-400/70">
+              <thead className="border-b border-purple-500/10 bg-purple-950/45 text-[11px] font-bold uppercase tracking-wide text-purple-400/70">
                 <tr>
                   <th className="px-4 py-3">Referensi</th>
                   <th className="px-4 py-3">Pihak</th>
@@ -82,14 +82,14 @@ export function PembayaranDashboard() {
                     initial={{ opacity: 0, y: 6 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: i * 0.04 }}
-                    className="border-b border-emerald-500/10 bg-emerald-950/20 last:border-0"
+                    className="border-b border-purple-500/10 bg-purple-950/20 last:border-0"
                   >
-                    <td className="px-4 py-3 font-mono text-xs text-emerald-200/90">{r.ref}</td>
-                    <td className="px-4 py-3 text-emerald-100/95">{r.party}</td>
-                    <td className="px-4 py-3 font-mono text-amber-200/90">{formatIdrCompact(r.amount)}</td>
-                    <td className="hidden px-4 py-3 text-emerald-200/70 sm:table-cell">{r.method}</td>
+                    <td className="px-4 py-3 font-mono text-xs text-purple-200/90">{r.ref}</td>
+                    <td className="px-4 py-3 text-purple-100/95">{r.party}</td>
+                    <td className="px-4 py-3 font-mono text-violet-200/90">{formatIdrCompact(r.amount)}</td>
+                    <td className="hidden px-4 py-3 text-purple-200/70 sm:table-cell">{r.method}</td>
                     <td className="px-4 py-3">
-                      <span className="rounded-md border border-emerald-400/25 bg-emerald-500/15 px-2 py-0.5 text-[11px] font-semibold text-emerald-100">
+                      <span className="rounded-md border border-purple-400/25 bg-purple-500/15 px-2 py-0.5 text-[11px] font-semibold text-purple-100">
                         {r.status}
                       </span>
                     </td>

@@ -33,13 +33,13 @@ const links = [
 export default function Home() {
   return (
     <main className="flex min-h-dvh flex-col items-center justify-center gap-8 p-8">
-      <h1 className="text-2xl font-semibold tracking-tight text-emerald-100">
+      <h1 className="text-3xl font-bold tracking-tight text-white">
         SA&apos;YA Umroh OS
       </h1>
       <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm">
         <Link
           href="/login"
-          className="font-medium text-emerald-300/90 underline-offset-2 transition hover:text-emerald-200 hover:underline"
+          className="font-medium text-purple-300/90 underline-offset-2 transition hover:text-purple-200 hover:underline"
         >
           Login Jamaah (portal)
         </Link>
@@ -57,13 +57,13 @@ export default function Home() {
         </Link>
         <Link
           href="/login/cabang"
-          className="font-medium text-amber-200/95 underline-offset-2 transition hover:text-amber-100 hover:underline"
+          className="font-medium text-violet-200/95 underline-offset-2 transition hover:text-violet-100 hover:underline"
         >
           Login Cabang (portal)
         </Link>
         <Link
           href="/register/cabang"
-          className="font-medium text-amber-200/90 underline-offset-2 transition hover:text-amber-100 hover:underline"
+          className="font-medium text-violet-200/90 underline-offset-2 transition hover:text-violet-100 hover:underline"
         >
           Registrasi Cabang
         </Link>
@@ -73,7 +73,7 @@ export default function Home() {
           <Link
             key={l.href}
             href={l.href}
-            className="rounded-xl border border-emerald-400/30 bg-emerald-500/10 px-6 py-3 text-center text-sm font-medium text-emerald-200 transition hover:border-emerald-400/50 hover:bg-emerald-500/20"
+            className="rounded-xl border border-[#6A1B9A]/40 bg-gradient-to-br from-[#6A1B9A]/25 to-[#2C3E50]/40 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-[#E6E6FA]/35 hover:from-[#6A1B9A]/35"
           >
             {l.label}
           </Link>

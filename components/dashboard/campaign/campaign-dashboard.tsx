@@ -58,7 +58,7 @@ export function CampaignDashboard() {
         aria-hidden
         style={{
           backgroundImage:
-            "radial-gradient(circle at 20% 10%, rgba(52, 211, 153, 0.14), transparent 45%), radial-gradient(circle at 85% 60%, rgba(45, 212, 191, 0.08), transparent 42%)",
+            "radial-gradient(circle at 20% 10%, rgba(156, 77, 204, 0.14), transparent 45%), radial-gradient(circle at 85% 60%, rgba(196, 163, 165, 0.08), transparent 42%)",
         }}
       />
 
@@ -66,18 +66,18 @@ export function CampaignDashboard() {
         <motion.header
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
-          className="flex flex-col gap-4 border-b border-emerald-500/10 pb-8 sm:flex-row sm:items-end sm:justify-between"
+          className="flex flex-col gap-4 border-b border-purple-500/10 pb-8 sm:flex-row sm:items-end sm:justify-between"
         >
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400/70">SA&apos;YA Umroh OS</p>
-            <h1 className="mt-2 text-3xl font-semibold tracking-tight text-emerald-50 sm:text-4xl">Campaign &amp; Broadcast</h1>
-            <p className="mt-2 max-w-2xl text-sm text-emerald-200/55 sm:text-base">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-purple-400/70">SA&apos;YA Umroh OS</p>
+            <h1 className="mt-2 text-3xl font-semibold tracking-tight text-purple-50 sm:text-4xl">Campaign &amp; Broadcast</h1>
+            <p className="mt-2 max-w-2xl text-sm text-purple-200/55 sm:text-base">
               Buat kampanye pemasaran dan atur segmentasi broadcast WhatsApp — data demo, tanpa backend.
             </p>
           </div>
           <Link
             href="/"
-            className="inline-flex w-fit rounded-xl border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-emerald-200/80 transition hover:border-emerald-400/25 hover:bg-emerald-500/10"
+            className="inline-flex w-fit rounded-xl border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-purple-200/80 transition hover:border-purple-400/25 hover:bg-purple-500/10"
           >
             ← Hub
           </Link>
@@ -88,14 +88,14 @@ export function CampaignDashboard() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.05 }}
-            className="glass-panel rounded-2xl border border-emerald-500/10 p-5 sm:p-6"
+            className="glass-panel rounded-2xl border border-purple-500/10 p-5 sm:p-6"
           >
-            <div className="flex flex-wrap items-end justify-between gap-3 border-b border-emerald-500/10 pb-4">
+            <div className="flex flex-wrap items-end justify-between gap-3 border-b border-purple-500/10 pb-4">
               <div>
-                <h2 className="text-lg font-semibold text-emerald-50">Buat kampanye</h2>
-                <p className="mt-1 text-sm text-emerald-200/50">Definisikan tujuan, jadwal, dan anggaran harian.</p>
+                <h2 className="text-lg font-semibold text-purple-50">Buat kampanye</h2>
+                <p className="mt-1 text-sm text-purple-200/50">Definisikan tujuan, jadwal, dan anggaran harian.</p>
               </div>
-              <span className="rounded-lg border border-emerald-400/20 bg-emerald-500/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-emerald-300/90">
+              <span className="rounded-lg border border-purple-400/20 bg-purple-500/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-purple-300/90">
                 Draft lokal
               </span>
             </div>
@@ -108,23 +108,23 @@ export function CampaignDashboard() {
               }}
             >
               <label className="block">
-                <span className="text-xs font-semibold uppercase tracking-wider text-emerald-300/60">Nama kampanye</span>
+                <span className="text-xs font-semibold uppercase tracking-wider text-purple-300/60">Nama kampanye</span>
                 <input
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   required
                   placeholder="Contoh: Ramadan Premium · push DP"
-                  className="mt-2 w-full rounded-xl border border-emerald-500/15 bg-emerald-950/40 px-3 py-2.5 text-sm text-emerald-50 placeholder:text-emerald-500/35 focus:border-emerald-400/40 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+                  className="mt-2 w-full rounded-xl border border-purple-500/15 bg-purple-950/40 px-3 py-2.5 text-sm text-purple-50 placeholder:text-purple-500/35 focus:border-purple-400/40 focus:outline-none focus:ring-2 focus:ring-purple-500/20"
                 />
               </label>
 
               <div className="grid gap-5 sm:grid-cols-2">
                 <label className="block sm:col-span-1">
-                  <span className="text-xs font-semibold uppercase tracking-wider text-emerald-300/60">Tujuan</span>
+                  <span className="text-xs font-semibold uppercase tracking-wider text-purple-300/60">Tujuan</span>
                   <select
                     value={objectiveId}
                     onChange={(e) => setObjectiveId(e.target.value)}
-                    className="mt-2 w-full rounded-xl border border-emerald-500/15 bg-emerald-950/40 px-3 py-2.5 text-sm text-emerald-50 focus:border-emerald-400/40 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+                    className="mt-2 w-full rounded-xl border border-purple-500/15 bg-purple-950/40 px-3 py-2.5 text-sm text-purple-50 focus:border-purple-400/40 focus:outline-none focus:ring-2 focus:ring-purple-500/20"
                   >
                     {campaignObjectives.map((o) => (
                       <option key={o.id} value={o.id}>
@@ -132,17 +132,17 @@ export function CampaignDashboard() {
                       </option>
                     ))}
                   </select>
-                  <p className="mt-1.5 text-xs text-emerald-200/45">
+                  <p className="mt-1.5 text-xs text-purple-200/45">
                     {campaignObjectives.find((o) => o.id === objectiveId)?.hint}
                   </p>
                 </label>
 
                 <label className="block sm:col-span-1">
-                  <span className="text-xs font-semibold uppercase tracking-wider text-emerald-300/60">Paket fokus</span>
+                  <span className="text-xs font-semibold uppercase tracking-wider text-purple-300/60">Paket fokus</span>
                   <select
                     value={packageId}
                     onChange={(e) => setPackageId(e.target.value)}
-                    className="mt-2 w-full rounded-xl border border-emerald-500/15 bg-emerald-950/40 px-3 py-2.5 text-sm text-emerald-50 focus:border-emerald-400/40 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+                    className="mt-2 w-full rounded-xl border border-purple-500/15 bg-purple-950/40 px-3 py-2.5 text-sm text-purple-50 focus:border-purple-400/40 focus:outline-none focus:ring-2 focus:ring-purple-500/20"
                   >
                     {focusPackageOptions.map((p) => (
                       <option key={p.id} value={p.id}>
@@ -155,54 +155,54 @@ export function CampaignDashboard() {
 
               <div className="grid gap-5 sm:grid-cols-2">
                 <label className="block">
-                  <span className="text-xs font-semibold uppercase tracking-wider text-emerald-300/60">Mulai</span>
+                  <span className="text-xs font-semibold uppercase tracking-wider text-purple-300/60">Mulai</span>
                   <input
                     type="date"
                     value={startDate}
                     onChange={(e) => setStartDate(e.target.value)}
-                    className="mt-2 w-full rounded-xl border border-emerald-500/15 bg-emerald-950/40 px-3 py-2.5 text-sm text-emerald-50 focus:border-emerald-400/40 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+                    className="mt-2 w-full rounded-xl border border-purple-500/15 bg-purple-950/40 px-3 py-2.5 text-sm text-purple-50 focus:border-purple-400/40 focus:outline-none focus:ring-2 focus:ring-purple-500/20"
                   />
                 </label>
                 <label className="block">
-                  <span className="text-xs font-semibold uppercase tracking-wider text-emerald-300/60">Selesai</span>
+                  <span className="text-xs font-semibold uppercase tracking-wider text-purple-300/60">Selesai</span>
                   <input
                     type="date"
                     value={endDate}
                     onChange={(e) => setEndDate(e.target.value)}
-                    className="mt-2 w-full rounded-xl border border-emerald-500/15 bg-emerald-950/40 px-3 py-2.5 text-sm text-emerald-50 focus:border-emerald-400/40 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+                    className="mt-2 w-full rounded-xl border border-purple-500/15 bg-purple-950/40 px-3 py-2.5 text-sm text-purple-50 focus:border-purple-400/40 focus:outline-none focus:ring-2 focus:ring-purple-500/20"
                   />
                 </label>
               </div>
 
               <label className="block">
-                <span className="text-xs font-semibold uppercase tracking-wider text-emerald-300/60">Budget harian (IDR)</span>
+                <span className="text-xs font-semibold uppercase tracking-wider text-purple-300/60">Budget harian (IDR)</span>
                 <input
                   value={dailyBudget}
                   onChange={(e) => setDailyBudget(e.target.value)}
                   inputMode="numeric"
-                  className="mt-2 w-full rounded-xl border border-emerald-500/15 bg-emerald-950/40 px-3 py-2.5 font-mono text-sm text-emerald-50 focus:border-emerald-400/40 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+                  className="mt-2 w-full rounded-xl border border-purple-500/15 bg-purple-950/40 px-3 py-2.5 font-mono text-sm text-purple-50 focus:border-purple-400/40 focus:outline-none focus:ring-2 focus:ring-purple-500/20"
                 />
-                <p className="mt-1.5 text-xs text-emerald-200/45">Pratinjau: {formatIdr(budgetNum)} / hari</p>
+                <p className="mt-1.5 text-xs text-purple-200/45">Pratinjau: {formatIdr(budgetNum)} / hari</p>
               </label>
 
               <fieldset>
-                <legend className="text-xs font-semibold uppercase tracking-wider text-emerald-300/60">Saluran</legend>
+                <legend className="text-xs font-semibold uppercase tracking-wider text-purple-300/60">Saluran</legend>
                 <div className="mt-3 flex flex-wrap gap-4">
-                  <label className="flex cursor-pointer items-center gap-2.5 rounded-xl border border-emerald-500/15 bg-emerald-950/25 px-3 py-2.5 text-sm text-emerald-100 transition hover:border-emerald-400/25">
+                  <label className="flex cursor-pointer items-center gap-2.5 rounded-xl border border-purple-500/15 bg-purple-950/25 px-3 py-2.5 text-sm text-purple-100 transition hover:border-purple-400/25">
                     <input
                       type="checkbox"
                       checked={channelWa}
                       onChange={(e) => setChannelWa(e.target.checked)}
-                      className="h-4 w-4 rounded border-emerald-500/40 bg-emerald-950 text-emerald-500 focus:ring-emerald-500/30"
+                      className="h-4 w-4 rounded border-purple-500/40 bg-purple-950 text-purple-500 focus:ring-purple-500/30"
                     />
                     WhatsApp &amp; CRM
                   </label>
-                  <label className="flex cursor-pointer items-center gap-2.5 rounded-xl border border-emerald-500/15 bg-emerald-950/25 px-3 py-2.5 text-sm text-emerald-100 transition hover:border-emerald-400/25">
+                  <label className="flex cursor-pointer items-center gap-2.5 rounded-xl border border-purple-500/15 bg-purple-950/25 px-3 py-2.5 text-sm text-purple-100 transition hover:border-purple-400/25">
                     <input
                       type="checkbox"
                       checked={channelMeta}
                       onChange={(e) => setChannelMeta(e.target.checked)}
-                      className="h-4 w-4 rounded border-emerald-500/40 bg-emerald-950 text-emerald-500 focus:ring-emerald-500/30"
+                      className="h-4 w-4 rounded border-purple-500/40 bg-purple-950 text-purple-500 focus:ring-purple-500/30"
                     />
                     Meta Ads
                   </label>
@@ -210,13 +210,13 @@ export function CampaignDashboard() {
               </fieldset>
 
               <label className="block">
-                <span className="text-xs font-semibold uppercase tracking-wider text-emerald-300/60">Catatan tim</span>
+                <span className="text-xs font-semibold uppercase tracking-wider text-purple-300/60">Catatan tim</span>
                 <textarea
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
                   rows={3}
                   placeholder="CTA, kode promo, atau arahan kreatif…"
-                  className="mt-2 w-full resize-y rounded-xl border border-emerald-500/15 bg-emerald-950/40 px-3 py-2.5 text-sm text-emerald-50 placeholder:text-emerald-500/40 focus:border-emerald-400/40 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+                  className="mt-2 w-full resize-y rounded-xl border border-purple-500/15 bg-purple-950/40 px-3 py-2.5 text-sm text-purple-50 placeholder:text-purple-500/40 focus:border-purple-400/40 focus:outline-none focus:ring-2 focus:ring-purple-500/20"
                 />
               </label>
 
@@ -225,14 +225,14 @@ export function CampaignDashboard() {
                   type="submit"
                   animate={savedPulse ? { scale: [1, 1.02, 1] } : undefined}
                   transition={{ duration: 0.35 }}
-                  className="rounded-xl border border-white/10 bg-white/[0.06] px-4 py-2.5 text-sm font-medium text-emerald-100 transition hover:bg-white/10"
+                  className="rounded-xl border border-white/10 bg-white/[0.06] px-4 py-2.5 text-sm font-medium text-purple-100 transition hover:bg-white/10"
                 >
                   {savedPulse ? "Disimpan (demo)" : "Simpan draf"}
                 </motion.button>
                 <button
                   type="button"
                   onClick={openBroadcastModal}
-                  className="rounded-xl border border-emerald-400/35 bg-gradient-to-r from-emerald-500/25 to-teal-500/15 px-4 py-2.5 text-sm font-semibold text-emerald-50 shadow-lg shadow-emerald-900/25 transition hover:border-emerald-400/55"
+                  className="rounded-xl border border-purple-400/35 bg-gradient-to-r from-purple-500/25 to-violet-700/15 px-4 py-2.5 text-sm font-semibold text-purple-50 shadow-lg shadow-purple-900/25 transition hover:border-purple-400/55"
                 >
                   Lanjut ke broadcast WA
                 </button>
@@ -246,9 +246,9 @@ export function CampaignDashboard() {
             transition={{ delay: 0.1 }}
             className="space-y-6"
           >
-            <div className="glass-panel rounded-2xl border border-emerald-500/10 p-5 sm:p-6">
-              <h2 className="text-lg font-semibold text-emerald-50">Segmentasi broadcast WhatsApp</h2>
-              <p className="mt-1 text-sm text-emerald-200/50">
+            <div className="glass-panel rounded-2xl border border-purple-500/10 p-5 sm:p-6">
+              <h2 className="text-lg font-semibold text-purple-50">Segmentasi broadcast WhatsApp</h2>
+              <p className="mt-1 text-sm text-purple-200/50">
                 Pilih kombinasi audiens lead. Estimasi berikut tidak menghitung overlap antar segmen.
               </p>
 
@@ -267,28 +267,28 @@ export function CampaignDashboard() {
                         onClick={() => toggleSegment(seg.id)}
                         className={`flex w-full items-start gap-3 rounded-xl border px-3 py-3 text-left transition ${
                           on
-                            ? "border-emerald-400/35 bg-emerald-500/12 ring-1 ring-emerald-400/15"
-                            : "border-emerald-500/10 bg-emerald-950/20 hover:border-emerald-400/20"
+                            ? "border-purple-400/35 bg-purple-500/12 ring-1 ring-purple-400/15"
+                            : "border-purple-500/10 bg-purple-950/20 hover:border-purple-400/20"
                         }`}
                       >
                         <span
                           className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md border ${
-                            on ? "border-emerald-400/50 bg-emerald-400/20" : "border-emerald-500/25"
+                            on ? "border-purple-400/50 bg-purple-400/20" : "border-purple-500/25"
                           }`}
                           aria-hidden
                         >
                           {on ? (
-                            <svg className="text-emerald-100" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                            <svg className="text-purple-100" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
                               <path d="M20 6L9 17l-5-5" />
                             </svg>
                           ) : null}
                         </span>
                         <span className="min-w-0 flex-1">
                           <span className="flex flex-wrap items-baseline justify-between gap-2">
-                            <span className="font-medium text-emerald-50">{seg.label}</span>
-                            <span className="font-mono text-xs text-emerald-300/80">~{seg.leadCount} lead</span>
+                            <span className="font-medium text-purple-50">{seg.label}</span>
+                            <span className="font-mono text-xs text-purple-300/80">~{seg.leadCount} lead</span>
                           </span>
-                          <span className="mt-0.5 block text-xs text-emerald-200/50">{seg.description}</span>
+                          <span className="mt-0.5 block text-xs text-purple-200/50">{seg.description}</span>
                         </span>
                       </button>
                     </motion.li>
@@ -296,16 +296,16 @@ export function CampaignDashboard() {
                 })}
               </ul>
 
-              <div className="mt-5 rounded-xl border border-emerald-500/10 bg-emerald-500/5 px-3 py-3 text-sm text-emerald-200/70">
+              <div className="mt-5 rounded-xl border border-purple-500/10 bg-purple-500/5 px-3 py-3 text-sm text-purple-200/70">
                 Estimasi penerima (dummy):{" "}
-                <span className="font-mono font-semibold text-emerald-100">{recipientEstimate}</span> kontak
+                <span className="font-mono font-semibold text-purple-100">{recipientEstimate}</span> kontak
               </div>
 
               <div className="mt-4 flex flex-col gap-2 sm:flex-row">
                 <button
                   type="button"
                   onClick={openBroadcastModal}
-                  className="flex-1 rounded-xl border border-emerald-400/30 bg-emerald-500/15 px-4 py-2.5 text-sm font-semibold text-emerald-50 transition hover:border-emerald-400/50 hover:bg-emerald-500/25"
+                  className="flex-1 rounded-xl border border-purple-400/30 bg-purple-500/15 px-4 py-2.5 text-sm font-semibold text-purple-50 transition hover:border-purple-400/50 hover:bg-purple-500/25"
                 >
                   Buka composer WhatsApp
                 </button>
@@ -314,24 +314,24 @@ export function CampaignDashboard() {
                   onClick={() =>
                     setSegmentOn(Object.fromEntries(broadcastSegments.map((s) => [s.id, s.id === "high_intent"])))
                   }
-                  className="rounded-xl border border-white/10 px-4 py-2.5 text-sm text-emerald-200/75 transition hover:bg-white/5"
+                  className="rounded-xl border border-white/10 px-4 py-2.5 text-sm text-purple-200/75 transition hover:bg-white/5"
                 >
                   Reset segmen
                 </button>
               </div>
             </div>
 
-            <div className="glass-panel rounded-2xl border border-emerald-500/10 p-5 sm:p-6">
-              <h3 className="text-sm font-semibold text-emerald-50">Kampanye terbaru (demo)</h3>
+            <div className="glass-panel rounded-2xl border border-purple-500/10 p-5 sm:p-6">
+              <h3 className="text-sm font-semibold text-purple-50">Kampanye terbaru (demo)</h3>
               <ul className="mt-4 space-y-3">
                 {recentCampaigns.map((c) => (
                   <li
                     key={c.id}
-                    className="flex flex-col gap-1 rounded-xl border border-emerald-500/10 bg-emerald-950/25 px-3 py-2.5 sm:flex-row sm:items-center sm:justify-between"
+                    className="flex flex-col gap-1 rounded-xl border border-purple-500/10 bg-purple-950/25 px-3 py-2.5 sm:flex-row sm:items-center sm:justify-between"
                   >
                     <div className="min-w-0">
-                      <p className="truncate text-sm font-medium text-emerald-100">{c.name}</p>
-                      <p className="text-xs text-emerald-200/45">
+                      <p className="truncate text-sm font-medium text-purple-100">{c.name}</p>
+                      <p className="text-xs text-purple-200/45">
                         {c.objective} · mulai {c.startLabel}
                       </p>
                     </div>
@@ -339,16 +339,16 @@ export function CampaignDashboard() {
                       <span
                         className={`rounded-md px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide ${
                           c.status === "active"
-                            ? "border border-emerald-400/30 bg-emerald-500/20 text-emerald-200"
+                            ? "border border-purple-400/30 bg-purple-500/20 text-purple-200"
                             : c.status === "scheduled"
                               ? "border border-sky-400/25 bg-sky-500/15 text-sky-200/90"
-                              : "border border-white/10 bg-white/5 text-emerald-200/60"
+                              : "border border-white/10 bg-white/5 text-purple-200/60"
                         }`}
                       >
                         {c.status}
                       </span>
                       {c.reachEstimate > 0 ? (
-                        <span className="font-mono text-[10px] text-emerald-300/70">
+                        <span className="font-mono text-[10px] text-purple-300/70">
                           ~{c.reachEstimate.toLocaleString("id-ID")} reach
                         </span>
                       ) : null}
