@@ -3,7 +3,8 @@ import { AiSalesDashboard } from "@/components/dashboard/ai-sales/ai-sales-dashb
 
 export const metadata: Metadata = {
   title: "AI Sales Bot | SA'YA Umroh OS",
-  description: "AI-powered sales assistant: WhatsApp follow-ups, lead scoring, and suggested replies.",
+  description:
+    "AI sales assistant with WhatsApp-style chat, automated follow-ups, sales scripts, and voice call simulation.",
 };
 
 export default function AiSalesPage() {
