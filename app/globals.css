@@ -11,6 +11,11 @@
   --color-owner-accent-dim: #059669;
   --color-owner-glass-border: rgba(167, 243, 208, 0.12);
   --color-owner-glass-highlight: rgba(255, 255, 255, 0.06);
+
+  --color-social-maroon: #800020;
+  --color-social-maroon-hover: #660019;
+  --color-social-maroon-soft: rgba(128, 0, 32, 0.22);
+  --color-social-maroon-border: rgba(128, 0, 32, 0.45);
 }
 
 @layer base {
