@@ -2,6 +2,8 @@ import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useCallback, useState, type FormEvent } from "react";
+import { signInWithRoleRedirect } from "@/lib/auth/session-client";
+import { isSupabaseConfigured } from "@/lib/supabase/config";
 
 export default function MitraLoginPage() {
   const router = useRouter();
@@ -11,7 +13,7 @@ export default function MitraLoginPage() {
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = useCallback(
-    (e: FormEvent<HTMLFormElement>) => {
+    async (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       setError(null);
       const em = email.trim().toLowerCase();
@@ -24,10 +26,22 @@ export default function MitraLoginPage() {
         return;
       }
       setLoading(true);
-      window.setTimeout(() => {
+      try {
+        const demo = "/dashboard/reseller";
+        const res = await signInWithRoleRedirect(em, password, demo);
+        if (res.kind === "live") {
+          if ("error" in res) {
+            setError(res.error);
+            return;
+          }
+          await router.push(res.redirectTo);
+          return;
+        }
+        await new Promise((r) => setTimeout(r, 400));
+        await router.push(res.redirectTo);
+      } finally {
         setLoading(false);
-        void router.push("/dashboard/reseller");
-      }, 450);
+      }
     },
     [email, password, router],
   );
@@ -108,7 +122,9 @@ export default function MitraLoginPage() {
           </div>
 
           <p className="mt-8 border-t border-emerald-500/10 pt-6 text-center text-[11px] text-emerald-500/50">
-            Demo: setelah login Anda akan diarahkan ke Reseller / Mitra. Tidak ada autentikasi server.
+            {isSupabaseConfigured()
+              ? "Supabase aktif: redirect mengikuti peran di profiles."
+              : "Mode demo: tanpa Supabase, login simulasi menuju Reseller / Mitra."}
           </p>
         </div>
 

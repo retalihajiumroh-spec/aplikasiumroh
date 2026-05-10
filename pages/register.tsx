@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useCallback, useState, type FormEvent } from "react";
+import { signUpWithMetadata } from "@/lib/auth/session-client";
 
 export default function JamaahRegisterPage() {
   const router = useRouter();
@@ -10,12 +11,14 @@ export default function JamaahRegisterPage() {
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
+  const [info, setInfo] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = useCallback(
-    (e: FormEvent<HTMLFormElement>) => {
+    async (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       setError(null);
+      setInfo(null);
       const n = name.trim();
       const em = email.trim().toLowerCase();
       const ph = phone.trim();
@@ -37,10 +40,29 @@ export default function JamaahRegisterPage() {
         return;
       }
       setLoading(true);
-      window.setTimeout(() => {
+      try {
+        const res = await signUpWithMetadata(em, password, {
+          role: "jamaah",
+          full_name: n,
+          phone: ph,
+        });
+        if (res.kind === "live") {
+          if ("error" in res) {
+            setError(res.error);
+            return;
+          }
+          if (res.needsEmailConfirmation) {
+            setInfo("Periksa email Anda untuk menyelesaikan konfirmasi akun, lalu login.");
+            return;
+          }
+          await router.push("/login");
+          return;
+        }
+        await new Promise((r) => setTimeout(r, 400));
+        await router.push("/login");
+      } finally {
         setLoading(false);
-        void router.push("/login");
-      }, 500);
+      }
     },
     [name, email, phone, password, router],
   );
@@ -115,6 +137,11 @@ export default function JamaahRegisterPage() {
             {error ? (
               <p className="rounded-lg border border-rose-400/30 bg-rose-500/10 px-3 py-2 text-sm text-rose-100/95" role="alert">
                 {error}
+              </p>
+            ) : null}
+            {info ? (
+              <p className="rounded-lg border border-sky-400/30 bg-sky-500/10 px-3 py-2 text-sm text-sky-100/95" role="status">
+                {info}
               </p>
             ) : null}
 
