@@ -9,4 +9,6 @@ export interface KpiCardItem {
   trend: KpiTrend;
   /** Defaults to "vs bulan lalu". */
   deltaContext?: string;
+  /** Optional 0–100 progress toward a target (capacity, quota, etc.). */
+  progress?: number;
 }

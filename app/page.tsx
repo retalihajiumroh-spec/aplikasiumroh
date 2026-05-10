@@ -21,6 +21,7 @@ const links = [
   { href: "/dashboard/reseller", label: "Reseller / Mitra" },
   { href: "/dashboard/ai-sales", label: "AI Sales Bot" },
   { href: "/dashboard/content", label: "Content System" },
+  { href: "/dashboard/community", label: "Community Engine" },
   { href: "/dashboard/content-engine", label: "AI Content Engine" },
   { href: "/dashboard/ai-ads", label: "AI Ads Lab" },
   { href: "/dashboard/optimization", label: "Optimization" },
