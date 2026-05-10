@@ -1,4 +1,4 @@
-export type KpiKey = "jamaah" | "revenue" | "activeLeads" | "closing";
+export type KpiKey = "jamaah" | "revenue" | "closing" | "activeLeads";
 
 export interface KpiDatum {
   key: KpiKey;
@@ -15,29 +15,24 @@ export interface MonthlyRevenuePoint {
   conversionPct: number;
 }
 
-/** Per-cabang: konversi, pipeline, penutupan. */
+/** Per cabang: performa komersial + engagement operasional. */
 export interface BranchPerformanceMetrics {
   branch: string;
   city: string;
+  /** Skor komposit 0–100 (revenue + konversi + penutupan). */
+  performanceScore: number;
   conversionPct: number;
-  activeLeads: number;
-  closedSales: number;
   revenueIdr: number;
+  closedSales: number;
+  activeLeads: number;
+  /** Engagement CS & komunitas cabang 0–100. */
+  engagementScore: number;
+  satisfactionPct: number;
+  avgResponseMin: number;
+  activeThreads: number;
 }
 
-export type AiInsightKind = "high_intent" | "community" | "branch_alert";
-
-export interface AiInsight {
-  id: string;
-  kind: AiInsightKind;
-  title: string;
-  summary: string;
-  detail: string;
-  metricLabel?: string;
-  metricValue?: string;
-}
-
-export type ActivityFeedKind = "transaction" | "lead_capture" | "update";
+export type ActivityFeedKind = "lead" | "payment" | "document" | "booking";
 
 export interface ActivityFeedItem {
   id: string;
@@ -67,19 +62,19 @@ export const kpiData: KpiDatum[] = [
     trend: "up",
   },
   {
-    key: "activeLeads",
-    label: "Active Leads",
-    value: "1.284",
-    sublabel: "aktivitas 14 hari terakhir",
-    delta: "+5,8%",
-    trend: "up",
-  },
-  {
     key: "closing",
     label: "Closing Rate",
     value: "34,6%",
     sublabel: "lead → kontrak",
     delta: "+2,1 pts",
+    trend: "up",
+  },
+  {
+    key: "activeLeads",
+    label: "Active Leads",
+    value: "1.284",
+    sublabel: "aktivitas 14 hari terakhir",
+    delta: "+5,8%",
     trend: "up",
   },
 ];
@@ -103,129 +98,136 @@ export const branchPerformance: BranchPerformanceMetrics[] = [
   {
     branch: "SA'YA Pusat",
     city: "Jakarta",
+    performanceScore: 94,
     conversionPct: 38.2,
-    activeLeads: 412,
-    closedSales: 612,
     revenueIdr: 14.2e9,
+    closedSales: 612,
+    activeLeads: 412,
+    engagementScore: 91,
+    satisfactionPct: 96,
+    avgResponseMin: 12,
+    activeThreads: 428,
   },
   {
     branch: "SA'YA Jawa Barat",
     city: "Bandung",
+    performanceScore: 88,
     conversionPct: 34.6,
-    activeLeads: 268,
-    closedSales: 418,
     revenueIdr: 9.8e9,
+    closedSales: 418,
+    activeLeads: 268,
+    engagementScore: 86,
+    satisfactionPct: 93,
+    avgResponseMin: 18,
+    activeThreads: 301,
   },
   {
     branch: "SA'YA Jatim",
     city: "Surabaya",
+    performanceScore: 84,
     conversionPct: 32.9,
-    activeLeads: 241,
-    closedSales: 355,
     revenueIdr: 8.4e9,
+    closedSales: 355,
+    activeLeads: 241,
+    engagementScore: 82,
+    satisfactionPct: 91,
+    avgResponseMin: 21,
+    activeThreads: 267,
   },
   {
     branch: "SA'YA Sumatera",
     city: "Medan",
+    performanceScore: 79,
     conversionPct: 29.4,
-    activeLeads: 198,
-    closedSales: 251,
     revenueIdr: 6.1e9,
+    closedSales: 251,
+    activeLeads: 198,
+    engagementScore: 74,
+    satisfactionPct: 88,
+    avgResponseMin: 27,
+    activeThreads: 184,
   },
   {
     branch: "SA'YA Sulawesi",
     city: "Makassar",
+    performanceScore: 76,
     conversionPct: 27.1,
-    activeLeads: 165,
-    closedSales: 198,
     revenueIdr: 4.9e9,
-  },
-];
-
-export const aiInsights: AiInsight[] = [
-  {
-    id: "ai-1",
-    kind: "high_intent",
-    title: "High-intent lead cluster",
-    summary: "38 lead memasuki skor ≥ 85 dalam 48 jam — mayoritas dari konten Reels Ramadan.",
-    detail:
-      "Polanya: klik kalkulator DP + balasan WA < 6 menit. Routing otomatis ke CS Jakarta meningkatkan booking +14% vs rata-rata.",
-    metricLabel: "Top skor",
-    metricValue: "94",
-  },
-  {
-    id: "ai-2",
-    kind: "community",
-    title: "Community engagement",
-    summary: "Komunitas jamaah aktif naik 6,2% mingguan; thread manasik paling banyak disimpan.",
-    detail:
-      "Sesi live Q&A pekan ini menghasilkan 214 pertanyaan unik. Saran: pin FAQ ke portal untuk mengurangi beban CS cabang.",
-    metricLabel: "Anggota aktif",
-    metricValue: "3.840",
-  },
-  {
-    id: "ai-3",
-    kind: "branch_alert",
-    title: "Alert performa cabang",
-    summary: "Medan: konversi turun 1,8 pts vs bulan lalu saat lead naik.",
-    detail:
-      "Waktu respons rata-rata naik ke 27 menit. Prioritaskan template WA otomatis +1 agen shift sore untuk menutup gap.",
-    metricLabel: "Δ konversi",
-    metricValue: "−1,8 pts",
+    closedSales: 198,
+    activeLeads: 165,
+    engagementScore: 71,
+    satisfactionPct: 86,
+    avgResponseMin: 31,
+    activeThreads: 142,
   },
 ];
 
 export const activityFeed: ActivityFeedItem[] = [
   {
     id: "a1",
-    kind: "transaction",
-    title: "Pelunasan paket",
-    description: "Keluarga Pratama · Ramadan Premium 1447H",
-    at: "2 menit lalu",
+    kind: "payment",
+    title: "Pembayaran lunas",
+    description: "Keluarga Pratama · Ramadan Premium 1447H · Jakarta Pusat",
+    at: "Baru saja",
     amountIdr: 186_500_000,
     meta: "Virtual account · terverifikasi",
   },
   {
     id: "a2",
-    kind: "lead_capture",
-    title: "Auto-capture dari IG Reels",
-    description: "12 lead baru dari kampanye #UmrohRamadan — 6 high intent",
-    at: "14 menit lalu",
-    meta: "Webhook Meta + skor AI",
+    kind: "lead",
+    title: "Lead baru · high intent",
+    description: "Budi Santoso · klik kalkulator DP + isi form singkat",
+    at: "3 menit lalu",
+    meta: "Skor AI 88 · sumber: Meta Lead Ads",
   },
   {
     id: "a3",
-    kind: "transaction",
-    title: "DP masuk",
-    description: "Yayasan Al-Ikhlas · cicilan tahap 2",
-    at: "32 menit lalu",
-    amountIdr: 420_000_000,
-    meta: "Transfer bank",
+    kind: "document",
+    title: "Dokumen visa lengkap",
+    description: "Batch Maret · 12 jamaah · upload paspor & vaksin",
+    at: "9 menit lalu",
+    meta: "Portal jamaah · cabang Surabaya",
   },
   {
     id: "a4",
-    kind: "lead_capture",
-    title: "Form portal · umroh reguler",
-    description: "8 lead dari landing page Bandung — sumber: Google Ads",
-    at: "1 jam lalu",
-    meta: "UTM: spring-promo-jabar",
+    kind: "booking",
+    title: "Booking dikonfirmasi",
+    description: "Yayasan Al-Ikhlas · 40 pax · kontrak digital ditandatangani",
+    at: "22 menit lalu",
+    meta: "Tim finance · Pusat",
   },
   {
     id: "a5",
-    kind: "update",
-    title: "Sinkronisasi CRM",
-    description: "Pipeline diselaraskan dengan WhatsApp Business — 42 kontak",
-    at: "2 jam lalu",
-    meta: "Sistem",
+    kind: "payment",
+    title: "DP masuk",
+    description: "Rina Kusuma · Private family 8 pax · tahap 1",
+    at: "38 menit lalu",
+    amountIdr: 84_000_000,
+    meta: "Transfer bank · auto-match",
   },
   {
     id: "a6",
-    kind: "transaction",
-    title: "Refund parsial",
-    description: "Pembatalan 1 pax · batch Maret (sesuai kebijakan)",
-    at: "3 jam lalu",
-    amountIdr: -12_750_000,
-    meta: "Finance disetujui",
+    kind: "lead",
+    title: "Lead portal",
+    description: "8 kontak dari landing Bandung · kampanye Google Ads",
+    at: "51 menit lalu",
+    meta: "UTM: spring-promo-jabar",
+  },
+  {
+    id: "a7",
+    kind: "document",
+    title: "Kontrak korporat diunggah",
+    description: "PT Sejahtera Bersama · legal review selesai",
+    at: "1 jam lalu",
+    meta: "Drive terenkripsi",
+  },
+  {
+    id: "a8",
+    kind: "booking",
+    title: "Slot maskapai di-hold",
+    description: "Keluarga Hidayat · Ekonomi Plus Maret · Garuda",
+    at: "1 jam lalu",
+    meta: "Ops · Jawa Barat",
   },
 ];
 

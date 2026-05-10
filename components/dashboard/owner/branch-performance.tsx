@@ -2,7 +2,12 @@
 
 import { motion } from "framer-motion";
 import type { BranchPerformanceMetrics } from "@/lib/dashboard/owner-dummy-data";
-import { BranchConversionChart, BranchLeadSalesChart } from "./branch-performance-charts";
+import {
+  BranchConversionChart,
+  BranchEngagementChart,
+  BranchPerformanceScoreChart,
+} from "./branch-performance-charts";
+import { BranchEngagementCards } from "./branch-engagement-cards";
 
 export function BranchPerformance({ data }: { data: BranchPerformanceMetrics[] }) {
   return (
@@ -16,7 +21,7 @@ export function BranchPerformance({ data }: { data: BranchPerformanceMetrics[] }
         <div>
           <h2 className="text-lg font-semibold tracking-tight text-emerald-50">Performa cabang</h2>
           <p className="mt-1 max-w-xl text-sm text-emerald-200/55">
-            Perbandingan konversi lead → kontrak dan volume lead aktif vs penutupan (jamaah) per entitas.
+            Perbandingan konversi dan skor performa komposit, plus metrik engagement operasional per entitas.
           </p>
         </div>
         <span className="mt-2 inline-flex w-fit rounded-full border border-emerald-400/20 bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-300/90 sm:mt-0">
@@ -38,14 +43,27 @@ export function BranchPerformance({ data }: { data: BranchPerformanceMetrics[] }
         <div>
           <div className="mb-3 flex flex-wrap items-center gap-2">
             <span className="text-xs font-semibold uppercase tracking-wider text-emerald-300/60">
-              Lead vs penjualan
+              Skor performa komposit
             </span>
             <span className="h-1 w-1 rounded-full bg-emerald-500/40" aria-hidden />
-            <span className="text-xs text-emerald-200/45">Pipeline aktif · jamaah closed</span>
+            <span className="text-xs text-emerald-200/45">Revenue + konversi + penutupan</span>
           </div>
-          <BranchLeadSalesChart data={data} />
+          <BranchPerformanceScoreChart data={data} />
         </div>
       </div>
+
+      <div className="mt-10">
+        <div className="mb-3 flex flex-wrap items-center gap-2">
+          <span className="text-xs font-semibold uppercase tracking-wider text-emerald-300/60">
+            Engagement & kepuasan
+          </span>
+          <span className="h-1 w-1 rounded-full bg-emerald-500/40" aria-hidden />
+          <span className="text-xs text-emerald-200/45">Skor engagement vs survei kepuasan jamaah</span>
+        </div>
+        <BranchEngagementChart data={data} />
+      </div>
+
+      <BranchEngagementCards branches={data} />
     </motion.section>
   );
 }

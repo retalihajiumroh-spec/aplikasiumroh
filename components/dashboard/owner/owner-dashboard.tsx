@@ -4,15 +4,8 @@ import { motion } from "framer-motion";
 import { KpiCard } from "./kpi-card";
 import { RevenueAnalytics } from "./revenue-analytics";
 import { BranchPerformance } from "./branch-performance";
-import { OwnerAiInsights } from "./owner-ai-insights";
 import { OwnerActivityFeed } from "./owner-activity-feed";
-import {
-  activityFeed,
-  aiInsights,
-  branchPerformance,
-  kpiData,
-  monthlyRevenueTrend,
-} from "@/lib/dashboard/owner-dummy-data";
+import { activityFeed, branchPerformance, kpiData, monthlyRevenueTrend } from "@/lib/dashboard/owner-dummy-data";
 
 export function OwnerDashboard() {
   return (
@@ -41,8 +34,8 @@ export function OwnerDashboard() {
               Owner dashboard
             </h1>
             <p className="mt-2 max-w-2xl text-sm leading-relaxed text-emerald-200/55 sm:text-base">
-              Ringkasan eksekutif: KPI bisnis, tren revenue & konversi, performa cabang, wawasan AI, dan
-              alur aktivitas terkini.
+              Pantau KPI utama, tren revenue & konversi, performa serta engagement cabang, dan aktivitas operasional
+              terbaru dalam satu layar eksekutif.
             </p>
           </div>
           <div className="flex flex-wrap gap-2">
@@ -65,7 +58,6 @@ export function OwnerDashboard() {
           <div className="space-y-8 xl:col-span-8">
             <RevenueAnalytics monthly={monthlyRevenueTrend} />
             <BranchPerformance data={branchPerformance} />
-            <OwnerAiInsights insights={aiInsights} />
           </div>
           <div className="space-y-8 xl:col-span-4">
             <OwnerActivityFeed items={activityFeed} />
