@@ -18,6 +18,7 @@ const links = [
   { href: "/dashboard/ai-ads", label: "AI Ads Lab" },
   { href: "/dashboard/optimization", label: "Optimization" },
   { href: "/dashboard/campaign", label: "Campaign & Broadcast" },
+  { href: "/dashboard/survey", label: "Survey & Feedback" },
 ] as const;
 
 export default function Home() {
