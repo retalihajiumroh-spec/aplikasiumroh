@@ -9,6 +9,7 @@ const links = [
   { href: "/dashboard/dokumen", label: "Dokumen & Visa" },
   { href: "/dashboard/inventory", label: "Inventory" },
   { href: "/dashboard/departure", label: "Departure" },
+  { href: "/dashboard/tl", label: "TL & Muthowif" },
   { href: "/dashboard/owner", label: "Owner Dashboard" },
   { href: "/dashboard/crm", label: "CRM & Leads" },
   { href: "/dashboard/reseller", label: "Reseller / Mitra" },
