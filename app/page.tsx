@@ -10,6 +10,7 @@ const links = [
   { href: "/dashboard/departure", label: "Departure" },
   { href: "/dashboard/owner", label: "Owner Dashboard" },
   { href: "/dashboard/crm", label: "CRM & Leads" },
+  { href: "/dashboard/reseller", label: "Reseller / Mitra" },
   { href: "/dashboard/ai-sales", label: "AI Sales Bot" },
   { href: "/dashboard/content-engine", label: "AI Content Engine" },
   { href: "/dashboard/ai-ads", label: "AI Ads Lab" },
