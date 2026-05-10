@@ -6,6 +6,7 @@ const links = [
   { href: "/dashboard/reports", label: "Reports" },
   { href: "/dashboard/tasks", label: "Tasks & Reminder" },
   { href: "/dashboard/approval", label: "Approval Center" },
+  { href: "/dashboard/settings", label: "Settings" },
   { href: "/dashboard/jamaah", label: "Jamaah" },
   { href: "/dashboard/jamaah-experience", label: "Jamaah Experience" },
   { href: "/dashboard/paket", label: "Paket Umroh" },
