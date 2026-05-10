@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CommunityOverview } from "@/components/community-overview";
+import { CommunityEngagement } from "@/components/community-engagement";
 import { communityEngagement, communityGrowth } from "@/lib/dashboard/premium-dashboard-data";
 
 export function CommunityDashboard() {
@@ -28,7 +28,7 @@ export function CommunityDashboard() {
           </p>
         </motion.header>
         <div className="mt-10">
-          <CommunityOverview segments={communityEngagement} growth={communityGrowth} />
+          <CommunityEngagement segments={communityEngagement} growth={communityGrowth} />
         </div>
       </div>
     </div>

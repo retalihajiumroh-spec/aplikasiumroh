@@ -3,10 +3,11 @@
 import { motion } from "framer-motion";
 import { ActivityFeed } from "@/components/activity-feed";
 import { AiInsightPanel } from "@/components/ai-insight";
+import { CommunityEngagement } from "@/components/community-engagement";
 import { AppFooter } from "@/components/footer";
 import { JamaahDataTable } from "@/components/jamaah-data-table";
 import { KpiCard } from "@/components/kpi-card";
-import { CommunityOverview } from "@/components/community-overview";
+import { LeadEngagementFeed } from "@/components/lead-engagement-feed";
 import { PerformanceChartsGrid } from "@/components/performance-chart";
 import {
   overviewActivity,
@@ -19,6 +20,7 @@ import {
   communityGrowth,
   dashboardJamaahRows,
   funnelInbound,
+  leadInteractionFeed,
   leadSourceMix,
 } from "@/lib/dashboard/premium-dashboard-data";
 
@@ -42,14 +44,14 @@ export function DashboardOverview() {
           className="border-b border-emerald-500/10 pb-8"
         >
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-200/75">SA&apos;YA Umroh OS</p>
-          <h1 className="mt-2 text-3xl font-semibold tracking-tight text-emerald-50 sm:text-4xl">Dashboard</h1>
-          <p className="mt-2 max-w-3xl text-sm leading-relaxed text-emerald-200/55 sm:text-base">
-            Ringkasan premium: KPI operasional, performa revenue & jamaah, funnel inbound, komunitas, aktivitas terkini,
-            dan data jamaah — siap untuk review eksekutif harian.
+          <h1 className="mt-2 text-3xl font-bold tracking-tight text-emerald-50 sm:text-4xl">Dashboard</h1>
+          <p className="mt-2 max-w-3xl text-sm leading-relaxed text-slate-400/90 sm:text-base">
+            KPI operasional, performa 6 bulan, funnel inbound dengan persentase, komunitas, aktivitas kasir, dan metrik
+            interaksi lead — tampilan premium siap presentasi.
           </p>
         </motion.header>
 
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
           {overviewKpis.map((item, index) => (
             <KpiCard key={item.label} item={item} index={index} />
           ))}
@@ -60,15 +62,16 @@ export function DashboardOverview() {
         </div>
 
         <div className="mt-10 grid gap-8 lg:grid-cols-12 lg:items-start">
-          <div className="lg:col-span-5">
+          <div className="space-y-8 lg:col-span-5">
             <ActivityFeed
               items={overviewActivity}
               title="Activity feed"
-              description="Lead baru, pembayaran, dokumen, dan booking — dengan transisi halus."
+              description="Pembayaran, lead kampanye, dokumen, dan booking — transisi halus."
             />
+            <LeadEngagementFeed items={leadInteractionFeed} />
           </div>
           <div className="lg:col-span-7">
-            <CommunityOverview segments={communityEngagement} growth={communityGrowth} />
+            <CommunityEngagement segments={communityEngagement} growth={communityGrowth} />
           </div>
         </div>
 

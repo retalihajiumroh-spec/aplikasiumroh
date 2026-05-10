@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { animate, motion, useMotionValue, useTransform } from "framer-motion";
+import { useEffect } from "react";
 import type { KpiCardItem, KpiTrend } from "@/lib/dashboard/kpi-card-item";
 
 function TrendIcon({ trend }: { trend: KpiTrend }) {
@@ -26,10 +27,23 @@ function TrendIcon({ trend }: { trend: KpiTrend }) {
   );
 }
 
+function AnimatedInteger({ value, className }: { value: number; className?: string }) {
+  const mv = useMotionValue(0);
+  const text = useTransform(mv, (v) => Math.round(v).toLocaleString("id-ID"));
+
+  useEffect(() => {
+    const c = animate(mv, value, { duration: 1.05, ease: [0.22, 1, 0.36, 1] });
+    return () => c.stop();
+  }, [mv, value]);
+
+  return <motion.span className={className}>{text}</motion.span>;
+}
+
 export function KpiCard({ item, index }: { item: KpiCardItem; index: number }) {
   const positive = item.trend === "up";
   const negative = item.trend === "down";
   const progress = item.progress;
+  const countUp = item.countUpTo;
 
   return (
     <motion.article
@@ -49,9 +63,13 @@ export function KpiCard({ item, index }: { item: KpiCardItem; index: number }) {
         whileHover={{ scale: 1.04 }}
         transition={{ type: "spring", stiffness: 400, damping: 18 }}
       >
-        {item.value}
+        {countUp !== undefined ? (
+          <AnimatedInteger value={countUp} className="inline-block min-h-[1.2em] tabular-nums" />
+        ) : (
+          item.value
+        )}
       </motion.p>
-      <p className="mt-1 text-sm text-emerald-200/50">{item.sublabel}</p>
+      <p className="mt-1 text-sm text-slate-400/90">{item.sublabel}</p>
       {progress !== undefined ? (
         <div className="mt-4">
           <div className="mb-1 flex justify-between text-[10px] font-medium uppercase tracking-wide text-emerald-500/50">

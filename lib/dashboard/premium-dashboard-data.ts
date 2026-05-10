@@ -17,15 +17,17 @@ export const funnelInbound: FunnelStage[] = [
 export interface LeadSourceRow {
   source: string;
   leads: number;
+  /** Share of all channel leads (%). */
+  pct: number;
 }
 
 export const leadSourceMix: LeadSourceRow[] = [
-  { source: "Instagram Ads", leads: 1284 },
-  { source: "Facebook Ads", leads: 942 },
-  { source: "WhatsApp Blast", leads: 718 },
-  { source: "Referral / Mitra", leads: 556 },
-  { source: "Website / SEO", leads: 412 },
-  { source: "Walk-in / Cabang", leads: 268 },
+  { source: "Instagram Ads", leads: 1284, pct: 30.7 },
+  { source: "Facebook Ads", leads: 942, pct: 22.5 },
+  { source: "WhatsApp Blast", leads: 718, pct: 17.2 },
+  { source: "Referral / Mitra", leads: 556, pct: 13.3 },
+  { source: "Website / SEO", leads: 412, pct: 9.9 },
+  { source: "Walk-in / Cabang", leads: 268, pct: 6.4 },
 ];
 
 export interface CommunitySegment {
@@ -37,8 +39,78 @@ export interface CommunitySegment {
 export const communityEngagement: CommunitySegment[] = [
   { name: "Engaged", value: 1842, fill: "rgba(52, 211, 153, 0.9)" },
   { name: "Active", value: 956, fill: "rgba(56, 189, 248, 0.85)" },
-  { name: "Silent", value: 412, fill: "rgba(148, 163, 184, 0.55)" },
+  { name: "Passive", value: 412, fill: "rgba(148, 163, 184, 0.55)" },
 ];
+
+/** Lead engagement pipeline (active vs total) for progress UI. */
+export const leadEngagementPipeline = {
+  activeLeads: 1284,
+  totalLeads: 3742,
+  label: "Lead aktif dalam sistem (30 hari)",
+} as const;
+
+export type LeadTemp = "hot" | "warm" | "cold";
+
+export interface LeadInteractionItem {
+  id: string;
+  title: string;
+  detail: string;
+  channel: string;
+  temp: LeadTemp;
+  at: string;
+}
+
+export const leadInteractionFeed: LeadInteractionItem[] = [
+  {
+    id: "li1",
+    title: "Lead baru",
+    detail: "Ayu Lestari · bertanya harga paket April",
+    channel: "Instagram Ads",
+    temp: "hot",
+    at: "2 menit lalu",
+  },
+  {
+    id: "li2",
+    title: "Balasan otomatis terbuka",
+    detail: "Keluarga Pratama · thread WA 6 pesan",
+    channel: "WhatsApp",
+    temp: "warm",
+    at: "6 menit lalu",
+  },
+  {
+    id: "li3",
+    title: "Lead dari kampanye lookalike",
+    detail: "Bambang S. · form website singkat",
+    channel: "Facebook Ads",
+    temp: "hot",
+    at: "14 menit lalu",
+  },
+  {
+    id: "li4",
+    title: "Skor dingin · follow-up",
+    detail: "Lina K. · tidak merespons 72 jam",
+    channel: "Email",
+    temp: "cold",
+    at: "32 menit lalu",
+  },
+  {
+    id: "li5",
+    title: "Lead organik IG story",
+    detail: "Zaki M. · swipe-up ke WhatsApp",
+    channel: "Instagram",
+    temp: "warm",
+    at: "51 menit lalu",
+  },
+];
+
+/** % of previous funnel stage (first stage = 100% of top). */
+export function funnelConversionPercents(stages: FunnelStage[]): { name: string; value: number; pctOfPrevious: number }[] {
+  return stages.map((s, i) => {
+    const prev = i === 0 ? s.value : stages[i - 1]!.value;
+    const pctOfPrevious = i === 0 ? 100 : Math.round((s.value / prev) * 1000) / 10;
+    return { name: s.name, value: s.value, pctOfPrevious };
+  });
+}
 
 export const communityGrowth = {
   daily: "+2,4%",

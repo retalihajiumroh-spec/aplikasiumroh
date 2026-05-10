@@ -12,6 +12,7 @@ const links = [
   { href: "/dashboard/jamaah-experience", label: "Jamaah Experience" },
   { href: "/dashboard/paket", label: "Paket Umroh" },
   { href: "/dashboard/booking", label: "Booking & Payment" },
+  { href: "/dashboard/pembayaran", label: "Pembayaran" },
   { href: "/dashboard/dokumen", label: "Dokumen & Visa" },
   { href: "/dashboard/inventory", label: "Inventory" },
   { href: "/dashboard/departure", label: "Departure" },
