@@ -53,6 +53,18 @@ export default function Home() {
         >
           Registrasi Mitra
         </Link>
+        <Link
+          href="/login/cabang"
+          className="font-medium text-amber-200/95 underline-offset-2 transition hover:text-amber-100 hover:underline"
+        >
+          Login Cabang (portal)
+        </Link>
+        <Link
+          href="/register/cabang"
+          className="font-medium text-amber-200/90 underline-offset-2 transition hover:text-amber-100 hover:underline"
+        >
+          Registrasi Cabang
+        </Link>
       </div>
       <nav className="flex max-w-md flex-col gap-3 sm:flex-row sm:flex-wrap sm:justify-center">
         {links.map((l) => (

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useCallback, useState, type FormEvent } from "react";
 
-export default function MitraLoginPage() {
+export default function CabangLoginPage() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -26,7 +26,7 @@ export default function MitraLoginPage() {
       setLoading(true);
       window.setTimeout(() => {
         setLoading(false);
-        void router.push("/dashboard/reseller");
+        void router.push("/dashboard");
       }, 450);
     },
     [email, password, router],
@@ -35,8 +35,8 @@ export default function MitraLoginPage() {
   return (
     <>
       <Head>
-        <title>Login Mitra | SA&apos;YA Umroh OS</title>
-        <meta name="description" content="Masuk ke portal mitra & reseller SA'YA Umroh OS." />
+        <title>Login Cabang | SA&apos;YA Umroh OS</title>
+        <meta name="description" content="Masuk ke portal operasional kantor cabang SA'YA Umroh OS." />
       </Head>
       <main className="flex min-h-dvh flex-col items-center justify-center px-4 py-12">
         <div
@@ -44,14 +44,14 @@ export default function MitraLoginPage() {
           aria-hidden
           style={{
             backgroundImage:
-              "radial-gradient(circle at 22% 0%, rgba(56, 189, 248, 0.12), transparent 42%), radial-gradient(circle at 82% 50%, rgba(52, 211, 153, 0.1), transparent 40%)",
+              "radial-gradient(circle at 20% 0%, rgba(251, 191, 36, 0.1), transparent 42%), radial-gradient(circle at 85% 50%, rgba(52, 211, 153, 0.1), transparent 40%)",
           }}
         />
 
-        <div className="glass-panel w-full max-w-md rounded-2xl border border-sky-500/20 p-6 shadow-2xl sm:p-8">
-          <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-sky-400/80">SA&apos;YA Umroh OS</p>
-          <h1 className="mt-3 text-center text-2xl font-semibold tracking-tight text-emerald-50">Login Mitra</h1>
-          <p className="mt-2 text-center text-sm text-emerald-200/55">Portal reseller &amp; mitra — komisi, materi, dan performa cabang Anda.</p>
+        <div className="glass-panel w-full max-w-md rounded-2xl border border-amber-400/25 p-6 shadow-2xl sm:p-8">
+          <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-amber-300/85">SA&apos;YA Umroh OS</p>
+          <h1 className="mt-3 text-center text-2xl font-semibold tracking-tight text-emerald-50">Login Cabang</h1>
+          <p className="mt-2 text-center text-sm text-emerald-200/55">Portal staf kantor cabang — jamaah, booking, dan laporan harian.</p>
 
           <form className="mt-8 space-y-4" onSubmit={handleSubmit} noValidate>
             <label className="block">
@@ -61,8 +61,8 @@ export default function MitraLoginPage() {
                 autoComplete="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="mt-2 w-full rounded-xl border border-emerald-500/15 bg-emerald-950/40 px-3 py-2.5 text-sm text-emerald-50 placeholder:text-emerald-600/45 focus:border-sky-400/40 focus:outline-none focus:ring-2 focus:ring-sky-500/20"
-                placeholder="mitra@perusahaan.id"
+                className="mt-2 w-full rounded-xl border border-emerald-500/15 bg-emerald-950/40 px-3 py-2.5 text-sm text-emerald-50 placeholder:text-emerald-600/45 focus:border-amber-400/45 focus:outline-none focus:ring-2 focus:ring-amber-500/20"
+                placeholder="staf.cabang@sayaumroh.id"
               />
             </label>
             <label className="block">
@@ -72,7 +72,7 @@ export default function MitraLoginPage() {
                 autoComplete="current-password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="mt-2 w-full rounded-xl border border-emerald-500/15 bg-emerald-950/40 px-3 py-2.5 text-sm text-emerald-50 placeholder:text-emerald-600/45 focus:border-sky-400/40 focus:outline-none focus:ring-2 focus:ring-sky-500/20"
+                className="mt-2 w-full rounded-xl border border-emerald-500/15 bg-emerald-950/40 px-3 py-2.5 text-sm text-emerald-50 placeholder:text-emerald-600/45 focus:border-amber-400/45 focus:outline-none focus:ring-2 focus:ring-amber-500/20"
                 placeholder="••••••••"
               />
             </label>
@@ -86,29 +86,29 @@ export default function MitraLoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full rounded-xl border border-sky-400/40 bg-gradient-to-r from-sky-500/20 to-emerald-600/15 py-2.5 text-sm font-semibold text-emerald-50 shadow-lg shadow-emerald-950/30 transition hover:border-sky-400/60 disabled:cursor-not-allowed disabled:opacity-50"
+              className="w-full rounded-xl border border-amber-400/45 bg-gradient-to-r from-amber-500/20 to-emerald-600/15 py-2.5 text-sm font-semibold text-emerald-50 shadow-lg shadow-emerald-950/30 transition hover:border-amber-400/65 disabled:cursor-not-allowed disabled:opacity-50"
             >
               {loading ? "Memproses…" : "Masuk"}
             </button>
           </form>
 
           <div className="mt-5 flex flex-col items-center gap-3 text-center text-sm">
-            <Link href="/forgot-password" className="text-sky-300/95 underline-offset-2 hover:text-sky-200 hover:underline">
+            <Link href="/forgot-password" className="text-amber-200/95 underline-offset-2 hover:text-amber-100 hover:underline">
               Lupa kata sandi?
             </Link>
             <p className="text-emerald-200/55">
-              Belum punya akun mitra?{" "}
+              Belum punya akun cabang?{" "}
               <Link
-                href="/register/mitra"
-                className="font-semibold text-sky-300 underline-offset-2 hover:text-sky-200 hover:underline"
+                href="/register/cabang"
+                className="font-semibold text-amber-200/95 underline-offset-2 hover:text-amber-100 hover:underline"
               >
-                Daftar mitra
+                Daftar cabang
               </Link>
             </p>
           </div>
 
           <p className="mt-8 border-t border-emerald-500/10 pt-6 text-center text-[11px] text-emerald-500/50">
-            Demo: setelah login Anda akan diarahkan ke Reseller / Mitra. Tidak ada autentikasi server.
+            Demo: setelah login Anda akan diarahkan ke Dashboard. Tidak ada autentikasi server.
           </p>
         </div>
 
@@ -116,8 +116,8 @@ export default function MitraLoginPage() {
           <Link href="/login" className="text-emerald-300/75 transition hover:text-emerald-200">
             Login Jamaah
           </Link>
-          <Link href="/login/cabang" className="text-amber-200/90 transition hover:text-amber-100">
-            Login Cabang
+          <Link href="/login/mitra" className="text-sky-300/80 transition hover:text-sky-200">
+            Login Mitra
           </Link>
           <Link href="/" className="text-emerald-300/75 transition hover:text-emerald-200">
             ← Hub
