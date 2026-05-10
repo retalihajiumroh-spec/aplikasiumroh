@@ -34,6 +34,12 @@ export default function Home() {
       <h1 className="text-2xl font-semibold tracking-tight text-emerald-100">
         SA&apos;YA Umroh OS
       </h1>
+      <Link
+        href="/login"
+        className="text-sm font-medium text-emerald-300/90 underline-offset-2 transition hover:text-emerald-200 hover:underline"
+      >
+        Login Jamaah (portal)
+      </Link>
       <nav className="flex max-w-md flex-col gap-3 sm:flex-row sm:flex-wrap sm:justify-center">
         {links.map((l) => (
           <Link
