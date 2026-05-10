@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 const links = [
   { href: "/dashboard", label: "Dashboard" },
@@ -33,37 +36,38 @@ const links = [
 export default function Home() {
   return (
     <main className="flex min-h-dvh flex-col items-center justify-center gap-8 p-8">
-      <h1 className="text-3xl font-bold tracking-tight text-white">
-        SA&apos;YA Umroh OS
-      </h1>
+      <div className="flex w-full max-w-4xl flex-wrap items-center justify-between gap-4">
+        <h1 className="text-3xl font-bold tracking-tight text-white light:text-slate-900">SA&apos;YA Umroh OS</h1>
+        <ThemeToggle variant="pill" />
+      </div>
       <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm">
         <Link
           href="/login"
-          className="font-medium text-purple-300/90 underline-offset-2 transition hover:text-purple-200 hover:underline"
+          className="font-medium text-purple-300/90 underline-offset-2 transition hover:text-purple-200 hover:underline light:text-[#6A1B9A] light:hover:text-[#4a148c]"
         >
           Login Jamaah (portal)
         </Link>
         <Link
           href="/login/mitra"
-          className="font-medium text-sky-300/95 underline-offset-2 transition hover:text-sky-200 hover:underline"
+          className="font-medium text-sky-300/95 underline-offset-2 transition hover:text-sky-200 hover:underline light:text-sky-700 light:hover:text-sky-900"
         >
           Login Mitra (portal)
         </Link>
         <Link
           href="/register/mitra"
-          className="font-medium text-sky-300/85 underline-offset-2 transition hover:text-sky-200 hover:underline"
+          className="font-medium text-sky-300/85 underline-offset-2 transition hover:text-sky-200 hover:underline light:text-sky-600 light:hover:text-sky-800"
         >
           Registrasi Mitra
         </Link>
         <Link
           href="/login/cabang"
-          className="font-medium text-violet-200/95 underline-offset-2 transition hover:text-violet-100 hover:underline"
+          className="font-medium text-violet-200/95 underline-offset-2 transition hover:text-violet-100 hover:underline light:text-violet-800 light:hover:text-violet-950"
         >
           Login Cabang (portal)
         </Link>
         <Link
           href="/register/cabang"
-          className="font-medium text-violet-200/90 underline-offset-2 transition hover:text-violet-100 hover:underline"
+          className="font-medium text-violet-200/90 underline-offset-2 transition hover:text-violet-100 hover:underline light:text-violet-700 light:hover:text-violet-900"
         >
           Registrasi Cabang
         </Link>
@@ -73,7 +77,7 @@ export default function Home() {
           <Link
             key={l.href}
             href={l.href}
-            className="rounded-xl border border-[#6A1B9A]/40 bg-gradient-to-br from-[#6A1B9A]/25 to-[#2C3E50]/40 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-[#E6E6FA]/35 hover:from-[#6A1B9A]/35"
+            className="rounded-xl border border-[#6A1B9A]/40 bg-gradient-to-br from-[#6A1B9A]/25 to-[#2C3E50]/40 px-6 py-3 text-center text-sm font-semibold text-white transition hover:border-[#E6E6FA]/35 hover:from-[#6A1B9A]/35 light:border-[#6A1B9A]/35 light:from-[#6A1B9A]/12 light:to-slate-100 light:text-slate-900 light:hover:border-[#6A1B9A]/50 light:hover:from-[#6A1B9A]/18"
           >
             {l.label}
           </Link>

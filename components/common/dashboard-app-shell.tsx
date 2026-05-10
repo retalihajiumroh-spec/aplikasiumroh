@@ -10,7 +10,7 @@ export function DashboardAppShell({ children, user }: { children: ReactNode; use
       <Sidebar user={user} />
       <div className="flex min-w-0 flex-1 flex-col">
         <Topbar user={user} />
-        <main className="relative flex-1 overflow-x-hidden">{children}</main>
+        <main className="relative flex-1 overflow-x-hidden light:bg-[#faf7ff]">{children}</main>
       </div>
     </div>
   );
