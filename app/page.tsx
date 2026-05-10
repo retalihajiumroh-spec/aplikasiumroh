@@ -5,6 +5,7 @@ const links = [
   { href: "/dashboard/crm", label: "CRM Pipeline" },
   { href: "/dashboard/ai-sales", label: "AI Sales Bot" },
   { href: "/dashboard/content-engine", label: "AI Content Engine" },
+  { href: "/dashboard/ai-ads", label: "AI Ads Lab" },
 ] as const;
 
 export default function Home() {
