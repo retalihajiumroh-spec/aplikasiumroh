@@ -27,7 +27,15 @@ function MediaPreview({ ad }: { ad: AdCreative }) {
   );
 }
 
-function AdSetColumn({ pack, index }: { pack: AdSetPack; index: number }) {
+function AdSetColumn({
+  pack,
+  index,
+  audienceDisplay,
+}: {
+  pack: AdSetPack;
+  index: number;
+  audienceDisplay: string;
+}) {
   const targeted = pack.kind === "targeted";
   return (
     <motion.div
@@ -46,7 +54,7 @@ function AdSetColumn({ pack, index }: { pack: AdSetPack; index: number }) {
             {targeted ? "Targeted" : "Broad"}
           </span>
           <h3 className="mt-3 text-base font-semibold text-emerald-50">{pack.title}</h3>
-          <p className="mt-1 text-xs leading-relaxed text-emerald-200/50">{pack.audienceSummary}</p>
+          <p className="mt-1 text-xs leading-relaxed text-emerald-200/50">{audienceDisplay}</p>
         </div>
         <span className="rounded-full border border-white/10 bg-white/[0.04] px-2 py-1 font-mono text-[11px] text-emerald-300/70">
           3 ads
@@ -80,7 +88,15 @@ function AdSetColumn({ pack, index }: { pack: AdSetPack; index: number }) {
   );
 }
 
-export function AdsetGeneration({ packs }: { packs: AdSetPack[] }) {
+export function AdsetGeneration({
+  packs,
+  audienceBroad,
+  audienceTargeted,
+}: {
+  packs: AdSetPack[];
+  audienceBroad: string;
+  audienceTargeted: string;
+}) {
   return (
     <motion.section
       initial={{ opacity: 0, y: 18 }}
@@ -90,16 +106,21 @@ export function AdsetGeneration({ packs }: { packs: AdSetPack[] }) {
     >
       <div className="flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <h2 className="text-lg font-semibold text-emerald-50">Ads set generation</h2>
+          <h2 className="text-lg font-semibold text-emerald-50">Pratinjau struktur adset</h2>
           <p className="mt-1 max-w-2xl text-sm text-emerald-200/55">
-            Dua struktur adset: jangkauan luas untuk awareness, dan targeting ketat untuk konversi — masing-masing
-            dengan tiga variasi kreatif (copy + CTA + pratinjau media).
+            Broad &amp; Targeted — masing-masing tiga variasi kreatif (copy + CTA + pratinjau media). Ringkasan audiensi
+            mengikuti input di atas.
           </p>
         </div>
       </div>
       <div className="grid gap-6 lg:grid-cols-2">
         {packs.map((pack, index) => (
-          <AdSetColumn key={pack.id} pack={pack} index={index} />
+          <AdSetColumn
+            key={pack.id}
+            pack={pack}
+            index={index}
+            audienceDisplay={pack.kind === "broad" ? audienceBroad : audienceTargeted}
+          />
         ))}
       </div>
     </motion.section>

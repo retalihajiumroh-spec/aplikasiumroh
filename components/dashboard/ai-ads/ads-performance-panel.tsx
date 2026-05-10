@@ -47,9 +47,9 @@ export function AdsPerformancePanel({
     >
       <div className="flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <h2 className="text-lg font-semibold text-emerald-50">Performance dashboard</h2>
+          <h2 className="text-lg font-semibold text-emerald-50">Performance analytics</h2>
           <p className="mt-1 text-sm text-emerald-200/55">
-            Estimasi agregat kampanye demo: CTR, CPL, ROI — kontrol skala / jeda per kreatif (status lokal).
+            CTR, CPL, dan ROI agregat plus detail per kreatif — kontrol skala / jeda (status lokal, demo).
           </p>
         </div>
         <span className="mt-2 inline-flex w-fit items-center rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-[11px] text-emerald-300/70 sm:mt-0">

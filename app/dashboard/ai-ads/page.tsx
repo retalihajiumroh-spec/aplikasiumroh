@@ -3,7 +3,7 @@ import { AiAdsLabDashboard } from "@/components/dashboard/ai-ads/ai-ads-lab-dash
 
 export const metadata: Metadata = {
   title: "AI Ads Lab | SA'YA Umroh OS",
-  description: "AI-powered ad content, ad set generation, and performance controls for Umroh travel marketing.",
+  description: "AI Ads Lab — Broad and Targeted adset creation with CTR, CPL, and ROI performance analytics.",
 };
 
 export default function AiAdsLabPage() {

@@ -4,6 +4,7 @@ import { useCallback, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { AdsContentInput } from "./ads-content-input";
 import { AdsContentOutput } from "./ads-content-output";
+import { AdsetCreationPanel } from "./adset-creation-panel";
 import { AdsetGeneration } from "./adset-generation";
 import { AdsPerformancePanel } from "./ads-performance-panel";
 import {
@@ -20,6 +21,9 @@ export function AiAdsLabDashboard() {
   );
   const [loading, setLoading] = useState(false);
   const [ready, setReady] = useState(false);
+
+  const [broadAudience, setBroadAudience] = useState(demoAdSets[0]?.audienceSummary ?? "");
+  const [targetedAudience, setTargetedAudience] = useState(demoAdSets[1]?.audienceSummary ?? "");
 
   const handleGenerate = useCallback(() => {
     setLoading(true);
@@ -52,71 +56,73 @@ export function AiAdsLabDashboard() {
           </p>
           <h1 className="mt-2 text-3xl font-semibold tracking-tight text-emerald-50 sm:text-4xl">AI Ads Lab</h1>
           <p className="mt-2 max-w-2xl text-sm leading-relaxed text-emerald-200/55 sm:text-base">
-            Laboratorium iklan berbasis AI: dari referensi sosial dan brief, hasilkan copy, struktur adset broad vs
-            targeted, pratinjau kreatif, dan dasbor performa simulasi dengan kontrol scale / pause.
+            Buat pasangan adset <strong className="text-emerald-200/85">Broad</strong> &amp;{" "}
+            <strong className="text-emerald-200/85">Targeted</strong>, pantau{" "}
+            <strong className="text-emerald-200/85">CTR, CPL, ROI</strong>, lalu generate materi kampanye dari referensi
+            sosial (opsional).
           </p>
         </motion.header>
 
-        <div className="mt-10 grid gap-8 lg:grid-cols-2 lg:items-start">
-          <AdsContentInput
-            socialUrl={socialUrl}
-            onSocialUrlChange={setSocialUrl}
-            ideaText={ideaText}
-            onIdeaChange={setIdeaText}
-            onGenerate={handleGenerate}
-            loading={loading}
-          />
-
-          <div className="min-h-[200px]">
-            <AnimatePresence mode="wait">
-              {!ready ? (
-                <motion.div
-                  key="ph"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0, y: -6 }}
-                  className="glass-panel flex min-h-[360px] flex-col items-center justify-center rounded-2xl border border-dashed border-emerald-500/20 p-8 text-center"
-                >
-                  <div className="rounded-2xl border border-emerald-400/20 bg-emerald-500/10 p-4">
-                    <svg className="text-emerald-300/90" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden>
-                      <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-                    </svg>
-                  </div>
-                  <p className="mt-5 max-w-xs text-sm font-medium text-emerald-100/90">Siap generate kampanye?</p>
-                  <p className="mt-2 max-w-sm text-xs leading-relaxed text-emerald-200/45">
-                    Isi tautan referensi & brief, lalu ketuk <span className="text-emerald-300/80">Generate ads lab</span>{" "}
-                    untuk melihat output konten, pasangan adset broad/targeted (3 iklan masing-masing), dan metrik
-                    performa demo.
-                  </p>
-                </motion.div>
-              ) : (
-                <motion.div
-                  key="out"
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4 }}
-                >
-                  <AdsContentOutput data={demoGeneratedContent} />
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
+        <div className="mt-10">
+          <AdsPerformancePanel summary={demoPerformanceSummary} rows={demoPerformanceRows} />
         </div>
 
-        <AnimatePresence>
-          {ready ? (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.45 }}
-              className="mt-10 space-y-10"
-            >
-              <AdsetGeneration packs={demoAdSets} />
-              <AdsPerformancePanel summary={demoPerformanceSummary} rows={demoPerformanceRows} />
-            </motion.div>
-          ) : null}
-        </AnimatePresence>
+        <div className="mt-10 space-y-8">
+          <AdsetCreationPanel
+            broadAudience={broadAudience}
+            targetedAudience={targetedAudience}
+            onBroadChange={setBroadAudience}
+            onTargetedChange={setTargetedAudience}
+          />
+          <AdsetGeneration packs={demoAdSets} audienceBroad={broadAudience} audienceTargeted={targetedAudience} />
+        </div>
+
+        <div className="mt-12 border-t border-emerald-500/10 pt-10">
+          <p className="text-xs font-semibold uppercase tracking-wider text-emerald-400/60">Konten kampanye</p>
+          <h2 className="mt-1 text-lg font-semibold text-emerald-50">Referensi &amp; materi iklan</h2>
+          <p className="mt-1 text-sm text-emerald-200/55">
+            Opsional: tautan Reels/TikTok + brief untuk caption, skrip, dan CTA setelah generate.
+          </p>
+
+          <div className="mt-8 grid gap-8 lg:grid-cols-2 lg:items-start">
+            <AdsContentInput
+              socialUrl={socialUrl}
+              onSocialUrlChange={setSocialUrl}
+              ideaText={ideaText}
+              onIdeaChange={setIdeaText}
+              onGenerate={handleGenerate}
+              loading={loading}
+            />
+
+            <div className="min-h-[200px]">
+              <AnimatePresence mode="wait">
+                {!ready ? (
+                  <motion.div
+                    key="ph"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0, y: -6 }}
+                    className="glass-panel flex min-h-[360px] flex-col items-center justify-center rounded-2xl border border-dashed border-emerald-500/20 p-8 text-center"
+                  >
+                    <p className="text-sm font-medium text-emerald-100/90">Pratinjau konten</p>
+                    <p className="mt-2 max-w-sm text-xs leading-relaxed text-emerald-200/45">
+                      Ketuk <span className="text-emerald-300/80">Generate ads lab</span> untuk caption, hashtag, skrip iklan, dan CTA (demo).
+                    </p>
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="out"
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4 }}
+                  >
+                    <AdsContentOutput data={demoGeneratedContent} />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
