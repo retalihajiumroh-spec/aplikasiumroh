@@ -6,6 +6,7 @@ const links = [
   { href: "/dashboard/paket", label: "Paket Umroh" },
   { href: "/dashboard/booking", label: "Booking & Payment" },
   { href: "/dashboard/dokumen", label: "Dokumen & Visa" },
+  { href: "/dashboard/inventory", label: "Inventory" },
   { href: "/dashboard/owner", label: "Owner Dashboard" },
   { href: "/dashboard/crm", label: "CRM Pipeline" },
   { href: "/dashboard/ai-sales", label: "AI Sales Bot" },
