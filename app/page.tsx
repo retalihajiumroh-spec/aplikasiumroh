@@ -16,6 +16,7 @@ const links = [
   { href: "/dashboard/content-engine", label: "AI Content Engine" },
   { href: "/dashboard/ai-ads", label: "AI Ads Lab" },
   { href: "/dashboard/optimization", label: "Optimization" },
+  { href: "/dashboard/campaign", label: "Campaign & Broadcast" },
 ] as const;
 
 export default function Home() {
