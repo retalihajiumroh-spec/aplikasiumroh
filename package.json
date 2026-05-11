@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --hostname localhost",
     "dev:lan": "next dev --hostname 0.0.0.0",
-    "dev:3080": "next dev --port 3080",
+    "dev:3080": "next dev --hostname localhost --port 3080",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
