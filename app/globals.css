@@ -26,6 +26,11 @@
   --color-owner-accent-dim: var(--color-saya-maroon);
   --color-owner-glass-border: var(--color-saya-glass-border);
   --color-owner-glass-highlight: var(--color-saya-glass-highlight);
+
+  --color-social-maroon: #800020;
+  --color-social-maroon-hover: #660019;
+  --color-social-maroon-soft: rgba(128, 0, 32, 0.22);
+  --color-social-maroon-border: rgba(128, 0, 32, 0.45);
 }
 
 @layer base {

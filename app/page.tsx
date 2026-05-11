@@ -31,6 +31,7 @@ const links = [
   { href: "/dashboard/optimization", label: "Optimization" },
   { href: "/dashboard/campaign", label: "Campaign & Broadcast" },
   { href: "/dashboard/survey", label: "Survey & Feedback" },
+  { href: "/dashboard/social-media", label: "Social Media Hub" },
 ] as const;
 
 export default function Home() {
