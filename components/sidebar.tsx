@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ChevronUp, LogOut, Menu, Settings, UserRound, X } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { getSupabaseBrowser } from "@/lib/supabase/browser";
-import { brandMark, dashboardNavItems } from "@/lib/navigation/dashboard-nav";
+import { brandMark, getDashboardNavItemsForRole } from "@/lib/navigation/dashboard-nav";
 
 export type ShellUser = {
   displayName: string;
@@ -62,7 +62,7 @@ export function Sidebar({ user }: { user: ShellUser }) {
 
   const nav = (
     <nav className="flex flex-1 flex-col gap-0.5 overflow-y-auto px-3 py-4" aria-label="Navigasi utama">
-      {dashboardNavItems.map((item, i) => {
+      {getDashboardNavItemsForRole(user.role).map((item, i) => {
         const active =
           item.href === "/dashboard"
             ? pathname === "/dashboard" || pathname === "/dashboard/"

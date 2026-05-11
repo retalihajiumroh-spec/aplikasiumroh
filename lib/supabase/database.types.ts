@@ -1,6 +1,6 @@
 /** Minimal Supabase types for typed queries — extend after `supabase gen types`. */
 
-export type AppRole = "jamaah" | "mitra" | "cabang" | "owner";
+export type AppRole = "owner" | "admin_head_office" | "cabang" | "mitra" | "jamaah_free" | "jamaah_pro" | "jamaah";
 
 export interface Database {
   public: {

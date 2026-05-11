@@ -2,6 +2,7 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 import { getSupabaseBrowser } from "@/lib/supabase/browser";
 import type { AppRole } from "@/lib/supabase/database.types";
 import { dashboardPathForRole } from "@/lib/auth/dashboard-routes";
+import { normalizeRole, roleLabel } from "@/lib/auth/role-access";
 
 export async function fetchProfileRole(client: SupabaseClient): Promise<AppRole | null> {
   const {
@@ -22,6 +23,7 @@ export async function signInWithRoleRedirect(
   email: string,
   password: string,
   demoRedirectTo: string,
+  expectedRoles?: AppRole[],
 ): Promise<SignInResult> {
   const sb = getSupabaseBrowser();
   if (!sb) {
@@ -31,8 +33,21 @@ export async function signInWithRoleRedirect(
   if (error) {
     return { kind: "live", error: error.message };
   }
-  const role = await fetchProfileRole(sb);
-  return { kind: "live", redirectTo: dashboardPathForRole(role ?? "jamaah") };
+  const rawRole = await fetchProfileRole(sb);
+  const role = normalizeRole(rawRole ?? "jamaah_free");
+
+  if (expectedRoles?.length) {
+    const allowed = expectedRoles.map((r) => normalizeRole(r));
+    if (!allowed.includes(role)) {
+      await sb.auth.signOut();
+      return {
+        kind: "live",
+        error: `Akun ini terdaftar sebagai ${roleLabel(role)}, bukan untuk portal ini.`,
+      };
+    }
+  }
+
+  return { kind: "live", redirectTo: dashboardPathForRole(role) };
 }
 
 export type SignUpResult =

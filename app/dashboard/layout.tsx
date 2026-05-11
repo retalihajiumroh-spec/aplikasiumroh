@@ -4,11 +4,12 @@ import type { ShellUser } from "@/components/sidebar";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import type { AppRole } from "@/lib/supabase/database.types";
+import { normalizeRole, roleLabel } from "@/lib/auth/role-access";
 
 const demoUser: ShellUser = {
-  displayName: "Admin Demo",
+  displayName: "Owner Demo",
   email: "demo@sayaumroh.id",
-  role: "owner",
+  role: roleLabel("owner"),
 };
 
 export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
@@ -38,7 +39,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
   const role: AppRole =
     profile && typeof profile === "object" && "role" in profile && typeof (profile as { role: string }).role === "string"
       ? ((profile as { role: AppRole }).role as AppRole)
-      : "jamaah";
+      : "jamaah_free";
 
   const fullName =
     profile && typeof profile === "object" && "full_name" in profile && typeof (profile as { full_name: string | null }).full_name === "string"
@@ -48,7 +49,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
   const shellUser: ShellUser = {
     displayName: fullName?.trim() || user.email?.split("@")[0] || "Pengguna",
     email: user.email,
-    role,
+    role: roleLabel(normalizeRole(role)),
   };
 
   return <DashboardAppShell user={shellUser}>{children}</DashboardAppShell>;
