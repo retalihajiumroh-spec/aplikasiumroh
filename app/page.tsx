@@ -46,7 +46,25 @@ export default function Home() {
           href="/login"
           className="font-medium text-zinc-300 underline-offset-2 transition hover:text-white hover:underline light:text-zinc-700 light:hover:text-zinc-950"
         >
-          Login Jamaah (portal)
+          Hub Login Role
+        </Link>
+        <Link
+          href="/login/jamaah-free"
+          className="font-medium text-zinc-300 underline-offset-2 transition hover:text-white hover:underline light:text-zinc-700 light:hover:text-zinc-950"
+        >
+          Login Jamaah Free
+        </Link>
+        <Link
+          href="/login/jamaah-pro"
+          className="font-medium text-zinc-300 underline-offset-2 transition hover:text-white hover:underline light:text-zinc-700 light:hover:text-zinc-950"
+        >
+          Login Jamaah Pro
+        </Link>
+        <Link
+          href="/login/head-office"
+          className="font-medium text-zinc-300 underline-offset-2 transition hover:text-white hover:underline light:text-zinc-700 light:hover:text-zinc-950"
+        >
+          Login Owner/Admin HO
         </Link>
         <Link
           href="/login/mitra"

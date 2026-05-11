@@ -42,7 +42,7 @@ export default function JamaahRegisterPage() {
       setLoading(true);
       try {
         const res = await signUpWithMetadata(em, password, {
-          role: "jamaah",
+          role: "jamaah_free",
           full_name: n,
           phone: ph,
         });
