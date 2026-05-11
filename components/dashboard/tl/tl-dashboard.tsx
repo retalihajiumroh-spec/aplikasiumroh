@@ -8,10 +8,10 @@ import { muthowifRanking, tlRanking, type RankedLeader } from "@/lib/tl/dummy-da
 import { AssignTlModal } from "@/components/dashboard/departure/assign-tl-modal";
 
 function rankAccent(rank: number) {
-  if (rank === 1) return "from-amber-400/25 via-amber-500/10 to-emerald-950/30 border-amber-400/30";
-  if (rank === 2) return "from-slate-300/20 via-slate-400/8 to-emerald-950/30 border-slate-400/25";
-  if (rank === 3) return "from-orange-400/18 via-orange-600/8 to-emerald-950/30 border-orange-400/25";
-  return "from-emerald-500/8 to-emerald-950/25 border-emerald-500/12";
+  if (rank === 1) return "from-violet-400/25 via-violet-500/10 to-purple-950/30 border-violet-400/30";
+  if (rank === 2) return "from-slate-300/20 via-slate-400/8 to-purple-950/30 border-slate-400/25";
+  if (rank === 3) return "from-orange-400/18 via-orange-600/8 to-purple-950/30 border-orange-400/25";
+  return "from-purple-500/8 to-purple-950/25 border-purple-500/12";
 }
 
 function RankCard({ person, delay }: { person: RankedLeader; delay: number }) {
@@ -25,20 +25,20 @@ function RankCard({ person, delay }: { person: RankedLeader; delay: number }) {
       <div className="flex items-start gap-3">
         <div
           className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border font-mono text-lg font-bold ${
-            person.rank <= 3 ? "border-white/15 bg-white/10 text-emerald-50" : "border-emerald-500/20 bg-emerald-950/40 text-emerald-200/90"
+            person.rank <= 3 ? "border-white/15 bg-white/10 text-purple-50" : "border-purple-500/20 bg-purple-950/40 text-purple-200/90"
           }`}
           aria-hidden
         >
           #{person.rank}
         </div>
         <div className="min-w-0 flex-1">
-          <h3 className="font-semibold leading-snug text-emerald-50">{person.name}</h3>
-          <p className="mt-1 text-xs text-emerald-200/50">{person.branch}</p>
-          <p className="mt-2 text-xs leading-relaxed text-emerald-200/65">{person.highlight}</p>
+          <h3 className="font-semibold leading-snug text-purple-50">{person.name}</h3>
+          <p className="mt-1 text-xs text-purple-200/50">{person.branch}</p>
+          <p className="mt-2 text-xs leading-relaxed text-purple-200/65">{person.highlight}</p>
         </div>
         <div className="shrink-0 text-right">
-          <p className="font-mono text-xl font-semibold tabular-nums text-emerald-100">{person.score}</p>
-          <p className="text-[10px] font-medium uppercase tracking-wider text-emerald-400/55">Skor</p>
+          <p className="font-mono text-xl font-semibold tabular-nums text-purple-100">{person.score}</p>
+          <p className="text-[10px] font-medium uppercase tracking-wider text-purple-400/55">Skor</p>
         </div>
       </div>
     </motion.article>
@@ -65,7 +65,7 @@ export function TlDashboard() {
         aria-hidden
         style={{
           backgroundImage:
-            "radial-gradient(circle at 18% 0%, rgba(52, 211, 153, 0.12), transparent 42%), radial-gradient(circle at 88% 45%, rgba(251, 191, 36, 0.06), transparent 40%)",
+            "radial-gradient(circle at 18% 0%, rgba(156, 77, 204, 0.12), transparent 42%), radial-gradient(circle at 88% 45%, rgba(230, 230, 250, 0.06), transparent 40%)",
         }}
       />
 
@@ -73,18 +73,18 @@ export function TlDashboard() {
         <motion.header
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
-          className="flex flex-col gap-4 border-b border-emerald-500/10 pb-8 sm:flex-row sm:items-end sm:justify-between"
+          className="flex flex-col gap-4 border-b border-purple-500/10 pb-8 sm:flex-row sm:items-end sm:justify-between"
         >
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400/70">SA&apos;YA Umroh OS</p>
-            <h1 className="mt-2 text-3xl font-semibold tracking-tight text-emerald-50 sm:text-4xl">TL &amp; Muthowif</h1>
-            <p className="mt-2 max-w-2xl text-sm text-emerald-200/55 sm:text-base">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-purple-400/70">SA&apos;YA Umroh OS</p>
+            <h1 className="mt-2 text-3xl font-semibold tracking-tight text-purple-50 sm:text-4xl">TL &amp; Muthowif</h1>
+            <p className="mt-2 max-w-2xl text-sm text-purple-200/55 sm:text-base">
               Peringkat kinerja tour leader dan muthowif, serta penugasan TL ke jadwal keberangkatan (demo lokal).
             </p>
           </div>
           <Link
             href="/"
-            className="inline-flex w-fit rounded-xl border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-emerald-200/80 transition hover:border-emerald-400/25 hover:bg-emerald-500/10"
+            className="inline-flex w-fit rounded-xl border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-purple-200/80 transition hover:border-purple-400/25 hover:bg-purple-500/10"
           >
             ← Hub
           </Link>
@@ -92,12 +92,12 @@ export function TlDashboard() {
 
         <div className="mt-10 grid gap-8 lg:grid-cols-2">
           <section>
-            <div className="mb-4 flex items-end justify-between gap-2 border-b border-emerald-500/10 pb-3">
+            <div className="mb-4 flex items-end justify-between gap-2 border-b border-purple-500/10 pb-3">
               <div>
-                <h2 className="text-lg font-semibold text-emerald-50">Ranking Tour Leader</h2>
-                <p className="mt-0.5 text-xs text-emerald-200/50">Periode rolling 90 hari · skor komposit internal.</p>
+                <h2 className="text-lg font-semibold text-purple-50">Ranking Tour Leader</h2>
+                <p className="mt-0.5 text-xs text-purple-200/50">Periode rolling 90 hari · skor komposit internal.</p>
               </div>
-              <span className="rounded-lg border border-emerald-500/15 bg-emerald-950/40 px-2 py-1 font-mono text-[10px] text-emerald-300/80">Top 5</span>
+              <span className="rounded-lg border border-purple-500/15 bg-purple-950/40 px-2 py-1 font-mono text-[10px] text-purple-300/80">Top 5</span>
             </div>
             <div className="space-y-3">
               {tlRanking.map((p, i) => (
@@ -107,12 +107,12 @@ export function TlDashboard() {
           </section>
 
           <section>
-            <div className="mb-4 flex items-end justify-between gap-2 border-b border-emerald-500/10 pb-3">
+            <div className="mb-4 flex items-end justify-between gap-2 border-b border-purple-500/10 pb-3">
               <div>
-                <h2 className="text-lg font-semibold text-emerald-50">Ranking Muthowif</h2>
-                <p className="mt-0.5 text-xs text-emerald-200/50">Materi manasik, kehadiran, &amp; umpan balik jamaah.</p>
+                <h2 className="text-lg font-semibold text-purple-50">Ranking Muthowif</h2>
+                <p className="mt-0.5 text-xs text-purple-200/50">Materi manasik, kehadiran, &amp; umpan balik jamaah.</p>
               </div>
-              <span className="rounded-lg border border-emerald-500/15 bg-emerald-950/40 px-2 py-1 font-mono text-[10px] text-emerald-300/80">Top 5</span>
+              <span className="rounded-lg border border-purple-500/15 bg-purple-950/40 px-2 py-1 font-mono text-[10px] text-purple-300/80">Top 5</span>
             </div>
             <div className="space-y-3">
               {muthowifRanking.map((p, i) => (
@@ -123,9 +123,9 @@ export function TlDashboard() {
         </div>
 
         <section className="mt-12">
-          <div className="mb-4 border-b border-emerald-500/10 pb-3">
-            <h2 className="text-lg font-semibold text-emerald-50">Penugasan Team Leader</h2>
-            <p className="mt-1 text-sm text-emerald-200/50">
+          <div className="mb-4 border-b border-purple-500/10 pb-3">
+            <h2 className="text-lg font-semibold text-purple-50">Penugasan Team Leader</h2>
+            <p className="mt-1 text-sm text-purple-200/50">
               Pilih keberangkatan lalu tetapkan TL dari daftar kandidat — tersinkron lokal dengan halaman Departure (data demo).
             </p>
           </div>
@@ -137,23 +137,23 @@ export function TlDashboard() {
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.05 + i * 0.04 }}
-                className="glass-panel flex flex-col gap-4 rounded-2xl border border-emerald-500/10 p-4 sm:flex-row sm:items-center sm:justify-between sm:p-5"
+                className="glass-panel flex flex-col gap-4 rounded-2xl border border-purple-500/10 p-4 sm:flex-row sm:items-center sm:justify-between sm:p-5"
               >
                 <div className="min-w-0">
-                  <p className="font-mono text-xs font-semibold text-emerald-300/75">{row.code}</p>
-                  <h3 className="mt-0.5 text-base font-semibold text-emerald-50">{row.packageName}</h3>
-                  <p className="mt-1 text-sm text-emerald-200/50">{row.departureLabel}</p>
+                  <p className="font-mono text-xs font-semibold text-purple-300/75">{row.code}</p>
+                  <h3 className="mt-0.5 text-base font-semibold text-purple-50">{row.packageName}</h3>
+                  <p className="mt-1 text-sm text-purple-200/50">{row.departureLabel}</p>
                 </div>
                 <div className="flex shrink-0 flex-col items-stretch gap-2 sm:min-w-[200px] sm:items-end">
                   {row.tlName ? (
-                    <div className="rounded-xl border border-emerald-400/25 bg-emerald-500/10 px-3 py-2 text-right">
-                      <p className="text-[10px] font-bold uppercase tracking-wide text-emerald-400/70">TL aktif</p>
-                      <p className="text-sm font-medium text-emerald-50">{row.tlName}</p>
+                    <div className="rounded-xl border border-purple-400/25 bg-purple-500/10 px-3 py-2 text-right">
+                      <p className="text-[10px] font-bold uppercase tracking-wide text-purple-400/70">TL aktif</p>
+                      <p className="text-sm font-medium text-purple-50">{row.tlName}</p>
                     </div>
                   ) : (
-                    <div className="rounded-xl border border-amber-400/25 bg-amber-500/10 px-3 py-2 text-right">
-                      <p className="text-[10px] font-bold uppercase tracking-wide text-amber-300/80">TL</p>
-                      <p className="text-sm text-amber-100/90">Belum ditugaskan</p>
+                    <div className="rounded-xl border border-violet-400/25 bg-violet-500/10 px-3 py-2 text-right">
+                      <p className="text-[10px] font-bold uppercase tracking-wide text-violet-300/80">TL</p>
+                      <p className="text-sm text-violet-100/90">Belum ditugaskan</p>
                     </div>
                   )}
                   <motion.button
@@ -161,7 +161,7 @@ export function TlDashboard() {
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     onClick={() => setModalDepartureId(row.id)}
-                    className="rounded-xl border border-emerald-400/35 bg-gradient-to-r from-emerald-500/20 to-teal-600/15 px-4 py-2.5 text-sm font-semibold text-emerald-50 shadow-md shadow-emerald-950/30"
+                    className="rounded-xl border border-purple-400/35 bg-gradient-to-r from-purple-500/20 to-violet-900/15 px-4 py-2.5 text-sm font-semibold text-purple-50 shadow-md shadow-purple-950/30"
                   >
                     Assign Team Leader
                   </motion.button>

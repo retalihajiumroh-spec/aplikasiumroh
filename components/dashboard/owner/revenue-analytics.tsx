@@ -14,23 +14,23 @@ export function RevenueAnalytics({ monthly }: { monthly: MonthlyRevenuePoint[] }
     >
       <div className="flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <h2 className="text-lg font-semibold tracking-tight text-emerald-50">Revenue analytics</h2>
-          <p className="mt-1 max-w-xl text-sm text-emerald-200/55">
+          <h2 className="text-lg font-semibold tracking-tight text-purple-50">Revenue analytics</h2>
+          <p className="mt-1 max-w-xl text-sm text-purple-200/55">
             Tren revenue bulanan disandingkan dengan rasio konversi lead → kontrak agregat.
           </p>
         </div>
-        <span className="mt-2 inline-flex w-fit items-center rounded-full border border-emerald-400/20 bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-300/90 sm:mt-0">
+        <span className="mt-2 inline-flex w-fit items-center rounded-full border border-purple-400/20 bg-purple-500/10 px-3 py-1 text-xs font-medium text-purple-300/90 sm:mt-0">
           FY 2026 · Indonesia
         </span>
       </div>
 
       <div className="mt-8">
         <div className="mb-3 flex flex-wrap items-center gap-2">
-          <span className="text-xs font-semibold uppercase tracking-wider text-emerald-300/60">
+          <span className="text-xs font-semibold uppercase tracking-wider text-purple-300/60">
             Tren bulanan
           </span>
-          <span className="h-1 w-1 rounded-full bg-emerald-500/40" aria-hidden />
-          <span className="text-xs text-emerald-200/45">Revenue + conversion rate</span>
+          <span className="h-1 w-1 rounded-full bg-purple-500/40" aria-hidden />
+          <span className="text-xs text-purple-200/45">Revenue + conversion rate</span>
         </div>
         <MonthlyRevenueConversionChart data={monthly} />
       </div>

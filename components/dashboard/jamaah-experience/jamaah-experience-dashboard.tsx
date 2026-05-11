@@ -71,7 +71,7 @@ export function JamaahExperienceDashboard() {
         aria-hidden
         style={{
           backgroundImage:
-            "radial-gradient(circle at 15% 0%, rgba(52, 211, 153, 0.14), transparent 42%), radial-gradient(circle at 92% 40%, rgba(56, 189, 248, 0.08), transparent 40%)",
+            "radial-gradient(circle at 15% 0%, rgba(156, 77, 204, 0.14), transparent 42%), radial-gradient(circle at 92% 40%, rgba(156, 77, 204, 0.08), transparent 40%)",
         }}
       />
 
@@ -79,16 +79,16 @@ export function JamaahExperienceDashboard() {
         <motion.header
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
-          className="flex flex-col gap-4 border-b border-emerald-500/10 pb-8 sm:flex-row sm:items-end sm:justify-between"
+          className="flex flex-col gap-4 border-b border-purple-500/10 pb-8 sm:flex-row sm:items-end sm:justify-between"
         >
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400/70">SA&apos;YA Umroh OS</p>
-            <h1 className="mt-2 text-3xl font-semibold tracking-tight text-emerald-50 sm:text-4xl">Jamaah Experience</h1>
-            <p className="mt-2 max-w-2xl text-sm text-emerald-200/55 sm:text-base">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-purple-400/70">SA&apos;YA Umroh OS</p>
+            <h1 className="mt-2 text-3xl font-semibold tracking-tight text-purple-50 sm:text-4xl">Jamaah Experience</h1>
+            <p className="mt-2 max-w-2xl text-sm text-purple-200/55 sm:text-base">
               Perjalanan praktis menuju Tanah Suci: checklist perjalanan, progres LMS, dan jadwal pengingat (demo lokal).
             </p>
-            <div className="mt-4 flex flex-wrap gap-2 text-xs text-emerald-200/60">
-              <span className="rounded-lg border border-emerald-500/15 bg-emerald-950/30 px-2.5 py-1 font-medium text-emerald-100/90">
+            <div className="mt-4 flex flex-wrap gap-2 text-xs text-purple-200/60">
+              <span className="rounded-lg border border-purple-500/15 bg-purple-950/30 px-2.5 py-1 font-medium text-purple-100/90">
                 {experienceProfile.name}
               </span>
               <span className="rounded-lg border border-white/10 bg-white/[0.04] px-2.5 py-1">{experienceProfile.packageLabel}</span>
@@ -98,7 +98,7 @@ export function JamaahExperienceDashboard() {
           </div>
           <Link
             href="/"
-            className="inline-flex w-fit rounded-xl border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-emerald-200/80 transition hover:border-emerald-400/25 hover:bg-emerald-500/10"
+            className="inline-flex w-fit rounded-xl border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-purple-200/80 transition hover:border-purple-400/25 hover:bg-purple-500/10"
           >
             ← Hub
           </Link>
@@ -109,21 +109,21 @@ export function JamaahExperienceDashboard() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.05 }}
-            className="glass-panel rounded-2xl border border-emerald-500/10 p-5 sm:p-6 lg:col-span-5"
+            className="glass-panel rounded-2xl border border-purple-500/10 p-5 sm:p-6 lg:col-span-5"
           >
-            <div className="flex items-start justify-between gap-3 border-b border-emerald-500/10 pb-4">
+            <div className="flex items-start justify-between gap-3 border-b border-purple-500/10 pb-4">
               <div>
-                <h2 className="text-lg font-semibold text-emerald-50">Journey checklist</h2>
-                <p className="mt-1 text-sm text-emerald-200/50">Langkah persiapan hingga hari-H — ketuk untuk menandai (simulasi).</p>
+                <h2 className="text-lg font-semibold text-purple-50">Journey checklist</h2>
+                <p className="mt-1 text-sm text-purple-200/50">Langkah persiapan hingga hari-H — ketuk untuk menandai (simulasi).</p>
               </div>
-              <span className="shrink-0 rounded-full border border-emerald-400/25 bg-emerald-500/15 px-2.5 py-1 font-mono text-xs font-semibold text-emerald-200">
+              <span className="shrink-0 rounded-full border border-purple-400/25 bg-purple-500/15 px-2.5 py-1 font-mono text-xs font-semibold text-purple-200">
                 {journeyDone}/{journeyTotal}
               </span>
             </div>
 
             <ol className="relative mt-6 space-y-0 pl-1">
               <span
-                className="pointer-events-none absolute left-[15px] top-3 bottom-3 w-px bg-gradient-to-b from-emerald-400/35 via-emerald-500/15 to-emerald-500/5"
+                className="pointer-events-none absolute left-[15px] top-3 bottom-3 w-px bg-gradient-to-b from-purple-400/35 via-purple-500/15 to-purple-500/5"
                 aria-hidden
               />
               {steps.map((step, i) => (
@@ -131,25 +131,25 @@ export function JamaahExperienceDashboard() {
                   <button
                     type="button"
                     onClick={() => toggleStep(step.id)}
-                    className="relative z-[1] mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border transition focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/40"
+                    className="relative z-[1] mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border transition focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-400/40"
                     aria-pressed={step.completed}
                     aria-label={`${step.completed ? "Batalkan" : "Selesaikan"}: ${step.title}`}
                   >
                     <span
                       className={`flex h-8 w-8 items-center justify-center rounded-full border text-xs font-bold ${
                         step.completed
-                          ? "border-emerald-400/45 bg-emerald-500/25 text-emerald-50"
-                          : "border-emerald-500/20 bg-emerald-950/50 text-emerald-400/70"
+                          ? "border-purple-400/45 bg-purple-500/25 text-purple-50"
+                          : "border-purple-500/20 bg-purple-950/50 text-purple-400/70"
                       }`}
                     >
                       {step.completed ? "✓" : i + 1}
                     </span>
                   </button>
                   <div className="min-w-0 flex-1 pt-0.5">
-                    <p className={`font-medium ${step.completed ? "text-emerald-200/75 line-through decoration-emerald-500/40" : "text-emerald-50"}`}>
+                    <p className={`font-medium ${step.completed ? "text-purple-200/75 line-through decoration-purple-500/40" : "text-purple-50"}`}>
                       {step.title}
                     </p>
-                    <p className="mt-1 text-sm text-emerald-200/45">{step.detail}</p>
+                    <p className="mt-1 text-sm text-purple-200/45">{step.detail}</p>
                   </div>
                 </li>
               ))}
@@ -160,33 +160,33 @@ export function JamaahExperienceDashboard() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="glass-panel rounded-2xl border border-emerald-500/10 p-5 sm:p-6 lg:col-span-4"
+            className="glass-panel rounded-2xl border border-purple-500/10 p-5 sm:p-6 lg:col-span-4"
           >
-            <div className="border-b border-emerald-500/10 pb-4">
-              <h2 className="text-lg font-semibold text-emerald-50">LMS progress</h2>
-              <p className="mt-1 text-sm text-emerald-200/50">Modul pembelajaran pra-keberangkatan.</p>
+            <div className="border-b border-purple-500/10 pb-4">
+              <h2 className="text-lg font-semibold text-purple-50">LMS progress</h2>
+              <p className="mt-1 text-sm text-purple-200/50">Modul pembelajaran pra-keberangkatan.</p>
             </div>
 
-            <div className="mt-5 rounded-xl border border-emerald-500/10 bg-emerald-950/25 p-4">
+            <div className="mt-5 rounded-xl border border-purple-500/10 bg-purple-950/25 p-4">
               <div className="flex items-end justify-between gap-2">
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-wider text-emerald-300/60">Total pembelajaran</p>
-                  <p className="mt-1 font-mono text-2xl font-semibold text-emerald-50">{lmsAgg.pct}%</p>
-                  <p className="mt-0.5 text-xs text-emerald-200/45">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-purple-300/60">Total pembelajaran</p>
+                  <p className="mt-1 font-mono text-2xl font-semibold text-purple-50">{lmsAgg.pct}%</p>
+                  <p className="mt-0.5 text-xs text-purple-200/45">
                     {lmsAgg.lessonsDone} / {lmsAgg.lessonsTotal} pelajaran
                   </p>
                 </div>
                 <div className="relative h-16 w-16 shrink-0">
                   <svg viewBox="0 0 36 36" className="h-16 w-16 -rotate-90">
                     <path
-                      className="text-emerald-500/15"
+                      className="text-purple-500/15"
                       stroke="currentColor"
                       strokeWidth="3.5"
                       fill="none"
                       d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
                     />
                     <path
-                      className="text-emerald-400/90"
+                      className="text-purple-400/90"
                       stroke="currentColor"
                       strokeWidth="3.5"
                       strokeLinecap="round"
@@ -197,9 +197,9 @@ export function JamaahExperienceDashboard() {
                   </svg>
                 </div>
               </div>
-              <div className="mt-3 h-2 overflow-hidden rounded-full bg-emerald-950/80">
+              <div className="mt-3 h-2 overflow-hidden rounded-full bg-purple-950/80">
                 <motion.div
-                  className="h-full rounded-full bg-gradient-to-r from-emerald-400/80 to-teal-400/70"
+                  className="h-full rounded-full bg-gradient-to-r from-purple-400/80 to-violet-400/70"
                   initial={false}
                   animate={{ width: `${lmsAgg.pct}%` }}
                   transition={{ type: "spring", stiffness: 120, damping: 18 }}
@@ -217,21 +217,21 @@ export function JamaahExperienceDashboard() {
                     initial={{ opacity: 0, x: 6 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.06 + idx * 0.04 }}
-                    className="rounded-xl border border-emerald-500/10 bg-emerald-950/20 p-3"
+                    className="rounded-xl border border-purple-500/10 bg-purple-950/20 p-3"
                   >
                     <div className="flex items-start justify-between gap-2">
                       <div className="min-w-0">
-                        <p className="font-medium text-emerald-50">{m.title}</p>
-                        <p className="mt-0.5 text-xs text-emerald-200/45">{m.description}</p>
-                        <p className="mt-1.5 text-[11px] text-emerald-300/55">~{m.estMinutes} menit estimasi</p>
+                        <p className="font-medium text-purple-50">{m.title}</p>
+                        <p className="mt-0.5 text-xs text-purple-200/45">{m.description}</p>
+                        <p className="mt-1.5 text-[11px] text-purple-300/55">~{m.estMinutes} menit estimasi</p>
                       </div>
-                      <span className="shrink-0 font-mono text-xs text-emerald-300/85">
+                      <span className="shrink-0 font-mono text-xs text-purple-300/85">
                         {m.lessonsDone}/{m.lessonsTotal}
                       </span>
                     </div>
-                    <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-emerald-950/70">
+                    <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-purple-950/70">
                       <div
-                        className={`h-full rounded-full transition-all ${done ? "bg-emerald-400/70" : "bg-emerald-500/45"}`}
+                        className={`h-full rounded-full transition-all ${done ? "bg-purple-400/70" : "bg-purple-500/45"}`}
                         style={{ width: `${pct}%` }}
                       />
                     </div>
@@ -239,12 +239,12 @@ export function JamaahExperienceDashboard() {
                       <button
                         type="button"
                         onClick={() => bumpLesson(m.id)}
-                        className="mt-2 text-xs font-medium text-emerald-300/90 underline-offset-2 hover:text-emerald-200 hover:underline"
+                        className="mt-2 text-xs font-medium text-purple-300/90 underline-offset-2 hover:text-purple-200 hover:underline"
                       >
                         +1 pelajaran selesai (demo)
                       </button>
                     ) : (
-                      <p className="mt-2 text-xs font-medium text-emerald-400/80">Modul selesai</p>
+                      <p className="mt-2 text-xs font-medium text-purple-400/80">Modul selesai</p>
                     )}
                   </motion.li>
                 );
@@ -256,16 +256,16 @@ export function JamaahExperienceDashboard() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.14 }}
-            className="glass-panel rounded-2xl border border-emerald-500/10 p-5 sm:p-6 lg:col-span-3"
+            className="glass-panel rounded-2xl border border-purple-500/10 p-5 sm:p-6 lg:col-span-3"
           >
-            <div className="border-b border-emerald-500/10 pb-4">
-              <h2 className="text-lg font-semibold text-emerald-50">Reminder timeline</h2>
-              <p className="mt-1 text-sm text-emerald-200/50">Urutan kronologis notifikasi penting.</p>
+            <div className="border-b border-purple-500/10 pb-4">
+              <h2 className="text-lg font-semibold text-purple-50">Reminder timeline</h2>
+              <p className="mt-1 text-sm text-purple-200/50">Urutan kronologis notifikasi penting.</p>
             </div>
 
             <ul className="relative mt-6 space-y-0 pl-1">
               <span
-                className="pointer-events-none absolute left-[11px] top-2 bottom-2 w-px bg-emerald-500/15"
+                className="pointer-events-none absolute left-[11px] top-2 bottom-2 w-px bg-purple-500/15"
                 aria-hidden
               />
               {sortedReminders.map((r) => {
@@ -276,10 +276,10 @@ export function JamaahExperienceDashboard() {
                     <div
                       className={`relative z-[1] mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border ${
                         isDone
-                          ? "border-emerald-400/40 bg-emerald-500/20 text-emerald-200"
+                          ? "border-purple-400/40 bg-purple-500/20 text-purple-200"
                           : isUpcoming
-                            ? "border-amber-400/35 bg-amber-500/15 text-amber-100"
-                            : "border-emerald-500/25 bg-emerald-950/60 text-emerald-300/70"
+                            ? "border-violet-400/35 bg-violet-500/15 text-violet-100"
+                            : "border-purple-500/25 bg-purple-950/60 text-purple-300/70"
                       }`}
                       aria-hidden
                     >
@@ -289,26 +289,26 @@ export function JamaahExperienceDashboard() {
                     </div>
                     <div className="min-w-0 flex-1">
                       <div className="flex flex-wrap items-center gap-2">
-                        <span className="text-[10px] font-semibold uppercase tracking-wide text-emerald-300/55">
+                        <span className="text-[10px] font-semibold uppercase tracking-wide text-purple-300/55">
                           {channelLabel(r.channel)}
                         </span>
                         {isDone ? (
-                          <span className="rounded-md border border-emerald-400/25 bg-emerald-500/10 px-1.5 py-0.5 text-[10px] font-semibold text-emerald-200/90">
+                          <span className="rounded-md border border-purple-400/25 bg-purple-500/10 px-1.5 py-0.5 text-[10px] font-semibold text-purple-200/90">
                             Selesai
                           </span>
                         ) : isUpcoming ? (
-                          <span className="rounded-md border border-amber-400/25 bg-amber-500/10 px-1.5 py-0.5 text-[10px] font-semibold text-amber-100/90">
+                          <span className="rounded-md border border-violet-400/25 bg-violet-500/10 px-1.5 py-0.5 text-[10px] font-semibold text-violet-100/90">
                             Mendatang
                           </span>
                         ) : (
-                          <span className="rounded-md border border-white/10 bg-white/5 px-1.5 py-0.5 text-[10px] font-semibold text-emerald-200/65">
+                          <span className="rounded-md border border-white/10 bg-white/5 px-1.5 py-0.5 text-[10px] font-semibold text-purple-200/65">
                             Terjadwal
                           </span>
                         )}
                       </div>
-                      <p className="mt-1 text-sm font-medium text-emerald-50">{r.title}</p>
-                      <p className="mt-0.5 font-mono text-xs text-emerald-300/75">{r.whenLabel}</p>
-                      {r.note ? <p className="mt-1.5 text-xs text-emerald-200/45">{r.note}</p> : null}
+                      <p className="mt-1 text-sm font-medium text-purple-50">{r.title}</p>
+                      <p className="mt-0.5 font-mono text-xs text-purple-300/75">{r.whenLabel}</p>
+                      {r.note ? <p className="mt-1.5 text-xs text-purple-200/45">{r.note}</p> : null}
                     </div>
                   </li>
                 );

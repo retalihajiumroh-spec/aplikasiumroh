@@ -34,7 +34,7 @@ export function ContentEngineDashboard() {
         aria-hidden
         style={{
           backgroundImage:
-            "radial-gradient(circle at 20% 10%, rgba(52, 211, 153, 0.14), transparent 40%), radial-gradient(circle at 85% 60%, rgba(45, 212, 191, 0.1), transparent 45%)",
+            "radial-gradient(circle at 20% 10%, rgba(156, 77, 204, 0.14), transparent 40%), radial-gradient(circle at 85% 60%, rgba(196, 163, 165, 0.1), transparent 45%)",
         }}
       />
 
@@ -43,15 +43,15 @@ export function ContentEngineDashboard() {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45 }}
-          className="border-b border-emerald-500/10 pb-8"
+          className="border-b border-purple-500/10 pb-8"
         >
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400/70">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-purple-400/70">
             SA&apos;YA Umroh OS · Marketing
           </p>
-          <h1 className="mt-2 text-3xl font-semibold tracking-tight text-emerald-50 sm:text-4xl">
+          <h1 className="mt-2 text-3xl font-semibold tracking-tight text-purple-50 sm:text-4xl">
             AI Content Engine
           </h1>
-          <p className="mt-2 max-w-2xl text-sm leading-relaxed text-emerald-200/55 sm:text-base">
+          <p className="mt-2 max-w-2xl text-sm leading-relaxed text-purple-200/55 sm:text-base">
             Hasilkan caption, skrip iklan, carousel, headline, dan optimasi engagement untuk kampanye
             umroh — dari satu tautan referensi dan brief singkat.
           </p>
@@ -76,11 +76,11 @@ export function ContentEngineDashboard() {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0, y: -8 }}
                   transition={{ duration: 0.3 }}
-                  className="glass-panel flex min-h-[320px] flex-col items-center justify-center rounded-2xl border border-dashed border-emerald-500/20 p-8 text-center"
+                  className="glass-panel flex min-h-[320px] flex-col items-center justify-center rounded-2xl border border-dashed border-purple-500/20 p-8 text-center"
                 >
-                  <div className="rounded-2xl border border-emerald-400/20 bg-emerald-500/10 p-4">
+                  <div className="rounded-2xl border border-purple-400/20 bg-purple-500/10 p-4">
                     <svg
-                      className="text-emerald-300/80"
+                      className="text-purple-300/80"
                       width="40"
                       height="40"
                       viewBox="0 0 24 24"
@@ -93,12 +93,12 @@ export function ContentEngineDashboard() {
                       <rect x="4" y="14" width="16" height="6" rx="2" />
                     </svg>
                   </div>
-                  <p className="mt-5 max-w-xs text-sm font-medium text-emerald-100/85">
+                  <p className="mt-5 max-w-xs text-sm font-medium text-purple-100/85">
                     Siap generate?
                   </p>
-                  <p className="mt-2 max-w-sm text-xs leading-relaxed text-emerald-200/45">
+                  <p className="mt-2 max-w-sm text-xs leading-relaxed text-purple-200/45">
                     Isi tautan referensi dan brief, lalu ketuk{" "}
-                    <span className="text-emerald-300/80">Generate paket konten</span> untuk melihat
+                    <span className="text-purple-300/80">Generate paket konten</span> untuk melihat
                     caption, skrip iklan, carousel, skor viral, dan rekomendasi optimasi (data demo).
                   </p>
                 </motion.div>

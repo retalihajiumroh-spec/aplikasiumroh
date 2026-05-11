@@ -30,20 +30,20 @@ function ApprovalCard({
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.98 }}
       transition={{ delay: index * 0.04 }}
-      className="rounded-xl border border-emerald-500/12 bg-emerald-950/30 p-4"
+      className="rounded-xl border border-purple-500/12 bg-purple-950/30 p-4"
     >
       <div className="flex flex-wrap items-start justify-between gap-2">
-        <h3 className="text-sm font-semibold leading-snug text-emerald-50 sm:text-base">{item.title}</h3>
+        <h3 className="text-sm font-semibold leading-snug text-purple-50 sm:text-base">{item.title}</h3>
         {item.amountIdr != null ? (
-          <span className="shrink-0 rounded-lg border border-emerald-400/25 bg-emerald-500/10 px-2 py-1 font-mono text-xs text-emerald-100">
+          <span className="shrink-0 rounded-lg border border-purple-400/25 bg-purple-500/10 px-2 py-1 font-mono text-xs text-purple-100">
             {formatIdr(item.amountIdr)}
           </span>
         ) : null}
       </div>
-      <p className="mt-2 text-xs leading-relaxed text-emerald-200/55 sm:text-sm">{item.summary}</p>
-      <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1 text-[11px] text-emerald-400/60">
+      <p className="mt-2 text-xs leading-relaxed text-purple-200/55 sm:text-sm">{item.summary}</p>
+      <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1 text-[11px] text-purple-400/60">
         <span>{item.submittedBy}</span>
-        <span className="font-mono text-emerald-300/70">{item.submittedAtLabel}</span>
+        <span className="font-mono text-purple-300/70">{item.submittedAtLabel}</span>
       </div>
       <div className="mt-4 flex flex-wrap gap-2">
         <motion.button
@@ -51,7 +51,7 @@ function ApprovalCard({
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           onClick={() => onApprove(item.id)}
-          className="rounded-xl border border-emerald-400/40 bg-gradient-to-r from-emerald-500/25 to-teal-600/15 px-4 py-2 text-xs font-semibold text-emerald-50 sm:text-sm"
+          className="rounded-xl border border-purple-400/40 bg-gradient-to-r from-purple-500/25 to-violet-900/15 px-4 py-2 text-xs font-semibold text-purple-50 sm:text-sm"
         >
           Setujui
         </motion.button>
@@ -100,7 +100,7 @@ export function ApprovalCenterDashboard() {
         aria-hidden
         style={{
           backgroundImage:
-            "radial-gradient(circle at 18% 0%, rgba(52, 211, 153, 0.12), transparent 42%), radial-gradient(circle at 88% 40%, rgba(56, 189, 248, 0.07), transparent 40%)",
+            "radial-gradient(circle at 18% 0%, rgba(156, 77, 204, 0.12), transparent 42%), radial-gradient(circle at 88% 40%, rgba(156, 77, 204, 0.07), transparent 40%)",
         }}
       />
 
@@ -108,19 +108,19 @@ export function ApprovalCenterDashboard() {
         <motion.header
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
-          className="flex flex-col gap-4 border-b border-emerald-500/10 pb-8 sm:flex-row sm:items-end sm:justify-between"
+          className="flex flex-col gap-4 border-b border-purple-500/10 pb-8 sm:flex-row sm:items-end sm:justify-between"
         >
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400/70">SA&apos;YA Umroh OS</p>
-            <h1 className="mt-2 text-3xl font-semibold tracking-tight text-emerald-50 sm:text-4xl">Approval Center</h1>
-            <p className="mt-2 max-w-2xl text-sm text-emerald-200/55 sm:text-base">
-              Antrian persetujuan untuk <strong className="font-medium text-emerald-100/90">Cabang</strong> dan{" "}
-              <strong className="font-medium text-emerald-100/90">Mitra</strong> — tombol Setujui / Tolak tersimpan lokal (demo).
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-purple-400/70">SA&apos;YA Umroh OS</p>
+            <h1 className="mt-2 text-3xl font-semibold tracking-tight text-purple-50 sm:text-4xl">Approval Center</h1>
+            <p className="mt-2 max-w-2xl text-sm text-purple-200/55 sm:text-base">
+              Antrian persetujuan untuk <strong className="font-medium text-purple-100/90">Cabang</strong> dan{" "}
+              <strong className="font-medium text-purple-100/90">Mitra</strong> — tombol Setujui / Tolak tersimpan lokal (demo).
             </p>
           </div>
           <Link
             href="/"
-            className="inline-flex w-fit rounded-xl border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-emerald-200/80 transition hover:border-emerald-400/25 hover:bg-emerald-500/10"
+            className="inline-flex w-fit rounded-xl border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-purple-200/80 transition hover:border-purple-400/25 hover:bg-purple-500/10"
           >
             ← Hub
           </Link>
@@ -131,19 +131,19 @@ export function ApprovalCenterDashboard() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.05 }}
-            className="glass-panel rounded-2xl border border-emerald-500/10 p-5 sm:p-6"
+            className="glass-panel rounded-2xl border border-purple-500/10 p-5 sm:p-6"
           >
-            <div className="flex items-center justify-between gap-2 border-b border-emerald-500/10 pb-4">
-              <h2 className="text-lg font-semibold text-emerald-50">Antrian Cabang</h2>
-              <span className="rounded-full border border-emerald-400/25 bg-emerald-500/15 px-2.5 py-1 font-mono text-xs text-emerald-200">
+            <div className="flex items-center justify-between gap-2 border-b border-purple-500/10 pb-4">
+              <h2 className="text-lg font-semibold text-purple-50">Antrian Cabang</h2>
+              <span className="rounded-full border border-purple-400/25 bg-purple-500/15 px-2.5 py-1 font-mono text-xs text-purple-200">
                 {pendingCabangCount} menunggu
               </span>
             </div>
-            <p className="mt-3 text-sm text-emerald-200/50">Permohonan dari kantor cabang yang memerlukan persetujuan pusat.</p>
+            <p className="mt-3 text-sm text-purple-200/50">Permohonan dari kantor cabang yang memerlukan persetujuan pusat.</p>
             <div className="mt-5 space-y-4">
               <AnimatePresence mode="popLayout">
                 {cabangPending.length === 0 ? (
-                  <p className="py-8 text-center text-sm text-emerald-200/45">Tidak ada antrian cabang.</p>
+                  <p className="py-8 text-center text-sm text-purple-200/45">Tidak ada antrian cabang.</p>
                 ) : (
                   cabangPending.map((item, i) => (
                     <ApprovalCard
@@ -163,19 +163,19 @@ export function ApprovalCenterDashboard() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.08 }}
-            className="glass-panel rounded-2xl border border-emerald-500/10 p-5 sm:p-6"
+            className="glass-panel rounded-2xl border border-purple-500/10 p-5 sm:p-6"
           >
-            <div className="flex items-center justify-between gap-2 border-b border-emerald-500/10 pb-4">
-              <h2 className="text-lg font-semibold text-emerald-50">Antrian Mitra</h2>
+            <div className="flex items-center justify-between gap-2 border-b border-purple-500/10 pb-4">
+              <h2 className="text-lg font-semibold text-purple-50">Antrian Mitra</h2>
               <span className="rounded-full border border-sky-400/25 bg-sky-500/12 px-2.5 py-1 font-mono text-xs text-sky-100/95">
                 {pendingMitraCount} menunggu
               </span>
             </div>
-            <p className="mt-3 text-sm text-emerald-200/50">Registrasi, tier, diskon khusus, dan permintaan mitra.</p>
+            <p className="mt-3 text-sm text-purple-200/50">Registrasi, tier, diskon khusus, dan permintaan mitra.</p>
             <div className="mt-5 space-y-4">
               <AnimatePresence mode="popLayout">
                 {mitraPending.length === 0 ? (
-                  <p className="py-8 text-center text-sm text-emerald-200/45">Tidak ada antrian mitra.</p>
+                  <p className="py-8 text-center text-sm text-purple-200/45">Tidak ada antrian mitra.</p>
                 ) : (
                   mitraPending.map((item, i) => (
                     <ApprovalCard
@@ -197,23 +197,23 @@ export function ApprovalCenterDashboard() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.12 }}
-            className="mt-10 glass-panel rounded-2xl border border-emerald-500/10 p-5 sm:p-6"
+            className="mt-10 glass-panel rounded-2xl border border-purple-500/10 p-5 sm:p-6"
           >
-            <h2 className="text-sm font-semibold text-emerald-50">Riwayat singkat (sesi ini)</h2>
-            <p className="mt-1 text-xs text-emerald-200/45">Maks. 4 entri terakhir setelah Setujui atau Tolak.</p>
-            <ul className="mt-4 divide-y divide-emerald-500/10">
+            <h2 className="text-sm font-semibold text-purple-50">Riwayat singkat (sesi ini)</h2>
+            <p className="mt-1 text-xs text-purple-200/45">Maks. 4 entri terakhir setelah Setujui atau Tolak.</p>
+            <ul className="mt-4 divide-y divide-purple-500/10">
               {recentResolved.map((r) => (
                 <li key={r.id} className="flex flex-wrap items-center justify-between gap-2 py-3 text-sm">
                   <div className="min-w-0">
-                    <p className="truncate font-medium text-emerald-100/90">{r.title}</p>
-                    <p className="text-xs text-emerald-400/55">
+                    <p className="truncate font-medium text-purple-100/90">{r.title}</p>
+                    <p className="text-xs text-purple-400/55">
                       {sectionTitle(r.kind)} · {r.submittedBy}
                     </p>
                   </div>
                   <span
                     className={`shrink-0 rounded-md border px-2 py-1 text-[10px] font-bold uppercase tracking-wide ${
                       r.decision === "approved"
-                        ? "border-emerald-400/35 bg-emerald-500/15 text-emerald-200"
+                        ? "border-purple-400/35 bg-purple-500/15 text-purple-200"
                         : "border-rose-400/35 bg-rose-500/12 text-rose-100/90"
                     }`}
                   >

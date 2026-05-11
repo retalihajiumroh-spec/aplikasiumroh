@@ -35,20 +35,20 @@ export function ViralScoreRing({
           />
           <defs>
             <linearGradient id="viralGrad" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="#34d399" />
-              <stop offset="100%" stopColor="#2dd4bf" />
+              <stop offset="0%" stopColor="#9C4DCC" />
+              <stop offset="100%" stopColor="#6A1B9A" />
             </linearGradient>
           </defs>
         </svg>
         <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <span className="font-mono text-3xl font-bold tracking-tight text-emerald-50">{clamped}</span>
-          <span className="text-[10px] font-medium uppercase tracking-wider text-emerald-400/60">/ 100</span>
+          <span className="font-mono text-3xl font-bold tracking-tight text-purple-50">{clamped}</span>
+          <span className="text-[10px] font-medium uppercase tracking-wider text-purple-400/60">/ 100</span>
         </div>
       </div>
       <div className="max-w-sm text-center sm:text-left">
-        <p className="text-xs font-semibold uppercase tracking-wider text-emerald-300/60">{label}</p>
-        <p className="mt-2 text-sm text-emerald-200/55">{sublabel}</p>
-        <p className="mt-3 rounded-lg border border-emerald-500/15 bg-emerald-500/5 px-3 py-2 text-xs text-emerald-100/75">
+        <p className="text-xs font-semibold uppercase tracking-wider text-purple-300/60">{label}</p>
+        <p className="mt-2 text-sm text-purple-200/55">{sublabel}</p>
+        <p className="mt-3 rounded-lg border border-purple-500/15 bg-purple-500/5 px-3 py-2 text-xs text-purple-100/75">
           Skor menggabungkan pola hook, ritme kalimat, CTA, dan kepadatan hashtag — model internal (demo).
         </p>
       </div>

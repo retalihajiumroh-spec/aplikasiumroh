@@ -5,9 +5,9 @@ import type { MonthlyRevenuePoint } from "@/lib/dashboard/owner-dummy-data";
 import { formatIdrCompact } from "@/lib/dashboard/owner-dummy-data";
 
 const chartColors = {
-  grid: "rgba(167, 243, 208, 0.08)",
-  axis: "rgba(209, 250, 229, 0.35)",
-  revenueStroke: "#34d399",
+  grid: "rgba(230, 230, 250, 0.08)",
+  axis: "rgba(255, 255, 255, 0.35)",
+  revenueStroke: "#9C4DCC",
   conversion: "#a7f3d0",
 };
 
@@ -21,10 +21,10 @@ function RevenueTooltip({
   if (!active || !payload?.length) return null;
   const row = payload[0].payload;
   return (
-    <div className="rounded-lg border border-emerald-400/20 bg-emerald-950/95 px-3 py-2 text-xs shadow-xl backdrop-blur-md">
-      <p className="font-medium text-emerald-100">{row.month}</p>
-      <p className="mt-1 text-emerald-300/90">{formatIdrCompact(row.revenueIdr)}</p>
-      <p className="text-emerald-200/70">Konversi: {row.conversionPct.toFixed(1)}%</p>
+    <div className="rounded-lg border border-purple-400/20 bg-purple-950/95 px-3 py-2 text-xs shadow-xl backdrop-blur-md">
+      <p className="font-medium text-purple-100">{row.month}</p>
+      <p className="mt-1 text-purple-300/90">{formatIdrCompact(row.revenueIdr)}</p>
+      <p className="text-purple-200/70">Konversi: {row.conversionPct.toFixed(1)}%</p>
     </div>
   );
 }
@@ -36,8 +36,8 @@ export function MonthlyRevenueConversionChart({ data }: { data: MonthlyRevenuePo
         <ComposedChart data={data} margin={{ top: 8, right: 8, left: 0, bottom: 0 }}>
           <defs>
             <linearGradient id="ownerRevFill" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#34d399" stopOpacity={0.45} />
-              <stop offset="100%" stopColor="#34d399" stopOpacity={0} />
+              <stop offset="0%" stopColor="#9C4DCC" stopOpacity={0.45} />
+              <stop offset="100%" stopColor="#9C4DCC" stopOpacity={0} />
             </linearGradient>
           </defs>
           <CartesianGrid stroke={chartColors.grid} strokeDasharray="3 6" vertical={false} />
@@ -61,15 +61,15 @@ export function MonthlyRevenueConversionChart({ data }: { data: MonthlyRevenuePo
             orientation="right"
             domain={[24, "auto"]}
             tickFormatter={(v) => `${v}%`}
-            tick={{ fill: "rgba(167, 243, 208, 0.55)", fontSize: 10 }}
+            tick={{ fill: "rgba(230, 230, 250, 0.55)", fontSize: 10 }}
             axisLine={false}
             tickLine={false}
             width={40}
           />
-          <Tooltip content={<RevenueTooltip />} cursor={{ stroke: "rgba(52, 211, 153, 0.25)" }} />
+          <Tooltip content={<RevenueTooltip />} cursor={{ stroke: "rgba(156, 77, 204, 0.25)" }} />
           <Legend
             wrapperStyle={{ paddingTop: 16 }}
-            formatter={(value) => <span className="text-xs text-emerald-200/70">{value}</span>}
+            formatter={(value) => <span className="text-xs text-purple-200/70">{value}</span>}
           />
           <Area
             yAxisId="left"

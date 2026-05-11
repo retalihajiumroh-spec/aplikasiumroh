@@ -74,7 +74,7 @@ export const demoAdSets: AdSetPack[] = [
           "Rindu Ramadan di Makkah? SA'YA Umroh bantu persiapan dari nol — konsultasi gratis, tanpa tekanan.",
         cta: "Pelajari lebih lanjut",
         mediaAspect: "9:16",
-        gradient: "from-emerald-600 via-teal-800 to-emerald-950",
+        gradient: "from-purple-600 via-violet-800 to-purple-950",
       },
       {
         id: "b2",
@@ -83,7 +83,7 @@ export const demoAdSets: AdSetPack[] = [
           "Hotel walking distance, manasik intensif, dan tim medis siaga — fokus Anda hanya ibadah.",
         cta: "Daftar sekarang",
         mediaAspect: "9:16",
-        gradient: "from-teal-600 via-cyan-900 to-black",
+        gradient: "from-violet-600 via-violet-900 to-black",
       },
       {
         id: "b3",
@@ -92,7 +92,7 @@ export const demoAdSets: AdSetPack[] = [
           "2.800+ jamaah telah berangkat bersama SA'YA. Gabung grup info keberangkatan terbaru.",
         cta: "Kirim pesan",
         mediaAspect: "1:1",
-        gradient: "from-emerald-500 via-green-900 to-emerald-950",
+        gradient: "from-purple-500 via-purple-900 to-purple-950",
       },
     ],
   },
@@ -109,7 +109,7 @@ export const demoAdSets: AdSetPack[] = [
           "Hitung cicilan 0% hingga 6 bulan untuk DP 30%+ — lihat simulasi dalam 1 menit.",
         cta: "Lihat penawaran",
         mediaAspect: "4:5",
-        gradient: "from-amber-600/90 via-emerald-900 to-emerald-950",
+        gradient: "from-rose-600/90 via-purple-900 to-purple-950",
       },
       {
         id: "t2",
@@ -118,7 +118,7 @@ export const demoAdSets: AdSetPack[] = [
           "Sisa kuota maskapai untuk pekan pertama Ramadan — amankan seat sebelum harga naik.",
         cta: "Hubungi kami",
         mediaAspect: "9:16",
-        gradient: "from-fuchsia-900/80 via-emerald-800 to-emerald-950",
+        gradient: "from-fuchsia-900/80 via-purple-800 to-purple-950",
       },
       {
         id: "t3",
@@ -127,7 +127,7 @@ export const demoAdSets: AdSetPack[] = [
           "Paket private family dengan jadwal fleksibel — cocok untuk rombongan kantor & yayasan.",
         cta: "Book sekarang",
         mediaAspect: "4:5",
-        gradient: "from-slate-800 via-emerald-900 to-black",
+        gradient: "from-slate-800 via-purple-900 to-black",
       },
     ],
   },

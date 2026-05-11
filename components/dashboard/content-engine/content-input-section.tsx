@@ -24,14 +24,14 @@ export function ContentInputSection({
       transition={{ duration: 0.45 }}
       className="glass-panel rounded-2xl p-5 sm:p-6"
     >
-      <h2 className="text-lg font-semibold text-emerald-50">Input konten</h2>
-      <p className="mt-1 text-sm text-emerald-200/55">
+      <h2 className="text-lg font-semibold text-purple-50">Input konten</h2>
+      <p className="mt-1 text-sm text-purple-200/55">
         Tempel tautan referensi Instagram atau TikTok, lalu tulis ide atau brief singkat untuk
         menghasilkan paket konten siap pakai.
       </p>
 
       <label className="mt-6 block">
-        <span className="text-xs font-semibold uppercase tracking-wider text-emerald-300/60">
+        <span className="text-xs font-semibold uppercase tracking-wider text-purple-300/60">
           Link Instagram / TikTok
         </span>
         <input
@@ -39,12 +39,12 @@ export function ContentInputSection({
           value={socialUrl}
           onChange={(e) => onSocialUrlChange(e.target.value)}
           placeholder="https://www.instagram.com/reel/… atau https://www.tiktok.com/@…/video/…"
-          className="mt-2 w-full rounded-xl border border-emerald-500/15 bg-emerald-950/40 px-3 py-2.5 text-sm text-emerald-50 placeholder:text-emerald-500/35 focus:border-emerald-400/40 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+          className="mt-2 w-full rounded-xl border border-purple-500/15 bg-purple-950/40 px-3 py-2.5 text-sm text-purple-50 placeholder:text-purple-500/35 focus:border-purple-400/40 focus:outline-none focus:ring-2 focus:ring-purple-500/20"
         />
       </label>
 
       <label className="mt-5 block">
-        <span className="text-xs font-semibold uppercase tracking-wider text-emerald-300/60">
+        <span className="text-xs font-semibold uppercase tracking-wider text-purple-300/60">
           Ide / brief konten baru
         </span>
         <textarea
@@ -52,7 +52,7 @@ export function ContentInputSection({
           onChange={(e) => onIdeaChange(e.target.value)}
           rows={5}
           placeholder="Contoh: promosi paket Ramadan Premium untuk keluarga muda, tonanya hangat dan tidak menekan; sertakan manfaat manasik & dokter pendamping."
-          className="mt-2 w-full resize-y rounded-xl border border-emerald-500/15 bg-emerald-950/40 px-3 py-2.5 text-sm text-emerald-50 placeholder:text-emerald-500/35 focus:border-emerald-400/40 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+          className="mt-2 w-full resize-y rounded-xl border border-purple-500/15 bg-purple-950/40 px-3 py-2.5 text-sm text-purple-50 placeholder:text-purple-500/35 focus:border-purple-400/40 focus:outline-none focus:ring-2 focus:ring-purple-500/20"
         />
       </label>
 
@@ -62,11 +62,11 @@ export function ContentInputSection({
         whileTap={{ scale: loading ? 1 : 0.98 }}
         disabled={loading}
         onClick={onGenerate}
-        className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl border border-emerald-400/35 bg-gradient-to-r from-emerald-500/25 to-teal-600/20 px-4 py-3 text-sm font-semibold text-emerald-50 shadow-lg shadow-emerald-950/30 transition disabled:cursor-wait disabled:opacity-70"
+        className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl border border-purple-400/35 bg-gradient-to-r from-purple-500/25 to-violet-900/20 px-4 py-3 text-sm font-semibold text-purple-50 shadow-lg shadow-purple-950/30 transition disabled:cursor-wait disabled:opacity-70"
       >
         {loading ? (
           <>
-            <span className="h-4 w-4 animate-spin rounded-full border-2 border-emerald-200/30 border-t-emerald-200" />
+            <span className="h-4 w-4 animate-spin rounded-full border-2 border-purple-200/30 border-t-purple-200" />
             Menganalisis referensi…
           </>
         ) : (
@@ -79,7 +79,7 @@ export function ContentInputSection({
           </>
         )}
       </motion.button>
-      <p className="mt-3 text-center text-[11px] text-emerald-500/50">
+      <p className="mt-3 text-center text-[11px] text-purple-500/50">
         Demo lokal — tidak ada data yang dikirim ke server.
       </p>
     </motion.section>
