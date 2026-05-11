@@ -1,6 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server";
 import { createServerClient } from "@supabase/ssr";
 import { hasSupabaseConfig, supabaseAnonKey, supabaseUrl } from "@/lib/supabase/config";
+import { supabaseTimedFetch } from "@/lib/supabase/fetch-with-timeout";
 
 const protectedRoutes = ["/dashboard"];
 
@@ -28,12 +29,17 @@ export async function updateSession(request: NextRequest) {
         response = NextResponse.next({ request });
         response.cookies.set({ name, value: "", ...options });
       }
-    }
+    },
+    global: { fetch: supabaseTimedFetch },
   });
 
-  const {
-    data: { user }
-  } = await supabase.auth.getUser();
+  let user: Awaited<ReturnType<typeof supabase.auth.getUser>>["data"]["user"] = null;
+  try {
+    const { data } = await supabase.auth.getUser();
+    user = data.user;
+  } catch {
+    return response;
+  }
 
   const isProtected = protectedRoutes.some((route) => request.nextUrl.pathname.startsWith(route));
 
