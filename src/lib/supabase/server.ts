@@ -1,6 +1,7 @@
 import { cookies } from "next/headers";
 import { createServerClient } from "@supabase/ssr";
 import { assertSupabaseConfig } from "@/lib/supabase/config";
+import { supabaseTimedFetch } from "@/lib/supabase/fetch-with-timeout";
 
 export async function createSupabaseServerClient() {
   const { supabaseUrl, supabaseAnonKey } = assertSupabaseConfig();
@@ -25,6 +26,7 @@ export async function createSupabaseServerClient() {
           // Server Components cannot write cookies; middleware refreshes sessions.
         }
       }
-    }
+    },
+    global: { fetch: supabaseTimedFetch },
   });
 }

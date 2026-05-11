@@ -5,6 +5,10 @@ export async function middleware(request: NextRequest) {
   return updateSession(request);
 }
 
+/**
+ * Hanya jalankan middleware di area yang butuh auth Supabase.
+ * Matcher global membuat *setiap* navigasi (termasuk `/`) menunggu `getUser()` — dev terasa sangat lambat.
+ */
 export const config = {
-  matcher: ["/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)"],
+  matcher: ["/dashboard/:path*"],
 };
