@@ -6,12 +6,16 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ChevronUp, LogOut, Menu, Settings, UserRound, X } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { getSupabaseBrowser } from "@/lib/supabase/browser";
+import type { NormalizedRole } from "@/lib/auth/role-access";
 import { brandMark, getDashboardNavItemsForRole } from "@/lib/navigation/dashboard-nav";
 
 export type ShellUser = {
   displayName: string;
   email: string;
-  role: string;
+  /** Nilai mesin untuk filter navigasi / RBAC */
+  role: NormalizedRole;
+  /** Teks yang ditampilkan di profil & banner */
+  roleDisplay: string;
 };
 
 function initials(name: string) {
@@ -144,7 +148,7 @@ export function Sidebar({ user }: { user: ShellUser }) {
           </span>
           <span className="min-w-0 flex-1">
             <span className="block truncate text-sm font-semibold text-zinc-50 light:text-slate-900">{user.displayName}</span>
-            <span className="block truncate text-[11px] text-zinc-600/70 light:text-slate-500">{user.role}</span>
+            <span className="block truncate text-[11px] text-zinc-600/70 light:text-slate-500">{user.roleDisplay}</span>
           </span>
           <ChevronUp className={`h-4 w-4 shrink-0 text-zinc-500/70 transition light:text-slate-500 ${profileOpen ? "" : "rotate-180"}`} aria-hidden />
         </button>

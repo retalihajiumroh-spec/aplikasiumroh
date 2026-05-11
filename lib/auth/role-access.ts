@@ -35,6 +35,25 @@ export function roleLabel(role: AppRole | string | null | undefined): string {
   }
 }
 
+/** Label untuk UI (banner, sidebar) — konsisten dengan bahasa aplikasi. */
+export function roleDisplayTitle(role: AppRole | string | null | undefined): string {
+  switch (normalizeRole(role)) {
+    case "owner":
+      return "Owner";
+    case "admin_head_office":
+      return "Admin Head Office";
+    case "cabang":
+      return "Cabang";
+    case "mitra":
+      return "Mitra";
+    case "jamaah_pro":
+      return "Jamaah Pro";
+    case "jamaah_free":
+    default:
+      return "Jamaah Free";
+  }
+}
+
 const OWNER_ADMIN_ALLOW = ["/dashboard"];
 const CABANG_ALLOW = [
   "/dashboard",

@@ -4,22 +4,34 @@ import type { ShellUser } from "@/components/sidebar";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import type { AppRole } from "@/lib/supabase/database.types";
-import { normalizeRole, roleLabel } from "@/lib/auth/role-access";
+import { DEMO_ACCOUNTS } from "@/lib/demo/demo-accounts";
+import { normalizeRole, roleDisplayTitle } from "@/lib/auth/role-access";
+
+const demoOwner = DEMO_ACCOUNTS.find((a) => a.role === "owner") ?? DEMO_ACCOUNTS[0]!;
 
 const demoUser: ShellUser = {
-  displayName: "Owner Demo",
-  email: "demo@sayaumroh.id",
-  role: roleLabel("owner"),
+  displayName: demoOwner.fullName,
+  email: demoOwner.email,
+  role: "owner",
+  roleDisplay: roleDisplayTitle("owner"),
 };
 
 export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
   if (!isSupabaseConfigured()) {
-    return <DashboardAppShell user={demoUser}>{children}</DashboardAppShell>;
+    return (
+      <DashboardAppShell user={demoUser} demoMode>
+        {children}
+      </DashboardAppShell>
+    );
   }
 
   const supabase = await createSupabaseServerClient();
   if (!supabase) {
-    return <DashboardAppShell user={demoUser}>{children}</DashboardAppShell>;
+    return (
+      <DashboardAppShell user={demoUser} demoMode>
+        {children}
+      </DashboardAppShell>
+    );
   }
 
   const {
@@ -46,10 +58,13 @@ export default async function DashboardLayout({ children }: { children: React.Re
       ? (profile as { full_name: string }).full_name
       : null;
 
+  const normalizedRole = normalizeRole(role);
+
   const shellUser: ShellUser = {
     displayName: fullName?.trim() || user.email?.split("@")[0] || "Pengguna",
     email: user.email,
-    role: roleLabel(normalizeRole(role)),
+    role: normalizedRole,
+    roleDisplay: roleDisplayTitle(normalizedRole),
   };
 
   return <DashboardAppShell user={shellUser}>{children}</DashboardAppShell>;

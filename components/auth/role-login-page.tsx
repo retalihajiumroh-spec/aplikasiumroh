@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import { useCallback, useState, type FormEvent } from "react";
 import { signInWithRoleRedirect } from "@/lib/auth/session-client";
 import type { AppRole } from "@/lib/supabase/database.types";
+import { pickDemoCredentialForPortal } from "@/lib/demo/demo-accounts";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
 
 type QuickLink = { href: string; label: string };
@@ -29,8 +30,9 @@ export function RoleLoginPage({
   quickLinks: QuickLink[];
 }) {
   const router = useRouter();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const demoCred = pickDemoCredentialForPortal(expectedRoles);
+  const [email, setEmail] = useState(demoCred?.email ?? "");
+  const [password, setPassword] = useState(demoCred?.password ?? "");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -72,6 +74,22 @@ export function RoleLoginPage({
         </p>
         <h1 className="mt-3 text-center text-2xl font-semibold tracking-tight text-zinc-50">{title}</h1>
         <p className="mt-2 text-center text-sm text-zinc-300/60">{description}</p>
+
+        {demoCred ? (
+          <div className="mt-6 rounded-xl border border-zinc-500/25 bg-zinc-950/35 px-4 py-3 text-left text-xs leading-relaxed text-zinc-300/90 light:border-zinc-300/70 light:bg-zinc-100 light:text-slate-700">
+            <p className="font-semibold text-zinc-200 light:text-slate-900">Akun contoh (staging)</p>
+            <p className="mt-2 font-mono text-[11px]">
+              <span className="text-zinc-500 light:text-slate-500">Email</span> {demoCred.email}
+            </p>
+            <p className="mt-1 font-mono text-[11px]">
+              <span className="text-zinc-500 light:text-slate-500">Sandi</span> {demoCred.password}
+            </p>
+            <p className="mt-2 text-[10px] text-zinc-500 light:text-slate-500">
+              Buat user ini di Supabase Auth lalu jalankan pemetaan role di{" "}
+              <code className="rounded bg-zinc-900/80 px-1 py-0.5 light:bg-white">supabase/demo-profiles.sql</code>.
+            </p>
+          </div>
+        ) : null}
 
         <form className="mt-8 space-y-4" onSubmit={handleSubmit} noValidate>
           <label className="block">
