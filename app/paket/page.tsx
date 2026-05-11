@@ -1,7 +1,7 @@
 import { PackageGrid } from "@/features/packages/package-grid";
 
 export const metadata = {
-  title: "Paket Umroh"
+  title: "Paket Umroh",
 };
 
 export default function PaketPage() {

@@ -1,7 +1,7 @@
 import { ContentLibrary } from "@/features/content/content-library";
 
 export const metadata = {
-  title: "Artikel & Ebook"
+  title: "Artikel & Ebook",
 };
 
 export default function ArtikelPage() {

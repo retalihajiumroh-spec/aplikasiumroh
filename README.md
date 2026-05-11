@@ -2,7 +2,7 @@
 
 Operating system for SA'YA Umroh travel management (Retali).
 
-This repo merges multiple dashboard surfaces: routes under root `app/` (Executive dashboards) and an alternate surface under `src/app/` (community engine stack with Supabase auth scaffolding).
+Routes live under root `app/`. Shared UI/logic from the community stack remains under `src/features`, `src/components`, and `src/lib` (imported via `@/*` path fallback).
 
 ## Getting started
 

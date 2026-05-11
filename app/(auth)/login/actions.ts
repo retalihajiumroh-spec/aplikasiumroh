@@ -12,7 +12,7 @@ export async function loginWithPassword(_prevState: LoginState, formData: FormDa
   if (!hasSupabaseConfig) {
     return {
       message:
-        "Supabase belum dikonfigurasi. Isi NEXT_PUBLIC_SUPABASE_URL dan NEXT_PUBLIC_SUPABASE_ANON_KEY."
+        "Supabase belum dikonfigurasi. Isi NEXT_PUBLIC_SUPABASE_URL dan NEXT_PUBLIC_SUPABASE_ANON_KEY.",
     };
   }
 
@@ -23,7 +23,7 @@ export async function loginWithPassword(_prevState: LoginState, formData: FormDa
     return { message: "Email dan password wajib diisi." };
   }
 
-  const supabase = createSupabaseServerClient();
+  const supabase = await createSupabaseServerClient();
   const { error } = await supabase.auth.signInWithPassword({ email, password });
 
   if (error) {
