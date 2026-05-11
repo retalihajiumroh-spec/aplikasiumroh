@@ -24,25 +24,25 @@ export function OwnerDashboard() {
           initial={{ opacity: 0, y: -12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="flex flex-col gap-4 border-b border-purple-500/10 pb-8 sm:flex-row sm:items-end sm:justify-between"
+          className="flex flex-col gap-4 border-b border-zinc-600/10 pb-8 sm:flex-row sm:items-end sm:justify-between"
         >
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-purple-400/70">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500/70">
               SA&apos;YA Umroh OS
             </p>
-            <h1 className="mt-2 text-3xl font-semibold tracking-tight text-purple-50 sm:text-4xl">
+            <h1 className="mt-2 text-3xl font-semibold tracking-tight text-zinc-50 sm:text-4xl">
               Owner dashboard
             </h1>
-            <p className="mt-2 max-w-2xl text-sm leading-relaxed text-purple-200/55 sm:text-base">
+            <p className="mt-2 max-w-2xl text-sm leading-relaxed text-zinc-300/55 sm:text-base">
               Pantau KPI utama, tren revenue & konversi, performa serta engagement cabang, dan aktivitas operasional
               terbaru dalam satu layar eksekutif.
             </p>
           </div>
           <div className="flex flex-wrap gap-2">
-            <span className="rounded-full border border-purple-400/20 bg-purple-500/10 px-4 py-2 text-xs font-medium text-purple-200/90">
+            <span className="rounded-full border border-zinc-500/20 bg-zinc-600/10 px-4 py-2 text-xs font-medium text-zinc-300/90">
               Live snapshot
             </span>
-            <span className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-xs text-purple-200/55">
+            <span className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-xs text-zinc-300/55">
               Diperbarui 09 Mei 2026 · 14:32 WIB
             </span>
           </div>

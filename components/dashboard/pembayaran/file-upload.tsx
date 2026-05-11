@@ -45,7 +45,7 @@ export function PaymentProofUpload({
 
   return (
     <div>
-      <label htmlFor={id} className="text-xs font-semibold uppercase tracking-wider text-purple-300/65">
+      <label htmlFor={id} className="text-xs font-semibold uppercase tracking-wider text-zinc-400/65">
         {label}
       </label>
       <p className="mt-0.5 text-[11px] text-slate-500/85">{hint}</p>
@@ -60,7 +60,7 @@ export function PaymentProofUpload({
           e.target.value = "";
         }}
         className={
-          "mt-2 block w-full cursor-pointer rounded-xl border border-purple-500/15 bg-purple-950/40 px-3 py-2 text-xs text-purple-200/80 file:mr-3 file:cursor-pointer file:rounded-lg file:border-0 file:bg-purple-500/20 file:px-3 file:py-1.5 file:text-xs file:font-medium file:text-purple-100 " +
+          "mt-2 block w-full cursor-pointer rounded-xl border border-zinc-600/15 bg-zinc-950/40 px-3 py-2 text-xs text-zinc-300/80 file:mr-3 file:cursor-pointer file:rounded-lg file:border-0 file:bg-zinc-600/20 file:px-3 file:py-1.5 file:text-xs file:font-medium file:text-zinc-200 " +
           (error ? "ring-1 ring-rose-400/40" : "")
         }
       />
@@ -71,9 +71,9 @@ export function PaymentProofUpload({
               key={`${f.name}-${i}`}
               initial={{ opacity: 0, x: -6 }}
               animate={{ opacity: 1, x: 0 }}
-              className="flex items-center justify-between gap-2 rounded-lg border border-purple-500/10 bg-purple-950/35 px-2 py-1.5 text-[11px]"
+              className="flex items-center justify-between gap-2 rounded-lg border border-zinc-600/10 bg-zinc-950/35 px-2 py-1.5 text-[11px]"
             >
-              <span className="min-w-0 truncate font-mono text-purple-200/90">{f.name}</span>
+              <span className="min-w-0 truncate font-mono text-zinc-300/90">{f.name}</span>
               <button
                 type="button"
                 onClick={() => onChange(files.filter((_, j) => j !== i))}

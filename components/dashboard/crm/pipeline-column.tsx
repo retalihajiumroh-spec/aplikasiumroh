@@ -37,24 +37,24 @@ export function PipelineColumn({
       className="flex w-[min(100vw-2rem,280px)] shrink-0 flex-col sm:w-[300px]"
     >
       <div className={`glass-panel rounded-2xl bg-gradient-to-br ${accent} p-1`}>
-        <div className="rounded-[0.9rem] border border-purple-500/10 bg-purple-950/25 px-3 py-3">
+        <div className="rounded-[0.9rem] border border-zinc-600/10 bg-zinc-950/25 px-3 py-3">
           <div className="flex items-center justify-between gap-2">
             <div className="min-w-0">
-              <p className="truncate text-sm font-semibold text-purple-50">{label}</p>
-              <p className="text-[11px] text-purple-200/45">{short}</p>
+              <p className="truncate text-sm font-semibold text-zinc-50">{label}</p>
+              <p className="text-[11px] text-zinc-300/45">{short}</p>
             </div>
-            <span className="shrink-0 rounded-full border border-purple-400/20 bg-purple-500/10 px-2 py-0.5 font-mono text-xs font-semibold text-purple-200">
+            <span className="shrink-0 rounded-full border border-zinc-500/20 bg-zinc-600/10 px-2 py-0.5 font-mono text-xs font-semibold text-zinc-300">
               {leads.length}
             </span>
           </div>
-          <span className="mt-2 inline-flex rounded-md border border-white/5 bg-white/[0.04] px-2 py-0.5 text-[10px] font-medium uppercase tracking-wide text-purple-200/50">
+          <span className="mt-2 inline-flex rounded-md border border-white/5 bg-white/[0.04] px-2 py-0.5 text-[10px] font-medium uppercase tracking-wide text-zinc-300/50">
             {chip}
           </span>
         </div>
       </div>
-      <div className="mt-3 flex flex-1 flex-col gap-2.5 rounded-2xl border border-purple-500/5 bg-purple-950/10 p-2 min-h-[120px]">
+      <div className="mt-3 flex flex-1 flex-col gap-2.5 rounded-2xl border border-zinc-600/5 bg-zinc-950/10 p-2 min-h-[120px]">
         {leads.length === 0 ? (
-          <p className="px-2 py-6 text-center text-xs text-purple-500/45">Belum ada lead di tahap ini.</p>
+          <p className="px-2 py-6 text-center text-xs text-zinc-600/45">Belum ada lead di tahap ini.</p>
         ) : (
           leads.map((lead, i) => <PipelineLeadCard key={lead.id} lead={lead} index={i} />)
         )}

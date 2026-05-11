@@ -11,11 +11,11 @@ function badgeForStatus(status: SocialPost["status"]) {
     case "scheduled":
       return "border-amber-400/35 bg-amber-400/12 text-amber-100";
     case "published":
-      return "border-emerald-400/35 bg-emerald-400/12 text-emerald-100";
+      return "border-zinc-500/35 bg-zinc-500/12 text-zinc-200";
     case "failed":
       return "border-rose-400/35 bg-rose-400/12 text-rose-100";
     default:
-      return "border-white/15 bg-white/5 text-emerald-100";
+      return "border-white/15 bg-white/5 text-zinc-200";
   }
 }
 
@@ -78,11 +78,11 @@ export function PostList({
     >
       <div className="flex flex-col gap-4 border-b border-white/10 pb-6 lg:flex-row lg:items-end lg:justify-between">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-300/70">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-400/70">
             Manajemen & perpustakaan
           </p>
-          <h2 className="mt-2 text-xl font-semibold text-emerald-50">Posting & performa kampanye</h2>
-          <p className="mt-2 max-w-2xl text-sm text-emerald-200/55">
+          <h2 className="mt-2 text-xl font-semibold text-zinc-50">Posting & performa kampanye</h2>
+          <p className="mt-2 max-w-2xl text-sm text-zinc-300/55">
             Konten tersimpan sebagai perpustakaan — gunakan ulang cepat untuk kampanye berikutnya. Metrik
             akan disinkronkan dari API resmi setelah OAuth produksi aktif.
           </p>
@@ -95,8 +95,8 @@ export function PostList({
               onClick={() => onFilterChange(t.key)}
               className={`rounded-full px-4 py-2 text-xs font-semibold transition ${
                 filter === t.key
-                  ? "bg-emerald-400/15 text-emerald-50 ring-1 ring-emerald-400/35"
-                  : "bg-black/25 text-emerald-200/65 ring-1 ring-white/10 hover:bg-black/35"
+                  ? "bg-zinc-500/15 text-zinc-50 ring-1 ring-zinc-500/35"
+                  : "bg-black/25 text-zinc-300/65 ring-1 ring-white/10 hover:bg-black/35"
               }`}
             >
               {t.label}
@@ -107,7 +107,7 @@ export function PostList({
 
       <div className="mt-6 overflow-x-auto rounded-xl border border-white/10">
         <table className="min-w-[960px] w-full border-collapse text-left text-sm">
-          <thead className="bg-black/25 text-xs uppercase tracking-wide text-emerald-200/55">
+          <thead className="bg-black/25 text-xs uppercase tracking-wide text-zinc-300/55">
             <tr>
               <th className="px-4 py-3 font-semibold">Caption</th>
               <th className="px-4 py-3 font-semibold">Platform</th>
@@ -122,7 +122,7 @@ export function PostList({
           <tbody>
             {filtered.length === 0 ? (
               <tr>
-                <td colSpan={8} className="px-4 py-10 text-center text-emerald-200/55">
+                <td colSpan={8} className="px-4 py-10 text-center text-zinc-300/55">
                   Belum ada data pada tab ini. Buat postingan baru atau ubah filter.
                 </td>
               </tr>
@@ -132,9 +132,9 @@ export function PostList({
                 return (
                   <tr key={post.id} className="border-t border-white/10 bg-white/[0.015] hover:bg-white/[0.03]">
                     <td className="px-4 py-4 align-top">
-                      <p className="line-clamp-2 font-medium text-emerald-50">{post.caption}</p>
+                      <p className="line-clamp-2 font-medium text-zinc-50">{post.caption}</p>
                       {post.recurrence !== "none" && (
-                        <p className="mt-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-emerald-300/55">
+                        <p className="mt-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-zinc-400/55">
                           Berulang · {post.recurrence === "weekly" ? "mingguan" : "bulanan"}
                         </p>
                       )}
@@ -147,14 +147,14 @@ export function PostList({
                         {post.platforms.map((p) => (
                           <span
                             key={p}
-                            className="rounded-full bg-black/30 px-2 py-1 text-[11px] font-semibold text-emerald-100 ring-1 ring-white/10"
+                            className="rounded-full bg-black/30 px-2 py-1 text-[11px] font-semibold text-zinc-200 ring-1 ring-white/10"
                           >
                             {platformLabel(p)}
                           </span>
                         ))}
                       </div>
                     </td>
-                    <td className="px-4 py-4 align-top text-emerald-100/85">
+                    <td className="px-4 py-4 align-top text-zinc-200/85">
                       {new Date(post.scheduledAt).toLocaleString("id-ID", {
                         dateStyle: "medium",
                         timeStyle: "short",
@@ -167,22 +167,22 @@ export function PostList({
                         {post.status}
                       </span>
                     </td>
-                    <td className="px-4 py-4 align-top text-emerald-100">{m.likes}</td>
-                    <td className="px-4 py-4 align-top text-emerald-100">{m.shares}</td>
-                    <td className="px-4 py-4 align-top text-emerald-100">{m.comments}</td>
+                    <td className="px-4 py-4 align-top text-zinc-200">{m.likes}</td>
+                    <td className="px-4 py-4 align-top text-zinc-200">{m.shares}</td>
+                    <td className="px-4 py-4 align-top text-zinc-200">{m.comments}</td>
                     <td className="px-4 py-4 align-top text-right">
                       <div className="flex flex-wrap justify-end gap-2">
                         <button
                           type="button"
                           onClick={() => onReuse(post)}
-                          className="rounded-lg border border-emerald-400/25 bg-emerald-500/10 px-3 py-1.5 text-[11px] font-semibold text-emerald-50 transition hover:bg-emerald-500/20"
+                          className="rounded-lg border border-zinc-500/25 bg-zinc-600/10 px-3 py-1.5 text-[11px] font-semibold text-zinc-50 transition hover:bg-zinc-600/20"
                         >
                           Gunakan ulang
                         </button>
                         <button
                           type="button"
                           onClick={() => onEdit(post)}
-                          className="rounded-lg border border-[color:var(--color-social-maroon-border)] px-3 py-1.5 text-[11px] font-semibold text-emerald-50 transition hover:bg-[color:var(--color-social-maroon-soft)]"
+                          className="rounded-lg border border-[color:var(--color-social-maroon-border)] px-3 py-1.5 text-[11px] font-semibold text-zinc-50 transition hover:bg-[color:var(--color-social-maroon-soft)]"
                           style={{ backgroundColor: "var(--color-social-maroon-soft)" }}
                         >
                           Edit Post
@@ -190,7 +190,7 @@ export function PostList({
                         <button
                           type="button"
                           onClick={() => onDelete(post.id)}
-                          className="rounded-lg border border-white/15 bg-black/30 px-3 py-1.5 text-[11px] font-semibold text-emerald-100/80 transition hover:bg-black/45"
+                          className="rounded-lg border border-white/15 bg-black/30 px-3 py-1.5 text-[11px] font-semibold text-zinc-200/80 transition hover:bg-black/45"
                         >
                           Hapus
                         </button>

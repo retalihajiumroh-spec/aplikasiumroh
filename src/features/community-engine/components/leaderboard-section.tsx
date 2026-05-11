@@ -42,7 +42,7 @@ export function LeaderboardSection({ entries }: { entries: LeaderboardEntry[] })
         title="Engagement leaderboard"
         description="Siapa yang membawa ritme komunitas — siap untuk appreciation & micro-campaign."
         action={
-          <StatusPill className="border-violet-300/25 bg-violet-400/10 text-violet-100">
+          <StatusPill className="border-zinc-400/25 bg-zinc-500/10 text-zinc-200">
             <Crown className="mr-2 h-3.5 w-3.5" />
             Top movers
           </StatusPill>

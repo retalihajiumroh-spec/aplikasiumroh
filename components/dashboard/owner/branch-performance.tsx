@@ -19,12 +19,12 @@ export function BranchPerformance({ data }: { data: BranchPerformanceMetrics[] }
     >
       <div className="flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <h2 className="text-lg font-semibold tracking-tight text-purple-50">Performa cabang</h2>
-          <p className="mt-1 max-w-xl text-sm text-purple-200/55">
+          <h2 className="text-lg font-semibold tracking-tight text-zinc-50">Performa cabang</h2>
+          <p className="mt-1 max-w-xl text-sm text-zinc-300/55">
             Perbandingan konversi dan skor performa komposit, plus metrik engagement operasional per entitas.
           </p>
         </div>
-        <span className="mt-2 inline-flex w-fit rounded-full border border-purple-400/20 bg-purple-500/10 px-3 py-1 text-xs font-medium text-purple-300/90 sm:mt-0">
+        <span className="mt-2 inline-flex w-fit rounded-full border border-zinc-500/20 bg-zinc-600/10 px-3 py-1 text-xs font-medium text-zinc-400/90 sm:mt-0">
           YTD · agregat internal
         </span>
       </div>
@@ -32,21 +32,21 @@ export function BranchPerformance({ data }: { data: BranchPerformanceMetrics[] }
       <div className="mt-8 grid gap-10 lg:grid-cols-2">
         <div>
           <div className="mb-3 flex flex-wrap items-center gap-2">
-            <span className="text-xs font-semibold uppercase tracking-wider text-purple-300/60">
+            <span className="text-xs font-semibold uppercase tracking-wider text-zinc-400/60">
               Konversi per cabang
             </span>
-            <span className="h-1 w-1 rounded-full bg-purple-500/40" aria-hidden />
-            <span className="text-xs text-purple-200/45">% lead → kontrak</span>
+            <span className="h-1 w-1 rounded-full bg-zinc-600/40" aria-hidden />
+            <span className="text-xs text-zinc-300/45">% lead → kontrak</span>
           </div>
           <BranchConversionChart data={data} />
         </div>
         <div>
           <div className="mb-3 flex flex-wrap items-center gap-2">
-            <span className="text-xs font-semibold uppercase tracking-wider text-purple-300/60">
+            <span className="text-xs font-semibold uppercase tracking-wider text-zinc-400/60">
               Skor performa komposit
             </span>
-            <span className="h-1 w-1 rounded-full bg-purple-500/40" aria-hidden />
-            <span className="text-xs text-purple-200/45">Revenue + konversi + penutupan</span>
+            <span className="h-1 w-1 rounded-full bg-zinc-600/40" aria-hidden />
+            <span className="text-xs text-zinc-300/45">Revenue + konversi + penutupan</span>
           </div>
           <BranchPerformanceScoreChart data={data} />
         </div>
@@ -54,11 +54,11 @@ export function BranchPerformance({ data }: { data: BranchPerformanceMetrics[] }
 
       <div className="mt-10">
         <div className="mb-3 flex flex-wrap items-center gap-2">
-          <span className="text-xs font-semibold uppercase tracking-wider text-purple-300/60">
+          <span className="text-xs font-semibold uppercase tracking-wider text-zinc-400/60">
             Engagement & kepuasan
           </span>
-          <span className="h-1 w-1 rounded-full bg-purple-500/40" aria-hidden />
-          <span className="text-xs text-purple-200/45">Skor engagement vs survei kepuasan jamaah</span>
+          <span className="h-1 w-1 rounded-full bg-zinc-600/40" aria-hidden />
+          <span className="text-xs text-zinc-300/45">Skor engagement vs survei kepuasan jamaah</span>
         </div>
         <BranchEngagementChart data={data} />
       </div>

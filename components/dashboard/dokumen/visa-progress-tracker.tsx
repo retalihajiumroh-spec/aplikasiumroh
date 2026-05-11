@@ -13,12 +13,12 @@ export function VisaProgressTracker({ row }: { row: DokumenRow }) {
     <div className="space-y-5">
       <div>
         <div className="flex items-center justify-between gap-2 text-xs">
-          <span className="font-medium uppercase tracking-wider text-purple-300/60">Progres visa</span>
-          <span className="font-mono text-purple-200/80">{pct}%</span>
+          <span className="font-medium uppercase tracking-wider text-zinc-400/60">Progres visa</span>
+          <span className="font-mono text-zinc-300/80">{pct}%</span>
         </div>
-        <div className="mt-2 h-2 overflow-hidden rounded-full bg-purple-950/70 ring-1 ring-purple-500/10">
+        <div className="mt-2 h-2 overflow-hidden rounded-full bg-zinc-950/70 ring-1 ring-zinc-600/10">
           <motion.div
-            className="h-full rounded-full bg-gradient-to-r from-purple-500 via-violet-400 to-violet-400"
+            className="h-full rounded-full bg-gradient-to-r from-zinc-600 via-zinc-500 to-zinc-500"
             initial={{ width: 0 }}
             animate={{ width: `${pct}%` }}
             transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
@@ -27,8 +27,8 @@ export function VisaProgressTracker({ row }: { row: DokumenRow }) {
       </div>
 
       {showApprovalOk ? (
-        <div className="flex items-center gap-2 rounded-xl border border-purple-400/25 bg-purple-500/10 px-3 py-2 text-xs text-purple-100">
-          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-purple-500/30 text-purple-200" aria-hidden>
+        <div className="flex items-center gap-2 rounded-xl border border-zinc-500/25 bg-zinc-600/10 px-3 py-2 text-xs text-zinc-200">
+          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-zinc-600/30 text-zinc-300" aria-hidden>
             ✓
           </span>
           <span>
@@ -61,22 +61,22 @@ export function VisaProgressTracker({ row }: { row: DokumenRow }) {
                 <motion.span
                   className={`flex h-9 w-9 items-center justify-center rounded-full border-2 text-xs font-bold ${
                     done
-                      ? "border-purple-400/60 bg-purple-500/25 text-purple-100"
+                      ? "border-zinc-500/60 bg-zinc-600/25 text-zinc-200"
                       : current
                         ? embassyRejected
                           ? "border-rose-400/60 bg-rose-500/20 text-rose-100 shadow-[0_0_20px_rgba(244,63,94,0.25)]"
-                          : "border-purple-300/70 bg-purple-500/20 text-purple-50 shadow-[0_0_20px_rgba(52,211,153,0.25)]"
-                        : "border-purple-800/60 bg-purple-950/60 text-purple-600/50"
+                          : "border-zinc-400/70 bg-zinc-600/20 text-zinc-50 shadow-[0_0_20px_rgba(52,211,153,0.25)]"
+                        : "border-zinc-800/60 bg-zinc-950/60 text-zinc-600/50"
                   }`}
                   animate={current && !embassyRejected ? { scale: [1, 1.05, 1] } : undefined}
                   transition={{ duration: 2, repeat: Infinity }}
                 >
                   {done ? "✓" : current ? (embassyRejected ? "✕" : "●") : i + 1}
                 </motion.span>
-                <span className={`mt-2 max-w-[88px] text-[10px] font-medium leading-tight sm:text-[11px] ${done || current ? "text-purple-100/90" : "text-purple-600/45"}`}>
+                <span className={`mt-2 max-w-[88px] text-[10px] font-medium leading-tight sm:text-[11px] ${done || current ? "text-zinc-200/90" : "text-zinc-600/45"}`}>
                   {step.short}
                 </span>
-                <span className="mt-0.5 hidden text-[9px] text-purple-500/45 sm:block">{step.label}</span>
+                <span className="mt-0.5 hidden text-[9px] text-zinc-600/45 sm:block">{step.label}</span>
               </div>
             </li>
           );

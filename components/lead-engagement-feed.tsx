@@ -8,7 +8,7 @@ import type { LeadInteractionItem, LeadTemp } from "@/lib/dashboard/premium-dash
 function TempBadge({ temp }: { temp: LeadTemp }) {
   if (temp === "hot") {
     return (
-      <span className="inline-flex items-center gap-1 rounded-md border border-violet-400/35 bg-violet-500/15 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-violet-100">
+      <span className="inline-flex items-center gap-1 rounded-md border border-zinc-500/35 bg-zinc-600/15 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-zinc-200">
         <Flame className="h-3 w-3" aria-hidden />
         Hot
       </span>
@@ -40,9 +40,9 @@ export function LeadEngagementFeed({ items }: { items: LeadInteractionItem[] }) 
       initial={{ opacity: 0, y: 16 }}
       animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
       transition={{ duration: 0.45 }}
-      className="glass-panel rounded-2xl border border-purple-500/10 p-5 sm:p-6"
+      className="glass-panel rounded-2xl border border-zinc-600/10 p-5 sm:p-6"
     >
-      <h2 className="text-lg font-semibold text-purple-50">Metrik interaksi lead</h2>
+      <h2 className="text-lg font-semibold text-zinc-50">Metrik interaksi lead</h2>
       <p className="mt-1 text-sm text-slate-400/90">Lead baru, saluran kampanye, dan suhu lead (hot / warm / cold).</p>
       <ul className="mt-4 space-y-2">
         {items.map((row, i) => (
@@ -52,14 +52,14 @@ export function LeadEngagementFeed({ items }: { items: LeadInteractionItem[] }) 
             animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 8 }}
             transition={{ delay: 0.04 + i * 0.04 }}
             whileHover={{ x: 4, transition: { duration: 0.18 } }}
-            className="rounded-xl border border-purple-500/10 bg-purple-950/30 p-3 transition hover:border-violet-400/25 hover:bg-white/[0.03]"
+            className="rounded-xl border border-zinc-600/10 bg-zinc-950/30 p-3 transition hover:border-zinc-500/25 hover:bg-white/[0.03]"
           >
             <div className="flex flex-wrap items-center gap-2">
               <TempBadge temp={row.temp} />
-              <span className="text-[11px] font-medium uppercase tracking-wide text-purple-500/55">{row.channel}</span>
-              <span className="text-[11px] text-purple-500/45">· {row.at}</span>
+              <span className="text-[11px] font-medium uppercase tracking-wide text-zinc-600/55">{row.channel}</span>
+              <span className="text-[11px] text-zinc-600/45">· {row.at}</span>
             </div>
-            <p className="mt-2 text-sm font-semibold text-purple-50">{row.title}</p>
+            <p className="mt-2 text-sm font-semibold text-zinc-50">{row.title}</p>
             <p className="mt-0.5 text-xs text-slate-400/90">{row.detail}</p>
           </motion.li>
         ))}

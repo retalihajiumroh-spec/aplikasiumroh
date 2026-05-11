@@ -41,10 +41,10 @@ export function DashboardOverview() {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45 }}
-          className="border-b border-purple-500/10 pb-8"
+          className="border-b border-zinc-600/10 pb-8"
         >
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-violet-200/75">SA&apos;YA Umroh OS</p>
-          <h1 className="mt-2 text-3xl font-bold tracking-tight text-purple-50 sm:text-4xl">Dashboard</h1>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-300/75">SA&apos;YA Umroh OS</p>
+          <h1 className="mt-2 text-3xl font-bold tracking-tight text-zinc-50 sm:text-4xl">Dashboard</h1>
           <p className="mt-2 max-w-3xl text-sm leading-relaxed text-slate-400/90 sm:text-base">
             KPI operasional, performa 6 bulan, funnel inbound dengan persentase, komunitas, aktivitas kasir, dan metrik
             interaksi lead — tampilan premium siap presentasi.

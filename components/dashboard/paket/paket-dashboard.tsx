@@ -15,9 +15,9 @@ import { loadUserPackages, type StoredUserPackage } from "@/lib/paket/package-st
 import { formatIdrCompact } from "@/lib/dashboard/owner-dummy-data";
 
 function statusMeta(s: PaketStatus) {
-  if (s === "open") return { label: "Terbuka", className: "border-purple-400/35 bg-purple-500/12 text-purple-100" };
+  if (s === "open") return { label: "Terbuka", className: "border-zinc-500/35 bg-zinc-600/12 text-zinc-200" };
   if (s === "almost_full")
-    return { label: "Hampir penuh", className: "border-violet-400/35 bg-violet-500/12 text-violet-100" };
+    return { label: "Hampir penuh", className: "border-zinc-500/35 bg-zinc-600/12 text-zinc-200" };
   return { label: "Penuh", className: "border-rose-400/35 bg-rose-500/12 text-rose-100" };
 }
 
@@ -29,26 +29,26 @@ function SeatBar({ pkg }: { pkg: UmrohPackage }) {
   return (
     <div className="mt-4">
       <div className="flex items-center justify-between gap-2 text-xs">
-        <span className="font-medium text-purple-200/70">Keterisian seat</span>
-        <span className="font-mono text-purple-100/90">
+        <span className="font-medium text-zinc-300/70">Keterisian seat</span>
+        <span className="font-mono text-zinc-200/90">
           {pkg.seatsBooked} / {pkg.seatsTotal}
         </span>
       </div>
-      <div className="mt-2 h-2.5 overflow-hidden rounded-full bg-purple-950/70 ring-1 ring-purple-500/10">
+      <div className="mt-2 h-2.5 overflow-hidden rounded-full bg-zinc-950/70 ring-1 ring-zinc-600/10">
         <motion.div
           className={`h-full rounded-full ${
             full
-              ? "bg-gradient-to-r from-rose-500/90 to-violet-500/70"
+              ? "bg-gradient-to-r from-rose-500/90 to-zinc-600/70"
               : pct >= 85
-                ? "bg-gradient-to-r from-violet-500/90 to-violet-400/70"
-                : "bg-gradient-to-r from-purple-500 to-violet-400"
+                ? "bg-gradient-to-r from-zinc-600/90 to-zinc-500/70"
+                : "bg-gradient-to-r from-zinc-600 to-zinc-500"
           }`}
           initial={{ width: 0 }}
           animate={{ width: `${pct}%` }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
         />
       </div>
-      <p className="mt-2 text-[11px] text-purple-400/65">
+      <p className="mt-2 text-[11px] text-zinc-500/65">
         {full ? "Kuota habis · tunggu batch berikutnya" : `${left} seat tersedia · ${pct.toLocaleString("id-ID")}% terisi`}
       </p>
     </div>
@@ -100,12 +100,12 @@ export function PaketDashboard() {
         <motion.header
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
-          className="flex flex-col gap-4 border-b border-purple-500/10 pb-8 sm:flex-row sm:items-end sm:justify-between"
+          className="flex flex-col gap-4 border-b border-zinc-600/10 pb-8 sm:flex-row sm:items-end sm:justify-between"
         >
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-purple-400/70">SA&apos;YA Umroh OS</p>
-            <h1 className="mt-2 text-3xl font-semibold tracking-tight text-purple-50 sm:text-4xl">Paket Umroh</h1>
-            <p className="mt-2 max-w-xl text-sm text-purple-200/55 sm:text-base">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500/70">SA&apos;YA Umroh OS</p>
+            <h1 className="mt-2 text-3xl font-semibold tracking-tight text-zinc-50 sm:text-4xl">Paket Umroh</h1>
+            <p className="mt-2 max-w-xl text-sm text-zinc-300/55 sm:text-base">
               Katalog paket, harga mulai, jadwal keberangkatan, dan ketersediaan seat — kelola batch dengan satu layar.
             </p>
           </div>
@@ -115,7 +115,7 @@ export function PaketDashboard() {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={() => setCreateOpen(true)}
-              className="inline-flex items-center gap-2 rounded-xl border border-purple-400/35 bg-gradient-to-r from-purple-500/25 to-violet-900/20 px-4 py-2.5 text-sm font-semibold text-purple-50 shadow-lg shadow-purple-950/30"
+              className="inline-flex items-center gap-2 rounded-xl border border-zinc-500/35 bg-gradient-to-r from-zinc-600/25 to-zinc-900/20 px-4 py-2.5 text-sm font-semibold text-zinc-50 shadow-lg shadow-zinc-950/30"
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
                 <path d="M12 5v14M5 12h14" />
@@ -124,7 +124,7 @@ export function PaketDashboard() {
             </motion.button>
             <Link
               href="/"
-              className="inline-flex items-center rounded-xl border border-white/10 bg-white/[0.04] px-4 py-2.5 text-sm text-purple-200/80 transition hover:border-purple-400/25 hover:bg-purple-500/10"
+              className="inline-flex items-center rounded-xl border border-white/10 bg-white/[0.04] px-4 py-2.5 text-sm text-zinc-300/80 transition hover:border-zinc-500/25 hover:bg-zinc-600/10"
             >
               ← Hub
             </Link>
@@ -145,33 +145,33 @@ export function PaketDashboard() {
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                   <div className="min-w-0 flex-1">
                     <div className="flex flex-wrap items-center gap-2">
-                      <span className="font-mono text-xs text-purple-400/60">{pkg.id}</span>
+                      <span className="font-mono text-xs text-zinc-500/60">{pkg.id}</span>
                       <span className={`rounded-md border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide ${st.className}`}>
                         {st.label}
                       </span>
                       {"formSnapshot" in pkg && pkg.formSnapshot ? (
-                        <span className="rounded-md border border-violet-400/35 bg-violet-500/15 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-violet-100">
+                        <span className="rounded-md border border-zinc-500/35 bg-zinc-600/15 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-zinc-200">
                           Buat Anda
                         </span>
                       ) : null}
                     </div>
-                    <h2 className="mt-2 text-xl font-semibold text-purple-50">{pkg.name}</h2>
-                    <p className="mt-1 text-sm leading-relaxed text-purple-200/55">{pkg.subtitle}</p>
+                    <h2 className="mt-2 text-xl font-semibold text-zinc-50">{pkg.name}</h2>
+                    <p className="mt-1 text-sm leading-relaxed text-zinc-300/55">{pkg.subtitle}</p>
                     <dl className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm">
                       <div>
-                        <dt className="text-xs font-medium uppercase tracking-wider text-purple-500/50">Berangkat</dt>
-                        <dd className="font-medium text-purple-100">{pkg.departureLabel}</dd>
+                        <dt className="text-xs font-medium uppercase tracking-wider text-zinc-600/50">Berangkat</dt>
+                        <dd className="font-medium text-zinc-200">{pkg.departureLabel}</dd>
                       </div>
                       <div>
-                        <dt className="text-xs font-medium uppercase tracking-wider text-purple-500/50">Durasi</dt>
-                        <dd className="font-medium text-purple-100">{pkg.durationNights} malam</dd>
+                        <dt className="text-xs font-medium uppercase tracking-wider text-zinc-600/50">Durasi</dt>
+                        <dd className="font-medium text-zinc-200">{pkg.durationNights} malam</dd>
                       </div>
                       <div>
-                        <dt className="text-xs font-medium uppercase tracking-wider text-purple-500/50">Mulai dari</dt>
-                        <dd className="font-mono font-semibold text-purple-200">{formatIdrCompact(pkg.priceFromIdr)}</dd>
+                        <dt className="text-xs font-medium uppercase tracking-wider text-zinc-600/50">Mulai dari</dt>
+                        <dd className="font-mono font-semibold text-zinc-300">{formatIdrCompact(pkg.priceFromIdr)}</dd>
                         {"totalModalIdr" in pkg && typeof pkg.totalModalIdr === "number" ? (
                           <p className="mt-1 text-[11px] text-slate-500/85">
-                            Est. modal total: <span className="font-mono text-purple-400/80">{formatIdrCompact(pkg.totalModalIdr)}</span>
+                            Est. modal total: <span className="font-mono text-zinc-500/80">{formatIdrCompact(pkg.totalModalIdr)}</span>
                           </p>
                         ) : null}
                       </div>

@@ -21,7 +21,7 @@ export function CopyTextButton({ text, label = "Salin" }: { text: string; label?
       type="button"
       whileTap={{ scale: 0.97 }}
       onClick={handleCopy}
-      className="rounded-lg border border-purple-500/15 bg-purple-950/40 px-2.5 py-1 text-[11px] font-medium text-purple-200/90 transition hover:border-purple-400/30 hover:bg-purple-500/10"
+      className="rounded-lg border border-zinc-600/15 bg-zinc-950/40 px-2.5 py-1 text-[11px] font-medium text-zinc-300/90 transition hover:border-zinc-500/30 hover:bg-zinc-600/10"
     >
       {ok ? "Disalin" : label}
     </motion.button>

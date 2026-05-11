@@ -34,18 +34,18 @@ export function DepartureDashboard() {
         <motion.header
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
-          className="flex flex-col gap-4 border-b border-purple-500/10 pb-8 sm:flex-row sm:items-end sm:justify-between"
+          className="flex flex-col gap-4 border-b border-zinc-600/10 pb-8 sm:flex-row sm:items-end sm:justify-between"
         >
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-purple-400/70">SA&apos;YA Umroh OS</p>
-            <h1 className="mt-2 text-3xl font-semibold tracking-tight text-purple-50 sm:text-4xl">Departure</h1>
-            <p className="mt-2 max-w-xl text-sm text-purple-200/55 sm:text-base">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500/70">SA&apos;YA Umroh OS</p>
+            <h1 className="mt-2 text-3xl font-semibold tracking-tight text-zinc-50 sm:text-4xl">Departure</h1>
+            <p className="mt-2 max-w-xl text-sm text-zinc-300/55 sm:text-base">
               Jadwal keberangkatan grup, keterisian seat, dan penugasan tour leader (TL).
             </p>
           </div>
           <Link
             href="/"
-            className="inline-flex w-fit rounded-xl border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-purple-200/80 transition hover:border-purple-400/25 hover:bg-purple-500/10"
+            className="inline-flex w-fit rounded-xl border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-zinc-300/80 transition hover:border-zinc-500/25 hover:bg-zinc-600/10"
           >
             ← Hub
           </Link>
@@ -68,31 +68,31 @@ export function DepartureDashboard() {
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                   <div className="min-w-0 flex-1">
                     <div className="flex flex-wrap items-center gap-2">
-                      <span className="font-mono text-xs font-semibold text-purple-300/80">{row.code}</span>
+                      <span className="font-mono text-xs font-semibold text-zinc-400/80">{row.code}</span>
                     </div>
-                    <h2 className="mt-1 text-lg font-semibold text-purple-50">{row.packageName}</h2>
-                    <p className="mt-1 text-sm text-purple-200/55">{row.route}</p>
+                    <h2 className="mt-1 text-lg font-semibold text-zinc-50">{row.packageName}</h2>
+                    <p className="mt-1 text-sm text-zinc-300/55">{row.route}</p>
                     <dl className="mt-3 grid gap-2 text-xs sm:grid-cols-2">
                       <div>
-                        <dt className="text-purple-500/50">Berangkat</dt>
-                        <dd className="font-medium text-purple-100">{row.departureLabel}</dd>
+                        <dt className="text-zinc-600/50">Berangkat</dt>
+                        <dd className="font-medium text-zinc-200">{row.departureLabel}</dd>
                       </div>
                       <div>
-                        <dt className="text-purple-500/50">Kembali (est.)</dt>
-                        <dd className="font-medium text-purple-100">{row.returnLabel}</dd>
+                        <dt className="text-zinc-600/50">Kembali (est.)</dt>
+                        <dd className="font-medium text-zinc-200">{row.returnLabel}</dd>
                       </div>
                     </dl>
                   </div>
                   <div className="flex shrink-0 flex-col items-stretch gap-2 sm:items-end">
                     {row.tlName ? (
-                      <div className="rounded-xl border border-purple-400/25 bg-purple-500/10 px-3 py-2 text-right">
-                        <p className="text-[10px] font-bold uppercase tracking-wide text-purple-400/70">TL</p>
-                        <p className="text-sm font-medium text-purple-50">{row.tlName}</p>
+                      <div className="rounded-xl border border-zinc-500/25 bg-zinc-600/10 px-3 py-2 text-right">
+                        <p className="text-[10px] font-bold uppercase tracking-wide text-zinc-500/70">TL</p>
+                        <p className="text-sm font-medium text-zinc-50">{row.tlName}</p>
                       </div>
                     ) : (
-                      <div className="rounded-xl border border-violet-400/25 bg-violet-500/10 px-3 py-2 text-right">
-                        <p className="text-[10px] font-bold uppercase tracking-wide text-violet-300/80">TL</p>
-                        <p className="text-sm text-violet-100/90">Belum ditugaskan</p>
+                      <div className="rounded-xl border border-zinc-500/25 bg-zinc-600/10 px-3 py-2 text-right">
+                        <p className="text-[10px] font-bold uppercase tracking-wide text-zinc-400/80">TL</p>
+                        <p className="text-sm text-zinc-200/90">Belum ditugaskan</p>
                       </div>
                     )}
                     <motion.button
@@ -100,7 +100,7 @@ export function DepartureDashboard() {
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                       onClick={() => setModalDepartureId(row.id)}
-                      className="rounded-xl border border-purple-400/35 bg-gradient-to-r from-purple-500/20 to-violet-900/15 px-4 py-2.5 text-sm font-semibold text-purple-50 shadow-md shadow-purple-950/30"
+                      className="rounded-xl border border-zinc-500/35 bg-gradient-to-r from-zinc-600/20 to-zinc-900/15 px-4 py-2.5 text-sm font-semibold text-zinc-50 shadow-md shadow-zinc-950/30"
                     >
                       Assign TL
                     </motion.button>
@@ -109,27 +109,27 @@ export function DepartureDashboard() {
 
                 <div className="mt-5">
                   <div className="flex items-center justify-between gap-2 text-xs">
-                    <span className="font-medium uppercase tracking-wider text-purple-300/60">Seat</span>
-                    <span className="font-mono text-purple-100/90">
+                    <span className="font-medium uppercase tracking-wider text-zinc-400/60">Seat</span>
+                    <span className="font-mono text-zinc-200/90">
                       {row.seatsBooked} / {row.seatsTotal}
-                      {!full ? <span className="text-purple-500/50"> · {left} kosong</span> : <span className="text-purple-500/50"> · penuh</span>}
+                      {!full ? <span className="text-zinc-600/50"> · {left} kosong</span> : <span className="text-zinc-600/50"> · penuh</span>}
                     </span>
                   </div>
-                  <div className="mt-2 h-2.5 overflow-hidden rounded-full bg-purple-950/70 ring-1 ring-purple-500/10">
+                  <div className="mt-2 h-2.5 overflow-hidden rounded-full bg-zinc-950/70 ring-1 ring-zinc-600/10">
                     <motion.div
                       className={`h-full rounded-full ${
                         full
-                          ? "bg-gradient-to-r from-rose-500/90 to-violet-500/70"
+                          ? "bg-gradient-to-r from-rose-500/90 to-zinc-600/70"
                           : pct >= 88
-                            ? "bg-gradient-to-r from-violet-500 to-purple-400"
-                            : "bg-gradient-to-r from-purple-500 to-violet-400"
+                            ? "bg-gradient-to-r from-zinc-600 to-zinc-500"
+                            : "bg-gradient-to-r from-zinc-600 to-zinc-500"
                       }`}
                       initial={{ width: 0 }}
                       animate={{ width: `${pct}%` }}
                       transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
                     />
                   </div>
-                  <p className="mt-1.5 text-right text-[11px] text-purple-500/50">{pct.toLocaleString("id-ID")}% terisi</p>
+                  <p className="mt-1.5 text-right text-[11px] text-zinc-600/50">{pct.toLocaleString("id-ID")}% terisi</p>
                 </div>
               </motion.li>
             );

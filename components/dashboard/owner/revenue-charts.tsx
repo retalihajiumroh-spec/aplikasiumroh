@@ -21,10 +21,10 @@ function RevenueTooltip({
   if (!active || !payload?.length) return null;
   const row = payload[0].payload;
   return (
-    <div className="rounded-lg border border-purple-400/20 bg-purple-950/95 px-3 py-2 text-xs shadow-xl backdrop-blur-md">
-      <p className="font-medium text-purple-100">{row.month}</p>
-      <p className="mt-1 text-purple-300/90">{formatIdrCompact(row.revenueIdr)}</p>
-      <p className="text-purple-200/70">Konversi: {row.conversionPct.toFixed(1)}%</p>
+    <div className="rounded-lg border border-zinc-500/20 bg-zinc-950/95 px-3 py-2 text-xs shadow-xl backdrop-blur-md">
+      <p className="font-medium text-zinc-200">{row.month}</p>
+      <p className="mt-1 text-zinc-400/90">{formatIdrCompact(row.revenueIdr)}</p>
+      <p className="text-zinc-300/70">Konversi: {row.conversionPct.toFixed(1)}%</p>
     </div>
   );
 }
@@ -69,7 +69,7 @@ export function MonthlyRevenueConversionChart({ data }: { data: MonthlyRevenuePo
           <Tooltip content={<RevenueTooltip />} cursor={{ stroke: "rgba(156, 77, 204, 0.25)" }} />
           <Legend
             wrapperStyle={{ paddingTop: 16 }}
-            formatter={(value) => <span className="text-xs text-purple-200/70">{value}</span>}
+            formatter={(value) => <span className="text-xs text-zinc-300/70">{value}</span>}
           />
           <Area
             yAxisId="left"

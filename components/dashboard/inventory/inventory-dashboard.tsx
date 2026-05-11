@@ -53,18 +53,18 @@ export function InventoryDashboard() {
         <motion.header
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
-          className="flex flex-col gap-4 border-b border-purple-500/10 pb-8 sm:flex-row sm:items-end sm:justify-between"
+          className="flex flex-col gap-4 border-b border-zinc-600/10 pb-8 sm:flex-row sm:items-end sm:justify-between"
         >
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-purple-400/70">SA&apos;YA Umroh OS</p>
-            <h1 className="mt-2 text-3xl font-semibold tracking-tight text-purple-50 sm:text-4xl">Inventory</h1>
-            <p className="mt-2 max-w-xl text-sm text-purple-200/55 sm:text-base">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500/70">SA&apos;YA Umroh OS</p>
+            <h1 className="mt-2 text-3xl font-semibold tracking-tight text-zinc-50 sm:text-4xl">Inventory</h1>
+            <p className="mt-2 max-w-xl text-sm text-zinc-300/55 sm:text-base">
               Daftar stok barang logistik &amp; operasional dengan peringatan stok rendah dan zona mendekati minimum.
             </p>
           </div>
           <Link
             href="/"
-            className="inline-flex w-fit rounded-xl border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-purple-200/80 transition hover:border-purple-400/25 hover:bg-purple-500/10"
+            className="inline-flex w-fit rounded-xl border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-zinc-300/80 transition hover:border-zinc-500/25 hover:bg-zinc-600/10"
           >
             ← Hub
           </Link>
@@ -83,9 +83,9 @@ export function InventoryDashboard() {
               transition={{ delay: i * 0.05 }}
               className="glass-card rounded-xl p-4"
             >
-              <p className="text-xs font-medium uppercase tracking-wider text-purple-200/45">{c.label}</p>
-              <p className="mt-2 font-mono text-2xl font-semibold text-purple-50">{c.value}</p>
-              <p className="mt-1 text-[11px] text-purple-500/50">{c.hint}</p>
+              <p className="text-xs font-medium uppercase tracking-wider text-zinc-300/45">{c.label}</p>
+              <p className="mt-2 font-mono text-2xl font-semibold text-zinc-50">{c.value}</p>
+              <p className="mt-1 text-[11px] text-zinc-600/50">{c.hint}</p>
             </motion.div>
           ))}
         </div>
@@ -96,15 +96,15 @@ export function InventoryDashboard() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="mt-6 overflow-hidden rounded-xl border border-violet-400/30 bg-violet-500/10 px-4 py-3"
+              className="mt-6 overflow-hidden rounded-xl border border-zinc-500/30 bg-zinc-600/10 px-4 py-3"
             >
               <div className="flex flex-wrap items-start gap-3">
-                <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-violet-500/25 text-violet-100" aria-hidden>
+                <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-zinc-600/25 text-zinc-200" aria-hidden>
                   !
                 </span>
                 <div>
-                  <p className="font-semibold text-violet-100">Peringatan stok rendah</p>
-                  <p className="mt-1 text-sm text-violet-200/80">
+                  <p className="font-semibold text-zinc-200">Peringatan stok rendah</p>
+                  <p className="mt-1 text-sm text-zinc-300/80">
                     {low} item berada di atau di bawah level minimum. Tinjau daftar dan jadwalkan pembelian / transfer
                     antar cabang.
                   </p>
@@ -128,8 +128,8 @@ export function InventoryDashboard() {
               onClick={() => setFilter(t.id)}
               className={`rounded-xl border px-4 py-2 text-xs font-semibold transition ${
                 filter === t.id
-                  ? "border-purple-400/40 bg-purple-500/20 text-purple-50"
-                  : "border-purple-500/15 bg-purple-950/40 text-purple-300/70 hover:border-purple-400/25"
+                  ? "border-zinc-500/40 bg-zinc-600/20 text-zinc-50"
+                  : "border-zinc-600/15 bg-zinc-950/40 text-zinc-400/70 hover:border-zinc-500/25"
               }`}
             >
               {t.label}
@@ -138,11 +138,11 @@ export function InventoryDashboard() {
         </div>
 
         <div className="mt-6 glass-panel overflow-hidden rounded-2xl">
-          <div className="border-b border-purple-500/10 px-4 py-3 sm:px-5">
-            <p className="text-sm font-medium text-purple-100">Stock list</p>
-            <p className="text-xs text-purple-500/50">{filtered.length} baris</p>
+          <div className="border-b border-zinc-600/10 px-4 py-3 sm:px-5">
+            <p className="text-sm font-medium text-zinc-200">Stock list</p>
+            <p className="text-xs text-zinc-600/50">{filtered.length} baris</p>
           </div>
-          <ul className="divide-y divide-purple-500/10">
+          <ul className="divide-y divide-zinc-600/10">
             {filtered.map((item, i) => {
               const lvl = stockLevel(item);
               const pct = barPct(item);
@@ -152,52 +152,52 @@ export function InventoryDashboard() {
                   initial={{ opacity: 0, y: 6 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.03 }}
-                  className={`px-4 py-4 sm:px-5 ${lvl === "low" ? "bg-rose-500/[0.06]" : lvl === "near" ? "bg-violet-500/[0.05]" : ""}`}
+                  className={`px-4 py-4 sm:px-5 ${lvl === "low" ? "bg-rose-500/[0.06]" : lvl === "near" ? "bg-zinc-600/[0.05]" : ""}`}
                 >
                   <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                     <div className="min-w-0 flex-1">
                       <div className="flex flex-wrap items-center gap-2">
-                        <span className="font-mono text-xs text-purple-400/60">{item.sku}</span>
+                        <span className="font-mono text-xs text-zinc-500/60">{item.sku}</span>
                         {lvl === "low" ? (
                           <span className="rounded-md border border-rose-400/40 bg-rose-500/15 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-rose-100">
                             Stok rendah
                           </span>
                         ) : lvl === "near" ? (
-                          <span className="rounded-md border border-violet-400/35 bg-violet-500/12 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-violet-100">
+                          <span className="rounded-md border border-zinc-500/35 bg-zinc-600/12 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-zinc-200">
                             Mendekati min.
                           </span>
                         ) : null}
                       </div>
-                      <p className="mt-1 font-medium text-purple-50">{item.name}</p>
-                      <p className="mt-1 text-xs text-purple-400/55">
+                      <p className="mt-1 font-medium text-zinc-50">{item.name}</p>
+                      <p className="mt-1 text-xs text-zinc-500/55">
                         {categoryLabel(item.category)} · {item.location}
                       </p>
                     </div>
                     <div className="shrink-0 text-right sm:pl-4">
-                      <p className="font-mono text-lg font-semibold text-purple-100">
+                      <p className="font-mono text-lg font-semibold text-zinc-200">
                         {item.quantity}{" "}
-                        <span className="text-sm font-normal text-purple-400/60">{item.unit}</span>
+                        <span className="text-sm font-normal text-zinc-500/60">{item.unit}</span>
                       </p>
-                      <p className="text-[11px] text-purple-500/50">
+                      <p className="text-[11px] text-zinc-600/50">
                         Min. {item.minQuantity} {item.unit}
                       </p>
                     </div>
                   </div>
                   <div className="mt-3">
-                    <div className="flex items-center justify-between text-[10px] uppercase tracking-wide text-purple-500/45">
+                    <div className="flex items-center justify-between text-[10px] uppercase tracking-wide text-zinc-600/45">
                       <span>Level vs buffer</span>
                       <span>
                         {item.quantity}/{item.minQuantity} min
                       </span>
                     </div>
-                    <div className="mt-1.5 h-2 overflow-hidden rounded-full bg-purple-950/70 ring-1 ring-purple-500/10">
+                    <div className="mt-1.5 h-2 overflow-hidden rounded-full bg-zinc-950/70 ring-1 ring-zinc-600/10">
                       <motion.div
                         className={`h-full rounded-full ${
                           lvl === "low"
-                            ? "bg-gradient-to-r from-rose-500 to-violet-500"
+                            ? "bg-gradient-to-r from-rose-500 to-zinc-600"
                             : lvl === "near"
-                              ? "bg-gradient-to-r from-violet-500 to-purple-500"
-                              : "bg-gradient-to-r from-purple-500 to-violet-400"
+                              ? "bg-gradient-to-r from-zinc-600 to-zinc-600"
+                              : "bg-gradient-to-r from-zinc-600 to-zinc-500"
                         }`}
                         initial={{ width: 0 }}
                         animate={{ width: `${pct}%` }}
@@ -205,7 +205,7 @@ export function InventoryDashboard() {
                       />
                     </div>
                   </div>
-                  <p className="mt-2 text-[11px] text-purple-600/50">Restock terakhir: {item.lastRestocked}</p>
+                  <p className="mt-2 text-[11px] text-zinc-600/50">Restock terakhir: {item.lastRestocked}</p>
                 </motion.li>
               );
             })}

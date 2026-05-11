@@ -9,11 +9,11 @@ function kindMeta(kind: ActivityFeedKind) {
     case "lead":
       return { label: "Lead baru", className: "border-sky-400/30 bg-sky-500/12 text-sky-100" };
     case "payment":
-      return { label: "Pembayaran", className: "border-purple-400/30 bg-purple-500/12 text-purple-100" };
+      return { label: "Pembayaran", className: "border-zinc-500/30 bg-zinc-600/12 text-zinc-200" };
     case "document":
-      return { label: "Dokumen", className: "border-violet-400/30 bg-violet-500/12 text-violet-100" };
+      return { label: "Dokumen", className: "border-zinc-500/30 bg-zinc-600/12 text-zinc-200" };
     case "booking":
-      return { label: "Booking", className: "border-violet-400/30 bg-violet-500/12 text-violet-100" };
+      return { label: "Booking", className: "border-zinc-500/30 bg-zinc-600/12 text-zinc-200" };
   }
 }
 
@@ -27,17 +27,17 @@ export function OwnerActivityFeed({ items }: { items: ActivityFeedItem[] }) {
     >
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
-          <h2 className="text-lg font-semibold text-purple-50">Activity feed</h2>
-          <p className="mt-1 text-sm text-purple-200/55">
+          <h2 className="text-lg font-semibold text-zinc-50">Activity feed</h2>
+          <p className="mt-1 text-sm text-zinc-300/55">
             Aliran aktivitas hampir real-time: lead, pembayaran, dokumen, dan booking di seluruh cabang.
           </p>
         </div>
-        <div className="flex items-center gap-2 rounded-full border border-purple-400/20 bg-purple-500/10 px-3 py-1.5">
+        <div className="flex items-center gap-2 rounded-full border border-zinc-500/20 bg-zinc-600/10 px-3 py-1.5">
           <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-purple-400 opacity-60" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-purple-400" />
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-zinc-500 opacity-60" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-zinc-500" />
           </span>
-          <span className="text-[10px] font-semibold uppercase tracking-wide text-purple-200/90">Live</span>
+          <span className="text-[10px] font-semibold uppercase tracking-wide text-zinc-300/90">Live</span>
         </div>
       </div>
 
@@ -56,19 +56,19 @@ export function OwnerActivityFeed({ items }: { items: ActivityFeedItem[] }) {
                 <span className={`rounded-md border px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide ${m.className}`}>
                   {m.label}
                 </span>
-                <span className="text-[11px] font-medium text-purple-400/70">{item.at}</span>
+                <span className="text-[11px] font-medium text-zinc-500/70">{item.at}</span>
               </div>
-              <p className="mt-2 font-medium text-purple-50">{item.title}</p>
-              <p className="mt-0.5 text-sm text-purple-200/60">{item.description}</p>
+              <p className="mt-2 font-medium text-zinc-50">{item.title}</p>
+              <p className="mt-0.5 text-sm text-zinc-300/60">{item.description}</p>
               <div className="mt-2 flex flex-wrap items-center justify-between gap-2">
                 {item.amountIdr !== undefined ? (
-                  <p className="font-mono text-sm font-semibold text-purple-300/90">
+                  <p className="font-mono text-sm font-semibold text-zinc-400/90">
                     {formatIdrCompact(item.amountIdr)}
                   </p>
                 ) : (
                   <span />
                 )}
-                {item.meta ? <span className="text-[11px] text-purple-500/50">{item.meta}</span> : null}
+                {item.meta ? <span className="text-[11px] text-zinc-600/50">{item.meta}</span> : null}
               </div>
             </motion.li>
           );

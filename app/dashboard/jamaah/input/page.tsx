@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 function FormFallback() {
   return (
-    <div className="flex min-h-[40vh] items-center justify-center p-8 text-sm text-purple-200/70">
+    <div className="flex min-h-[40vh] items-center justify-center p-8 text-sm text-zinc-300/70">
       Memuat form…
     </div>
   );

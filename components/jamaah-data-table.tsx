@@ -36,15 +36,15 @@ export function JamaahDataTable({ rows }: { rows: DashboardJamaahRow[] }) {
       initial={{ opacity: 0, y: 20 }}
       animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-      className="glass-panel rounded-2xl border border-purple-500/10 p-5 sm:p-6"
+      className="glass-panel rounded-2xl border border-zinc-600/10 p-5 sm:p-6"
     >
-      <div className="flex flex-col gap-4 border-b border-purple-500/10 pb-4 sm:flex-row sm:items-end sm:justify-between">
+      <div className="flex flex-col gap-4 border-b border-zinc-600/10 pb-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <h2 className="text-lg font-semibold text-purple-50">Data jamaah</h2>
-          <p className="mt-1 text-sm text-purple-200/55">Tabel ringkas dengan pencarian, pagination, dan detail per baris.</p>
+          <h2 className="text-lg font-semibold text-zinc-50">Data jamaah</h2>
+          <p className="mt-1 text-sm text-zinc-300/55">Tabel ringkas dengan pencarian, pagination, dan detail per baris.</p>
         </div>
         <div className="relative w-full sm:max-w-xs">
-          <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-purple-400/55" aria-hidden />
+          <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-zinc-500/55" aria-hidden />
           <input
             type="search"
             value={q}
@@ -53,14 +53,14 @@ export function JamaahDataTable({ rows }: { rows: DashboardJamaahRow[] }) {
               setPage(0);
             }}
             placeholder="Cari nama, cabang, paket…"
-            className="w-full rounded-xl border border-purple-500/15 bg-purple-950/50 py-2.5 pl-10 pr-3 text-sm text-purple-50 placeholder:text-purple-600/45 focus:border-violet-400/35 focus:outline-none focus:ring-2 focus:ring-violet-500/15"
+            className="w-full rounded-xl border border-zinc-600/15 bg-zinc-950/50 py-2.5 pl-10 pr-3 text-sm text-zinc-50 placeholder:text-zinc-600/45 focus:border-zinc-500/35 focus:outline-none focus:ring-2 focus:ring-zinc-600/15"
           />
         </div>
       </div>
 
-      <div className="mt-4 overflow-x-auto rounded-xl border border-purple-500/10">
+      <div className="mt-4 overflow-x-auto rounded-xl border border-zinc-600/10">
         <table className="w-full min-w-[720px] text-left text-sm">
-          <thead className="border-b border-purple-500/10 bg-purple-950/40 text-[11px] font-semibold uppercase tracking-wide text-purple-400/70">
+          <thead className="border-b border-zinc-600/10 bg-zinc-950/40 text-[11px] font-semibold uppercase tracking-wide text-zinc-500/70">
             <tr>
               <th className="w-10 px-2 py-3" scope="col" />
               <th className="px-3 py-3" scope="col">
@@ -91,16 +91,16 @@ export function JamaahDataTable({ rows }: { rows: DashboardJamaahRow[] }) {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: i * 0.04 }}
                     onClick={() => setOpenId(expanded ? null : row.id)}
-                    className="cursor-pointer border-b border-purple-500/10 bg-purple-950/20 transition hover:bg-white/[0.04]"
+                    className="cursor-pointer border-b border-zinc-600/10 bg-zinc-950/20 transition hover:bg-white/[0.04]"
                   >
-                    <td className="px-2 py-2.5 align-middle text-purple-400/70">
+                    <td className="px-2 py-2.5 align-middle text-zinc-500/70">
                       {expanded ? <ChevronDown className="mx-auto h-4 w-4" /> : <ChevronRight className="mx-auto h-4 w-4" />}
                     </td>
-                    <td className="px-3 py-2.5 font-medium text-purple-50">{row.name}</td>
-                    <td className="px-3 py-2.5 text-purple-200/75">{row.status}</td>
-                    <td className="px-3 py-2.5 text-purple-200/75">{row.package}</td>
-                    <td className="px-3 py-2.5 text-violet-200/85">{row.paymentStatus}</td>
-                    <td className="px-3 py-2.5 text-purple-200/70">{row.branch}</td>
+                    <td className="px-3 py-2.5 font-medium text-zinc-50">{row.name}</td>
+                    <td className="px-3 py-2.5 text-zinc-300/75">{row.status}</td>
+                    <td className="px-3 py-2.5 text-zinc-300/75">{row.package}</td>
+                    <td className="px-3 py-2.5 text-zinc-300/85">{row.paymentStatus}</td>
+                    <td className="px-3 py-2.5 text-zinc-300/70">{row.branch}</td>
                   </motion.tr>
                   <AnimatePresence initial={false}>
                     {expanded ? (
@@ -110,9 +110,9 @@ export function JamaahDataTable({ rows }: { rows: DashboardJamaahRow[] }) {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.2 }}
-                        className="border-b border-purple-500/10 bg-black/25"
+                        className="border-b border-zinc-600/10 bg-black/25"
                       >
-                        <td colSpan={6} className="px-4 py-3 text-sm leading-relaxed text-purple-200/65">
+                        <td colSpan={6} className="px-4 py-3 text-sm leading-relaxed text-zinc-300/65">
                           {row.detail}
                         </td>
                       </motion.tr>
@@ -125,31 +125,31 @@ export function JamaahDataTable({ rows }: { rows: DashboardJamaahRow[] }) {
         </table>
       </div>
 
-      <div className="mt-4 flex flex-wrap items-center justify-between gap-3 text-xs text-purple-200/55">
+      <div className="mt-4 flex flex-wrap items-center justify-between gap-3 text-xs text-zinc-300/55">
         <p>
           Menampilkan{" "}
-          <span className="font-mono text-purple-200/85">
+          <span className="font-mono text-zinc-300/85">
             {filtered.length === 0 ? 0 : safePage * PAGE_SIZE + 1}–{Math.min((safePage + 1) * PAGE_SIZE, filtered.length)}
           </span>{" "}
-          dari <span className="font-mono text-purple-200/85">{filtered.length}</span>
+          dari <span className="font-mono text-zinc-300/85">{filtered.length}</span>
         </p>
         <div className="flex items-center gap-2">
           <button
             type="button"
             disabled={safePage <= 0}
             onClick={() => setPage((p) => Math.max(0, p - 1))}
-            className="rounded-lg border border-purple-500/20 px-3 py-1.5 font-medium text-purple-200/90 transition enabled:hover:border-violet-400/35 enabled:hover:bg-violet-500/10 disabled:opacity-40"
+            className="rounded-lg border border-zinc-600/20 px-3 py-1.5 font-medium text-zinc-300/90 transition enabled:hover:border-zinc-500/35 enabled:hover:bg-zinc-600/10 disabled:opacity-40"
           >
             Sebelumnya
           </button>
-          <span className="font-mono text-purple-400/70">
+          <span className="font-mono text-zinc-500/70">
             {safePage + 1} / {pageCount}
           </span>
           <button
             type="button"
             disabled={safePage >= pageCount - 1}
             onClick={() => setPage((p) => Math.min(pageCount - 1, p + 1))}
-            className="rounded-lg border border-purple-500/20 px-3 py-1.5 font-medium text-purple-200/90 transition enabled:hover:border-violet-400/35 enabled:hover:bg-violet-500/10 disabled:opacity-40"
+            className="rounded-lg border border-zinc-600/20 px-3 py-1.5 font-medium text-zinc-300/90 transition enabled:hover:border-zinc-500/35 enabled:hover:bg-zinc-600/10 disabled:opacity-40"
           >
             Berikutnya
           </button>

@@ -18,10 +18,10 @@ function RevenueTooltip({
   if (!active || !payload?.length) return null;
   const row = payload[0].payload;
   return (
-    <div className="rounded-lg border border-purple-400/20 bg-purple-950/95 px-3 py-2 text-xs shadow-xl backdrop-blur-md">
-      <p className="font-medium text-purple-100">{row.month}</p>
-      <p className="mt-1 text-purple-300/90">{formatIdrCompact(row.revenueIdr)}</p>
-      <p className="text-purple-200/70">Lead: {row.leads}</p>
+    <div className="rounded-lg border border-zinc-500/20 bg-zinc-950/95 px-3 py-2 text-xs shadow-xl backdrop-blur-md">
+      <p className="font-medium text-zinc-200">{row.month}</p>
+      <p className="mt-1 text-zinc-400/90">{formatIdrCompact(row.revenueIdr)}</p>
+      <p className="text-zinc-300/70">Lead: {row.leads}</p>
     </div>
   );
 }
@@ -36,9 +36,9 @@ function LeadsTooltip({
   if (!active || !payload?.length) return null;
   const row = payload[0].payload;
   return (
-    <div className="rounded-lg border border-purple-400/20 bg-purple-950/95 px-3 py-2 text-xs shadow-xl backdrop-blur-md">
-      <p className="font-medium text-purple-100">{row.month}</p>
-      <p className="mt-1 text-purple-300/90">{row.leads} lead</p>
+    <div className="rounded-lg border border-zinc-500/20 bg-zinc-950/95 px-3 py-2 text-xs shadow-xl backdrop-blur-md">
+      <p className="font-medium text-zinc-200">{row.month}</p>
+      <p className="mt-1 text-zinc-400/90">{row.leads} lead</p>
     </div>
   );
 }
@@ -52,8 +52,8 @@ export function OverviewCharts({ data }: { data: OverviewMonthlyPoint[] }) {
         transition={{ duration: 0.45 }}
         className="glass-panel rounded-2xl p-5 sm:p-6"
       >
-        <h2 className="text-lg font-semibold text-purple-50">Revenue trend</h2>
-        <p className="mt-1 text-sm text-purple-200/55">Gross package bulanan (IDR).</p>
+        <h2 className="text-lg font-semibold text-zinc-50">Revenue trend</h2>
+        <p className="mt-1 text-sm text-zinc-300/55">Gross package bulanan (IDR).</p>
         <div className="mt-6 h-[260px] w-full min-w-0 sm:h-[300px]">
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart data={data} margin={{ top: 8, right: 8, left: 0, bottom: 0 }}>
@@ -92,8 +92,8 @@ export function OverviewCharts({ data }: { data: OverviewMonthlyPoint[] }) {
         transition={{ duration: 0.45, delay: 0.06 }}
         className="glass-panel rounded-2xl p-5 sm:p-6"
       >
-        <h2 className="text-lg font-semibold text-purple-50">Leads trend</h2>
-        <p className="mt-1 text-sm text-purple-200/55">Jumlah lead baru tercatat per bulan.</p>
+        <h2 className="text-lg font-semibold text-zinc-50">Leads trend</h2>
+        <p className="mt-1 text-sm text-zinc-300/55">Jumlah lead baru tercatat per bulan.</p>
         <div className="mt-6 h-[260px] w-full min-w-0 sm:h-[300px]">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={data} margin={{ top: 8, right: 8, left: 0, bottom: 0 }}>

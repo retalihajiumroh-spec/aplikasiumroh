@@ -18,8 +18,8 @@ export function AiSalesScriptsSection({ packs }: { packs: SalesScriptPack[] }) {
       transition={{ duration: 0.45, delay: 0.1 }}
       className="glass-panel rounded-2xl p-5 sm:p-6"
     >
-      <h2 className="text-lg font-semibold text-purple-50">AI sales scripts</h2>
-      <p className="mt-1 text-sm text-purple-200/55">
+      <h2 className="text-lg font-semibold text-zinc-50">AI sales scripts</h2>
+      <p className="mt-1 text-sm text-zinc-300/55">
         Balasan siap pakai untuk closing, penanganan keberatan, dan urgensi halus — salin ke WhatsApp.
       </p>
 
@@ -34,8 +34,8 @@ export function AiSalesScriptsSection({ packs }: { packs: SalesScriptPack[] }) {
               onClick={() => setTab(key)}
               className={`shrink-0 rounded-lg border px-3 py-2 text-xs font-semibold transition ${
                 on
-                  ? "border-purple-400/40 bg-purple-500/20 text-purple-50"
-                  : "border-transparent text-purple-300/55 hover:bg-white/5"
+                  ? "border-zinc-500/40 bg-zinc-600/20 text-zinc-50"
+                  : "border-transparent text-zinc-400/55 hover:bg-white/5"
               }`}
             >
               {p.label}
@@ -53,7 +53,7 @@ export function AiSalesScriptsSection({ packs }: { packs: SalesScriptPack[] }) {
           transition={{ duration: 0.25 }}
           className="mt-4"
         >
-          <p className="text-sm text-purple-200/55">{active.description}</p>
+          <p className="text-sm text-zinc-300/55">{active.description}</p>
           <ul className="mt-4 space-y-3">
             {active.replies.map((r, i) => (
               <motion.li
@@ -61,9 +61,9 @@ export function AiSalesScriptsSection({ packs }: { packs: SalesScriptPack[] }) {
                 initial={{ opacity: 0, y: 4 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.04 * i }}
-                className="flex flex-col gap-2 rounded-xl border border-purple-500/10 bg-purple-950/35 p-3 sm:flex-row sm:items-start sm:justify-between"
+                className="flex flex-col gap-2 rounded-xl border border-zinc-600/10 bg-zinc-950/35 p-3 sm:flex-row sm:items-start sm:justify-between"
               >
-                <p className="text-sm leading-relaxed text-purple-100/90">{r.text}</p>
+                <p className="text-sm leading-relaxed text-zinc-200/90">{r.text}</p>
                 <CopyTextButton text={r.text} />
               </motion.li>
             ))}

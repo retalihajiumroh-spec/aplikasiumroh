@@ -102,7 +102,7 @@ export function OwnerDashboard() {
             title="Autonomous recommendations"
             description="Insight cards untuk membantu owner mengambil keputusan cepat sebelum performa turun."
             action={
-              <StatusPill className="border-violet-300/20 bg-violet-300/10 text-violet-200">
+              <StatusPill className="border-zinc-400/20 bg-zinc-400/10 text-zinc-300">
                 <ShieldCheck className="mr-2 h-3.5 w-3.5" />
                 Confidence weighted
               </StatusPill>

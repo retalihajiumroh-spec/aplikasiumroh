@@ -17,14 +17,14 @@ import {
 } from "@/lib/jamaah/input-form-data";
 
 const inputClass =
-  "mt-2 w-full rounded-xl border border-purple-500/15 bg-purple-950/45 px-3 py-2.5 text-sm text-purple-50 outline-none transition placeholder:text-slate-500/60 focus:border-violet-400/45 focus:ring-2 focus:ring-violet-500/15";
+  "mt-2 w-full rounded-xl border border-zinc-600/15 bg-zinc-950/45 px-3 py-2.5 text-sm text-zinc-50 outline-none transition placeholder:text-slate-500/60 focus:border-zinc-500/45 focus:ring-2 focus:ring-zinc-600/15";
 const inputErr = " border-rose-400/45 ring-1 ring-rose-500/25";
-const labelClass = "text-xs font-semibold uppercase tracking-wider text-purple-300/65";
+const labelClass = "text-xs font-semibold uppercase tracking-wider text-zinc-400/65";
 
 function FormSection({ title, subtitle, children }: { title: string; subtitle?: string; children: ReactNode }) {
   return (
-    <section className="glass-panel rounded-2xl border border-purple-500/10 p-5 sm:p-6">
-      <h2 className="text-lg font-semibold text-purple-50">{title}</h2>
+    <section className="glass-panel rounded-2xl border border-zinc-600/10 p-5 sm:p-6">
+      <h2 className="text-lg font-semibold text-zinc-50">{title}</h2>
       {subtitle ? <p className="mt-1 text-sm text-slate-400/90">{subtitle}</p> : null}
       <div className="mt-6 space-y-4">{children}</div>
     </section>
@@ -272,11 +272,11 @@ export function JamaahInputForm() {
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            className="glass-panel rounded-2xl border border-purple-400/25 bg-purple-500/[0.08] p-6"
+            className="glass-panel rounded-2xl border border-zinc-500/25 bg-zinc-600/[0.08] p-6"
           >
-            <p className="text-xs font-semibold uppercase tracking-wider text-purple-300/80">Berhasil (demo)</p>
-            <h2 className="mt-2 text-xl font-semibold text-purple-50">Jamaah {createdId}</h2>
-            <p className="mt-2 text-sm text-purple-200/70">
+            <p className="text-xs font-semibold uppercase tracking-wider text-zinc-400/80">Berhasil (demo)</p>
+            <h2 className="mt-2 text-xl font-semibold text-zinc-50">Jamaah {createdId}</h2>
+            <p className="mt-2 text-sm text-zinc-300/70">
               Data tersimpan secara lokal untuk demo. Unggahan: {fileKtp?.name}, {fileKk?.name}, …
             </p>
             <div className="mt-6 flex flex-col gap-2 sm:flex-row">
@@ -286,13 +286,13 @@ export function JamaahInputForm() {
                   setCreatedId(null);
                   resetForm();
                 }}
-                className="rounded-xl border border-purple-400/35 bg-purple-500/15 px-4 py-2.5 text-sm font-semibold text-purple-50 transition hover:bg-purple-500/25"
+                className="rounded-xl border border-zinc-500/35 bg-zinc-600/15 px-4 py-2.5 text-sm font-semibold text-zinc-50 transition hover:bg-zinc-600/25"
               >
                 Input jamaah lain
               </button>
               <Link
                 href="/dashboard/jamaah"
-                className="inline-flex items-center justify-center rounded-xl border border-white/10 px-4 py-2.5 text-center text-sm font-medium text-purple-200/85 transition hover:bg-white/5"
+                className="inline-flex items-center justify-center rounded-xl border border-white/10 px-4 py-2.5 text-center text-sm font-medium text-zinc-300/85 transition hover:bg-white/5"
               >
                 Kembali ke daftar Jamaah
               </Link>
@@ -318,22 +318,22 @@ export function JamaahInputForm() {
         <motion.header
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
-          className="flex flex-col gap-4 border-b border-purple-500/10 pb-8 sm:flex-row sm:items-end sm:justify-between"
+          className="flex flex-col gap-4 border-b border-zinc-600/10 pb-8 sm:flex-row sm:items-end sm:justify-between"
         >
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-purple-400/70">SA&apos;YA Umroh OS</p>
-            <h1 className="mt-2 text-3xl font-bold tracking-tight text-purple-50 sm:text-4xl">Input Jamaah</h1>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500/70">SA&apos;YA Umroh OS</p>
+            <h1 className="mt-2 text-3xl font-bold tracking-tight text-zinc-50 sm:text-4xl">Input Jamaah</h1>
             <p className="mt-2 text-sm text-slate-400/90 sm:text-base">
               Lengkapi data sesuai KTP & paspor. Mitra dapat terisi otomatis dari link referral (`?mitra=` / `?ref=`).
             </p>
             {referralNote ? (
-              <p className="mt-2 rounded-lg border border-violet-400/25 bg-violet-500/10 px-3 py-2 text-xs text-violet-100/90">{referralNote}</p>
+              <p className="mt-2 rounded-lg border border-zinc-500/25 bg-zinc-600/10 px-3 py-2 text-xs text-zinc-200/90">{referralNote}</p>
             ) : null}
           </div>
           <div className="flex flex-wrap gap-2">
             <Link
               href="/dashboard/jamaah"
-              className="inline-flex rounded-xl border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-purple-200/80 transition hover:border-purple-400/25 hover:bg-purple-500/10"
+              className="inline-flex rounded-xl border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-zinc-300/80 transition hover:border-zinc-500/25 hover:bg-zinc-600/10"
             >
               ← Daftar Jamaah
             </Link>
@@ -390,7 +390,7 @@ export function JamaahInputForm() {
                   className={inputClass}
                 >
                   {JENIS_KELAMIN.map((x) => (
-                    <option key={x} value={x} className="bg-purple-950">
+                    <option key={x} value={x} className="bg-zinc-950">
                       {x}
                     </option>
                   ))}
@@ -404,7 +404,7 @@ export function JamaahInputForm() {
                   className={inputClass}
                 >
                   {KEWARGANEGARAAN.map((x) => (
-                    <option key={x} value={x} className="bg-purple-950">
+                    <option key={x} value={x} className="bg-zinc-950">
                       {x}
                     </option>
                   ))}
@@ -422,7 +422,7 @@ export function JamaahInputForm() {
                 className={inputClass + errCls("packageId")}
               >
                 {pkgOpts.map((p) => (
-                  <option key={p.id} value={p.id} className="bg-purple-950">
+                  <option key={p.id} value={p.id} className="bg-zinc-950">
                     {p.label}
                   </option>
                 ))}
@@ -471,7 +471,7 @@ export function JamaahInputForm() {
                   className={inputClass}
                 >
                   {STATUS_PERNIKAHAN.map((x) => (
-                    <option key={x} value={x} className="bg-purple-950">
+                    <option key={x} value={x} className="bg-zinc-950">
                       {x}
                     </option>
                   ))}
@@ -485,7 +485,7 @@ export function JamaahInputForm() {
                   className={inputClass}
                 >
                   {PENDIDIKAN.map((x) => (
-                    <option key={x} value={x} className="bg-purple-950">
+                    <option key={x} value={x} className="bg-zinc-950">
                       {x}
                     </option>
                   ))}
@@ -499,7 +499,7 @@ export function JamaahInputForm() {
                   className={inputClass}
                 >
                   {PEKERJAAN.map((x) => (
-                    <option key={x} value={x} className="bg-purple-950">
+                    <option key={x} value={x} className="bg-zinc-950">
                       {x}
                     </option>
                   ))}
@@ -662,7 +662,7 @@ export function JamaahInputForm() {
                 },
               ] as const
             ).map((row) => (
-              <label key={row.errKey} className="block rounded-xl border border-purple-500/12 bg-purple-950/25 px-4 py-3">
+              <label key={row.errKey} className="block rounded-xl border border-zinc-600/12 bg-zinc-950/25 px-4 py-3">
                 <span className={labelClass}>{row.label}</span>
                 <input
                   type="file"
@@ -676,11 +676,11 @@ export function JamaahInputForm() {
                     });
                   }}
                   className={
-                    "mt-2 block w-full text-xs text-purple-200/80 file:mr-3 file:rounded-lg file:border-0 file:bg-purple-500/20 file:px-3 file:py-1.5 file:text-xs file:font-medium file:text-purple-100 " +
+                    "mt-2 block w-full text-xs text-zinc-300/80 file:mr-3 file:rounded-lg file:border-0 file:bg-zinc-600/20 file:px-3 file:py-1.5 file:text-xs file:font-medium file:text-zinc-200 " +
                     (errors[row.errKey] ? "rounded-lg ring-1 ring-rose-400/40" : "")
                   }
                 />
-                {row.file ? <p className="mt-2 truncate font-mono text-[11px] text-purple-300/80">{row.file.name}</p> : null}
+                {row.file ? <p className="mt-2 truncate font-mono text-[11px] text-zinc-400/80">{row.file.name}</p> : null}
                 {errors[row.errKey] ? <p className="mt-1 text-xs text-rose-300">{errors[row.errKey]}</p> : null}
               </label>
             ))}
@@ -703,14 +703,14 @@ export function JamaahInputForm() {
             <button
               type="button"
               onClick={resetForm}
-              className="rounded-xl border border-white/10 px-5 py-2.5 text-sm font-medium text-purple-200/80 transition hover:bg-white/5"
+              className="rounded-xl border border-white/10 px-5 py-2.5 text-sm font-medium text-zinc-300/80 transition hover:bg-white/5"
             >
               Reset form
             </button>
             <motion.button
               type="submit"
               disabled={submitting}
-              className="rounded-xl border border-purple-400/40 bg-gradient-to-r from-purple-500 to-violet-900 px-6 py-2.5 text-sm font-bold text-white shadow-lg shadow-purple-950/30 disabled:cursor-not-allowed disabled:opacity-50"
+              className="rounded-xl border border-zinc-500/40 bg-gradient-to-r from-zinc-600 to-zinc-900 px-6 py-2.5 text-sm font-bold text-white shadow-lg shadow-zinc-950/30 disabled:cursor-not-allowed disabled:opacity-50"
             >
               {submitting ? "Menyimpan…" : "Simpan data jamaah"}
             </motion.button>

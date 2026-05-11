@@ -6,7 +6,7 @@ const accentRing: Record<OverviewMetric["accent"], string> = {
   emerald: "from-emerald-400/25 via-emerald-400/5 to-transparent",
   cyan: "from-cyan-400/25 via-cyan-400/5 to-transparent",
   amber: "from-amber-400/25 via-amber-400/5 to-transparent",
-  violet: "from-violet-400/25 via-violet-400/5 to-transparent",
+  violet: "from-zinc-500/25 via-zinc-500/5 to-transparent",
   rose: "from-rose-400/25 via-rose-400/5 to-transparent"
 };
 
@@ -14,7 +14,7 @@ const accentGlow: Record<OverviewMetric["accent"], string> = {
   emerald: "bg-emerald-400/15 text-emerald-200",
   cyan: "bg-cyan-400/15 text-cyan-200",
   amber: "bg-amber-400/15 text-amber-200",
-  violet: "bg-violet-400/15 text-violet-200",
+  violet: "bg-zinc-500/15 text-zinc-300",
   rose: "bg-rose-400/15 text-rose-200"
 };
 

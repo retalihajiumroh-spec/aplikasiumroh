@@ -74,15 +74,15 @@ export function ContentPerformanceSection({ data }: { data: ContentPerformance }
             </div>
           </div>
 
-          <div className="rounded-[1.75rem] border border-violet-300/25 bg-gradient-to-br from-violet-500/20 via-slate-950/80 to-slate-950/50 p-6 lg:col-span-2">
+          <div className="rounded-[1.75rem] border border-zinc-400/25 bg-gradient-to-br from-zinc-600/20 via-slate-950/80 to-slate-950/50 p-6 lg:col-span-2">
             <div className="flex flex-wrap items-center justify-between gap-4">
               <div>
-                <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-violet-100">Emotional engagement score</p>
+                <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-zinc-200">Emotional engagement score</p>
                 <p className="mt-2 text-4xl font-black text-white">{data.emotionalScore}</p>
-                <p className="mt-2 max-w-xl text-sm leading-relaxed text-violet-100/90">{data.emotionalLabel}</p>
+                <p className="mt-2 max-w-xl text-sm leading-relaxed text-zinc-200/90">{data.emotionalLabel}</p>
               </div>
               <div className="flex items-center gap-3 rounded-3xl border border-white/10 bg-white/5 px-4 py-3">
-                <Share2 className="h-6 w-6 text-violet-200" />
+                <Share2 className="h-6 w-6 text-zinc-300" />
                 <div>
                   <p className="text-[11px] font-semibold text-slate-400">Virality readiness</p>
                   <p className="text-lg font-black text-white">High resonance</p>
@@ -90,7 +90,7 @@ export function ContentPerformanceSection({ data }: { data: ContentPerformance }
               </div>
             </div>
             <div className="mt-6 h-3 overflow-hidden rounded-full bg-white/10">
-              <div className="h-full w-[87%] rounded-full bg-gradient-to-r from-violet-400 via-fuchsia-400 to-emerald-300 shadow-[0_0_40px_rgba(167,139,250,0.55)]" />
+              <div className="h-full w-[87%] rounded-full bg-gradient-to-r from-zinc-500 via-fuchsia-400 to-emerald-300 shadow-[0_0_40px_rgba(167,139,250,0.55)]" />
             </div>
           </div>
         </div>

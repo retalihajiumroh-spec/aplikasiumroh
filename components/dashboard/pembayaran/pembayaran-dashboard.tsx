@@ -41,10 +41,10 @@ export function PembayaranDashboard() {
         <motion.header
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
-          className="border-b border-purple-500/10 pb-8"
+          className="border-b border-zinc-600/10 pb-8"
         >
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-violet-200/75">Kasir digital</p>
-          <h1 className="mt-2 text-3xl font-bold tracking-tight text-purple-50 sm:text-4xl">Pembayaran</h1>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-300/75">Kasir digital</p>
+          <h1 className="mt-2 text-3xl font-bold tracking-tight text-zinc-50 sm:text-4xl">Pembayaran</h1>
           <p className="mt-2 max-w-2xl text-sm text-slate-400/90 sm:text-base">
             Catat banyak pembayaran sekaligus, unggah bukti, dan set status (Approved / Pending / Rejected). Data tersimpan di
             Supabase bila dikonfigurasi, selalu dicerminkan lokal untuk daftar di bawah.
@@ -54,7 +54,7 @@ export function PembayaranDashboard() {
         <PaymentBatchForm onSaved={refreshSaved} />
 
         <div className="mt-14">
-          <h2 className="text-lg font-bold text-purple-50">Pembayaran tercatat</h2>
+          <h2 className="text-lg font-bold text-zinc-50">Pembayaran tercatat</h2>
           <p className="mt-1 text-sm text-slate-500/90">Edit status atau hapus entri. Jalankan SQL migrasi `002_payment_entries.sql` di Supabase agar sinkron server aktif.</p>
           <div className="mt-6">
             <PaymentList entries={savedPayments} onChange={refreshSaved} />
@@ -62,10 +62,10 @@ export function PembayaranDashboard() {
         </div>
 
         <div className="mt-14">
-          <h2 className="mb-4 text-lg font-bold text-purple-50">Antrian settlement (demo)</h2>
-          <div className="overflow-hidden rounded-2xl border border-purple-500/10 glass-panel">
+          <h2 className="mb-4 text-lg font-bold text-zinc-50">Antrian settlement (demo)</h2>
+          <div className="overflow-hidden rounded-2xl border border-zinc-600/10 glass-panel">
             <table className="w-full text-left text-sm">
-              <thead className="border-b border-purple-500/10 bg-purple-950/45 text-[11px] font-bold uppercase tracking-wide text-purple-400/70">
+              <thead className="border-b border-zinc-600/10 bg-zinc-950/45 text-[11px] font-bold uppercase tracking-wide text-zinc-500/70">
                 <tr>
                   <th className="px-4 py-3">Referensi</th>
                   <th className="px-4 py-3">Pihak</th>
@@ -82,14 +82,14 @@ export function PembayaranDashboard() {
                     initial={{ opacity: 0, y: 6 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: i * 0.04 }}
-                    className="border-b border-purple-500/10 bg-purple-950/20 last:border-0"
+                    className="border-b border-zinc-600/10 bg-zinc-950/20 last:border-0"
                   >
-                    <td className="px-4 py-3 font-mono text-xs text-purple-200/90">{r.ref}</td>
-                    <td className="px-4 py-3 text-purple-100/95">{r.party}</td>
-                    <td className="px-4 py-3 font-mono text-violet-200/90">{formatIdrCompact(r.amount)}</td>
-                    <td className="hidden px-4 py-3 text-purple-200/70 sm:table-cell">{r.method}</td>
+                    <td className="px-4 py-3 font-mono text-xs text-zinc-300/90">{r.ref}</td>
+                    <td className="px-4 py-3 text-zinc-200/95">{r.party}</td>
+                    <td className="px-4 py-3 font-mono text-zinc-300/90">{formatIdrCompact(r.amount)}</td>
+                    <td className="hidden px-4 py-3 text-zinc-300/70 sm:table-cell">{r.method}</td>
                     <td className="px-4 py-3">
-                      <span className="rounded-md border border-purple-400/25 bg-purple-500/15 px-2 py-0.5 text-[11px] font-semibold text-purple-100">
+                      <span className="rounded-md border border-zinc-500/25 bg-zinc-600/15 px-2 py-0.5 text-[11px] font-semibold text-zinc-200">
                         {r.status}
                       </span>
                     </td>

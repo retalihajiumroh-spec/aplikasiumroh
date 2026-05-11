@@ -27,9 +27,9 @@ function MonthlyRevTooltip({ active, payload }: { active?: boolean; payload?: Ar
   if (!active || !payload?.length) return null;
   const row = payload[0].payload;
   return (
-    <div className="rounded-lg border border-purple-400/20 bg-purple-950/95 px-3 py-2 text-xs shadow-xl backdrop-blur-md">
-      <p className="font-medium text-purple-100">{row.month}</p>
-      <p className="mt-1 text-purple-300/90">{formatIdrCompact(row.revenueIdr)}</p>
+    <div className="rounded-lg border border-zinc-500/20 bg-zinc-950/95 px-3 py-2 text-xs shadow-xl backdrop-blur-md">
+      <p className="font-medium text-zinc-200">{row.month}</p>
+      <p className="mt-1 text-zinc-400/90">{formatIdrCompact(row.revenueIdr)}</p>
     </div>
   );
 }
@@ -38,9 +38,9 @@ function MonthlyLeadsTooltip({ active, payload }: { active?: boolean; payload?: 
   if (!active || !payload?.length) return null;
   const row = payload[0].payload;
   return (
-    <div className="rounded-lg border border-purple-400/20 bg-purple-950/95 px-3 py-2 text-xs shadow-xl backdrop-blur-md">
-      <p className="font-medium text-purple-100">{row.month}</p>
-      <p className="mt-1 text-purple-300/90">{row.leads} lead</p>
+    <div className="rounded-lg border border-zinc-500/20 bg-zinc-950/95 px-3 py-2 text-xs shadow-xl backdrop-blur-md">
+      <p className="font-medium text-zinc-200">{row.month}</p>
+      <p className="mt-1 text-zinc-400/90">{row.leads} lead</p>
     </div>
   );
 }
@@ -49,10 +49,10 @@ function MonthlyConvTooltip({ active, payload }: { active?: boolean; payload?: A
   if (!active || !payload?.length) return null;
   const row = payload[0].payload;
   return (
-    <div className="rounded-lg border border-purple-400/20 bg-purple-950/95 px-3 py-2 text-xs shadow-xl backdrop-blur-md">
-      <p className="font-medium text-purple-100">{row.month}</p>
-      <p className="mt-1 text-purple-300/90">Konversi {row.conversionPct.toFixed(1)}%</p>
-      <p className="text-purple-200/70">{row.leads} lead · revenue {formatIdrCompact(row.revenueIdr)}</p>
+    <div className="rounded-lg border border-zinc-500/20 bg-zinc-950/95 px-3 py-2 text-xs shadow-xl backdrop-blur-md">
+      <p className="font-medium text-zinc-200">{row.month}</p>
+      <p className="mt-1 text-zinc-400/90">Konversi {row.conversionPct.toFixed(1)}%</p>
+      <p className="text-zinc-300/70">{row.leads} lead · revenue {formatIdrCompact(row.revenueIdr)}</p>
     </div>
   );
 }
@@ -61,12 +61,12 @@ function BranchRevTooltip({ active, payload }: { active?: boolean; payload?: Arr
   if (!active || !payload?.length) return null;
   const row = payload[0].payload;
   return (
-    <div className="rounded-lg border border-purple-400/20 bg-purple-950/95 px-3 py-2 text-xs shadow-xl backdrop-blur-md">
-      <p className="font-medium text-purple-100">
+    <div className="rounded-lg border border-zinc-500/20 bg-zinc-950/95 px-3 py-2 text-xs shadow-xl backdrop-blur-md">
+      <p className="font-medium text-zinc-200">
         {row.branch} · {row.city}
       </p>
-      <p className="mt-1 text-purple-300/90">{formatIdrCompact(row.revenueIdr)}</p>
-      <p className="text-purple-200/70">
+      <p className="mt-1 text-zinc-400/90">{formatIdrCompact(row.revenueIdr)}</p>
+      <p className="text-zinc-300/70">
         {row.bookings} booking · {row.leads} lead
       </p>
     </div>
@@ -77,10 +77,10 @@ function BranchComposedTooltip({ active, payload }: { active?: boolean; payload?
   if (!active || !payload?.length) return null;
   const row = payload[0].payload;
   return (
-    <div className="rounded-lg border border-purple-400/20 bg-purple-950/95 px-3 py-2 text-xs shadow-xl backdrop-blur-md">
-      <p className="font-medium text-purple-100">{row.branch}</p>
-      <p className="mt-1 text-purple-300/90">Lead: {row.leads}</p>
-      <p className="text-purple-200/70">Konversi {row.conversionPct.toFixed(1)}%</p>
+    <div className="rounded-lg border border-zinc-500/20 bg-zinc-950/95 px-3 py-2 text-xs shadow-xl backdrop-blur-md">
+      <p className="font-medium text-zinc-200">{row.branch}</p>
+      <p className="mt-1 text-zinc-400/90">Lead: {row.leads}</p>
+      <p className="text-zinc-300/70">Konversi {row.conversionPct.toFixed(1)}%</p>
     </div>
   );
 }
@@ -101,18 +101,18 @@ export function AnalyticsDashboard() {
         <motion.header
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
-          className="flex flex-col gap-4 border-b border-purple-500/10 pb-8 sm:flex-row sm:items-end sm:justify-between"
+          className="flex flex-col gap-4 border-b border-zinc-600/10 pb-8 sm:flex-row sm:items-end sm:justify-between"
         >
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-purple-400/70">SA&apos;YA Umroh OS</p>
-            <h1 className="mt-2 text-3xl font-semibold tracking-tight text-purple-50 sm:text-4xl">Analytics</h1>
-            <p className="mt-2 max-w-2xl text-sm text-purple-200/55 sm:text-base">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500/70">SA&apos;YA Umroh OS</p>
+            <h1 className="mt-2 text-3xl font-semibold tracking-tight text-zinc-50 sm:text-4xl">Analytics</h1>
+            <p className="mt-2 max-w-2xl text-sm text-zinc-300/55 sm:text-base">
               Tren revenue &amp; lead, tingkat konversi, dan perbandingan antar cabang — data agregat demo.
             </p>
           </div>
           <Link
             href="/"
-            className="inline-flex w-fit rounded-xl border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-purple-200/80 transition hover:border-purple-400/25 hover:bg-purple-500/10"
+            className="inline-flex w-fit rounded-xl border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-zinc-300/80 transition hover:border-zinc-500/25 hover:bg-zinc-600/10"
           >
             ← Hub
           </Link>
@@ -125,8 +125,8 @@ export function AnalyticsDashboard() {
             transition={{ delay: 0.05 }}
             className="glass-panel rounded-2xl p-5 sm:p-6"
           >
-            <h2 className="text-lg font-semibold text-purple-50">Revenue</h2>
-            <p className="mt-1 text-sm text-purple-200/55">Gross paket tercatat per bulan (IDR).</p>
+            <h2 className="text-lg font-semibold text-zinc-50">Revenue</h2>
+            <p className="mt-1 text-sm text-zinc-300/55">Gross paket tercatat per bulan (IDR).</p>
             <div className="mt-5 h-[240px] w-full min-w-0 sm:h-[280px]">
               <ResponsiveContainer width="100%" height="100%">
                 <AreaChart data={analyticsMonthly} margin={{ top: 8, right: 4, left: 0, bottom: 0 }}>
@@ -158,8 +158,8 @@ export function AnalyticsDashboard() {
             transition={{ delay: 0.08 }}
             className="glass-panel rounded-2xl p-5 sm:p-6"
           >
-            <h2 className="text-lg font-semibold text-purple-50">Leads</h2>
-            <p className="mt-1 text-sm text-purple-200/55">Lead baru masuk CRM per bulan.</p>
+            <h2 className="text-lg font-semibold text-zinc-50">Leads</h2>
+            <p className="mt-1 text-sm text-zinc-300/55">Lead baru masuk CRM per bulan.</p>
             <div className="mt-5 h-[240px] w-full min-w-0 sm:h-[280px]">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={analyticsMonthly} margin={{ top: 8, right: 4, left: 0, bottom: 0 }}>
@@ -179,8 +179,8 @@ export function AnalyticsDashboard() {
             transition={{ delay: 0.11 }}
             className="glass-panel rounded-2xl p-5 sm:p-6"
           >
-            <h2 className="text-lg font-semibold text-purple-50">Conversion</h2>
-            <p className="mt-1 text-sm text-purple-200/55">Lead → booking (estimasi agregat).</p>
+            <h2 className="text-lg font-semibold text-zinc-50">Conversion</h2>
+            <p className="mt-1 text-sm text-zinc-300/55">Lead → booking (estimasi agregat).</p>
             <div className="mt-5 h-[240px] w-full min-w-0 sm:h-[280px]">
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart data={analyticsMonthly} margin={{ top: 8, right: 4, left: 0, bottom: 0 }}>
@@ -216,15 +216,15 @@ export function AnalyticsDashboard() {
           transition={{ delay: 0.14 }}
           className="mt-10"
         >
-          <div className="mb-4 border-b border-purple-500/10 pb-3">
-            <h2 className="text-lg font-semibold text-purple-50">Perbandingan cabang</h2>
-            <p className="mt-1 text-sm text-purple-200/55">Revenue vs volume lead, serta konversi per cabang (periode rolling demo).</p>
+          <div className="mb-4 border-b border-zinc-600/10 pb-3">
+            <h2 className="text-lg font-semibold text-zinc-50">Perbandingan cabang</h2>
+            <p className="mt-1 text-sm text-zinc-300/55">Revenue vs volume lead, serta konversi per cabang (periode rolling demo).</p>
           </div>
 
           <div className="grid gap-6 lg:grid-cols-2">
             <div className="glass-panel rounded-2xl p-5 sm:p-6">
-              <h3 className="text-sm font-semibold text-purple-100/90">Revenue per cabang</h3>
-              <p className="mt-1 text-xs text-purple-200/50">IDR kotor paket tercatat.</p>
+              <h3 className="text-sm font-semibold text-zinc-200/90">Revenue per cabang</h3>
+              <p className="mt-1 text-xs text-zinc-300/50">IDR kotor paket tercatat.</p>
               <div className="mt-5 h-[260px] w-full min-w-0 sm:h-[300px]">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={branchAnalytics} margin={{ top: 8, right: 8, left: 0, bottom: 8 }}>
@@ -245,8 +245,8 @@ export function AnalyticsDashboard() {
             </div>
 
             <div className="glass-panel rounded-2xl p-5 sm:p-6">
-              <h3 className="text-sm font-semibold text-purple-100/90">Lead &amp; konversi per cabang</h3>
-              <p className="mt-1 text-xs text-purple-200/50">Batang: lead · Garis: konversi %.</p>
+              <h3 className="text-sm font-semibold text-zinc-200/90">Lead &amp; konversi per cabang</h3>
+              <p className="mt-1 text-xs text-zinc-300/50">Batang: lead · Garis: konversi %.</p>
               <div className="mt-5 h-[260px] w-full min-w-0 sm:h-[300px]">
                 <ResponsiveContainer width="100%" height="100%">
                   <ComposedChart data={branchAnalytics} margin={{ top: 8, right: 12, left: 0, bottom: 8 }}>

@@ -36,12 +36,12 @@ function MonthlyTooltip({
   if (!active || !payload?.length) return null;
   const row = payload[0].payload;
   return (
-    <div className="rounded-lg border border-purple-400/20 bg-purple-950/95 px-3 py-2 text-xs shadow-xl backdrop-blur-md">
-      <p className="font-medium text-purple-100">{row.month}</p>
-      <p className="mt-1 text-purple-300/90">{formatIdrCompact(row.revenueIdr)}</p>
-      <p className="text-purple-200/70">Jamaah baru: {row.jamaahNew}</p>
-      <p className="text-purple-200/70">Lead: {row.leads}</p>
-      <p className="text-violet-200/85">Konversi lead: {row.conversionPct}%</p>
+    <div className="rounded-lg border border-zinc-500/20 bg-zinc-950/95 px-3 py-2 text-xs shadow-xl backdrop-blur-md">
+      <p className="font-medium text-zinc-200">{row.month}</p>
+      <p className="mt-1 text-zinc-400/90">{formatIdrCompact(row.revenueIdr)}</p>
+      <p className="text-zinc-300/70">Jamaah baru: {row.jamaahNew}</p>
+      <p className="text-zinc-300/70">Lead: {row.leads}</p>
+      <p className="text-zinc-300/85">Konversi lead: {row.conversionPct}%</p>
     </div>
   );
 }
@@ -60,13 +60,13 @@ function FunnelTooltip({
   if (!row) return null;
   const c = conversion.find((x) => x.name === row.name);
   return (
-    <div className="rounded-lg border border-violet-400/25 bg-purple-950/95 px-3 py-2 text-xs shadow-xl backdrop-blur-md">
-      <p className="font-medium text-purple-100">{row.name}</p>
-      <p className="mt-1 font-mono text-violet-200/90">{row.value.toLocaleString("id-ID")}</p>
+    <div className="rounded-lg border border-zinc-500/25 bg-zinc-950/95 px-3 py-2 text-xs shadow-xl backdrop-blur-md">
+      <p className="font-medium text-zinc-200">{row.name}</p>
+      <p className="mt-1 font-mono text-zinc-300/90">{row.value.toLocaleString("id-ID")}</p>
       {c && c.pctOfPrevious < 100 ? (
-        <p className="mt-1 text-purple-200/70">dari tahap sebelumnya: {c.pctOfPrevious}%</p>
+        <p className="mt-1 text-zinc-300/70">dari tahap sebelumnya: {c.pctOfPrevious}%</p>
       ) : (
-        <p className="mt-1 text-purple-200/70">basis funnel</p>
+        <p className="mt-1 text-zinc-300/70">basis funnel</p>
       )}
     </div>
   );
@@ -82,10 +82,10 @@ function LeadTooltip({
   if (!active || !payload?.length) return null;
   const row = payload[0].payload;
   return (
-    <div className="rounded-lg border border-purple-400/20 bg-purple-950/95 px-3 py-2 text-xs shadow-xl backdrop-blur-md">
-      <p className="font-medium text-purple-100">{row.source}</p>
-      <p className="mt-1 text-purple-300/90">{row.leads.toLocaleString("id-ID")} lead</p>
-      <p className="text-violet-200/85">{row.pct}% dari total</p>
+    <div className="rounded-lg border border-zinc-500/20 bg-zinc-950/95 px-3 py-2 text-xs shadow-xl backdrop-blur-md">
+      <p className="font-medium text-zinc-200">{row.source}</p>
+      <p className="mt-1 text-zinc-400/90">{row.leads.toLocaleString("id-ID")} lead</p>
+      <p className="text-zinc-300/85">{row.pct}% dari total</p>
     </div>
   );
 }
@@ -110,9 +110,9 @@ function ChartShell({
       initial={{ opacity: 0, y: 20 }}
       animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
       transition={{ duration: 0.5, delay, ease: [0.22, 1, 0.36, 1] }}
-      className="glass-panel rounded-2xl border border-purple-500/10 p-5 sm:p-6"
+      className="glass-panel rounded-2xl border border-zinc-600/10 p-5 sm:p-6"
     >
-      <h2 className="text-lg font-semibold text-purple-50">{title}</h2>
+      <h2 className="text-lg font-semibold text-zinc-50">{title}</h2>
       <p className="mt-1 text-sm text-slate-400/90">{subtitle}</p>
       {children}
     </motion.section>
@@ -219,13 +219,13 @@ export function FunnelInboundChart({ data }: { data: FunnelStage[] }) {
         {conversion.map((c, i) => (
           <span
             key={c.name}
-            className="rounded-lg border border-purple-500/15 bg-purple-950/50 px-2.5 py-1 text-[11px] text-purple-200/85"
+            className="rounded-lg border border-zinc-600/15 bg-zinc-950/50 px-2.5 py-1 text-[11px] text-zinc-300/85"
           >
-            <span className="font-semibold text-purple-100/95">{c.name}</span>
+            <span className="font-semibold text-zinc-200/95">{c.name}</span>
             {i > 0 ? (
-              <span className="text-violet-200/90"> · {c.pctOfPrevious}% dari sebelumnya</span>
+              <span className="text-zinc-300/90"> · {c.pctOfPrevious}% dari sebelumnya</span>
             ) : (
-              <span className="text-purple-500/60"> · {c.value.toLocaleString("id-ID")} lead</span>
+              <span className="text-zinc-600/60"> · {c.value.toLocaleString("id-ID")} lead</span>
             )}
           </span>
         ))}

@@ -124,16 +124,16 @@ export default function SocialMediaPage() {
           initial={{ opacity: 0, y: -12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-          className="flex flex-col gap-4 border-b border-emerald-500/10 pb-8 sm:flex-row sm:items-end sm:justify-between"
+          className="flex flex-col gap-4 border-b border-zinc-600/10 pb-8 sm:flex-row sm:items-end sm:justify-between"
         >
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400/70">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500/70">
               SA&apos;YA Umroh OS
             </p>
-            <h1 className="mt-2 text-3xl font-semibold tracking-tight text-emerald-50 sm:text-4xl">
+            <h1 className="mt-2 text-3xl font-semibold tracking-tight text-zinc-50 sm:text-4xl">
               Social Media Hub
             </h1>
-            <p className="mt-2 max-w-2xl text-sm leading-relaxed text-emerald-200/55 sm:text-base">
+            <p className="mt-2 max-w-2xl text-sm leading-relaxed text-zinc-300/55 sm:text-base">
               Satu antarmuka premium untuk multi-posting, penjadwalan berulang, pratinjau tiap platform,
               dan pelacakan performa kampanye — dengan penyimpanan Supabase opsional.
             </p>
@@ -141,13 +141,13 @@ export default function SocialMediaPage() {
           <div className="flex flex-wrap gap-2">
             <Link
               href="/dashboard/owner"
-              className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-xs font-semibold text-emerald-100 transition hover:border-emerald-400/35 hover:bg-emerald-500/10"
+              className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-xs font-semibold text-zinc-200 transition hover:border-zinc-500/35 hover:bg-zinc-600/10"
             >
               ← Owner dashboard
             </Link>
             <Link
               href="/"
-              className="rounded-full border border-emerald-400/25 bg-emerald-500/10 px-4 py-2 text-xs font-semibold text-emerald-50 transition hover:border-emerald-400/45 hover:bg-emerald-500/15"
+              className="rounded-full border border-zinc-500/25 bg-zinc-600/10 px-4 py-2 text-xs font-semibold text-zinc-50 transition hover:border-zinc-500/45 hover:bg-zinc-600/15"
             >
               Beranda
             </Link>

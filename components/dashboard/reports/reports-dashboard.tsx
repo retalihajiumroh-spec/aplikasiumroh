@@ -94,18 +94,18 @@ export function ReportsDashboard() {
         <motion.header
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
-          className="flex flex-col gap-4 border-b border-purple-500/10 pb-8 sm:flex-row sm:items-end sm:justify-between"
+          className="flex flex-col gap-4 border-b border-zinc-600/10 pb-8 sm:flex-row sm:items-end sm:justify-between"
         >
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-purple-400/70">SA&apos;YA Umroh OS</p>
-            <h1 className="mt-2 text-3xl font-semibold tracking-tight text-purple-50 sm:text-4xl">Reports</h1>
-            <p className="mt-2 max-w-2xl text-sm text-purple-200/55 sm:text-base">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500/70">SA&apos;YA Umroh OS</p>
+            <h1 className="mt-2 text-3xl font-semibold tracking-tight text-zinc-50 sm:text-4xl">Reports</h1>
+            <p className="mt-2 max-w-2xl text-sm text-zinc-300/55 sm:text-base">
               Ringkasan keuangan agregat dan ekspor laporan — CSV diunduh lokal; PDF/XLSX disimulasikan tanpa backend.
             </p>
           </div>
           <Link
             href="/"
-            className="inline-flex w-fit rounded-xl border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-purple-200/80 transition hover:border-purple-400/25 hover:bg-purple-500/10"
+            className="inline-flex w-fit rounded-xl border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-zinc-300/80 transition hover:border-zinc-500/25 hover:bg-zinc-600/10"
           >
             ← Hub
           </Link>
@@ -115,12 +115,12 @@ export function ReportsDashboard() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.05 }}
-          className="mt-8 glass-panel rounded-2xl border border-purple-500/10 p-4 sm:p-5"
+          className="mt-8 glass-panel rounded-2xl border border-zinc-600/10 p-4 sm:p-5"
         >
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div>
-              <h2 className="text-sm font-semibold text-purple-50">Ekspor laporan</h2>
-              <p className="mt-0.5 text-xs text-purple-200/50">Pilih format unduhan atau simulasi generate berkas.</p>
+              <h2 className="text-sm font-semibold text-zinc-50">Ekspor laporan</h2>
+              <p className="mt-0.5 text-xs text-zinc-300/50">Pilih format unduhan atau simulasi generate berkas.</p>
             </div>
             <div className="flex flex-wrap gap-2">
               <button
@@ -135,7 +135,7 @@ export function ReportsDashboard() {
                 type="button"
                 disabled={exporting !== null}
                 onClick={() => runSimulatedExport("xlsx", "Excel detail transaksi")}
-                className="inline-flex items-center justify-center gap-2 rounded-xl border border-purple-400/25 bg-purple-500/12 px-4 py-2.5 text-sm font-medium text-purple-50 transition hover:border-purple-400/45 hover:bg-purple-500/20 disabled:cursor-not-allowed disabled:opacity-45"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-zinc-500/25 bg-zinc-600/12 px-4 py-2.5 text-sm font-medium text-zinc-50 transition hover:border-zinc-500/45 hover:bg-zinc-600/20 disabled:cursor-not-allowed disabled:opacity-45"
               >
                 {exporting === "xlsx" ? "Menyiapkan…" : "Ekspor Excel"}
               </button>
@@ -153,7 +153,7 @@ export function ReportsDashboard() {
             <motion.p
               initial={{ opacity: 0, y: 4 }}
               animate={{ opacity: 1, y: 0 }}
-              className="mt-3 rounded-lg border border-purple-500/15 bg-purple-950/40 px-3 py-2 text-xs text-purple-200/80"
+              className="mt-3 rounded-lg border border-zinc-600/15 bg-zinc-950/40 px-3 py-2 text-xs text-zinc-300/80"
               role="status"
             >
               {lastMessage}
@@ -161,11 +161,11 @@ export function ReportsDashboard() {
           ) : null}
         </motion.section>
 
-        <div className="mt-6 flex flex-wrap items-baseline justify-between gap-2 border-b border-purple-500/10 pb-3">
-          <h2 className="text-lg font-semibold text-purple-50">Ringkasan keuangan</h2>
-          <p className="font-mono text-xs text-purple-300/70">{s.periodLabel}</p>
+        <div className="mt-6 flex flex-wrap items-baseline justify-between gap-2 border-b border-zinc-600/10 pb-3">
+          <h2 className="text-lg font-semibold text-zinc-50">Ringkasan keuangan</h2>
+          <p className="font-mono text-xs text-zinc-400/70">{s.periodLabel}</p>
         </div>
-        <p className="mt-2 text-xs text-purple-200/50">
+        <p className="mt-2 text-xs text-zinc-300/50">
           Rata tiket {formatIdr(s.avgTicketIdr)} · {s.bookingsClosed} booking closed (demo).
         </p>
 
@@ -176,11 +176,11 @@ export function ReportsDashboard() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.06 + i * 0.04 }}
-              className="glass-card rounded-2xl border border-purple-500/10 p-4 sm:p-5"
+              className="glass-card rounded-2xl border border-zinc-600/10 p-4 sm:p-5"
             >
-              <p className="text-[10px] font-semibold uppercase tracking-wider text-purple-400/65">{c.label}</p>
-              <p className="mt-2 font-mono text-xl font-semibold tracking-tight text-purple-50 sm:text-2xl">{c.value}</p>
-              <p className="mt-2 text-xs text-purple-200/45">{c.hint}</p>
+              <p className="text-[10px] font-semibold uppercase tracking-wider text-zinc-500/65">{c.label}</p>
+              <p className="mt-2 font-mono text-xl font-semibold tracking-tight text-zinc-50 sm:text-2xl">{c.value}</p>
+              <p className="mt-2 text-xs text-zinc-300/45">{c.hint}</p>
             </motion.div>
           ))}
         </div>
@@ -189,18 +189,18 @@ export function ReportsDashboard() {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.12 }}
-          className="mt-10 glass-panel rounded-2xl border border-purple-500/10 p-5 sm:p-6"
+          className="mt-10 glass-panel rounded-2xl border border-zinc-600/10 p-5 sm:p-6"
         >
-          <div className="flex flex-col gap-2 border-b border-purple-500/10 pb-4 sm:flex-row sm:items-end sm:justify-between">
+          <div className="flex flex-col gap-2 border-b border-zinc-600/10 pb-4 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <h2 className="text-lg font-semibold text-purple-50">Arus per paket (top)</h2>
-              <p className="mt-1 text-sm text-purple-200/50">Revenue, biaya langsing, margin — untuk lampiran laporan manajemen.</p>
+              <h2 className="text-lg font-semibold text-zinc-50">Arus per paket (top)</h2>
+              <p className="mt-1 text-sm text-zinc-300/50">Revenue, biaya langsing, margin — untuk lampiran laporan manajemen.</p>
             </div>
             <button
               type="button"
               disabled={exporting !== null}
               onClick={handleCsv}
-              className="shrink-0 rounded-xl border border-white/10 bg-white/[0.06] px-3 py-2 text-xs font-medium text-purple-100 transition hover:bg-white/10 disabled:opacity-45"
+              className="shrink-0 rounded-xl border border-white/10 bg-white/[0.06] px-3 py-2 text-xs font-medium text-zinc-200 transition hover:bg-white/10 disabled:opacity-45"
             >
               Sertakan di CSV
             </button>
@@ -209,7 +209,7 @@ export function ReportsDashboard() {
           <div className="mt-4 overflow-x-auto">
             <table className="w-full min-w-[640px] border-collapse text-left text-sm">
               <thead>
-                <tr className="border-b border-purple-500/15 text-[10px] font-semibold uppercase tracking-wider text-purple-400/70">
+                <tr className="border-b border-zinc-600/15 text-[10px] font-semibold uppercase tracking-wider text-zinc-500/70">
                   <th className="py-3 pr-4 font-medium">Paket</th>
                   <th className="py-3 pr-4 font-medium text-right">Revenue</th>
                   <th className="py-3 pr-4 font-medium text-right">Biaya</th>
@@ -224,13 +224,13 @@ export function ReportsDashboard() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.04 * i }}
-                    className="border-b border-purple-500/10 last:border-0"
+                    className="border-b border-zinc-600/10 last:border-0"
                   >
-                    <td className="py-3 pr-4 font-medium text-purple-100/95">{row.packageName}</td>
-                    <td className="py-3 pr-4 text-right font-mono text-purple-200/90">{formatIdr(row.revenueIdr)}</td>
-                    <td className="py-3 pr-4 text-right font-mono text-purple-200/70">{formatIdr(row.costIdr)}</td>
-                    <td className="py-3 pr-4 text-right font-mono text-purple-300/90">{row.marginPct.toFixed(1)}%</td>
-                    <td className="py-3 text-right font-mono text-purple-200/75">{row.pax}</td>
+                    <td className="py-3 pr-4 font-medium text-zinc-200/95">{row.packageName}</td>
+                    <td className="py-3 pr-4 text-right font-mono text-zinc-300/90">{formatIdr(row.revenueIdr)}</td>
+                    <td className="py-3 pr-4 text-right font-mono text-zinc-300/70">{formatIdr(row.costIdr)}</td>
+                    <td className="py-3 pr-4 text-right font-mono text-zinc-400/90">{row.marginPct.toFixed(1)}%</td>
+                    <td className="py-3 text-right font-mono text-zinc-300/75">{row.pax}</td>
                   </motion.tr>
                 ))}
               </tbody>

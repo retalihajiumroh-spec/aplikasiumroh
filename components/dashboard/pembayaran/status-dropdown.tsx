@@ -3,7 +3,7 @@
 import { PAYMENT_ADMIN_STATUS, paymentStatusLabel, type PaymentAdminStatus } from "@/lib/pembayaran/payment-types";
 
 const inputClass =
-  "mt-1.5 w-full rounded-xl border border-purple-500/15 bg-purple-950/45 px-3 py-2.5 text-sm text-purple-50 outline-none focus:border-violet-400/45 focus:ring-2 focus:ring-violet-500/15";
+  "mt-1.5 w-full rounded-xl border border-zinc-600/15 bg-zinc-950/45 px-3 py-2.5 text-sm text-zinc-50 outline-none focus:border-zinc-500/45 focus:ring-2 focus:ring-zinc-600/15";
 
 export function PaymentStatusDropdown({
   id,
@@ -24,7 +24,7 @@ export function PaymentStatusDropdown({
 
   return (
     <label htmlFor={fid}>
-      <span className="text-xs font-semibold uppercase tracking-wider text-purple-300/65">{label}</span>
+      <span className="text-xs font-semibold uppercase tracking-wider text-zinc-400/65">{label}</span>
       <select
         id={fid}
         value={value}
@@ -33,7 +33,7 @@ export function PaymentStatusDropdown({
         className={inputClass + (error ? " border-rose-400/45 ring-1 ring-rose-500/25" : "") + (disabled ? " opacity-60" : "")}
       >
         {PAYMENT_ADMIN_STATUS.map((s) => (
-          <option key={s} value={s} className="bg-purple-950">
+          <option key={s} value={s} className="bg-zinc-950">
             {paymentStatusLabel(s)}
           </option>
         ))}

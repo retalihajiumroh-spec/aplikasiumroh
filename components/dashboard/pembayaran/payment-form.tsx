@@ -13,8 +13,8 @@ import { PaymentProofUpload } from "./file-upload";
 import { PaymentStatusDropdown } from "./status-dropdown";
 
 const inputClass =
-  "mt-1.5 w-full rounded-xl border border-purple-500/15 bg-purple-950/45 px-3 py-2.5 text-sm text-purple-50 outline-none placeholder:text-slate-500/55 focus:border-violet-400/45 focus:ring-2 focus:ring-violet-500/15";
-const labelClass = "text-xs font-semibold uppercase tracking-wider text-purple-300/65";
+  "mt-1.5 w-full rounded-xl border border-zinc-600/15 bg-zinc-950/45 px-3 py-2.5 text-sm text-zinc-50 outline-none placeholder:text-slate-500/55 focus:border-zinc-500/45 focus:ring-2 focus:ring-zinc-600/15";
+const labelClass = "text-xs font-semibold uppercase tracking-wider text-zinc-400/65";
 
 function lineFieldKey(localId: string, field: string) {
   return `${localId}__${field}`;
@@ -61,12 +61,12 @@ export function PaymentLineForm({
   return (
     <motion.div
       layout
-      className="rounded-2xl border border-purple-500/12 bg-purple-950/25 p-4 sm:p-5"
+      className="rounded-2xl border border-zinc-600/12 bg-zinc-950/25 p-4 sm:p-5"
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
     >
       <div className="mb-4 flex items-start justify-between gap-2">
-        <p className="text-sm font-semibold text-purple-100/90">Baris pembayaran</p>
+        <p className="text-sm font-semibold text-zinc-200/90">Baris pembayaran</p>
         {canRemove ? (
           <button
             type="button"
@@ -86,11 +86,11 @@ export function PaymentLineForm({
             onChange={(e) => onChange({ ...line, packageId: e.target.value })}
             className={inputClass + (errors[lineFieldKey(line.localId, "package")] ? " border-rose-400/45 ring-1 ring-rose-500/25" : "")}
           >
-            <option value="" className="bg-purple-950">
+            <option value="" className="bg-zinc-950">
               — Pilih —
             </option>
             {packageOptions.map((p) => (
-              <option key={p.id} value={p.id} className="bg-purple-950">
+              <option key={p.id} value={p.id} className="bg-zinc-950">
                 {p.label}
               </option>
             ))}
@@ -114,11 +114,11 @@ export function PaymentLineForm({
             onChange={(e) => onChange({ ...line, jamaahId: e.target.value })}
             className={inputClass + (errors[lineFieldKey(line.localId, "jamaah")] ? " border-rose-400/45 ring-1 ring-rose-500/25" : "")}
           >
-            <option value="" className="bg-purple-950">
+            <option value="" className="bg-zinc-950">
               — Pilih —
             </option>
             {jamaahFiltered.map((j) => (
-              <option key={j.id} value={j.id} className="bg-purple-950">
+              <option key={j.id} value={j.id} className="bg-zinc-950">
                 {j.name} · {j.id}
               </option>
             ))}
@@ -150,7 +150,7 @@ export function PaymentLineForm({
             className={inputClass}
           >
             {PAYMENT_TYPES.map((t) => (
-              <option key={t} value={t} className="bg-purple-950">
+              <option key={t} value={t} className="bg-zinc-950">
                 {t}
               </option>
             ))}
@@ -171,8 +171,8 @@ export function PaymentLineForm({
 
         {line.packageId && line.jamaahId ? (
           <p className="lg:col-span-2 text-[11px] text-slate-500/85">
-            Ringkas: <span className="text-purple-200/80">{packageOptions.find((p) => p.id === line.packageId)?.label}</span> ·{" "}
-            <span className="text-purple-200/80">{jamaahRecords.find((j) => j.id === line.jamaahId)?.name}</span>
+            Ringkas: <span className="text-zinc-300/80">{packageOptions.find((p) => p.id === line.packageId)?.label}</span> ·{" "}
+            <span className="text-zinc-300/80">{jamaahRecords.find((j) => j.id === line.jamaahId)?.name}</span>
           </p>
         ) : null}
       </div>
@@ -314,9 +314,9 @@ export function PaymentBatchForm({ onSaved }: { onSaved: (entries: SavedPaymentE
 
   return (
     <div className="mt-10 space-y-6">
-      <div className="flex flex-col gap-3 border-b border-purple-500/10 pb-6 sm:flex-row sm:items-end sm:justify-between">
+      <div className="flex flex-col gap-3 border-b border-zinc-600/10 pb-6 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <h2 className="text-lg font-bold text-purple-50">Input pembayaran</h2>
+          <h2 className="text-lg font-bold text-zinc-50">Input pembayaran</h2>
           <p className="mt-1 text-sm text-slate-400/90">
             Tambah satu atau banyak pembayaran sekaligus. Bukti: JPG/PNG. Status dapat diatur langsung oleh admin finance.
           </p>
@@ -324,7 +324,7 @@ export function PaymentBatchForm({ onSaved }: { onSaved: (entries: SavedPaymentE
         <button
           type="button"
           onClick={addLine}
-          className="inline-flex items-center justify-center rounded-xl border border-violet-400/35 bg-violet-500/10 px-4 py-2.5 text-sm font-semibold text-violet-100 transition hover:bg-violet-500/20"
+          className="inline-flex items-center justify-center rounded-xl border border-zinc-500/35 bg-zinc-600/10 px-4 py-2.5 text-sm font-semibold text-zinc-200 transition hover:bg-zinc-600/20"
         >
           + Tambah pembayaran lain
         </button>
@@ -352,7 +352,7 @@ export function PaymentBatchForm({ onSaved }: { onSaved: (entries: SavedPaymentE
           animate={{ opacity: 1, y: 0 }}
           className={
             notice.type === "ok"
-              ? "rounded-xl border border-purple-400/30 bg-purple-500/10 px-4 py-3 text-sm text-purple-100"
+              ? "rounded-xl border border-zinc-500/30 bg-zinc-600/10 px-4 py-3 text-sm text-zinc-200"
               : "rounded-xl border border-rose-400/30 bg-rose-500/10 px-4 py-3 text-sm text-rose-100"
           }
           role="status"
@@ -369,7 +369,7 @@ export function PaymentBatchForm({ onSaved }: { onSaved: (entries: SavedPaymentE
             setErrors({});
             setNotice(null);
           }}
-          className="rounded-xl border border-white/10 px-5 py-2.5 text-sm font-medium text-purple-200/80 hover:bg-white/5"
+          className="rounded-xl border border-white/10 px-5 py-2.5 text-sm font-medium text-zinc-300/80 hover:bg-white/5"
         >
           Reset baris
         </button>
@@ -378,7 +378,7 @@ export function PaymentBatchForm({ onSaved }: { onSaved: (entries: SavedPaymentE
           disabled={submitting}
           onClick={() => void handleSubmit()}
           whileTap={{ scale: 0.98 }}
-          className="rounded-xl border border-purple-400/40 bg-gradient-to-r from-purple-500 to-violet-900 px-6 py-2.5 text-sm font-bold text-white shadow-lg disabled:opacity-50"
+          className="rounded-xl border border-zinc-500/40 bg-gradient-to-r from-zinc-600 to-zinc-900 px-6 py-2.5 text-sm font-bold text-white shadow-lg disabled:opacity-50"
         >
           {submitting ? "Menyimpan…" : "Tambah pembayaran"}
         </motion.button>

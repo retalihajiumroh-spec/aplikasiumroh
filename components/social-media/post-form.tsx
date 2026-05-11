@@ -183,13 +183,13 @@ export function PostForm({
       transition={{ duration: 0.35 }}
     >
       <div className="flex flex-col gap-2 border-b border-white/10 pb-6">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-300/70">
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-400/70">
           Multi-posting
         </p>
-        <h2 className="text-xl font-semibold text-emerald-50">
+        <h2 className="text-xl font-semibold text-zinc-50">
           {editingPost ? "Edit postingan" : "Buat postingan baru"}
         </h2>
-        <p className="text-sm text-emerald-200/55">
+        <p className="text-sm text-zinc-300/55">
           Satu formulir untuk Instagram, Facebook, Twitter/X, dan LinkedIn — dengan pratinjau glass
           dan jadwal berulang.
         </p>
@@ -197,23 +197,23 @@ export function PostForm({
 
       <div className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
         <div className="space-y-5">
-          <label className="block text-sm font-medium text-emerald-100/90">
+          <label className="block text-sm font-medium text-zinc-200/90">
             Deskripsi / caption
             <textarea
               value={caption}
               onChange={(e) => setCaption(e.target.value)}
               rows={5}
               placeholder="Tulis narasi kampanye, ajakan, atau pengumuman layanan umroh..."
-              className="mt-2 w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-emerald-50 outline-none ring-emerald-400/30 transition placeholder:text-emerald-200/35 focus:ring-2"
+              className="mt-2 w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-zinc-50 outline-none ring-zinc-500/30 transition placeholder:text-zinc-300/35 focus:ring-2"
               required
             />
           </label>
 
           <div>
-            <p className="text-sm font-medium text-emerald-100/90">Media</p>
-            <label className="mt-2 flex cursor-pointer flex-col items-center justify-center rounded-xl border border-dashed border-emerald-400/25 bg-emerald-500/[0.04] px-4 py-8 text-center transition hover:border-emerald-400/40 hover:bg-emerald-500/[0.07]">
-              <span className="text-sm font-medium text-emerald-100">Unggah gambar atau video</span>
-              <span className="mt-1 text-xs text-emerald-200/50">
+            <p className="text-sm font-medium text-zinc-200/90">Media</p>
+            <label className="mt-2 flex cursor-pointer flex-col items-center justify-center rounded-xl border border-dashed border-zinc-500/25 bg-zinc-600/[0.04] px-4 py-8 text-center transition hover:border-zinc-500/40 hover:bg-zinc-600/[0.07]">
+              <span className="text-sm font-medium text-zinc-200">Unggah gambar atau video</span>
+              <span className="mt-1 text-xs text-zinc-300/50">
                 Drag & drop mendukung beberapa file — video disarankan via Supabase Storage untuk produksi.
               </span>
               <input
@@ -230,7 +230,7 @@ export function PostForm({
                 {libraryAttachments.map((asset, index) => (
                   <li
                     key={`${asset.url}-${asset.name}-${index}`}
-                    className="glass-card flex items-center gap-3 rounded-xl p-3 text-xs text-emerald-100/80"
+                    className="glass-card flex items-center gap-3 rounded-xl p-3 text-xs text-zinc-200/80"
                   >
                     <div className="h-14 w-14 shrink-0 overflow-hidden rounded-lg border border-white/10 bg-black/30">
                       {asset.type === "video" && asset.url ? (
@@ -239,19 +239,19 @@ export function PostForm({
                         // eslint-disable-next-line @next/next/no-img-element
                         <img alt="" src={asset.url} className="h-full w-full object-cover" />
                       ) : (
-                        <div className="flex h-full items-center justify-center px-2 text-center text-[10px] text-emerald-200/55">
+                        <div className="flex h-full items-center justify-center px-2 text-center text-[10px] text-zinc-300/55">
                           Video
                         </div>
                       )}
                     </div>
                     <div className="min-w-0 flex-1">
                       <p className="truncate font-medium">{asset.name}</p>
-                      <p className="text-emerald-200/45">Dari perpustakaan konten</p>
+                      <p className="text-zinc-300/45">Dari perpustakaan konten</p>
                     </div>
                     <button
                       type="button"
                       onClick={() => removeLibraryAttachment(index)}
-                      className="rounded-lg border border-[color:var(--color-social-maroon-border)] bg-[color:var(--color-social-maroon-soft)] px-3 py-1 text-[11px] font-semibold text-emerald-50 transition hover:bg-[color:var(--color-social-maroon-soft)]/80"
+                      className="rounded-lg border border-[color:var(--color-social-maroon-border)] bg-[color:var(--color-social-maroon-soft)] px-3 py-1 text-[11px] font-semibold text-zinc-50 transition hover:bg-[color:var(--color-social-maroon-soft)]/80"
                     >
                       Hapus
                     </button>
@@ -265,7 +265,7 @@ export function PostForm({
                 {localMedia.map((m) => (
                   <li
                     key={m.id}
-                    className="glass-card flex items-center gap-3 rounded-xl p-3 text-xs text-emerald-100/80"
+                    className="glass-card flex items-center gap-3 rounded-xl p-3 text-xs text-zinc-200/80"
                   >
                     <div className="h-14 w-14 shrink-0 overflow-hidden rounded-lg border border-white/10 bg-black/30">
                       {m.file.type.startsWith("video") ? (
@@ -277,12 +277,12 @@ export function PostForm({
                     </div>
                     <div className="min-w-0 flex-1">
                       <p className="truncate font-medium">{m.file.name}</p>
-                      <p className="text-emerald-200/45">{(m.file.size / 1024).toFixed(1)} KB</p>
+                      <p className="text-zinc-300/45">{(m.file.size / 1024).toFixed(1)} KB</p>
                     </div>
                     <button
                       type="button"
                       onClick={() => removeLocalMedia(m.id)}
-                      className="rounded-lg border border-[color:var(--color-social-maroon-border)] bg-[color:var(--color-social-maroon-soft)] px-3 py-1 text-[11px] font-semibold text-emerald-50 transition hover:bg-[color:var(--color-social-maroon-soft)]/80"
+                      className="rounded-lg border border-[color:var(--color-social-maroon-border)] bg-[color:var(--color-social-maroon-soft)] px-3 py-1 text-[11px] font-semibold text-zinc-50 transition hover:bg-[color:var(--color-social-maroon-soft)]/80"
                     >
                       Hapus
                     </button>
@@ -292,23 +292,23 @@ export function PostForm({
             )}
           </div>
 
-          <label className="block text-sm font-medium text-emerald-100/90">
+          <label className="block text-sm font-medium text-zinc-200/90">
             Jadwal tayang
             <input
               type="datetime-local"
               value={scheduledAt}
               onChange={(e) => setScheduledAt(e.target.value)}
-              className="mt-2 w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-emerald-50 outline-none ring-emerald-400/30 transition focus:ring-2"
+              className="mt-2 w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-zinc-50 outline-none ring-zinc-500/30 transition focus:ring-2"
               required
             />
           </label>
 
-          <label className="block text-sm font-medium text-emerald-100/90">
+          <label className="block text-sm font-medium text-zinc-200/90">
             Pengulangan
             <select
               value={recurrence}
               onChange={(e) => setRecurrence(e.target.value as CreateSocialPostInput["recurrence"])}
-              className="mt-2 w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-emerald-50 outline-none ring-emerald-400/30 transition focus:ring-2"
+              className="mt-2 w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-zinc-50 outline-none ring-zinc-500/30 transition focus:ring-2"
             >
               <option value="none">Tidak berulang</option>
               <option value="weekly">Mingguan</option>
@@ -319,8 +319,8 @@ export function PostForm({
 
         <div className="space-y-5">
           <div>
-            <p className="text-sm font-medium text-emerald-100/90">Platform tujuan</p>
-            <p className="mt-1 text-xs text-emerald-200/50">Pilih satu atau beberapa channel.</p>
+            <p className="text-sm font-medium text-zinc-200/90">Platform tujuan</p>
+            <p className="mt-1 text-xs text-zinc-300/50">Pilih satu atau beberapa channel.</p>
             <div className="mt-3 grid gap-2 sm:grid-cols-2">
               {platformsOrdered.map((p) => {
                 const spec = PLATFORM_SPECS.find((x) => x.id === p)!;
@@ -332,12 +332,12 @@ export function PostForm({
                     onClick={() => togglePlatform(p)}
                     className={`rounded-xl border px-4 py-3 text-left text-sm font-medium transition ${
                       active
-                        ? "border-emerald-400/40 bg-emerald-500/15 text-emerald-50 shadow-[0_0_0_1px_rgba(52,211,153,0.15)_inset]"
-                        : "border-white/10 bg-black/15 text-emerald-200/70 hover:border-emerald-400/25"
+                        ? "border-zinc-500/40 bg-zinc-600/15 text-zinc-50 shadow-[0_0_0_1px_rgba(161,161,161,0.15)_inset]"
+                        : "border-white/10 bg-black/15 text-zinc-300/70 hover:border-zinc-500/25"
                     }`}
                   >
                     <span className="block">{spec.label}</span>
-                    <span className="mt-1 block text-[11px] font-normal text-emerald-200/45">
+                    <span className="mt-1 block text-[11px] font-normal text-zinc-300/45">
                       {spec.recommendedMedia}
                     </span>
                   </button>
@@ -347,10 +347,10 @@ export function PostForm({
           </div>
 
           <div>
-            <p className="text-sm font-medium text-emerald-100/90">Pratinjau cepat per platform</p>
+            <p className="text-sm font-medium text-zinc-200/90">Pratinjau cepat per platform</p>
             <div className="mt-3 grid gap-3">
               {PLATFORM_SPECS.filter((s) => platforms.includes(s.id)).length === 0 ? (
-                <div className="glass-card rounded-xl px-4 py-6 text-center text-sm text-emerald-200/55">
+                <div className="glass-card rounded-xl px-4 py-6 text-center text-sm text-zinc-300/55">
                   Pilih platform untuk melihat kartu pratinjau bergaya glass.
                 </div>
               ) : (
@@ -362,14 +362,14 @@ export function PostForm({
                   >
                     <div className="flex items-start justify-between gap-3">
                       <div>
-                        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-100/70">
+                        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-200/70">
                           {spec.label}
                         </p>
-                        <p className="mt-2 line-clamp-3 text-sm text-emerald-50/95">
+                        <p className="mt-2 line-clamp-3 text-sm text-zinc-50/95">
                           {caption || "Caption akan muncul di sini berdasarkan platform..."}
                         </p>
                       </div>
-                      <span className="rounded-full bg-black/25 px-3 py-1 text-[10px] font-medium text-emerald-50/85 ring-1 ring-white/10">
+                      <span className="rounded-full bg-black/25 px-3 py-1 text-[10px] font-medium text-zinc-50/85 ring-1 ring-white/10">
                         {spec.recommendedMedia}
                       </span>
                     </div>
@@ -385,14 +385,14 @@ export function PostForm({
                             // eslint-disable-next-line @next/next/no-img-element
                             <img alt="" src={asset.url} className="h-full w-full object-cover" />
                           ) : (
-                            <div className="flex h-full items-center justify-center px-2 text-center text-[10px] text-emerald-200/55">
+                            <div className="flex h-full items-center justify-center px-2 text-center text-[10px] text-zinc-300/55">
                               Video siap · unggah via storage produksi
                             </div>
                           )}
                         </div>
                       ))}
                       {previewAttachments.length === 0 && (
-                        <div className="col-span-3 rounded-xl border border-dashed border-white/15 bg-black/25 px-3 py-6 text-center text-xs text-emerald-200/55">
+                        <div className="col-span-3 rounded-xl border border-dashed border-white/15 bg-black/25 px-3 py-6 text-center text-xs text-zinc-300/55">
                           Tambahkan media untuk melihat thumbnail pada setiap kartu.
                         </div>
                       )}
@@ -418,7 +418,7 @@ export function PostForm({
           <button
             type="button"
             onClick={onCancelEdit}
-            className="inline-flex items-center justify-center rounded-xl border border-[color:var(--color-social-maroon-border)] px-6 py-3 text-sm font-semibold text-emerald-50 transition hover:bg-[color:var(--color-social-maroon-soft)]"
+            className="inline-flex items-center justify-center rounded-xl border border-[color:var(--color-social-maroon-border)] px-6 py-3 text-sm font-semibold text-zinc-50 transition hover:bg-[color:var(--color-social-maroon-soft)]"
             style={{ backgroundColor: "var(--color-social-maroon-soft)" }}
           >
             Cancel

@@ -19,11 +19,11 @@ export function CommunityDashboard() {
         <motion.header
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
-          className="border-b border-purple-500/10 pb-8"
+          className="border-b border-zinc-600/10 pb-8"
         >
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-violet-200/75">Community Engine</p>
-          <h1 className="mt-2 text-3xl font-semibold tracking-tight text-purple-50 sm:text-4xl">Komunitas & engagement</h1>
-          <p className="mt-2 max-w-2xl text-sm text-purple-200/55 sm:text-base">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-300/75">Community Engine</p>
+          <h1 className="mt-2 text-3xl font-semibold tracking-tight text-zinc-50 sm:text-4xl">Komunitas & engagement</h1>
+          <p className="mt-2 max-w-2xl text-sm text-zinc-300/55 sm:text-base">
             Pantau segmentasi pengguna aktif, engaged, dan silent beserta laju pertumbuhan komunitas digital jamaah.
           </p>
         </motion.header>

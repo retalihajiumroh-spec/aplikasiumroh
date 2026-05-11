@@ -43,15 +43,15 @@ export function ContentEngineDashboard() {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45 }}
-          className="border-b border-purple-500/10 pb-8"
+          className="border-b border-zinc-600/10 pb-8"
         >
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-purple-400/70">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500/70">
             SA&apos;YA Umroh OS · Marketing
           </p>
-          <h1 className="mt-2 text-3xl font-semibold tracking-tight text-purple-50 sm:text-4xl">
+          <h1 className="mt-2 text-3xl font-semibold tracking-tight text-zinc-50 sm:text-4xl">
             AI Content Engine
           </h1>
-          <p className="mt-2 max-w-2xl text-sm leading-relaxed text-purple-200/55 sm:text-base">
+          <p className="mt-2 max-w-2xl text-sm leading-relaxed text-zinc-300/55 sm:text-base">
             Hasilkan caption, skrip iklan, carousel, headline, dan optimasi engagement untuk kampanye
             umroh — dari satu tautan referensi dan brief singkat.
           </p>
@@ -76,11 +76,11 @@ export function ContentEngineDashboard() {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0, y: -8 }}
                   transition={{ duration: 0.3 }}
-                  className="glass-panel flex min-h-[320px] flex-col items-center justify-center rounded-2xl border border-dashed border-purple-500/20 p-8 text-center"
+                  className="glass-panel flex min-h-[320px] flex-col items-center justify-center rounded-2xl border border-dashed border-zinc-600/20 p-8 text-center"
                 >
-                  <div className="rounded-2xl border border-purple-400/20 bg-purple-500/10 p-4">
+                  <div className="rounded-2xl border border-zinc-500/20 bg-zinc-600/10 p-4">
                     <svg
-                      className="text-purple-300/80"
+                      className="text-zinc-400/80"
                       width="40"
                       height="40"
                       viewBox="0 0 24 24"
@@ -93,12 +93,12 @@ export function ContentEngineDashboard() {
                       <rect x="4" y="14" width="16" height="6" rx="2" />
                     </svg>
                   </div>
-                  <p className="mt-5 max-w-xs text-sm font-medium text-purple-100/85">
+                  <p className="mt-5 max-w-xs text-sm font-medium text-zinc-200/85">
                     Siap generate?
                   </p>
-                  <p className="mt-2 max-w-sm text-xs leading-relaxed text-purple-200/45">
+                  <p className="mt-2 max-w-sm text-xs leading-relaxed text-zinc-300/45">
                     Isi tautan referensi dan brief, lalu ketuk{" "}
-                    <span className="text-purple-300/80">Generate paket konten</span> untuk melihat
+                    <span className="text-zinc-400/80">Generate paket konten</span> untuk melihat
                     caption, skrip iklan, carousel, skor viral, dan rekomendasi optimasi (data demo).
                   </p>
                 </motion.div>

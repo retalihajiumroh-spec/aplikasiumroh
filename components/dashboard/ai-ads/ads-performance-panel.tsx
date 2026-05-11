@@ -47,12 +47,12 @@ export function AdsPerformancePanel({
     >
       <div className="flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <h2 className="text-lg font-semibold text-purple-50">Performance analytics</h2>
-          <p className="mt-1 text-sm text-purple-200/55">
+          <h2 className="text-lg font-semibold text-zinc-50">Performance analytics</h2>
+          <p className="mt-1 text-sm text-zinc-300/55">
             CTR, CPL, dan ROI agregat plus detail per kreatif — kontrol skala / jeda (status lokal, demo).
           </p>
         </div>
-        <span className="mt-2 inline-flex w-fit items-center rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-[11px] text-purple-300/70 sm:mt-0">
+        <span className="mt-2 inline-flex w-fit items-center rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-[11px] text-zinc-400/70 sm:mt-0">
           {activeCount}/{rows.length} kreatif aktif
         </span>
       </div>
@@ -70,32 +70,32 @@ export function AdsPerformancePanel({
             transition={{ delay: 0.08 + i * 0.04 }}
             className="glass-card rounded-xl p-4"
           >
-            <p className="text-xs font-medium uppercase tracking-wider text-purple-200/45">{k.label}</p>
-            <p className="mt-2 font-mono text-xl font-semibold text-purple-50">{k.value}</p>
-            <p className="mt-1 text-[11px] text-purple-500/50">{k.hint}</p>
+            <p className="text-xs font-medium uppercase tracking-wider text-zinc-300/45">{k.label}</p>
+            <p className="mt-2 font-mono text-xl font-semibold text-zinc-50">{k.value}</p>
+            <p className="mt-1 text-[11px] text-zinc-600/50">{k.hint}</p>
           </motion.div>
         ))}
       </div>
 
-      <div className="mt-6 grid gap-3 rounded-xl border border-purple-500/10 bg-purple-950/25 p-4 sm:grid-cols-3">
+      <div className="mt-6 grid gap-3 rounded-xl border border-zinc-600/10 bg-zinc-950/25 p-4 sm:grid-cols-3">
         <div>
-          <p className="text-[10px] font-semibold uppercase tracking-wide text-purple-500/50">Spend</p>
-          <p className="font-mono text-sm font-semibold text-purple-100">{formatIdr(summary.spendIdr)}</p>
+          <p className="text-[10px] font-semibold uppercase tracking-wide text-zinc-600/50">Spend</p>
+          <p className="font-mono text-sm font-semibold text-zinc-200">{formatIdr(summary.spendIdr)}</p>
         </div>
         <div>
-          <p className="text-[10px] font-semibold uppercase tracking-wide text-purple-500/50">Impresi</p>
-          <p className="font-mono text-sm font-semibold text-purple-100">{summary.impressions.toLocaleString("id-ID")}</p>
+          <p className="text-[10px] font-semibold uppercase tracking-wide text-zinc-600/50">Impresi</p>
+          <p className="font-mono text-sm font-semibold text-zinc-200">{summary.impressions.toLocaleString("id-ID")}</p>
         </div>
         <div>
-          <p className="text-[10px] font-semibold uppercase tracking-wide text-purple-500/50">Lead</p>
-          <p className="font-mono text-sm font-semibold text-purple-100">{summary.leads}</p>
+          <p className="text-[10px] font-semibold uppercase tracking-wide text-zinc-600/50">Lead</p>
+          <p className="font-mono text-sm font-semibold text-zinc-200">{summary.leads}</p>
         </div>
       </div>
 
-      <div className="mt-8 overflow-x-auto rounded-xl border border-purple-500/10">
+      <div className="mt-8 overflow-x-auto rounded-xl border border-zinc-600/10">
         <table className="w-full min-w-[640px] text-left text-sm">
           <thead>
-            <tr className="border-b border-purple-500/10 bg-purple-950/40 text-[11px] font-semibold uppercase tracking-wide text-purple-400/70">
+            <tr className="border-b border-zinc-600/10 bg-zinc-950/40 text-[11px] font-semibold uppercase tracking-wide text-zinc-500/70">
               <th className="px-4 py-3">Adset</th>
               <th className="px-4 py-3">Kreatif</th>
               <th className="px-4 py-3">CTR</th>
@@ -115,15 +115,15 @@ export function AdsPerformancePanel({
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.04 * i }}
-                  className="border-b border-purple-500/5 last:border-0 odd:bg-purple-950/15"
+                  className="border-b border-zinc-600/5 last:border-0 odd:bg-zinc-950/15"
                 >
-                  <td className="px-4 py-3 font-medium text-purple-200/90">{row.adSetLabel}</td>
-                  <td className="max-w-[200px] px-4 py-3 text-purple-100/85">
+                  <td className="px-4 py-3 font-medium text-zinc-300/90">{row.adSetLabel}</td>
+                  <td className="max-w-[200px] px-4 py-3 text-zinc-200/85">
                     <span className="line-clamp-2">{row.adName}</span>
                   </td>
-                  <td className="px-4 py-3 font-mono text-purple-200/90">{fmtPct(row.ctrPct)}</td>
-                  <td className="px-4 py-3 font-mono text-purple-200/90">{formatIdr(row.cplIdr)}</td>
-                  <td className="px-4 py-3 font-mono text-purple-200/90">{fmtMult(row.roiPct)}</td>
+                  <td className="px-4 py-3 font-mono text-zinc-300/90">{fmtPct(row.ctrPct)}</td>
+                  <td className="px-4 py-3 font-mono text-zinc-300/90">{formatIdr(row.cplIdr)}</td>
+                  <td className="px-4 py-3 font-mono text-zinc-300/90">{fmtMult(row.roiPct)}</td>
                   <td className="px-4 py-3">
                     <div className="flex justify-end gap-2">
                       <motion.button
@@ -131,7 +131,7 @@ export function AdsPerformancePanel({
                         whileTap={{ scale: 0.97 }}
                         disabled={scaling || paused}
                         onClick={() => handleScale(row.id)}
-                        className="rounded-lg border border-purple-400/35 bg-purple-500/15 px-2.5 py-1.5 text-[11px] font-semibold text-purple-100 transition hover:bg-purple-500/25 disabled:cursor-not-allowed disabled:opacity-40"
+                        className="rounded-lg border border-zinc-500/35 bg-zinc-600/15 px-2.5 py-1.5 text-[11px] font-semibold text-zinc-200 transition hover:bg-zinc-600/25 disabled:cursor-not-allowed disabled:opacity-40"
                       >
                         {scaling ? "Scaling…" : "Scale"}
                       </motion.button>
@@ -143,7 +143,7 @@ export function AdsPerformancePanel({
                         className={`rounded-lg border px-2.5 py-1.5 text-[11px] font-semibold transition disabled:opacity-40 ${
                           paused
                             ? "border-sky-400/35 bg-sky-500/15 text-sky-100 hover:bg-sky-500/25"
-                            : "border-violet-400/35 bg-violet-500/10 text-violet-100 hover:bg-violet-500/20"
+                            : "border-zinc-500/35 bg-zinc-600/10 text-zinc-200 hover:bg-zinc-600/20"
                         }`}
                       >
                         {paused ? "Aktifkan" : "Pause"}
