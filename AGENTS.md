@@ -2,13 +2,21 @@
 
 ## Cursor Cloud specific instructions
 
-This repository ("Aplikasi Umroh") is currently an empty/placeholder project. The only file is `Main`, which contains a project description.
+**SA'YA Umroh OS** — a Next.js 15 (App Router) Umroh travel management dashboard. TypeScript, Tailwind CSS v4, Framer Motion, Recharts.
 
-- **No source code, build system, dependencies, tests, or linting** exist yet.
-- **No services** need to be started.
-- **No package manager** is configured (no `package.json`, `requirements.txt`, etc.).
+### Quick reference (see `package.json` scripts & `README.md` for full details)
 
-When application code is added in the future, update this section with:
-- How to install dependencies and which package manager to use.
-- How to run the dev server, tests, and linting.
-- Any non-obvious setup caveats.
+| Task | Command |
+|------|---------|
+| Install deps | `npm install` |
+| Dev server | `npm run dev` (localhost:3000) |
+| Lint | `npm run lint` |
+| Typecheck | `npm run typecheck` |
+| Build | `npm run build` |
+
+### Key caveats
+
+- **Supabase is optional.** The app detects `NEXT_PUBLIC_SUPABASE_URL` / `NEXT_PUBLIC_SUPABASE_ANON_KEY`. When unset, it falls back to a "demo mode" with a hardcoded `Admin Demo` user and localStorage-based payment storage. Copy `.env.example` to `.env.local` to use Supabase auth.
+- **No test framework** is configured (no Jest, Vitest, Playwright, etc.). There are no automated tests.
+- **Pre-existing lint/TS errors.** `npm run lint` reports a few `react/no-unescaped-entities` errors and unused-var warnings. `npm run typecheck` reports a handful of module-resolution and import errors. These are in the existing codebase and do not block the dev server.
+- **tsconfig paths:** `@/*` resolves to `./src/*` first, then `./*`. Components under both `src/` and root `components/`/`lib/` are importable via `@/`.

@@ -29,6 +29,8 @@ export function Button({ className, variant = "primary", ...props }: ButtonProps
   return <button className={cn(baseClass, variants[variant], className)} {...props} />;
 }
 
+export default Button;
+
 export function LinkButton({
   className,
   variant = "primary",
